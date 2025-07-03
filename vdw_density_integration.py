@@ -344,7 +344,7 @@ def main():
     vdw_radii = retrieve_vdw_radii(molecule,elements_table) 
     pairwise_overlaps_dict = compute_pairwise_vdw_overlaps(molecule,vdw_radii)
     print(pairwise_overlaps_dict)
-    plot_vdw_gaussian_density(molecule,vdw_radii,resolution=500,isovalue=0.5)
+    plot_vdw_gaussian_density(molecule,vdw_radii,resolution=50,isovalue=0.5)
 
 
 
