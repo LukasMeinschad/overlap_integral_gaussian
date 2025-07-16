@@ -252,6 +252,35 @@ def retrieve_vdw_radii(molecule, elements_table):
 
     return vdw_radii
 
+def retrieve_polarizability(molecule, elements_table):
+    """ 
+    Retrieves the polarizability using mendeleev
+    """
+
+    cols = [
+        "atomic_number",
+        "symbol",
+        "dipole_polarizability"
+    ]
+    elements_table = elements_table[cols] 
+
+    polarizabilities = dict.fromkeys(molecule.keys())
+
+    for key in molecule.keys():
+        remove_digits = str.maketrans("","",digits)
+        key_without_digit = key.translate(remove_digits)
+        polarizability_key = elements_table[elements_table["symbol"]==key_without_digit]["dipole_polarizability"].values[0]
+        
+        # Unit is given in bohr^3
+        # Convert to Angstrom for radius usage
+
+        polarizability_key = np.sqrt(polarizability_key) * 0.52917721092 
+        polarizabilities[key] = polarizability_key
+
+    
+    
+    return polarizabilities
+
 def gaussian_3d(a=1,b=(1,1,1),c=1,x=(0,0,0)):
     """ 
     Computes a 3D gaussian function
@@ -489,6 +518,43 @@ def check_normalization(normal_mode):
     displacements = normal_mode["displacements"]
     disp_array = np.array([(d.get("x",0), d.get("y",0),d.get("z",0)) for d in displacements.values()])
 
+    
+def check_orthogonality(normal_modes):
+    """ 
+    Function to check the orthogonality of the normal modes 
+    """
+
+    # Each mode --> 1 Displacement vector
+    mode_vectors = []
+    for mode in normal_modes.values():
+        disp = mode["displacements"]
+        mode_vector = []
+        for atom, displacement in disp.items():
+            # Create a vector for the displacement
+            vector = np.array([
+                displacement.get("x", 0),
+                displacement.get("y", 0),
+                displacement.get("z", 0)
+            ])
+            mode_vector.extend(vector)
+        mode_vectors.append(np.array(mode_vector))
+
+    # Check orthogonality
+    num_modes = len(mode_vectors)
+    orthogonal = True
+    for i in range(num_modes):
+        for j in range(i + 1, num_modes):
+            dot_product = np.dot(mode_vectors[i], mode_vectors[j])
+            if not np.isclose(dot_product, 0, atol=1e-6):
+                #print(f"Modes {i+1} and {j+1} are not orthogonal (dot product: {dot_product})")
+                orthogonal = False
+    if orthogonal:
+        print("All modes are orthogonal.")
+    else:
+        print("Normal Modes are not orthogonal --> Non-Mass-Weighted Normal Modes")
+ 
+
+
 
 def calculate_volume_change(molecule, vdw_radii, normal_mode, lam_dis=0.1):
     """ 
@@ -554,7 +620,7 @@ def calculate_volume_change(molecule, vdw_radii, normal_mode, lam_dis=0.1):
         delta_S_over_S = - lam_dis / (c1_sq + c2_sq) * np.dot(d, delta_q)
 
         # Calculate absolute value and write to results
-        delta_S_over_S_abs = abs(delta_S_over_S)
+        delta_S_over_S_abs = np.abs(delta_S_over_S)
         results[(atom1, atom2)] = {
             "delta_S_over_S": delta_S_over_S,
             "delta_S_over_S_abs": delta_S_over_S_abs,
@@ -567,7 +633,99 @@ def calculate_volume_change(molecule, vdw_radii, normal_mode, lam_dis=0.1):
     # Calculate the total change as a sum of absolute changes
     total_change = sum(res['delta_S_over_S_abs'] for res in results.values())
     return total_change, results
-        
+
+
+# Ok maybe try a little bit different implementation
+
+def calculateS0(a1,a2,c1,c2):
+    """ 
+    Function that calculates the prefactor for the overlap integral
+    """
+    return a1 * a2 * (2 *np.pi * c1**2 * c2**2 / (c1**2 + c2**2))**(3/2)
+
+def calculate_initial_overlap(b1,b2,a1,a2,c1,c2):
+    """ 
+    Function that calculates the initial overlap S between the two Gaussians
+    """    
+    r = np.linalg.norm(np.array(b1) - np.array(b2))
+    exponent = -r**2 / (2 * (c1**2 + c2**2))
+    S0 = calculateS0(a1,a2,c1,c2)
+    return S0 * np.exp(exponent)
+
+def calculate_delta_S(S,r,u1,u2,c1,c2):
+    """ 
+    Function that calculates the change in overlap between two Gaussians where u1,u2 are the displacements at the gaussians
+    """
+    relative_disp = np.array(u1) - np.array(u2)
+    dot_product = np.dot(r, relative_disp)
+    return -S * (dot_product / (c1**2 + c2**2))
+
+
+def compute_mode_norm(displacments):
+    """ 
+    Computes the euclidian norm of the entire normal mode
+    """
+    total = 0.0
+    for atom, disp in displacments.items():
+        total += disp["x"]**2 + disp["y"]**2 + disp["z"]**2
+    return np.sqrt(total)
+
+
+
+def calculate_volume_change_v2(molecule, vdw_radii, normal_mode):
+    """ 
+    New function to calculate the volume change using the new approach
+    """
+    volume_changes = {}   
+
+    displacements = normal_mode['displacements']
+    a = normalization_parameter()  # Normalization parameter for Gaussian
+
+    atoms = list(displacements.keys())
+
+    # Calculate the norm of the normal mode
+    mode_norm = compute_mode_norm(displacements)
+    
+
+    total_delta_S = 0.0
+    for i in range(len(atoms)):
+        for j in range(i+1, len(atoms)): # Avoid Duplicates
+            atom1, atom2 = atoms[i], atoms[j]
+
+            # Get equilibrium positions and displacements
+            b1 = molecule[atom1]
+            b2 = molecule[atom2]
+            
+            # Get displacements for the current mode
+            u1 = np.array([
+                displacements[atom1].get('x', 0),
+                displacements[atom1].get('y', 0),
+                displacements[atom1].get('z', 0)
+            ])
+            u2 = np.array([
+                displacements[atom2].get('x', 0),
+                displacements[atom2].get('y', 0),
+                displacements[atom2].get('z', 0)
+            ])
+            # Calculate the initial overlap S0
+            c1 = vdw_radii[atom1] / 100  # Convert to Angstrom
+            c2 = vdw_radii[atom2] / 100  # Convert to Angstrom
+            
+            # Calculate the initial overlap S0
+            S0 = calculate_initial_overlap(b1, b2, a, a, c1, c2)
+            
+            # Calculate the Change in overlap delta_S
+            r = np.array(b1) - np.array(b2)  # Distance vector between the two atoms
+            delta_S = calculate_delta_S(S0, r, u1, u2, c1, c2)
+
+            # Store the results
+            volume_changes[f"{atom1}-{atom2}"] = delta_S
+            # Take the absolute value of the change
+            delta_S_abs = np.abs(delta_S)
+            total_delta_S += delta_S_abs
+
+    
+    return total_delta_S, volume_changes
 
 def barplot_change(results_change):
     """ 
@@ -614,22 +772,58 @@ def main():
 
     # Extract the vdw radii
     vdw_radii = retrieve_vdw_radii(molecule,elements_table) 
+    polarizabilities = retrieve_polarizability(molecule, elements_table)
+    print(polarizabilities, vdw_radii)
     pairwise_overlaps_dict = compute_pairwise_vdw_overlaps(molecule,vdw_radii)
 
     detailed_results_change = []
     results_change = []
-    for mode in normal_modes.keys():
 
-        total_change_mode, detailed_results = calculate_volume_change(molecule, vdw_radii, normal_modes[mode], lam_dis=0.1)
-        detailed_results_change.append({
-            "mode": mode,
-            "total_change": total_change_mode,
-            "detailed_results": detailed_results
-        }) 
-        results_change.append({
-            "mode": mode,
-            "total_change": total_change_mode
-        })
+
+    # Check Orthogonality
+    check_orthogonality(normal_modes)
+
+    # Calculate the volume change for each normal mode
+
+    changes_results = {}
+    delta_S_list = []
+    for mode in normal_modes.keys():
+        total_delta_S, changes = calculate_volume_change_v2(molecule, vdw_radii, normal_modes[mode])
+        changes_results[mode] = {
+            "total_change": total_delta_S,
+            "changes": changes
+        }
+        delta_S_list.append(total_delta_S)
+    print(delta_S_list)
+
+    # Plot delta_S_list
+    plt.figure(figsize=(10, 6))
+    plt.bar(changes_results.keys(), delta_S_list, color='skyblue')
+    plt.xlabel('Normal Mode')
+    plt.ylabel('Volume Change Delta S')
+    plt.title('Volume Change per Normal Mode')
+    plt.xticks(rotation=45)
+    plt.tight_layout()
+    plt.savefig("volume_change_per_normal_mode_v2.png", dpi=300)
+    plt.show()
+
+
+
+#    for mode in normal_modes.keys():
+#
+#        total_change_mode, detailed_results = calculate_volume_change(molecule, vdw_radii, normal_modes[mode], lam_dis=0.1)
+#        detailed_results_change.append({
+#            "mode": mode,
+#            "total_change": total_change_mode,
+#            "detailed_results": detailed_results
+#        }) 
+#        results_change.append({
+#            "mode": mode,
+#            "total_change": total_change_mode
+#        })
+#
+#    print(normal_modes)
+    
     
 
     
@@ -639,7 +833,7 @@ def main():
     # Some visualization functions
     #plot_vdw_gaussian_density(molecule,vdw_radii,resolution=50,isovalue=0.5)
     #visualize_normal_mode(molecule,normal_modes,3)
-    barplot_change(results_change)
+    #barplot_change(results_change)
 
 
 
