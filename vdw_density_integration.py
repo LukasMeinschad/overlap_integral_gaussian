@@ -1,14 +1,4 @@
-""" 
-Implementation to compute a overlap integral between Gaussian functions which are placed
-on a molecule.
 
-Goal is to compute changes in the overlap integral if the Gaussian-spheres are displaced by the 
-vibrational normal modes
-"""
-
-"""
-Parser for Arguments
-"""
 
 import argparse
 from pathlib import Path
@@ -23,196 +13,15 @@ from mpl_toolkits.mplot3d import Axes3D
 from skimage import measure
 from itertools import combinations
 
-parser = argparse.ArgumentParser()
+import sys
 
-parser.add_argument(
-    "-i",
-    "--input",
-    type=Path,
-    required=True,
-    help="Path to the molpro output file containing the atomic coordinates.",
-)
+module_dir = Path(__file__).parent / "modules"
+sys.path.insert(0, str(module_dir))
+
+import arguments
 
 
-def parse_atoms(molpro_out):
-    """ 
-    Parses the atoms with coordinates and symbol from a molpro output file
-    """
-    with open(molpro_out, 'r') as f:
-        lines = f.readlines()
-        # Search for Atomic Coordinates in line
-        switch = False
 
-        atomic_coordinates = []
-
-        for i, line in enumerate(lines):
-            if "Atomic Coordinates" in line:
-                switch = True
-                continue
-            if switch:
-                if "Gradient norm" in line:
-                    break
-                atomic_coordinates.append(line.strip())
-
-        # Remove first entry the header
-        atomic_coordinates = list(filter(None, atomic_coordinates))
-        # Remove header
-        atomic_coordinates = atomic_coordinates[1:]
-        
-        molecules = {} # Dictionary to hold molecule data
-        for atom in atomic_coordinates:
-            parts = atom.split()
-            # First part is numbering, second part is symbol, fourth fifth and sixth are coordinates
-            number = int(parts[0])
-            symbol = parts[1]
-            atomic_symbol = str(symbol) + str(number)
-            x = float(parts[3])
-            y = float(parts[4])
-            z = float(parts[5])
-            coordinates = (x, y, z)
-            molecules[atomic_symbol] = coordinates
-    return molecules
-
-def parse_normal_modes(molpro_out):
-    """ 
-    Function to parse the normal modes from a molpro output file. The Normal Modes are given in blocks of 5
-    """
-    with open(molpro_out, "r") as f:
-        lines = f.readlines()
-
-        # Find all normal mode sections
-        mode_blocks = []
-        current_block = []
-        in_block = False
-        for line in lines:
-            if "Normal Modes" in line and "low/zero frequencies" not in line:
-                in_block = True
-                current_block = [line]
-                continue
-            elif "Normal Modes of low/zero frequencies" in line and in_block:
-                in_block = False
-                if current_block:
-                    mode_blocks.append(current_block)
-                continue
-            elif in_block:
-                current_block.append(line)
-
-        # Combine all blocks into a continious block
-        full_block = []
-        for block in mode_blocks:
-            full_block.extend(block)
-        
-        normal_modes = {}
-
-        # First find all mode headers (may be in multiple lines)
-        mode_headers = []
-        mode_lines = []
-        
-
-        for line in full_block:
-            if line.startswith(" " * 12) and not any(x in line for x in ["Wavenumbers", "Intensities"]):
-
-               # Clean up the line by replacing multiple spaces
-               cleaned_line = " ".join(line.strip().split())
-               mode_lines.append(cleaned_line)
-
-        combined_mode_line = " ".join(mode_lines)
-        
-        # Parse mode numbers and symmetry
-        mode_info = []
-        parts = combined_mode_line.split()
-        i = 0
-        while i < len(parts):
-            if parts[i].isdigit():
-                mode_num = int(parts[i])
-                symmetry = parts[i+1] if i+1 < len(parts) else ""
-                mode_info.append((mode_num,symmetry))
-                i +=2
-            else:
-                i += 1
-        num_modes = len(mode_info)
-
-        # parse wavenumbers and intensities
-        wavenumbers = []
-        intensities_km = []
-        intensities_rel = []
-        for line in full_block:
-            if "Wavenumbers" in line:
-                parts = line.split()
-                new_wavenumbers = list(map(float, parts[2:2+num_modes]))
-                wavenumbers.extend(new_wavenumbers)
-            elif "Intensities [km/mol]" in line:
-                parts = line.split()
-                new_intensities = list(map(float,parts[2:2+num_modes]))
-                intensities_km.extend(new_intensities)
-            elif "Intensities [relative]" in line:
-                parts = line.split()
-                new_intensities = list(map(float,parts[2:2+num_modes]))
-                intensities_rel.extend(new_intensities)
-
-        # Some error printing
-        if len(wavenumbers) != num_modes:
-            raise ValueError(f"Expected {num_modes} wavenumbers, got {len(wavenumbers)}")
-        if len(intensities_km) != num_modes:
-            raise ValueError(f"Expected {num_modes} km/mol intensities, got {len(intensities_km)}")
-        if len(intensities_rel) != num_modes:
-            raise ValueError(f"Expected {num_modes} [relative] intensities, got {len(intensities_rel)}")
-        
-        for i, (mode_num, sym) in enumerate(mode_info):
-            normal_modes[mode_num] = {
-                "symmetry": sym,
-                "wavenumber": wavenumbers[i] if i < len(wavenumbers) else 0.0,
-                "intensity_km_mol": intensities_km[i] if i < len(intensities_km) else 0.0,
-                "intensity_relative": intensities_rel[i] if i < len(intensities_rel) else 0.0,
-                "displacements": {}
-            }
-        
-        current_block_modes = [] # Track modes in current block
-        current_block_size = 5 # Molpro Block size
-
-        for line in full_block:
-            if not line.strip() or any(x in line for x in ["Normal Modes", "Wavenumbers", "Intensities"]):
-                continue
-            
-            # Check if its a mode header line
-            if line.startswith(" " * 12) and not any(x in line for x in ["Wavenumbers", "Intensities"]):
-                # This is new block of modes
-                cleaned_line = " ".join(line.strip().split())
-                parts = cleaned_line.split()
-                current_block_modes = []
-                i = 0
-                while i < len(parts):
-                    if parts[i].isdigit:
-                        mode_num = int(parts[i])
-                        current_block_modes.append(mode_num)
-                        i += 2 # Skip symmetry label
-                    else:
-                        i +=1
-                continue
-
-            # Now process the displacement lines
-            parts = line.split()
-            if len(parts) < 2: # Skip lines without data
-                continue
-
-            label = parts[0]
-            values = list(map(float,parts[1:1 + len(current_block_modes)])) # only take values of current block
-            
-
-            # Parse the atom info
-            element = "".join([c for c in label if c.isalpha() and c not in ["X","Y","Z"]])
-            atom_num = "".join([c for c in label if c.isdigit()])
-            direction = label[len(element):-len(atom_num)].lower()
-            atom_name = f"{element}{atom_num}" if atom_num else element
-
-            # Add displacment for modes in current block
-            for i, mode_num in enumerate(current_block_modes):
-                if mode_num not in normal_modes:
-                    continue # Skip if mode wasn't properly registered
-                if atom_name not in normal_modes[mode_num]["displacements"]:
-                    normal_modes[mode_num]["displacements"][atom_name] = {}
-                normal_modes[mode_num]["displacements"][atom_name][direction] = values[i]
-        return normal_modes
         
 
 
@@ -274,7 +83,7 @@ def retrieve_polarizability(molecule, elements_table):
         # Unit is given in bohr^3
         # Convert to Angstrom for radius usage
 
-        polarizability_key = np.sqrt(polarizability_key) * 0.52917721092 
+        polarizability_key = np.sqrt(polarizability_key) * 0.52917721092  * 100
         polarizabilities[key] = polarizability_key
 
     
@@ -463,6 +272,7 @@ def gaussian_overlap(a1,b1,c1,a2,b2,c2):
     prefactor = a1*a2*(2*np.pi)**(3/2) *c_sq**(3/2)
     return prefactor*np.exp(exponent)
 
+
 def normalization_parameter():
     """ 
     Computes the normalization parameter a1 for a given Gaussian Function
@@ -554,89 +364,6 @@ def check_orthogonality(normal_modes):
         print("Normal Modes are not orthogonal --> Non-Mass-Weighted Normal Modes")
  
 
-
-
-def calculate_volume_change(molecule, vdw_radii, normal_mode, lam_dis=0.1):
-    """ 
-    Calculates the Volume change under displacment of the molecule using a normal mode in its cartesian representation
-    
-    If we consider that b_i is the center of a Gaussian and we already implemented the overlap integral
-
-    we can calculate the gradient along the d:= b_i - b_j direction
-
-    If b_1 --> b_1 + lam*q_1 is our first displacement and b_2 --> b_2 + lam*q_2 is our second displacement
-    we know that d = b_1 -b_2 = d + lambda* delta q
-
-    Now the change is given by -S / (c_1**2 + c_2**2) * (d * lambda * delta q)
-
-    which gives as a fractional change in respect to the original overlap integral
-
-    delta S / S = - lambda / (c_1 ** 2 + c_2 ** 2) * d * delta q
-    """
-
-    results = {}
-    
-    #check_normalization(normal_mode)
-    masses_lookup = {
-        "H": 1.0078,
-        "O": 15.999,
-        "C": 12.011
-    }
-    # Loop pairwise over the atoms
-    for (atom1, b_1), (atom2, b_2) in combinations(molecule.items(), 2):
-        # Get the displacements for the current mode
-        disp1 = normal_mode['displacements'].get(atom1, {})
-        disp2 = normal_mode['displacements'].get(atom2, {})
-        element1 = "".join([c for c in atom1 if not c.isdigit()])
-        element2 = "".join([c for c in atom2 if not c.isdigit()])
-        mass1 = masses_lookup.get(element1, 1.0)
-        mass2 = masses_lookup.get(element2,1.0)
-        
-
-
-        # Calculate delta q
-        delta_q = np.array([
-            disp1.get('x', 0) - disp2.get('x', 0),
-            disp1.get('y', 0) - disp2.get('y', 0),
-            disp1.get('z', 0) - disp2.get('z', 0)
-        ])
-        # Massweight
-       #ä delta_q = np.array([
-       #ä     disp1.get('x', 0)*np.sqrt(mass1) - disp2.get('x', 0)*np.sqrt(mass2),
-       #ä     disp1.get('y', 0)*np.sqrt(mass1) - disp2.get('y', 0)*np.sqrt(mass2),
-       #ä     disp1.get('z', 0)*np.sqrt(mass1) - disp2.get('z', 0)*np.sqrt(mass2)
-       #ä ])
-
-        # Calculate the distance vector d
-        d = np.array(b_1) - np.array(b_2)
-        # The magnitued c1^2 and c2^2 are given by the vdw radii
-        c1 = vdw_radii[atom1] / 100  # Convert to Angstrom
-        c2 = vdw_radii[atom2] / 100  # Convert to Angstrom
-
-        c1_sq = c1 ** 2
-        c2_sq = c2 ** 2
-
-        # Fractional change in overlap integral
-        delta_S_over_S = - lam_dis / (c1_sq + c2_sq) * np.dot(d, delta_q)
-
-        # Calculate absolute value and write to results
-        delta_S_over_S_abs = np.abs(delta_S_over_S)
-        results[(atom1, atom2)] = {
-            "delta_S_over_S": delta_S_over_S,
-            "delta_S_over_S_abs": delta_S_over_S_abs,
-            "c1": c1,
-            "c2": c2,
-            "d": d,
-            "delta_q": delta_q
-        }
-    
-    # Calculate the total change as a sum of absolute changes
-    total_change = sum(res['delta_S_over_S_abs'] for res in results.values())
-    return total_change, results
-
-
-# Ok maybe try a little bit different implementation
-
 def calculateS0(a1,a2,c1,c2):
     """ 
     Function that calculates the prefactor for the overlap integral
@@ -659,6 +386,8 @@ def calculate_delta_S(S,r,u1,u2,c1,c2):
     relative_disp = np.array(u1) - np.array(u2)
     dot_product = np.dot(r, relative_disp)
     return -S * (dot_product / (c1**2 + c2**2))
+
+
 
 
 def compute_mode_norm(displacments):
@@ -724,6 +453,7 @@ def calculate_volume_change_v2(molecule, vdw_radii, normal_mode):
             delta_S_abs = np.abs(delta_S)
             total_delta_S += delta_S_abs
 
+    print(normal_mode, total_delta_S)
     
     return total_delta_S, volume_changes
 
@@ -752,7 +482,7 @@ def barplot_change(results_change):
 
 
 def main():
-    args = parser.parse_args()
+    args = parser.get_args()
     molpro_out = args.input
 
     if not molpro_out.exists():
@@ -773,7 +503,6 @@ def main():
     # Extract the vdw radii
     vdw_radii = retrieve_vdw_radii(molecule,elements_table) 
     polarizabilities = retrieve_polarizability(molecule, elements_table)
-    print(polarizabilities, vdw_radii)
     pairwise_overlaps_dict = compute_pairwise_vdw_overlaps(molecule,vdw_radii)
 
     detailed_results_change = []
@@ -794,6 +523,7 @@ def main():
             "changes": changes
         }
         delta_S_list.append(total_delta_S)
+
     print(delta_S_list)
 
     # Plot delta_S_list
@@ -805,35 +535,9 @@ def main():
     plt.xticks(rotation=45)
     plt.tight_layout()
     plt.savefig("volume_change_per_normal_mode_v2.png", dpi=300)
-    plt.show()
+    #plt.show()
 
 
-
-#    for mode in normal_modes.keys():
-#
-#        total_change_mode, detailed_results = calculate_volume_change(molecule, vdw_radii, normal_modes[mode], lam_dis=0.1)
-#        detailed_results_change.append({
-#            "mode": mode,
-#            "total_change": total_change_mode,
-#            "detailed_results": detailed_results
-#        }) 
-#        results_change.append({
-#            "mode": mode,
-#            "total_change": total_change_mode
-#        })
-#
-#    print(normal_modes)
-    
-    
-
-    
-    
-    
-    
-    # Some visualization functions
-    #plot_vdw_gaussian_density(molecule,vdw_radii,resolution=50,isovalue=0.5)
-    #visualize_normal_mode(molecule,normal_modes,3)
-    #barplot_change(results_change)
 
 
 

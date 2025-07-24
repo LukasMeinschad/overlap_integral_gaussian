@@ -1,0 +1,14 @@
+%chk=wasser_gaussian.chk
+# opt freq hf/6-311g(d,p) geom=connectivity
+
+Title Card Required
+
+0 1
+ O                  0.02164502    0.68542568    0.00000000
+ H                  0.98164502    0.68542568    0.00000000
+ H                 -0.29880956    1.59036151    0.00000000
+
+ 1 2 1.0 3 1.0
+ 2
+ 3
+
