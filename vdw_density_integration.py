@@ -19,11 +19,9 @@ module_dir = Path(__file__).parent / "modules"
 sys.path.insert(0, str(module_dir))
 
 import arguments
-
-
-
-        
-
+import molpro_parser
+from molecule import Molecule
+import gaussian
 
 
  
@@ -50,10 +48,10 @@ def retrieve_vdw_radii(molecule, elements_table):
     ]
     elements_table = elements_table[cols]
 
-    vdw_radii = dict.fromkeys(molecule.keys())
+    vdw_radii = dict.fromkeys(molecule.atoms.keys())
 
 
-    for key in molecule.keys():
+    for key in molecule.atoms.keys():
         remove_digits = str.maketrans("","",digits)
         key_without_digit = key.translate(remove_digits)
         vdw_radius_key = elements_table[elements_table["symbol"]==key_without_digit]["vdw_radius"].values[0]
@@ -73,9 +71,9 @@ def retrieve_polarizability(molecule, elements_table):
     ]
     elements_table = elements_table[cols] 
 
-    polarizabilities = dict.fromkeys(molecule.keys())
+    polarizabilities = dict.fromkeys(molecule.atoms.keys())
 
-    for key in molecule.keys():
+    for key in molecule.atoms.keys():
         remove_digits = str.maketrans("","",digits)
         key_without_digit = key.translate(remove_digits)
         polarizability_key = elements_table[elements_table["symbol"]==key_without_digit]["dipole_polarizability"].values[0]
@@ -89,102 +87,6 @@ def retrieve_polarizability(molecule, elements_table):
     
     
     return polarizabilities
-
-def gaussian_3d(a=1,b=(1,1,1),c=1,x=(0,0,0)):
-    """ 
-    Computes a 3D gaussian function
-
-    Parameters
-    ----------
-    a (float) = bell curve slope
-    b (x,y,z) = coordinate as a tuple
-    c (float) = variance of the 3d gaussian will the VDW in our case
-    x (x,y,z) = 3D coordinates
-    """
-    bx,by,bz = b
-    xx,xy,xz = x
-    exponent = -((xx - bx)**2 + (xy - by)**2 + (xz-bz)**2)/(2*c**2)
-    return a* np.exp(exponent)
-
-
-def plot_vdw_gaussian_density(molecule, vdw_radii, resolution=100, isovalue=0.2):
-    """
-    Plot 3D vdW density using Gaussian functions.
-    
-    Args:
-        molecule: Dict of {atom_name: (x,y,z)} in Å
-        vdw_radii: Dict of {element: vdW_radius_in_pm}
-        resolution: Grid resolution
-        isovalue: Density level to display (0-1)
-    """
-    # Convert to Å and prepare grid
-    coords = np.array(list(molecule.values()))
-    elements = [name for name in molecule.keys()]
-    padding = 3.0  # Å
-    
-    # Create 3D grid
-    x_min, y_min, z_min = coords.min(axis=0) - padding
-    x_max, y_max, z_max = coords.max(axis=0) + padding
-    
-    x = np.linspace(x_min, x_max, resolution)
-    y = np.linspace(y_min, y_max, resolution)
-    z = np.linspace(z_min, z_max, resolution)
-    X, Y, Z = np.meshgrid(x, y, z)
-    
-    # Compute density field
-    density = np.zeros_like(X)
-    for (name, pos), element in zip(molecule.items(), elements):
-        c = vdw_radii[element] / 100  # pm → Å
-        r_sq = (X-pos[0])**2 + (Y-pos[1])**2 + (Z-pos[2])**2
-        density += np.exp(-r_sq / (2 * c**2))
-    
-    # Normalize density
-    density = (density - density.min()) / (density.max() - density.min())
-    
-    # Create figure
-    fig = plt.figure(figsize=(12, 10))
-    ax = fig.add_subplot(111, projection='3d')
-    
-    # Plot isosurface
-    verts, faces, _, _ = measure.marching_cubes(
-        density, level=isovalue, 
-        spacing=(
-            (x_max-x_min)/resolution,
-            (y_max-y_min)/resolution,
-            (z_max-z_min)/resolution
-        )
-    )
-    
-    # Transform vertices to real coordinates
-    verts += [x_min, y_min, z_min]
-    
-    # Color by height (Z coordinate)
-    mesh = ax.plot_trisurf(
-        verts[:, 0], verts[:, 1], faces, verts[:, 2],
-        cmap=cm.viridis, alpha=0.5, edgecolor='none'
-    )
-    
-    # Plot atoms as spheres
-    for (name, pos), element in zip(molecule.items(), elements):
-        radius = vdw_radii[element] / 100
-        ax.scatter(*pos, s=300*radius, 
-                  label=f"{name} ({element}, {radius:.2f}Å)",
-                  depthshade=False)
-    
-    # Add colorbar
-    fig.colorbar(mesh, ax=ax, shrink=0.5, label='Normalized Density')
-    
-    # Formatting
-    ax.set_xlim(x_min, x_max)
-    ax.set_ylim(y_min, y_max)
-    ax.set_zlim(z_min, z_max)
-    ax.set_xlabel('X (Å)')
-    ax.set_ylabel('Y (Å)')
-    ax.set_zlabel('Z (Å)')
-    ax.set_title(f'vdW Gaussian Density (Isovalue = {isovalue})')
-    ax.legend()
-    plt.tight_layout()
-    plt.show()
 
 def visualize_normal_mode(molecule,normal_mode,mode_number=1,scale_factor = 0.5):
     """ 
@@ -273,16 +175,6 @@ def gaussian_overlap(a1,b1,c1,a2,b2,c2):
     return prefactor*np.exp(exponent)
 
 
-def normalization_parameter():
-    """ 
-    Computes the normalization parameter a1 for a given Gaussian Function
-
-    This functions are normalized using the vdw_radii and the corresponding sphere with V_sphere = 4 * pi * R³_Vdw
-    the normalization parameter is here given by 1/(3*np.sqrt(2pi))
-    """
-
-
-    return 1/(3*np.sqrt(2*np.pi))
 
 def compute_pairwise_vdw_overlaps(molecule, vdw_radii):
 
@@ -482,27 +374,36 @@ def barplot_change(results_change):
 
 
 def main():
-    args = parser.get_args()
+    args =  arguments.get_args()
     molpro_out = args.input
 
     if not molpro_out.exists():
         raise FileNotFoundError(f"File {molpro_out} does not exist.")
 
-    molecule = parse_atoms(molpro_out)
-    num_atoms = len(molecule)
+    molecule = Molecule(molpro_parser.parse_atoms(molpro_out))
+    
+    if args.plot == "plot_molecule":
+        molecule.plot_molecule()
 
     # Parse normal modes
 
-    normal_modes = parse_normal_modes(molpro_out)
+    normal_modes = molpro_parser.parse_normal_modes(molpro_out)
 
-    
     # Fetch Elements
     elements_table = fetch_elements()
-    
 
     # Extract the vdw radii
     vdw_radii = retrieve_vdw_radii(molecule,elements_table) 
     polarizabilities = retrieve_polarizability(molecule, elements_table)
+
+
+    # Generate a grid of points for density computation
+    if args.plot == "plot_density":
+        X,Y,Z = gaussian.generate_grid(molecule, padding=5, resolution=50) 
+        density = gaussian.compute_density(X,Y,Z, molecule, vdw_radii)
+        gaussian.plot_isosurface(X,Y,Z, density, molecule)
+    
+
     pairwise_overlaps_dict = compute_pairwise_vdw_overlaps(molecule,vdw_radii)
 
     detailed_results_change = []
