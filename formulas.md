@@ -14,6 +14,27 @@ where:
 - $b_i$ is the center,
 - $c_i$ is the width.
 
+**Gaussian Product Theorem**
+
+The Gaussian Product Theorem states that the product of two Gaussian functions is also a Gaussian function. We compute
+
+$$f_1(r)f_2(r) = a_1 a_2 \exp\left(-\frac{(r-b_1)^T(r-b_1)}{2c_1^2}\right) \exp\left(-\frac{(r-b_2)^T(r-b_2)}{2c_2^2}\right)$$
+
+we can focus first on the exponent inside our Gaussian function:
+
+$$ - \frac{(r-b_1)^T(r-b_1)}{2c_1^2} - \frac{(r-b_2)^T(r-b_2)}{2c_2^2} = - \frac{c_2^2(r-b_1)^T(r-b_1) + c_1^2(r-b_2)^T(r-b_2)}{2c_1^2c_2^2}$$
+
+
+
+Expanding the terms we get
+
+$$ = - \frac{c_2^2(r^Tr - 2b_1^Tr + b_1^Tb_1) + c_1^2(r^Tr - 2b_2^Tr + b_2^Tb_2)}{2c_1^2c_2^2}$$
+
+and combine the same terms
+
+$$ = - \frac{(c_1^2 + c_2^2)r^Tr - 2c_1^2b_1^Tr - 2c_2^2b_2^Tr + c_1^2b_1^Tb_1 + c_2^2b_2^Tb_2}{2c_1^2c_2^2}$$
+
+
 **Overlap Integral**
 
 As $r=(x,y,z)$ is a position vector and $b_i = (b_{ix}, b_{iy}, b_{iz})$ is the center of the Gaussian, the overlap integral is defined as:

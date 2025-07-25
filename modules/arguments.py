@@ -32,4 +32,17 @@ def get_args():
 
 
     )
+    parser.add_argument(
+        "-t",
+        "--tests",
+        type=str,
+        choices=["1d_gaussian_mult", "gaussian_overlap", "gradient_test"],
+        help="""
+            Includes some testing functions just to check if the code is working as expected
+
+            + 1d_gaussian_mult: Tests the multiplication of two 1D gaussian functions
+            + gaussian_overlap: Performs various test calculations of the gaussian overlap
+            + gradient_test: Various test for the gradient of the gaussian overlap
+            """
+    )
     return parser.parse_args()

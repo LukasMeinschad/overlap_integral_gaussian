@@ -10,7 +10,6 @@ from string import digits
 import matplotlib.pyplot as plt
 from matplotlib import cm
 from mpl_toolkits.mplot3d import Axes3D
-from skimage import measure
 from itertools import combinations
 
 import sys
@@ -165,14 +164,7 @@ def visualize_normal_mode(molecule,normal_mode,mode_number=1,scale_factor = 0.5)
     plt.show()
 
 
-def gaussian_overlap(a1,b1,c1,a2,b2,c2):
-    """
-    Implementation of the overlap formula between the two gaussians
-    """
-    c_sq = (c1**2 * c2**2) /(c1**2 + c2**2)
-    exponent = -np.sum((np.array(b1) - np.array(b2))**2 / (2*(c1**2 + c2**2)))
-    prefactor = a1*a2*(2*np.pi)**(3/2) *c_sq**(3/2)
-    return prefactor*np.exp(exponent)
+
 
 
 
@@ -399,10 +391,23 @@ def main():
 
     # Generate a grid of points for density computation
     if args.plot == "plot_density":
-        X,Y,Z = gaussian.generate_grid(molecule, padding=5, resolution=50) 
+        X,Y,Z = gaussian.generate_grid(molecule, padding=5, resolution=100) 
         density = gaussian.compute_density(X,Y,Z, molecule, vdw_radii)
-        gaussian.plot_isosurface(X,Y,Z, density, molecule)
+        gaussian.plot_isosurface(X,Y,Z, density, molecule, vdw_radii)
     
+
+    # ======= Testing Section =======
+
+    if args.tests == "1d_gaussian_mult":
+        gaussian.plot_1d_gaussian_multiplication()
+
+    if args.tests == "gaussian_overlap":
+        gaussian.test_gaussian_overlap_identical()
+        gaussian.test_gaussian_overlap_numerical()
+        gaussian.test_gaussian_overlap_1d()
+
+    if args.tests == "gradient_test":
+        gaussian.gradient_test_1d_gaussian_overlap()
 
     pairwise_overlaps_dict = compute_pairwise_vdw_overlaps(molecule,vdw_radii)
 
