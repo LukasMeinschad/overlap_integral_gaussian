@@ -21,6 +21,7 @@ import arguments
 import molpro_parser
 from molecule import Molecule
 import gaussian
+import symmetry
 
 
  
@@ -166,45 +167,6 @@ def visualize_normal_mode(molecule,normal_mode,mode_number=1,scale_factor = 0.5)
 
 
 
-
-
-def compute_pairwise_vdw_overlaps(molecule, vdw_radii):
-
-    results = []
-    atoms = list(molecule.items())
-    for (symbol1, pos1), (symbol2,pos2) in combinations(atoms,2):
-
-        c1 = vdw_radii[symbol1] / 100 # Convert to Angstrom
-        c2 = vdw_radii[symbol2] / 100
-
-
-        # We have to discuss this
-        a = normalization_parameter() 
-         
-
-        
-
-        distance = np.linalg.norm(np.array(pos1)- np.array(pos2))
-
-        overlap = gaussian_overlap(
-            a1=a, b1=pos1, c1=c1,
-            a2=a, b2=pos2, c2=c2
-            )
-        # Maximum overlap if both atoms conicide
-        max_overlap = (2*np.pi)**(3/2) * ((c1**2 * c2**2)/(c1**2 + c2**2) )**(3/2)
-        overlap_ratio = overlap / max_overlap
-
-        results.append({
-            "atom1": symbol1,
-            "atom2": symbol2,
-            "distance": distance,
-            "gaussian_overlap": overlap,
-            "overlap_ratio" : overlap_ratio,
-            "c1" : c1,
-            "c2": c2,
-        })
-    return results
-
 def check_normalization(normal_mode):
     """ 
     Checks the normalization of a normal mode
@@ -341,29 +303,30 @@ def calculate_volume_change_v2(molecule, vdw_radii, normal_mode):
     
     return total_delta_S, volume_changes
 
-def barplot_change(results_change):
+
+def plot_molecule_vdw_spheres(molecule, vdw_radii):
     """ 
-    Visualizes the changes in volume in a barplot
-    """    
+    Plots the molecule in 3D with VDW spheres
+    """
+    fig = plt.figure(figsize=(10, 8))
+    ax = fig.add_subplot(111, projection='3d')
 
-    # Convert results to DataFrame
-    df = pd.DataFrame(results_change)
-    
-    # Create bar plot
-    plt.figure(figsize=(12, 6))
-    plt.bar(df['mode'], df['total_change'], color='skyblue')
-    
-    # Add labels and title
-    plt.xlabel('Normal Mode')
-    plt.ylabel('Total Change in Volume (Fractional)')
-    plt.title('Volume Change per Normal Mode')
-    plt.xticks(rotation=45)
-    
-    # Show plot
-    plt.tight_layout()
-    plt.savefig("volume_change_per_normal_mode.png", dpi=300)
+    for atom, coords in molecule.atoms.items():
+        x, y, z = coords
+        radius = vdw_radii[atom] / 100  # Convert to Angstrom
+        u = np.linspace(0, 2 * np.pi, 100)
+        v = np.linspace(0, np.pi, 100)
+        x_sphere = radius * np.outer(np.cos(u), np.sin(v)) + x
+        y_sphere = radius * np.outer(np.sin(u), np.sin(v)) + y
+        z_sphere = radius * np.outer(np.ones(np.size(u)), np.cos(v)) + z
+
+        ax.plot_surface(x_sphere, y_sphere, z_sphere, color='b', alpha=0.3)
+
+    ax.set_xlabel('X (Å)')
+    ax.set_ylabel('Y (Å)')
+    ax.set_zlabel('Z (Å)')
+    plt.title('Molecule with VDW Spheres')
     plt.show()
-
 
 def main():
     args =  arguments.get_args()
@@ -381,6 +344,18 @@ def main():
 
     normal_modes = molpro_parser.parse_normal_modes(molpro_out)
 
+
+    # Make a symmetry detection and analysis
+    pg_symbol = symmetry.detect_point_group(molecule)
+    pg_symol = "C2v" # testing
+    mirror_planes = symmetry.find_mirror_planes(pg_symbol)
+
+    print("============== Point Group Detection ==============")
+    print(f"Point Group: {pg_symbol}") 
+
+
+
+
     # Fetch Elements
     elements_table = fetch_elements()
 
@@ -394,7 +369,22 @@ def main():
         X,Y,Z = gaussian.generate_grid(molecule, padding=5, resolution=100) 
         density = gaussian.compute_density(X,Y,Z, molecule, vdw_radii)
         gaussian.plot_isosurface(X,Y,Z, density, molecule, vdw_radii)
+
+    if args.plot == "plot_molecules_vdw_spheres":
+        plot_molecule_vdw_spheres(molecule, vdw_radii)
     
+    # Compute pairwise change in overlap
+    pairwise_overlap_change = gaussian.compute_pairwise_change_in_overlap(molecule,vdw_radii,normal_modes)
+    gaussian.plot_pairwise_overlap_changes_barplot(pairwise_overlap_change, molecule)
+    gaussian.plot_pairwise_overlap_changes_heatmap(pairwise_overlap_change, molecule)
+    gaussian.plot_total_overlap_change(pairwise_overlap_change, molecule)
+   
+    
+    # Plot and calculate pairwise gradients
+    pairwise_gradient_change = gaussian.compute_pairwise_gradients(molecule,vdw_radii,normal_modes)
+    gaussian.plot_mode_gradients(pairwise_gradient_change,molecule)
+
+       
 
     # ======= Testing Section =======
 
@@ -408,8 +398,9 @@ def main():
 
     if args.tests == "gradient_test":
         gaussian.gradient_test_1d_gaussian_overlap()
+        gaussian.gradient_test_2d_gradient_field()
+        gaussian.gradient_test_displacement_of_both_atoms()
 
-    pairwise_overlaps_dict = compute_pairwise_vdw_overlaps(molecule,vdw_radii)
 
     detailed_results_change = []
     results_change = []

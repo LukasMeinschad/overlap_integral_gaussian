@@ -10,12 +10,23 @@ import pyvista as pv
 from matplotlib.colors import Normalize
 from scipy.integrate import nquad
 from scipy.integrate import quad
+from itertools import combinations
+import math
 
 def gaussian_1d(a=1, b=0, c=1, x=0):
     """ 
     Computes a 1D gaussian function
     """
     exponent = - ((x - b) ** 2) / (2 * c ** 2)
+    return a * np.exp(exponent)
+
+def gaussian_2d(a=1, b=(0, 0), c=1, x=(0, 0)):
+    """ 
+    Computes a 2D gaussina function
+    """
+    bx, by = b
+    xx, xy = x 
+    exponent = -((xx - bx) ** 2 + (xy - by) ** 2) / (2 * c ** 2)
     return a * np.exp(exponent)
 
 def gaussian_3d(a=1,b=(1,1,1),c=1,x=(0,0,0)):
@@ -78,6 +89,15 @@ def gaussian_overlap_1d(a1, b1, c1, a2, b2, c2):
     prefactor = a1 * a2 * np.sqrt(2 * np.pi) * c_sq**0.5
     return prefactor * np.exp(exponent)
 
+def gaussian_overlap_2d(a1, b1, c1, a2, b2, c2):
+    """ 
+    Computes the overlap of two 2D gaussian functions
+    """
+    c_sq = (c1**2 * c2**2) / (c1**2 + c2**2)
+    exponent = -((b1[0] - b2[0])**2 + (b1[1] - b2[1])**2) / (2*(c1**2 + c2**2))
+    prefactor = a1 * a2 * (2 * np.pi) * c_sq
+    return prefactor * np.exp(exponent)
+
 
 def gaussian_overlap(a1,b1,c1,a2,b2,c2):
     """
@@ -88,6 +108,300 @@ def gaussian_overlap(a1,b1,c1,a2,b2,c2):
     prefactor = a1*a2*(2*np.pi)**(3/2) *c_sq**(3/2)
     return prefactor*np.exp(exponent)
 
+def compute_gradient(a1,b1,c1,a2,b2,c2,u1,u2):
+    """ 
+    Computes the gradient after a displacment by the vector u
+    """ 
+    S = gaussian_overlap(a1,b1,c1,a2,b2,c2)
+    if u1 is not None:
+        b1 = np.array(b1) + np.array(u1)
+    if u2 is not None:
+        b2 = np.array(b2) + np.array(u2)
+    
+    # Compute the displacement vector
+    r = np.array(b1) - np.array(b2)
+    grad_u1 = (S / (c1**2 + c2**2)) * r # Gradient for atom 1
+    grad_u2 = -grad_u1 # Gradient for atom 2 because of symmetry
+    return grad_u1, grad_u2
+
+def compute_pairwise_gradients(molecule, vdw_radii, normal_modes):
+    """ 
+    Function that computes the pairwise gradients for all atoms under normal mode displacements,
+    sums them up per mode
+    """
+    results = {}
+    atom_names = list(molecule.atoms.keys())
+    n_atoms = len(atom_names)
+
+    for mode_id, mode_data in normal_modes.items():
+        # Initialize the results
+        mode_results = {
+            "wavenumber": mode_data["wavenumber"],
+            "atom_gradients": np.zeros((n_atoms,3)), #store net gradients per atom
+            "pairwise_gradients": {}, # Stores indiviudal pair gradients
+            "per_atom_gradient": np.zeros((n_atoms,3)), # Store per atom gradients
+            "total_gradient_magnitude": 0.0,
+            "displacements": np.zeros((n_atoms,3)) # Store displacments for plotting
+        }
+        # Collect all displacments for this mode
+        displacements = np.zeros((n_atoms,3))
+        for i, atom in enumerate(atom_names):
+            disp = mode_data["displacements"][atom]
+            displacements[i] = np.array([disp["x"], disp["y"], disp["z"]])
+        mode_results["displacements"] = displacements
+
+        # Compute gradients for all unique atom pairs
+        for i,j in combinations(range(n_atoms),2):
+            atom1, atom2 = atom_names[i], atom_names[j]
+
+            # Get coordinates and vdw
+            b1 = np.array(molecule.atoms[atom1])
+            b2 = np.array(molecule.atoms[atom2])
+            c1,c2 = vdw_radii[atom1] / 100, vdw_radii[atom2] / 100 # Convert to Angstrom
+            # Get displacments
+            u1 = displacements[i]
+            u2 = displacements[j]
+
+            # Compute the gradients
+            grad_u1, grad_u2 = compute_gradient(
+                a1=normalization_parameter(),b1=b1,c1=c1,
+                a2=normalization_parameter(),b2=b2,c2=c2,
+                u1=u1, u2=u2
+            )
+
+            mode_results["atom_gradients"][i] += grad_u1
+            mode_results["atom_gradients"][j] += grad_u2
+            mode_results["pairwise_gradients"][f"{atom1}-{atom2}"] = (grad_u1, grad_u2)
+
+        # Calculate total gradient change
+        grad_dot_disp = np.sum(mode_results["atom_gradients"] * displacements, axis=1)
+        mode_results["total_gradient_magnitude"] = np.sum(np.abs(grad_dot_disp))
+        results[mode_id] = mode_results
+    return results
+
+
+
+def compute_pairwise_change_in_overlap(molecule,vdw_radii,normal_modes):
+    """
+    Computes the pairwise change in overlap for all atoms in the molecule after displacement by a normal mode vector
+    """
+    pairwise_changes = {}
+
+    atom_names = list(molecule.atoms.keys())
+    n_atoms = molecule.num_atoms
+
+    # Process each normal mode
+    for mode_id, mode_data in normal_modes.items():
+        mode_changes = {}
+        total_pairs = 0
+       
+
+        # Calculate for all unique atom pairs
+        for (i,j) in combinations(range(n_atoms), 2):
+            atom1 = atom_names[i]
+            atoms2 = atom_names[j]
+
+            # Get original coordinates
+            b1 = np.array(molecule.atoms[atom1])
+            b2 = np.array(molecule.atoms[atoms2])
+
+            # Get displacments of normal mode
+            u1 = np.array([mode_data['displacements'][atom1]["x"],
+                            mode_data['displacements'][atom1]["y"],
+                            mode_data['displacements'][atom1]["z"]])
+            u2 = np.array([mode_data['displacements'][atoms2]["x"],
+                            mode_data['displacements'][atoms2]["y"],
+                            mode_data['displacements'][atoms2]["z"]])
+
+            # Get the VDW radii
+            c1 = vdw_radii[atom1] / 100 # Convert to Angstrom
+            c2 = vdw_radii[atoms2] / 100 # Convert to Angstrom
+
+            # Calculate the original and displaced overlaps
+            S0 = gaussian_overlap(a1=normalization_parameter(), b1=b1, c1=c1, a2=normalization_parameter(), b2=b2, c2=c2)
+            S_new = gaussian_overlap(a1=normalization_parameter(), b1=b1 + u1, c1=c1, a2=normalization_parameter(), b2=b2 + u2, c2=c2)
+            delta_S = S_new - S0
+
+            pair_key = f"{atom1}-{atoms2}"
+            mode_changes[pair_key] = delta_S
+            total_pairs += 1
+        
+        pairwise_changes[mode_id] = {
+            "wavenumber": mode_data['wavenumber'],
+            "changes": mode_changes,
+            "total_pairs": total_pairs
+        }
+    return pairwise_changes
+
+
+
+
+# ======= Visualization of Pairwise Overlap Change =======
+
+def plot_pairwise_overlap_changes_barplot(pairwise_changes, molecule):
+    """ 
+    Plots the pairwise overlap changes for each normal mode
+    """
+    atom_names = list(molecule.atoms.keys())
+    n_modes = len(pairwise_changes)
+
+    # Create a figure with subplots for each normal mode
+
+    if n_modes >= 4:
+        ncols = 4
+        n_rows = math.ceil(n_modes / ncols)
+    else:
+        ncols = n_modes
+        n_rows = 1
+
+    fig,axes = plt.subplots(n_rows, ncols, figsize=(10*ncols, 5 * n_rows))
+
+    # Flatten axes array for easy iteration
+    if n_rows == 1:
+        axes = axes.flatten()
+    else:
+        axes = axes.flatten()
+
+    for idx, (mode_id, mode_data) in enumerate(pairwise_changes.items()):
+        ax = axes[idx]
+        
+        # Extract data for this mode
+        pairs = list(mode_data['changes'].keys())
+        changes = np.abs(list(mode_data['changes'].values())) # Take abs value
+        wavenumber = mode_data['wavenumber']
+
+        # Sort pairs by magnitude of changes
+        sorted_indices = np.argsort(changes)[::-1]
+        sorted_pairs = [pairs[i] for i in sorted_indices]
+        sorted_changes = changes[sorted_indices]
+
+        # Create bar plot
+        bars = ax.bar(sorted_pairs, sorted_changes, color='skyblue')
+        ax.set_title(f"Mode {mode_id} ($\lambda$: {wavenumber:.2f} cm⁻¹)")
+        ax.set_xlabel("Atom Pairs")
+        ax.set_ylabel("Change in Overlap, |ΔS|")
+        ax.grid(axis='y', linestyle='--', alpha=0.7)
+
+        # Rotate 
+        ax.tick_params(axis='x', rotation=45) 
+        # Highlight max change
+        max_change = np.max(changes) if len(changes) > 0 else 1
+        for i, change in enumerate(sorted_changes):
+            if change > 0.1* max_change:
+                bars[i].set_color('salmon')
+        
+    # Hide any unused subplots
+    for ax in axes[n_modes:]:
+        ax.axis('off')
+
+    plt.tight_layout()
+    plt.savefig("pairwise_overlap_changes.png",bbox_inches='tight')
+    plt.close()
+
+def plot_pairwise_overlap_changes_heatmap(pairwise_changes, molecule):
+    """ 
+    Plots a heatmap of the pairwise overlap changes for each normal mode
+    """
+    atom_names = list(molecule.atoms.keys())
+    n_modes = len(pairwise_changes)
+
+    # Create a figure with subplots for each normal mode
+    if n_modes >= 4:
+        ncols = 4
+        n_rows = math.ceil(n_modes / ncols)
+    else:
+        ncols = n_modes
+        n_rows = 1
+
+    fig, axes = plt.subplots(n_rows, ncols, figsize=(10*ncols, 5 * n_rows))
+
+    # Flatten axes array for easy iteration
+    if n_rows == 1:
+        axes = axes.flatten()
+    else:
+        axes = axes.flatten()
+
+    for idx, (mode_id, mode_data) in enumerate(pairwise_changes.items()):
+        ax = axes[idx]
+        
+        # Extract data for this mode
+        pairs = list(mode_data['changes'].keys())
+        changes = np.abs(list(mode_data['changes'].values())) # Take abs value
+        wavenumber = mode_data['wavenumber']
+
+        # Create a matrix for the heatmap
+        heatmap_matrix = np.zeros((len(atom_names), len(atom_names)))
+
+        for pair in pairs:
+            i, j = pair.split('-')
+            i_idx = atom_names.index(i)
+            j_idx = atom_names.index(j)
+            heatmap_matrix[i_idx, j_idx] = changes[pairs.index(pair)]
+            heatmap_matrix[j_idx, i_idx] = changes[pairs.index(pair)]  # Symmetric matrix
+
+        # Mask Lower Triangle
+        mask = np.triu(np.ones_like(heatmap_matrix, dtype=bool), k=1)
+        heatmap_matrix[mask] = 0  # Set lower triangle to zero
+
+        
+        # Plot heatmap
+        cax = ax.matshow(heatmap_matrix, cmap='viridis', norm=Normalize(vmin=0, vmax=np.max(changes)))
+        ax.set_xticks(range(len(atom_names)))
+        ax.set_yticks(range(len(atom_names)))
+        ax.set_xticklabels(atom_names, rotation=45)
+        ax.set_yticklabels(atom_names)
+        
+        ax.set_title(f"Mode {mode_id} ($\lambda$: {wavenumber:.2f} cm⁻¹)")
+        fig.colorbar(cax, ax=ax, label='Change in Overlap |ΔS|')
+
+    # Hide any unused subplots
+    for ax in axes[n_modes:]:
+        ax.axis('off')
+
+    plt.tight_layout()
+    plt.savefig("pairwise_overlap_changes_heatmap.png", bbox_inches='tight')
+    plt.close()
+
+def plot_total_overlap_change(pairwise_changes, molecule):
+    """ 
+    Function that plots the total change in overlap for each mode after displacement with
+    a normal mode vector
+    """
+    modes = list(pairwise_changes.keys())
+    total_changes = [np.sum(np.abs(list(pairwise_changes[mode]['changes'].values()))) for mode in modes]
+    frequencies = [pairwise_changes[mode]["wavenumber"] for mode in modes]
+
+    fig, ax = plt.subplots(figsize=(10, 6))
+    ax.bar(modes, total_changes, color='skyblue')
+    ax.set_title("Total Change in Overlap per Normal Mode")
+    ax.set_xlabel("Normal Mode ID")
+    ax.set_ylabel("Total Change in Overlap |ΔS|")
+    ax.grid(axis='y', linestyle='--', alpha=0.7)
+    ax.tick_params(axis='x', rotation=45)
+    plt.tight_layout()
+    plt.savefig("total_overlap_change.png", bbox_inches='tight')
+
+
+# ===== Visualization of Pairwiese Gradients =====
+
+def plot_mode_gradients(pairwise_gradients, molecule):
+    """ 
+    Plots the total magnitude of the gradients for each normal mode
+    """
+    modes = list(pairwise_gradients.keys())
+    frequencies = [pairwise_gradients[mode]["wavenumber"] for mode in modes]
+    changes = [pairwise_gradients[mode]["total_gradient_magnitude"] for mode in modes]
+    
+    fig, ax = plt.subplots(figsize=(10, 6))
+    ax.bar(modes, changes, color='skyblue')
+    ax.set_title("Total Gradient Magnitude per Normal Mode")
+    ax.set_xlabel("Normal Mode ID")
+    ax.set_ylabel("Total Gradient Magnitude")
+    ax.grid(axis='y', linestyle='--', alpha=0.7)
+    ax.tick_params(axis='x', rotation=45)
+    plt.tight_layout()
+    plt.savefig("mode_gradients.png", bbox_inches='tight')
+    plt.close()
 
 
 # ======= Tests for Gaussian Overlap =======
@@ -207,7 +521,7 @@ def gradient_test_1d_gaussian_overlap():
         S = gaussian_overlap_1d(a1, b1, c1, a2, b2 + u2, c2)
         return S * (b1 - (b2 + u2)) / (c1**2 + c2**2)
     
-    a1 = a2 = 1.0
+    a1 = a2 = normalization_parameter()
     b1 = 0.0 # First gaussian fixed at 0
     c1 = c2 = 1.2 # VDW radii of a Hydrogen atom
     b2 = 1.0 # initial position of the second gaussian
@@ -245,6 +559,70 @@ def gradient_test_1d_gaussian_overlap():
 
     plt.tight_layout()
     plt.show()
+
+def gradient_test_2d_gradient_field():
+    """ 
+    Test function visualize the gradient field for x-y displacement
+    """
+    def overlap_gradient_2d(a1, b1, c1, a2, b2, c2, u2):
+        """ 
+        Computes the gradient of the 2D gaussian overlap with respect to u2
+        """
+        b2_displaced = (b2[0] + u2[0], b2[1] + u2[1])
+        S = gaussian_overlap_2d(a1, b1, c1, a2, b2_displaced, c2)
+        grad_x = S * (b1[0] - b2_displaced[0]) / (c1**2 + c2**2)
+        grad_y = S * (b1[1] - b2_displaced[1]) / (c1**2 + c2**2)
+        return np.array([grad_x, grad_y])
+    
+    a1 = a2 = normalization_parameter()
+    b1 = np.array([0.0,0.0]) # First gaussian fixed at (0,0)
+    c1 = c2 = 1.2 # VDW radii of a Hydrogen
+    b2 = np.array([1.0, 0.0]) # initial position of the second gaussian
+
+    # Generate grid of X and Y Displacements
+    x = np.linspace(-5, 5, 40)
+    y = np.linspace(-5, 5, 40)
+
+    X, Y = np.meshgrid(x, y)
+
+    U = np.zeros(X.shape)
+    V = np.zeros(Y.shape)
+    for i in range(len(x)):
+        for j in range(len(y)):
+            u2 = np.array([x[i], y[j]])  # Displacement vector for the second gaussian
+            grad = overlap_gradient_2d(a1, b1, c1, a2, b2, c2, u2)
+            U[j,i] = grad[0]  # Note the order of indices for U and V
+            V[j,i] = grad[1]
+
+
+    # Plot the gradient field
+    plt.figure(figsize=(10, 8))
+    plt.quiver(X,Y,U,V, color="red", scale=1.5, width = 0.003, headwidth=3)
+
+    # Mark vdw radii as circles
+    circle1 = plt.Circle(b1, c1, color='blue', fill=False, linestyle='--', label='VDW Radius 1')
+    circle2 = plt.Circle(b2, c2, color='orange', fill=False, linestyle='--', label='VDW Radius 2')
+    plt.gca().add_artist(circle1)
+    plt.gca().add_artist(circle2)
+
+    # Mark original positions 
+    plt.scatter(b1[0], b1[1], color='blue', label='Gaussian 1 Center', s=100, edgecolor='black')
+    plt.scatter(b2[0], b2[1], color='orange', label='Gaussian 2 Center', s=100, edgecolor='black')
+
+    # visualize both the vdw radii as circles
+
+    plt.title('Gradient Field of 2D Gaussian Overlap')
+    plt.xlabel('Displacement in X')
+    plt.ylabel('Displacement in Y')
+    plt.axhline(0, color='black', linestyle='--', linewidth=0.8)
+    plt.axvline(0, color='black', linestyle='--', linewidth=0.8)
+    plt.legend()
+    plt.tight_layout()
+    plt.show()
+
+
+
+
 
 def normalization_parameter():
     """ 

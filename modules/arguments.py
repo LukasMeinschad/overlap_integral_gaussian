@@ -22,7 +22,7 @@ def get_args():
         "-p",
         "--plot",
         type=str,
-        choices = ["plot_molecule","plot_density"],
+        choices = ["plot_molecule","plot_density",'plot_molecules_vdw_spheres'],
         help="""
              Specify the plotting options 
              
