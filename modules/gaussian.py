@@ -366,20 +366,39 @@ def plot_total_overlap_change(pairwise_changes, molecule):
     """ 
     Function that plots the total change in overlap for each mode after displacement with
     a normal mode vector
+
+    We plot both the total absolute change in overlap |delta S| and just the sum of changes
     """
     modes = list(pairwise_changes.keys())
-    total_changes = [np.sum(np.abs(list(pairwise_changes[mode]['changes'].values()))) for mode in modes]
+    total_changes_abs = [np.sum(np.abs(list(pairwise_changes[mode]['changes'].values()))) for mode in modes]
+    total_changes = [np.sum(list(pairwise_changes[mode]['changes'].values())) for mode in modes]
     frequencies = [pairwise_changes[mode]["wavenumber"] for mode in modes]
-
-    fig, ax = plt.subplots(figsize=(10, 6))
-    ax.bar(modes, total_changes, color='skyblue')
-    ax.set_title("Total Change in Overlap per Normal Mode")
-    ax.set_xlabel("Normal Mode ID")
-    ax.set_ylabel("Total Change in Overlap |ΔS|")
-    ax.grid(axis='y', linestyle='--', alpha=0.7)
-    ax.tick_params(axis='x', rotation=45)
+    # Make two subplots one row
+    fig, axes = plt.subplots(1, 2, figsize=(15, 6))
+    axes[0].bar(modes, total_changes_abs, color='skyblue')
+    axes[0].set_title("Total Absolute Change in Overlap |ΔS| per Normal Mode")
+    axes[0].set_xlabel("Normal Mode ID")
+    axes[0].set_ylabel("Total Absolute Change in Overlap |ΔS|")
+    axes[0].grid(axis='y', linestyle='--', alpha=0.7)
+    axes[0].tick_params(axis='x', rotation=45) 
+    axes[0].set_xticks(modes)
+    axes[0].set_xticklabels(modes)
+    axes[1].bar(modes, total_changes, color='lightgreen')
+    axes[1].set_title("Total Change in Overlap ΔS per Normal Mode")
+    axes[1].set_xlabel("Normal Mode ID")
+    axes[1].set_ylabel("Total Change in Overlap ΔS")
+    axes[1].grid(axis='y', linestyle='--', alpha=0.7)
+    axes[1].tick_params(axis='x', rotation=45)
+    axes[1].set_xticks(modes)
+    axes[1].set_xticklabels(modes)
     plt.tight_layout()
     plt.savefig("total_overlap_change.png", bbox_inches='tight')
+
+    print("======= Total Overlap Change =======")
+    for mode in modes:
+        print(f"Mode {mode} (Wavenumber: {pairwise_changes[mode]['wavenumber']:.2f} cm⁻¹):")
+        print(f"  Total Absolute Change in Overlap |ΔS|: {total_changes_abs[modes.index(mode)]:.4f}")
+        print(f"  Total Change in Overlap ΔS: {total_changes[modes.index(mode)]:.4f}")
 
 
 # ===== Visualization of Pairwiese Gradients =====

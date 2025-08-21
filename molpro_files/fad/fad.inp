@@ -1,0 +1,25 @@
+memory, 200, m ! Memory Requirements
+gthresh, optgrad=1.d-7,twoint=1.d-14,prefac=1.d-16 ! Guntram Rezept um numerischen Schmutz zu entfernen
+orient,mass
+geometry = {
+C,  -1.888896,  -0.179692,   0.000000
+O,  -1.493280,   1.073689,   0.000000
+O,  -1.170435,  -1.166590,   0.000000
+H,  -2.979488,  -0.258829,   0.000000
+H,  -0.498833,   1.107195,   0.000000
+C,   1.888896,   0.179692,   0.000000
+O,   1.493280,  -1.073689,   0.000000
+O,   1.170435,   1.166590,   0.000000
+H,   2.979488,   0.258829,   0.000000
+H,   0.498833,  -1.107195,   0.000000
+}
+
+mass, iso
+basis=6-311g(d,p)
+
+{hf
+start,atden}
+
+optg
+{frequencies, symm=auto, print=0,analytical}
+put,molden,formic_acid_dimer.molden
