@@ -171,7 +171,7 @@ def parse_normal_modes(molpro_out):
             direction = label[len(element):-len(atom_num)].lower()
             atom_name = f"{element}{atom_num}" if atom_num else element
 
-            print(element, atom_num, direction, atom_name)
+            
             # Add displacment for modes in current block
             for i, mode_num in enumerate(current_block_modes):
                 if mode_num not in normal_modes:

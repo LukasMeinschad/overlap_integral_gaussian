@@ -640,6 +640,241 @@ def gradient_test_2d_gradient_field():
     plt.show()
 
 
+def gaussian_density_test_2d():
+    """
+    Function that multiplies two 2D gaussians and visualizes the density
+    """
+    a1 = a2 = normalization_parameter()
+    b1 = np.array([-2, 0.0])  # Center
+    c1 = c2 = 1.2  # VDW radii of a Hydrogen atom
+    b2 = np.array([2, 0.0])  # Second Gaussian center
+
+    # Generate grid of X and Y coordinates
+    x = np.linspace(-5, 5, 100)
+    y = np.linspace(-5, 5, 100)
+    X, Y = np.meshgrid(x, y)
+    # Compute the density
+    density = gaussian_2d(a1, b1, c1, (X, Y)) * gaussian_2d(a2, b2, c2, (X, Y))
+
+    # Three subplots the Density of First gaussian, density of second gaussian and the product
+    fig, axes = plt.subplots(1, 3, figsize=(15, 5))
+    # Density of first Gaussian
+    axes[0].contourf(X, Y, gaussian_2d(a1, b1, c1, (X, Y)), levels=20, cmap='viridis') 
+    axes[0].set_title('Density of Gaussian 1')
+    axes[0].set_xlabel('X')
+    axes[0].set_ylabel('Y')
+    axes[0].grid(True)
+    # Add horizontal and vertical lines at 0
+    axes[0].axhline(0, color='black', linestyle='--', linewidth=0.8)
+    axes[0].axvline(0, color='black', linestyle='--', linewidth=0.8)
+    # Density of second Gaussian
+    axes[1].contourf(X, Y, gaussian_2d(a2, b2, c2, (X, Y)), levels=20, cmap='viridis')
+    axes[1].set_title('Density of Gaussian 2')
+    axes[1].set_xlabel('X')
+    axes[1].set_ylabel('Y')
+    axes[1].grid(True)
+    # Add horizontal and vertical lines at 0
+    axes[1].axhline(0, color='black', linestyle='--', linewidth=0.8)
+    axes[1].axvline(0, color='black', linestyle='--', linewidth=0.8)
+    # Density of product
+    axes[2].contourf(X, Y, density, levels=20, cmap='viridis')
+    axes[2].set_title('Density of Product of Gaussians')
+    axes[2].set_xlabel('X')
+    axes[2].set_ylabel('Y')
+    axes[2].grid(True)
+    # Add horizontal and vertical lines at 0
+    axes[2].axhline(0, color='black', linestyle='--', linewidth=0.8)
+    axes[2].axvline(0, color='black', linestyle='--', linewidth=0.8)
+    plt.tight_layout()
+    plt.savefig("gaussian_density_2d_2_atoms.png", bbox_inches='tight')
+
+def gradient_field_gaussian_density_test_2d():
+    """ 
+    Function that visualizes the gradient field of the 2D gaussian density for two atoms
+    """
+    a1 = a2 = normalization_parameter()
+    b1 = np.array([-2, 0.0])  # Center of first Gaussian
+    b2 = np.array([2, 0.0])   # Center of second Gaussian
+    c1 = c2 = 1.2  # VDW radii of a Hydrogen atom
+
+    # Generate grid of X and Y coordinates
+    x = np.linspace(-5, 5, 100)
+    y = np.linspace(-5, 5, 100)
+    X, Y = np.meshgrid(x, y)
+    # Compute the density for each Gaussian
+
+    def total_density(X, Y):
+        """ 
+        Computes the total density for two Gaussians
+        """
+        density1 = gaussian_2d(a1, b1, c1, (X, Y))
+        density2 = gaussian_2d(a2, b2, c2, (X, Y))
+        return density1 + density2
+    
+    def density_gradient(X,Y):
+        """ 
+        Computes the gradient of the total density
+        """
+        density = total_density(X, Y)
+        grad_x = np.gradient(density, axis=1)
+        grad_y = np.gradient(density, axis=0)
+        return grad_x, grad_y
+    
+    # One Subplot with the density and one with the gradient field
+    fig, axes = plt.subplots(1, 2, figsize=(15, 6))
+    # Density plot
+    density = total_density(X, Y)
+    axes[0].contourf(X, Y, density, levels=20, cmap='viridis')
+    axes[0].set_title('Total Density of Two Gaussians')
+    axes[0].set_xlabel('X')
+    axes[0].set_ylabel('Y')
+    axes[0].grid(True)
+    axes[0].axhline(0, color='black', linestyle='--', linewidth=0.8)
+    axes[0].axvline(0, color='black', linestyle='--', linewidth=0.8)
+    # Gradient field plot
+    grad_x, grad_y = density_gradient(X, Y)
+    axes[1].quiver(X, Y, grad_x, grad_y, color='red', scale=0.4, width=0.004, headwidth=1)
+    axes[1].set_title('Gradient Field of Total Density')
+    axes[1].set_xlabel('X')
+    axes[1].set_ylabel('Y')
+    axes[1].grid(True)
+    axes[1].axhline(0, color='black', linestyle='--', linewidth=0.8)
+    axes[1].axvline(0, color='black', linestyle='--', linewidth=0.8)
+    # Mark VDW radii as circles
+    circle1 = plt.Circle(b1, c1, color='blue', fill=False, linestyle='--', label='VDW Radius 1')
+    circle2 = plt.Circle(b2, c2, color='orange', fill=False, linestyle='--', label='VDW Radius 2')
+    axes[1].add_artist(circle1)
+    axes[1].add_artist(circle2)
+    # Mark original positions
+    axes[1].scatter(b1[0], b1[1], color='blue', label='Gaussian 1 Center', s=100, edgecolor='black')
+    axes[1].scatter(b2[0], b2[1], color='orange', label='Gaussian 2 Center', s=100, edgecolor='black')
+    # Add legend
+    axes[1].legend(loc='upper right')
+    plt.tight_layout()
+    plt.savefig("gaussian_density_gradient_field_2d.png", bbox_inches='tight') 
+
+def gradient_field_gaussian_density_test_2d_three_atoms():
+    """ 
+    Plots the gradient field similar to the previous function but for three atoms
+    """
+    a1 = a2 = a3 = normalization_parameter()
+    b1 = np.array([-2, 0.0])  # Center of first Gaussian
+    b2 = np.array([0, 0.0])   # Center of second Gaussian
+    b3 = np.array([2, 0])   # Center of third Gaussian
+    c1 = c2 = c3 = 1.2  # VDW radii of a Hydrogen atom
+
+    # Generate grid of X and Y coordinates
+    x = np.linspace(-5, 5, 100)
+    y = np.linspace(-5, 5, 100)
+    X, Y = np.meshgrid(x, y)
+
+    def total_density(X, Y):
+        """ 
+        Computes the total density for three Gaussians
+        """
+        density1 = gaussian_2d(a1, b1, c1, (X, Y))
+        density2 = gaussian_2d(a2, b2, c2, (X, Y))
+        density3 = gaussian_2d(a3, b3, c3, (X, Y))
+        return density1 + density2 + density3
+    
+    def density_gradient(X,Y):
+        """ 
+        Computes the gradient of the total density
+        """
+        density = total_density(X, Y)
+        grad_x = np.gradient(density, axis=1)
+        grad_y = np.gradient(density, axis=0)
+        return grad_x, grad_y
+    
+    # One Subplot with the density and one with the gradient field
+    fig, axes = plt.subplots(1, 2, figsize=(15, 6))
+    # Density plot
+    density = total_density(X, Y)
+    axes[0].contourf(X, Y, density, levels=20, cmap='viridis')
+    axes[0].set_title('Total Density of Three Gaussians')
+    axes[0].set_xlabel('X')
+    axes[0].set_ylabel('Y')
+    axes[0].grid(True)
+    axes[0].axhline(0, color='black', linestyle='--', linewidth=0.8)
+    axes[0].axvline(0, color='black', linestyle='--', linewidth=0.8)
+    
+    # Gradient field plot
+    grad_x, grad_y = density_gradient(X, Y)
+    axes[1].quiver(X, Y, grad_x, grad_y, color='red', scale=0.4, width=0.004, headwidth=1)
+    axes[1].set_title('Gradient Field of Total Density')
+    axes[1].set_xlabel('X')
+    axes[1].set_ylabel('Y')
+    axes[1].grid(True)
+    axes[1].axhline(0, color='black', linestyle='--', linewidth=0.8)
+    axes[1].axvline(0, color='black', linestyle='--', linewidth=0.8)    
+    # Mark VDW radii as circles
+    circle1 = plt.Circle(b1, c1, color='blue', fill=False, linestyle='--', label='VDW Radius 1')
+    circle2 = plt.Circle(b2, c2, color='orange', fill=False, linestyle='--', label='VDW Radius 2')
+    circle3 = plt.Circle(b3, c3, color='green', fill=False, linestyle='--', label='VDW Radius 3')
+    axes[1].add_artist(circle1)
+    axes[1].add_artist(circle2)
+    axes[1].add_artist(circle3)
+    # Mark original positions
+    axes[1].scatter(b1[0], b1[1], color='blue', label='Gaussian 1 Center', s=100, edgecolor='black')
+    axes[1].scatter(b2[0], b2[1], color='orange', label='Gaussian 2 Center', s=100, edgecolor='black')
+    axes[1].scatter(b3[0], b3[1], color='green', label='Gaussian 3 Center', s=100, edgecolor='black')
+    # Add legend
+    axes[1].legend(loc='upper right')
+    plt.tight_layout()
+    plt.savefig("gaussian_density_gradient_field_2d_three_atoms.png", bbox_inches='tight')
+
+def gaussian_density_test_2d_three_atoms():
+    """
+    Plots the Gaussian Density of three atoms in 2D
+    """
+    a1 = a2 = a3 = normalization_parameter()
+    b1 = np.array([-2, 0.0])  # Center of first Gaussian
+    b2 = np.array([0, 0.0])   # Center of second Gaussian
+    b3 = np.array([2, 0])   # Center of third Gaussian
+    c1 = c2 = c3 = 1.2  # VDW radii of a Hydrogen atom
+
+    # Generate grid of X and Y coordinates
+    x = np.linspace(-5, 5, 100)
+    y = np.linspace(-5, 5, 100)
+    X, Y = np.meshgrid(x, y)
+
+    # Compute the density for each Gaussian
+    density1 = gaussian_2d(a1, b1, c1, (X, Y))
+    density2 = gaussian_2d(a2, b2, c2, (X, Y))
+    density3 = gaussian_2d(a3, b3, c3, (X, Y))
+
+    # Total density is the sum of individual densities
+    total_density = density1 + density2 + density3
+
+    # Plotting the densities
+    fig, axes = plt.subplots(1, 4, figsize=(20, 5))
+
+    axes[0].contourf(X, Y, density1, levels=20, cmap='viridis')
+    axes[0].set_title('Density of Gaussian 1')
+    axes[0].set_xlabel('X')
+    axes[0].set_ylabel('Y')
+    axes[0].grid(True)
+    
+    axes[1].contourf(X, Y, density2, levels=20, cmap='viridis')
+    axes[1].set_title('Density of Gaussian 2')
+    axes[1].set_xlabel('X')
+    axes[1].set_ylabel('Y')
+    axes[1].grid(True)
+
+    axes[2].contourf(X, Y, density3, levels=20, cmap='viridis')
+    axes[2].set_title('Density of Gaussian 3')
+    axes[2].set_xlabel('X')
+    axes[2].set_ylabel('Y')
+    axes[2].grid(True)
+
+    axes[3].contourf(X, Y, total_density, levels=20, cmap='viridis')
+    axes[3].set_title('Total Density of Three Gaussians')
+    axes[3].set_xlabel('X')
+    axes[3].set_ylabel('Y')
+    axes[3].grid(True)
+
+    plt.tight_layout()
+    plt.savefig("gaussian_density_2d_three_atoms.png", bbox_inches='tight')
 
 
 

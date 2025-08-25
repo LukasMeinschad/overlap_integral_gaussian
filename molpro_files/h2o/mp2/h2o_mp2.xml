@@ -1,0 +1,859 @@
+<?xml version="1.0"?>
+<molpro xmlns="http://www.molpro.net/schema/molpro-output"
+  xmlns:xsd="http://www.w3.org/1999/XMLSchema"
+  xmlns:cml="http://www.xml-cml.org/schema"
+  xmlns:stm="http://www.xml-cml.org/schema"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+ <job>
+  <stm:metadataList>
+   <stm:metadata name="dc:date" content="2025-08-25T21:30:17+02:00"/>
+   <stm:metadata name="dc:creator" content="lme"/>
+   <stm:metadata name="cmlm:insilico" content="Molpro"/>
+  </stm:metadataList>
+  <platform pid="4080137">
+   <version major="2022" minor="3" SHA="e31ec9a5ea85254ab76f59d122cbdd51c71cf98b"
+     integer_bits="64" parallelism="mpp">
+    2022.3
+    <date year="2025" month="8" day="25" hour="21" minute="30" second="17">
+     2025-08-25T21:30:17
+    </date>
+   </version>
+   <licence id="liedlgroup"/>
+   <parallel processes="6" nodes="1" all_processes="6" openmp="6"/>
+   <dimensions natom="400" nvalence="500" nvalence_pno="1000" nbasis="12000" nstate="100"
+     nsymm="16" nrec="512" nprim="2" ncol="100"/>
+  </platform>
+  <jobstep command="HF-SCF" commandset="SCFPRO">
+   <cml:molecule>
+    <cml:symmetry pointGroup="C2v">
+     <cml:transform3 title="generator" id="X">
+      -1  0  0  0  0  1  0  0  0  0  1  0  0  0  0  1
+     </cml:transform3>
+     <cml:transform3 title="generator" id="Y">
+       1  0  0  0  0 -1  0  0  0  0  1  0  0  0  0  1
+     </cml:transform3>
+    </cml:symmetry>
+    <cml:atomArray>
+     <cml:atom id="a1" elementType="H" x3="0.0" y3="0.7493682" z3="0.539763559904634"/>
+     <cml:atom id="a2" elementType="O" x3="0.0" y3="0.0" z3="-0.680200400953663E-01"/>
+     <cml:atom id="a3" elementType="H" x3="0.0" y3="-0.7493682" z3="0.539763559904634"/>
+    </cml:atomArray>
+    <cml:bondArray>
+     <cml:bond atomRefs2="a1 a3"/>
+     <cml:bond atomRefs2="a2 a3"/>
+    </cml:bondArray>
+   </cml:molecule>
+   <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+     value="-76.0456241405957"/>
+   <property name="One-electron energy" method="RHF" value="-123.026544740897"/>
+   <property name="Two-electron energy" method="RHF" value="37.8526368723114"/>
+   <property name="Kinetic energy" method="RHF" value="76.0332098077461"/>
+   <property name="Nuclear energy" method="RHF" value="9.12828372798969"/>
+   <property name="Virial quotient" method="RHF" value="-1.00016327513834"/>
+   <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+     stateNumber="1" value="0.0 0.0 0.869662841669413"/>
+   <time start="21:30:17" end="21:30:18" cpu="0.37" system="0.13" real="0.48"/>
+   <storage units="megabyte" memory="1525.88" sf="0.0" df="174.26" eaf="24.33" ga="0.0"/>
+   <summary overall_method="HF/6-311G(D,P)"/>
+  </jobstep>
+  <jobstep command="MP2" commandset="CCSD">
+   <property name="energy" method="Reference" stateSymmetry="1" stateNumber="1"
+     value="-76.0456241405957"/>
+   <single orbital="2.1" energy="0.0"/>
+   <single orbital="-2.1" energy="0.0"/>
+   <single orbital="3.1" energy="0.0"/>
+   <single orbital="-3.1" energy="0.0"/>
+   <single orbital="1.2" energy="0.0"/>
+   <single orbital="-1.2" energy="0.0"/>
+   <single orbital="1.3" energy="0.0"/>
+   <single orbital="-1.3" energy="0.0"/>
+   <pair orbital1="2.1" orbital2="-2.1" energy="-0.00479066"/>
+   <pair orbital1="-2.1" orbital2="2.1" energy="-0.00479066"/>
+   <pair orbital1="3.1" orbital2="2.1" energy="-0.00215403"/>
+   <pair orbital1="-3.1" orbital2="-2.1" energy="-0.00215403"/>
+   <pair orbital1="3.1" orbital2="-2.1" energy="-0.00630615"/>
+   <pair orbital1="-3.1" orbital2="2.1" energy="-0.00630615"/>
+   <pair orbital1="3.1" orbital2="-3.1" energy="-0.00933202"/>
+   <pair orbital1="-3.1" orbital2="3.1" energy="-0.00933202"/>
+   <pair orbital1="1.2" orbital2="-1.2" energy="-0.00917561"/>
+   <pair orbital1="-1.2" orbital2="1.2" energy="-0.00917561"/>
+   <pair orbital1="1.3" orbital2="-1.3" energy="-0.01031526"/>
+   <pair orbital1="-1.3" orbital2="1.3" energy="-0.01031526"/>
+   <pair orbital1="1.2" orbital2="2.1" energy="-0.00228504"/>
+   <pair orbital1="-1.2" orbital2="-2.1" energy="-0.00228504"/>
+   <pair orbital1="1.2" orbital2="-2.1" energy="-0.00635797"/>
+   <pair orbital1="-1.2" orbital2="2.1" energy="-0.00635797"/>
+   <pair orbital1="1.2" orbital2="3.1" energy="-0.00704718"/>
+   <pair orbital1="-1.2" orbital2="-3.1" energy="-0.00704718"/>
+   <pair orbital1="1.2" orbital2="-3.1" energy="-0.00897224"/>
+   <pair orbital1="-1.2" orbital2="3.1" energy="-0.00897224"/>
+   <pair orbital1="1.3" orbital2="2.1" energy="-0.00222512"/>
+   <pair orbital1="-1.3" orbital2="-2.1" energy="-0.00222512"/>
+   <pair orbital1="1.3" orbital2="-2.1" energy="-0.00782795"/>
+   <pair orbital1="-1.3" orbital2="2.1" energy="-0.00782795"/>
+   <pair orbital1="1.3" orbital2="3.1" energy="-0.00664282"/>
+   <pair orbital1="-1.3" orbital2="-3.1" energy="-0.00664282"/>
+   <pair orbital1="1.3" orbital2="-3.1" energy="-0.01032903"/>
+   <pair orbital1="-1.3" orbital2="3.1" energy="-0.01032903"/>
+   <pair orbital1="1.3" orbital2="1.2" energy="-0.00699731"/>
+   <pair orbital1="-1.3" orbital2="-1.2" energy="-0.00699731"/>
+   <pair orbital1="1.3" orbital2="-1.2" energy="-0.00836753"/>
+   <pair orbital1="-1.3" orbital2="1.2" energy="-0.00836753"/>
+   <property name="singlet pair energy" method="MP2" stateSymmetry="1" stateNumber="1"
+     value="-0.136197313529044"/>
+   <property name="triplet pair energy" method="MP2" stateSymmetry="1" stateNumber="1"
+     value="-0.820544926224395E-01"/>
+   <property name="correlation energy" method="MP2" stateSymmetry="1" stateNumber="1"
+     value="-0.218251806151484"/>
+   <property name="total energy" method="MP2" principal="true" stateSymmetry="1"
+     stateNumber="1" value="-76.2638759467472"/>
+   <property name="Dipole moment" method="MP2" principal="true" stateSymmetry="1"
+     stateNumber="1" value="0.0 0.0 0.830496921253612"/>
+   <time start="21:30:18" end="21:30:18" cpu="0.06" system="0.01" real="0.07"/>
+   <storage units="megabyte" memory="1525.87" sf="0.13" df="174.56" eaf="24.33" ga="0.0"/>
+   <summary overall_method="MP2/6-311G(D,P)"/>
+  </jobstep>
+  <jobstep command="OPTG" commandset="OPT">
+   <gradient name="MP2 GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="0.252418697589408E-01">
+      0.000000000000   0.005151427852   0.004637168396
+      0.000000000000   0.000000000000  -0.009274336792
+      0.000000000000  -0.005151427852   0.004637168396
+   </gradient>
+   <opt energy="-76.26387595" type="MP2" line="0.0" convergence="0.145751169430858E-01"
+     gradient="0.134942358887809E-01"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <cml:molecule>
+     <cml:symmetry pointGroup="C2v">
+      <cml:transform3 title="generator" id="X">
+      -1  0  0  0  0  1  0  0  0  0  1  0  0  0  0  1
+      </cml:transform3>
+      <cml:transform3 title="generator" id="Y">
+       1  0  0  0  0 -1  0  0  0  0  1  0  0  0  0  1
+      </cml:transform3>
+     </cml:symmetry>
+     <cml:atomArray>
+      <cml:atom id="a1" elementType="H" x3="0.0" y3="0.744886084780375" z3="0.534984101413655"/>
+      <cml:atom id="a2" elementType="O" x3="0.0" y3="0.0" z3="-0.674177412698436E-01"/>
+      <cml:atom id="a3" elementType="H" x3="0.0" y3="-0.744886084780375" z3="0.534984101413655"/>
+     </cml:atomArray>
+     <cml:bondArray>
+      <cml:bond atomRefs2="a1 a3"/>
+      <cml:bond atomRefs2="a2 a3"/>
+     </cml:bondArray>
+    </cml:molecule>
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-76.0461901369944"/>
+    <property name="One-electron energy" method="RHF" value="-123.143067830785"/>
+    <property name="Two-electron energy" method="RHF" value="37.90353827249"/>
+    <property name="Kinetic energy" method="RHF" value="76.0594677006968"/>
+    <property name="Nuclear energy" method="RHF" value="9.19333942130079"/>
+    <property name="Virial quotient" method="RHF" value="-0.99982543180877"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 0.866381824422229"/>
+    <time start="21:30:18" end="21:30:18" cpu="0.31" system="0.06" real="0.26"/>
+    <storage units="megabyte" memory="1525.88" sf="0.13" df="174.6" eaf="24.33" ga="0.0"/>
+    <summary overall_method="MP2/6-311G(D,P)"/>
+   </jobstep>
+   <jobstep command="MP2" commandset="CCSD">
+    <property name="energy" method="Reference" stateSymmetry="1" stateNumber="1"
+      value="-76.0461901369943"/>
+    <single orbital="2.1" energy="0.0"/>
+    <single orbital="-2.1" energy="0.0"/>
+    <single orbital="3.1" energy="0.0"/>
+    <single orbital="-3.1" energy="0.0"/>
+    <single orbital="1.2" energy="0.0"/>
+    <single orbital="-1.2" energy="0.0"/>
+    <single orbital="1.3" energy="0.0"/>
+    <single orbital="-1.3" energy="0.0"/>
+    <pair orbital1="2.1" orbital2="-2.1" energy="-0.00478529"/>
+    <pair orbital1="-2.1" orbital2="2.1" energy="-0.00478529"/>
+    <pair orbital1="3.1" orbital2="2.1" energy="-0.00214512"/>
+    <pair orbital1="-3.1" orbital2="-2.1" energy="-0.00214512"/>
+    <pair orbital1="3.1" orbital2="-2.1" energy="-0.00627522"/>
+    <pair orbital1="-3.1" orbital2="2.1" energy="-0.00627522"/>
+    <pair orbital1="3.1" orbital2="-3.1" energy="-0.00931391"/>
+    <pair orbital1="-3.1" orbital2="3.1" energy="-0.00931391"/>
+    <pair orbital1="1.2" orbital2="-1.2" energy="-0.00917743"/>
+    <pair orbital1="-1.2" orbital2="1.2" energy="-0.00917743"/>
+    <pair orbital1="1.3" orbital2="-1.3" energy="-0.01027312"/>
+    <pair orbital1="-1.3" orbital2="1.3" energy="-0.01027312"/>
+    <pair orbital1="1.2" orbital2="2.1" energy="-0.00228386"/>
+    <pair orbital1="-1.2" orbital2="-2.1" energy="-0.00228386"/>
+    <pair orbital1="1.2" orbital2="-2.1" energy="-0.00633755"/>
+    <pair orbital1="-1.2" orbital2="2.1" energy="-0.00633755"/>
+    <pair orbital1="1.2" orbital2="3.1" energy="-0.00704062"/>
+    <pair orbital1="-1.2" orbital2="-3.1" energy="-0.00704062"/>
+    <pair orbital1="1.2" orbital2="-3.1" energy="-0.0089748"/>
+    <pair orbital1="-1.2" orbital2="3.1" energy="-0.0089748"/>
+    <pair orbital1="1.3" orbital2="2.1" energy="-0.00221429"/>
+    <pair orbital1="-1.3" orbital2="-2.1" energy="-0.00221429"/>
+    <pair orbital1="1.3" orbital2="-2.1" energy="-0.00782817"/>
+    <pair orbital1="-1.3" orbital2="2.1" energy="-0.00782817"/>
+    <pair orbital1="1.3" orbital2="3.1" energy="-0.00663313"/>
+    <pair orbital1="-1.3" orbital2="-3.1" energy="-0.00663313"/>
+    <pair orbital1="1.3" orbital2="-3.1" energy="-0.01024559"/>
+    <pair orbital1="-1.3" orbital2="3.1" energy="-0.01024559"/>
+    <pair orbital1="1.3" orbital2="1.2" energy="-0.00699601"/>
+    <pair orbital1="-1.3" orbital2="-1.2" energy="-0.00699601"/>
+    <pair orbital1="1.3" orbital2="-1.2" energy="-0.00836513"/>
+    <pair orbital1="-1.3" orbital2="1.2" energy="-0.00836513"/>
+    <property name="singlet pair energy" method="MP2" stateSymmetry="1" stateNumber="1"
+      value="-0.135839368122708"/>
+    <property name="triplet pair energy" method="MP2" stateSymmetry="1" stateNumber="1"
+      value="-0.819390947663211E-01"/>
+    <property name="correlation energy" method="MP2" stateSymmetry="1" stateNumber="1"
+      value="-0.217778462889029"/>
+    <property name="total energy" method="MP2" principal="true" stateSymmetry="1"
+      stateNumber="1" value="-76.2639685998834"/>
+    <property name="Dipole moment" method="MP2" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 0.8282660899386"/>
+    <time start="21:30:18" end="21:30:18" cpu="0.05" system="0.0" real="0.06"/>
+    <storage units="megabyte" memory="1525.87" sf="0.13" df="174.62" eaf="24.33" ga="0.0"/>
+    <summary overall_method="MP2/6-311G(D,P)"/>
+   </jobstep>
+   <gradient name="MP2 GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="-0.927618083621165E-04">
+      0.000000000000  -0.000379871224   0.000428977889
+      0.000000000000   0.000000000000  -0.000857955779
+      0.000000000000   0.000379871224   0.000428977889
+   </gradient>
+   <opt energy="-76.2639686" type="MP2" line="0.0" convergence="0.4431350542219E-02"
+     gradient="0.118014256348505E-02"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <cml:molecule>
+     <cml:symmetry pointGroup="C2v">
+      <cml:transform3 title="generator" id="X">
+      -1  0  0  0  0  1  0  0  0  0  1  0  0  0  0  1
+      </cml:transform3>
+      <cml:transform3 title="generator" id="Y">
+       1  0  0  0  0 -1  0  0  0  0  1  0  0  0  0  1
+      </cml:transform3>
+     </cml:symmetry>
+     <cml:atomArray>
+      <cml:atom id="a1" elementType="H" x3="0.0" y3="0.746163873807846" z3="0.53335861693364"/>
+      <cml:atom id="a2" elementType="O" x3="0.0" y3="0.0" z3="-0.672129006179022E-01"/>
+      <cml:atom id="a3" elementType="H" x3="0.0" y3="-0.746163873807846" z3="0.53335861693364"/>
+     </cml:atomArray>
+     <cml:bondArray>
+      <cml:bond atomRefs2="a1 a3"/>
+      <cml:bond atomRefs2="a2 a3"/>
+     </cml:bondArray>
+    </cml:molecule>
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-76.0462383956737"/>
+    <property name="One-electron energy" method="RHF" value="-123.145436897187"/>
+    <property name="Two-electron energy" method="RHF" value="37.9050389176578"/>
+    <property name="Kinetic energy" method="RHF" value="76.0596874106217"/>
+    <property name="Nuclear energy" method="RHF" value="9.19415958385526"/>
+    <property name="Virial quotient" method="RHF" value="-0.999823178145929"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 0.864839018836757"/>
+    <time start="21:30:18" end="21:30:18" cpu="0.3" system="0.05" real="0.27"/>
+    <storage units="megabyte" memory="1525.88" sf="0.13" df="174.62" eaf="24.33" ga="0.0"/>
+    <summary overall_method="MP2/6-311G(D,P)"/>
+   </jobstep>
+   <jobstep command="MP2" commandset="CCSD">
+    <property name="energy" method="Reference" stateSymmetry="1" stateNumber="1"
+      value="-76.0462383956737"/>
+    <single orbital="2.1" energy="0.0"/>
+    <single orbital="-2.1" energy="0.0"/>
+    <single orbital="3.1" energy="0.0"/>
+    <single orbital="-3.1" energy="0.0"/>
+    <single orbital="1.2" energy="0.0"/>
+    <single orbital="-1.2" energy="0.0"/>
+    <single orbital="1.3" energy="0.0"/>
+    <single orbital="-1.3" energy="0.0"/>
+    <pair orbital1="2.1" orbital2="-2.1" energy="-0.00478374"/>
+    <pair orbital1="-2.1" orbital2="2.1" energy="-0.00478374"/>
+    <pair orbital1="3.1" orbital2="2.1" energy="-0.00214526"/>
+    <pair orbital1="-3.1" orbital2="-2.1" energy="-0.00214526"/>
+    <pair orbital1="3.1" orbital2="-2.1" energy="-0.00627665"/>
+    <pair orbital1="-3.1" orbital2="2.1" energy="-0.00627665"/>
+    <pair orbital1="3.1" orbital2="-3.1" energy="-0.00930988"/>
+    <pair orbital1="-3.1" orbital2="3.1" energy="-0.00930988"/>
+    <pair orbital1="1.2" orbital2="-1.2" energy="-0.00917716"/>
+    <pair orbital1="-1.2" orbital2="1.2" energy="-0.00917716"/>
+    <pair orbital1="1.3" orbital2="-1.3" energy="-0.01027208"/>
+    <pair orbital1="-1.3" orbital2="1.3" energy="-0.01027208"/>
+    <pair orbital1="1.2" orbital2="2.1" energy="-0.00228341"/>
+    <pair orbital1="-1.2" orbital2="-2.1" energy="-0.00228341"/>
+    <pair orbital1="1.2" orbital2="-2.1" energy="-0.00633745"/>
+    <pair orbital1="-1.2" orbital2="2.1" energy="-0.00633745"/>
+    <pair orbital1="1.2" orbital2="3.1" energy="-0.00704055"/>
+    <pair orbital1="-1.2" orbital2="-3.1" energy="-0.00704055"/>
+    <pair orbital1="1.2" orbital2="-3.1" energy="-0.00897624"/>
+    <pair orbital1="-1.2" orbital2="3.1" energy="-0.00897624"/>
+    <pair orbital1="1.3" orbital2="2.1" energy="-0.00221277"/>
+    <pair orbital1="-1.3" orbital2="-2.1" energy="-0.00221277"/>
+    <pair orbital1="1.3" orbital2="-2.1" energy="-0.00782772"/>
+    <pair orbital1="-1.3" orbital2="2.1" energy="-0.00782772"/>
+    <pair orbital1="1.3" orbital2="3.1" energy="-0.00663007"/>
+    <pair orbital1="-1.3" orbital2="-3.1" energy="-0.00663007"/>
+    <pair orbital1="1.3" orbital2="-3.1" energy="-0.01023689"/>
+    <pair orbital1="-1.3" orbital2="3.1" energy="-0.01023689"/>
+    <pair orbital1="1.3" orbital2="1.2" energy="-0.0069952"/>
+    <pair orbital1="-1.3" orbital2="-1.2" energy="-0.0069952"/>
+    <pair orbital1="1.3" orbital2="-1.2" energy="-0.00836156"/>
+    <pair orbital1="-1.3" orbital2="1.2" energy="-0.00836156"/>
+    <property name="singlet pair energy" method="MP2" stateSymmetry="1" stateNumber="1"
+      value="-0.1358114747223"/>
+    <property name="triplet pair energy" method="MP2" stateSymmetry="1" stateNumber="1"
+      value="-0.819217774728698E-01"/>
+    <property name="correlation energy" method="MP2" stateSymmetry="1" stateNumber="1"
+      value="-0.217733252195169"/>
+    <property name="total energy" method="MP2" principal="true" stateSymmetry="1"
+      stateNumber="1" value="-76.2639716478689"/>
+    <property name="Dipole moment" method="MP2" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 0.826952644032829"/>
+    <time start="21:30:18" end="21:30:18" cpu="0.04" system="0.0" real="0.04"/>
+    <storage units="megabyte" memory="1525.87" sf="0.13" df="174.62" eaf="24.33" ga="0.0"/>
+    <summary overall_method="MP2/6-311G(D,P)"/>
+   </jobstep>
+   <gradient name="MP2 GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="-0.124062662858391E-03">
+      0.000000000000  -0.000124926860   0.000100554790
+      0.000000000000   0.000000000000  -0.000201109581
+      0.000000000000   0.000124926860   0.000100554790
+   </gradient>
+   <opt energy="-76.26397165" type="MP2" line="0.0" convergence="0.167917279326673E-02"
+     gradient="0.303118847806535E-03"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <cml:molecule>
+     <cml:symmetry pointGroup="C2v">
+      <cml:transform3 title="generator" id="X">
+      -1  0  0  0  0  1  0  0  0  0  1  0  0  0  0  1
+      </cml:transform3>
+      <cml:transform3 title="generator" id="Y">
+       1  0  0  0  0 -1  0  0  0  0  1  0  0  0  0  1
+      </cml:transform3>
+     </cml:symmetry>
+     <cml:atomArray>
+      <cml:atom id="a1" elementType="H" x3="0.0" y3="0.746664986077061" z3="0.532775569592196"/>
+      <cml:atom id="a2" elementType="O" x3="0.0" y3="0.0" z3="-0.671394260329385E-01"/>
+      <cml:atom id="a3" elementType="H" x3="0.0" y3="-0.746664986077061" z3="0.532775569592196"/>
+     </cml:atomArray>
+     <cml:bondArray>
+      <cml:bond atomRefs2="a1 a3"/>
+      <cml:bond atomRefs2="a2 a3"/>
+     </cml:bondArray>
+    </cml:molecule>
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-76.046252925133"/>
+    <property name="One-electron energy" method="RHF" value="-123.145693490425"/>
+    <property name="Two-electron energy" method="RHF" value="37.9053259176919"/>
+    <property name="Kinetic energy" method="RHF" value="76.0596262266036"/>
+    <property name="Nuclear energy" method="RHF" value="9.19411464760031"/>
+    <property name="Virial quotient" method="RHF" value="-0.999824173452671"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 0.864277837857351"/>
+    <time start="21:30:18" end="21:30:19" cpu="0.31" system="0.04" real="0.25"/>
+    <storage units="megabyte" memory="1525.88" sf="0.13" df="174.62" eaf="24.33" ga="0.0"/>
+    <summary overall_method="MP2/6-311G(D,P)"/>
+   </jobstep>
+   <jobstep command="MP2" commandset="CCSD">
+    <property name="energy" method="Reference" stateSymmetry="1" stateNumber="1"
+      value="-76.046252925133"/>
+    <single orbital="2.1" energy="0.0"/>
+    <single orbital="-2.1" energy="0.0"/>
+    <single orbital="3.1" energy="0.0"/>
+    <single orbital="-3.1" energy="0.0"/>
+    <single orbital="1.2" energy="0.0"/>
+    <single orbital="-1.2" energy="0.0"/>
+    <single orbital="1.3" energy="0.0"/>
+    <single orbital="-1.3" energy="0.0"/>
+    <pair orbital1="2.1" orbital2="-2.1" energy="-0.00478319"/>
+    <pair orbital1="-2.1" orbital2="2.1" energy="-0.00478319"/>
+    <pair orbital1="3.1" orbital2="2.1" energy="-0.00214536"/>
+    <pair orbital1="-3.1" orbital2="-2.1" energy="-0.00214536"/>
+    <pair orbital1="3.1" orbital2="-2.1" energy="-0.00627736"/>
+    <pair orbital1="-3.1" orbital2="2.1" energy="-0.00627736"/>
+    <pair orbital1="3.1" orbital2="-3.1" energy="-0.00930848"/>
+    <pair orbital1="-3.1" orbital2="3.1" energy="-0.00930848"/>
+    <pair orbital1="1.2" orbital2="-1.2" energy="-0.00917704"/>
+    <pair orbital1="-1.2" orbital2="1.2" energy="-0.00917704"/>
+    <pair orbital1="1.3" orbital2="-1.3" energy="-0.01027192"/>
+    <pair orbital1="-1.3" orbital2="1.3" energy="-0.01027192"/>
+    <pair orbital1="1.2" orbital2="2.1" energy="-0.00228325"/>
+    <pair orbital1="-1.2" orbital2="-2.1" energy="-0.00228325"/>
+    <pair orbital1="1.2" orbital2="-2.1" energy="-0.00633752"/>
+    <pair orbital1="-1.2" orbital2="2.1" energy="-0.00633752"/>
+    <pair orbital1="1.2" orbital2="3.1" energy="-0.00704055"/>
+    <pair orbital1="-1.2" orbital2="-3.1" energy="-0.00704055"/>
+    <pair orbital1="1.2" orbital2="-3.1" energy="-0.00897677"/>
+    <pair orbital1="-1.2" orbital2="3.1" energy="-0.00897677"/>
+    <pair orbital1="1.3" orbital2="2.1" energy="-0.00221226"/>
+    <pair orbital1="-1.3" orbital2="-2.1" energy="-0.00221226"/>
+    <pair orbital1="1.3" orbital2="-2.1" energy="-0.00782755"/>
+    <pair orbital1="-1.3" orbital2="2.1" energy="-0.00782755"/>
+    <pair orbital1="1.3" orbital2="3.1" energy="-0.00662899"/>
+    <pair orbital1="-1.3" orbital2="-3.1" energy="-0.00662899"/>
+    <pair orbital1="1.3" orbital2="-3.1" energy="-0.01023408"/>
+    <pair orbital1="-1.3" orbital2="3.1" energy="-0.01023408"/>
+    <pair orbital1="1.3" orbital2="1.2" energy="-0.00699491"/>
+    <pair orbital1="-1.3" orbital2="-1.2" energy="-0.00699491"/>
+    <pair orbital1="1.3" orbital2="-1.2" energy="-0.00836024"/>
+    <pair orbital1="-1.3" orbital2="1.2" energy="-0.00836024"/>
+    <property name="singlet pair energy" method="MP2" stateSymmetry="1" stateNumber="1"
+      value="-0.135802977972338"/>
+    <property name="triplet pair energy" method="MP2" stateSymmetry="1" stateNumber="1"
+      value="-0.819159880082561E-01"/>
+    <property name="correlation energy" method="MP2" stateSymmetry="1" stateNumber="1"
+      value="-0.217718965980594"/>
+    <property name="total energy" method="MP2" principal="true" stateSymmetry="1"
+      stateNumber="1" value="-76.2639718911136"/>
+    <property name="Dipole moment" method="MP2" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 0.82647146125378"/>
+    <time start="21:30:19" end="21:30:19" cpu="0.04" system="0.0" real="0.04"/>
+    <storage units="megabyte" memory="1525.87" sf="0.13" df="174.62" eaf="24.33" ga="0.0"/>
+    <summary overall_method="MP2/6-311G(D,P)"/>
+   </jobstep>
+   <gradient name="MP2 GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="0.199896802067546E-05">
+      0.000000000000   0.000000097893   0.000000759792
+      0.000000000000   0.000000000000  -0.000001519585
+      0.000000000000  -0.000000097893   0.000000759792
+   </gradient>
+   <opt energy="-76.26397189" type="MP2" line="0.0" convergence="0.564321500112974E-05"
+     gradient="0.186624551551337E-05"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <cml:molecule>
+     <cml:symmetry pointGroup="C2v">
+      <cml:transform3 title="generator" id="X">
+      -1  0  0  0  0  1  0  0  0  0  1  0  0  0  0  1
+      </cml:transform3>
+      <cml:transform3 title="generator" id="Y">
+       1  0  0  0  0 -1  0  0  0  0  1  0  0  0  0  1
+      </cml:transform3>
+     </cml:symmetry>
+     <cml:atomArray>
+      <cml:atom id="a1" elementType="H" x3="0.0" y3="0.746666317773436" z3="0.532773048871804"/>
+      <cml:atom id="a2" elementType="O" x3="0.0" y3="0.0" z3="-0.671391083762554E-01"/>
+      <cml:atom id="a3" elementType="H" x3="0.0" y3="-0.746666317773436" z3="0.532773048871804"/>
+     </cml:atomArray>
+     <cml:bondArray>
+      <cml:bond atomRefs2="a1 a3"/>
+      <cml:bond atomRefs2="a2 a3"/>
+     </cml:bondArray>
+    </cml:molecule>
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-76.046253021177"/>
+    <property name="One-electron energy" method="RHF" value="-123.145706207227"/>
+    <property name="Two-electron energy" method="RHF" value="37.9053323441274"/>
+    <property name="Kinetic energy" method="RHF" value="76.0596291633223"/>
+    <property name="Nuclear energy" method="RHF" value="9.1941208419224"/>
+    <property name="Virial quotient" method="RHF" value="-0.999824136111463"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 0.864275514551746"/>
+    <time start="21:30:19" end="21:30:19" cpu="0.33" system="0.04" real="0.28"/>
+    <storage units="megabyte" memory="1525.88" sf="0.13" df="174.62" eaf="24.33" ga="0.0"/>
+    <summary overall_method="MP2/6-311G(D,P)"/>
+   </jobstep>
+   <jobstep command="MP2" commandset="CCSD">
+    <property name="energy" method="Reference" stateSymmetry="1" stateNumber="1"
+      value="-76.046253021177"/>
+    <single orbital="2.1" energy="0.0"/>
+    <single orbital="-2.1" energy="0.0"/>
+    <single orbital="3.1" energy="0.0"/>
+    <single orbital="-3.1" energy="0.0"/>
+    <single orbital="1.2" energy="0.0"/>
+    <single orbital="-1.2" energy="0.0"/>
+    <single orbital="1.3" energy="0.0"/>
+    <single orbital="-1.3" energy="0.0"/>
+    <pair orbital1="2.1" orbital2="-2.1" energy="-0.00478319"/>
+    <pair orbital1="-2.1" orbital2="2.1" energy="-0.00478319"/>
+    <pair orbital1="3.1" orbital2="2.1" energy="-0.00214536"/>
+    <pair orbital1="-3.1" orbital2="-2.1" energy="-0.00214536"/>
+    <pair orbital1="3.1" orbital2="-2.1" energy="-0.00627736"/>
+    <pair orbital1="-3.1" orbital2="2.1" energy="-0.00627736"/>
+    <pair orbital1="3.1" orbital2="-3.1" energy="-0.00930847"/>
+    <pair orbital1="-3.1" orbital2="3.1" energy="-0.00930847"/>
+    <pair orbital1="1.2" orbital2="-1.2" energy="-0.00917704"/>
+    <pair orbital1="-1.2" orbital2="1.2" energy="-0.00917704"/>
+    <pair orbital1="1.3" orbital2="-1.3" energy="-0.01027192"/>
+    <pair orbital1="-1.3" orbital2="1.3" energy="-0.01027192"/>
+    <pair orbital1="1.2" orbital2="2.1" energy="-0.00228325"/>
+    <pair orbital1="-1.2" orbital2="-2.1" energy="-0.00228325"/>
+    <pair orbital1="1.2" orbital2="-2.1" energy="-0.00633752"/>
+    <pair orbital1="-1.2" orbital2="2.1" energy="-0.00633752"/>
+    <pair orbital1="1.2" orbital2="3.1" energy="-0.00704055"/>
+    <pair orbital1="-1.2" orbital2="-3.1" energy="-0.00704055"/>
+    <pair orbital1="1.2" orbital2="-3.1" energy="-0.00897677"/>
+    <pair orbital1="-1.2" orbital2="3.1" energy="-0.00897677"/>
+    <pair orbital1="1.3" orbital2="2.1" energy="-0.00221226"/>
+    <pair orbital1="-1.3" orbital2="-2.1" energy="-0.00221226"/>
+    <pair orbital1="1.3" orbital2="-2.1" energy="-0.00782755"/>
+    <pair orbital1="-1.3" orbital2="2.1" energy="-0.00782755"/>
+    <pair orbital1="1.3" orbital2="3.1" energy="-0.00662898"/>
+    <pair orbital1="-1.3" orbital2="-3.1" energy="-0.00662898"/>
+    <pair orbital1="1.3" orbital2="-3.1" energy="-0.01023407"/>
+    <pair orbital1="-1.3" orbital2="3.1" energy="-0.01023407"/>
+    <pair orbital1="1.3" orbital2="1.2" energy="-0.00699491"/>
+    <pair orbital1="-1.3" orbital2="-1.2" energy="-0.00699491"/>
+    <pair orbital1="1.3" orbital2="-1.2" energy="-0.00836024"/>
+    <pair orbital1="-1.3" orbital2="1.2" energy="-0.00836024"/>
+    <property name="singlet pair energy" method="MP2" stateSymmetry="1" stateNumber="1"
+      value="-0.135802915927419"/>
+    <property name="triplet pair energy" method="MP2" stateSymmetry="1" stateNumber="1"
+      value="-0.819159580907687E-01"/>
+    <property name="correlation energy" method="MP2" stateSymmetry="1" stateNumber="1"
+      value="-0.217718874018188"/>
+    <property name="total energy" method="MP2" principal="true" stateSymmetry="1"
+      stateNumber="1" value="-76.2639718951952"/>
+    <property name="Dipole moment" method="MP2" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 0.826469420937454"/>
+    <time start="21:30:19" end="21:30:19" cpu="0.04" system="0.0" real="0.03"/>
+    <storage units="megabyte" memory="1525.87" sf="0.13" df="174.62" eaf="24.33" ga="0.0"/>
+    <summary overall_method="MP2/6-311G(D,P)"/>
+   </jobstep>
+   <gradient name="MP2 GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="-0.667890199444002E-07">
+      0.000000000000  -0.000000012860  -0.000000013452
+      0.000000000000   0.000000000000   0.000000026903
+      0.000000000000   0.000000012860  -0.000000013452
+   </gradient>
+   <opt energy="-76.2639719" type="MP2" line="0.0" convergence="0.420707625301679E-07"
+     gradient="0.376354048129528E-07"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <cml:molecule>
+     <cml:symmetry pointGroup="C2v">
+      <cml:transform3 title="generator" id="X">
+      -1  0  0  0  0  1  0  0  0  0  1  0  0  0  0  1
+      </cml:transform3>
+      <cml:transform3 title="generator" id="Y">
+       1  0  0  0  0 -1  0  0  0  0  1  0  0  0  0  1
+      </cml:transform3>
+     </cml:symmetry>
+     <cml:atomArray>
+      <cml:atom id="a1" elementType="H" x3="0.0" y3="0.746666320584072" z3="0.532773072697577"/>
+      <cml:atom id="a2" elementType="O" x3="0.0" y3="0.0" z3="-0.671391113787369E-01"/>
+      <cml:atom id="a3" elementType="H" x3="0.0" y3="-0.746666320584072" z3="0.532773072697577"/>
+     </cml:atomArray>
+     <cml:bondArray>
+      <cml:bond atomRefs2="a1 a3"/>
+      <cml:bond atomRefs2="a2 a3"/>
+     </cml:bondArray>
+    </cml:molecule>
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-76.0462530196352"/>
+    <property name="One-electron energy" method="RHF" value="-123.145705100414"/>
+    <property name="Two-electron energy" method="RHF" value="37.9053314154934"/>
+    <property name="Kinetic energy" method="RHF" value="76.0596281966562"/>
+    <property name="Nuclear energy" method="RHF" value="9.19412066528584"/>
+    <property name="Virial quotient" method="RHF" value="-0.999824148798277"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 0.864275493951322"/>
+    <time start="21:30:19" end="21:30:19" cpu="0.3" system="0.04" real="0.24"/>
+    <storage units="megabyte" memory="1525.88" sf="0.13" df="174.62" eaf="24.33" ga="0.0"/>
+    <summary overall_method="MP2/6-311G(D,P)"/>
+   </jobstep>
+   <jobstep command="MP2" commandset="CCSD">
+    <property name="energy" method="Reference" stateSymmetry="1" stateNumber="1"
+      value="-76.0462530196352"/>
+    <single orbital="2.1" energy="0.0"/>
+    <single orbital="-2.1" energy="0.0"/>
+    <single orbital="3.1" energy="0.0"/>
+    <single orbital="-3.1" energy="0.0"/>
+    <single orbital="1.2" energy="0.0"/>
+    <single orbital="-1.2" energy="0.0"/>
+    <single orbital="1.3" energy="0.0"/>
+    <single orbital="-1.3" energy="0.0"/>
+    <pair orbital1="2.1" orbital2="-2.1" energy="-0.00478319"/>
+    <pair orbital1="-2.1" orbital2="2.1" energy="-0.00478319"/>
+    <pair orbital1="3.1" orbital2="2.1" energy="-0.00214536"/>
+    <pair orbital1="-3.1" orbital2="-2.1" energy="-0.00214536"/>
+    <pair orbital1="3.1" orbital2="-2.1" energy="-0.00627736"/>
+    <pair orbital1="-3.1" orbital2="2.1" energy="-0.00627736"/>
+    <pair orbital1="3.1" orbital2="-3.1" energy="-0.00930847"/>
+    <pair orbital1="-3.1" orbital2="3.1" energy="-0.00930847"/>
+    <pair orbital1="1.2" orbital2="-1.2" energy="-0.00917704"/>
+    <pair orbital1="-1.2" orbital2="1.2" energy="-0.00917704"/>
+    <pair orbital1="1.3" orbital2="-1.3" energy="-0.01027192"/>
+    <pair orbital1="-1.3" orbital2="1.3" energy="-0.01027192"/>
+    <pair orbital1="1.2" orbital2="2.1" energy="-0.00228325"/>
+    <pair orbital1="-1.2" orbital2="-2.1" energy="-0.00228325"/>
+    <pair orbital1="1.2" orbital2="-2.1" energy="-0.00633752"/>
+    <pair orbital1="-1.2" orbital2="2.1" energy="-0.00633752"/>
+    <pair orbital1="1.2" orbital2="3.1" energy="-0.00704055"/>
+    <pair orbital1="-1.2" orbital2="-3.1" energy="-0.00704055"/>
+    <pair orbital1="1.2" orbital2="-3.1" energy="-0.00897677"/>
+    <pair orbital1="-1.2" orbital2="3.1" energy="-0.00897677"/>
+    <pair orbital1="1.3" orbital2="2.1" energy="-0.00221226"/>
+    <pair orbital1="-1.3" orbital2="-2.1" energy="-0.00221226"/>
+    <pair orbital1="1.3" orbital2="-2.1" energy="-0.00782755"/>
+    <pair orbital1="-1.3" orbital2="2.1" energy="-0.00782755"/>
+    <pair orbital1="1.3" orbital2="3.1" energy="-0.00662898"/>
+    <pair orbital1="-1.3" orbital2="-3.1" energy="-0.00662898"/>
+    <pair orbital1="1.3" orbital2="-3.1" energy="-0.01023406"/>
+    <pair orbital1="-1.3" orbital2="3.1" energy="-0.01023406"/>
+    <pair orbital1="1.3" orbital2="1.2" energy="-0.00699491"/>
+    <pair orbital1="-1.3" orbital2="-1.2" energy="-0.00699491"/>
+    <pair orbital1="1.3" orbital2="-1.2" energy="-0.00836024"/>
+    <pair orbital1="-1.3" orbital2="1.2" energy="-0.00836024"/>
+    <property name="singlet pair energy" method="MP2" stateSymmetry="1" stateNumber="1"
+      value="-0.135802913034765"/>
+    <property name="triplet pair energy" method="MP2" stateSymmetry="1" stateNumber="1"
+      value="-0.819159553705732E-01"/>
+    <property name="correlation energy" method="MP2" stateSymmetry="1" stateNumber="1"
+      value="-0.217718868405339"/>
+    <property name="total energy" method="MP2" principal="true" stateSymmetry="1"
+      stateNumber="1" value="-76.2639718880405"/>
+    <property name="Dipole moment" method="MP2" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 0.826469447258949"/>
+    <time start="21:30:19" end="21:30:19" cpu="0.03" system="0.0" real="0.03"/>
+    <storage units="megabyte" memory="1525.87" sf="0.13" df="174.62" eaf="24.33" ga="0.0"/>
+    <summary overall_method="MP2/6-311G(D,P)"/>
+   </jobstep>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-76.0462530196352"/>
+    <property name="One-electron energy" method="RHF" value="-123.145705608229"/>
+    <property name="Two-electron energy" method="RHF" value="37.9053319233075"/>
+    <property name="Kinetic energy" method="RHF" value="76.0596287229587"/>
+    <property name="Nuclear energy" method="RHF" value="9.19412066528584"/>
+    <property name="Virial quotient" method="RHF" value="-0.99982414187989"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 0.864275564215564"/>
+    <time start="21:30:19" end="21:30:19" cpu="0.2" system="0.04" real="0.19"/>
+    <storage units="megabyte" memory="1525.88" sf="0.13" df="174.62" eaf="24.33" ga="0.0"/>
+    <summary overall_method="MP2/6-311G(D,P)"/>
+   </jobstep>
+   <jobstep command="MP2" commandset="CCSD">
+    <property name="energy" method="Reference" stateSymmetry="1" stateNumber="1"
+      value="-76.0462530196353"/>
+    <single orbital="2.1" energy="0.0"/>
+    <single orbital="-2.1" energy="0.0"/>
+    <single orbital="3.1" energy="0.0"/>
+    <single orbital="-3.1" energy="0.0"/>
+    <single orbital="1.2" energy="0.0"/>
+    <single orbital="-1.2" energy="0.0"/>
+    <single orbital="1.3" energy="0.0"/>
+    <single orbital="-1.3" energy="0.0"/>
+    <pair orbital1="2.1" orbital2="-2.1" energy="-0.00478319"/>
+    <pair orbital1="-2.1" orbital2="2.1" energy="-0.00478319"/>
+    <pair orbital1="3.1" orbital2="2.1" energy="-0.00214536"/>
+    <pair orbital1="-3.1" orbital2="-2.1" energy="-0.00214536"/>
+    <pair orbital1="3.1" orbital2="-2.1" energy="-0.00627736"/>
+    <pair orbital1="-3.1" orbital2="2.1" energy="-0.00627736"/>
+    <pair orbital1="3.1" orbital2="-3.1" energy="-0.00930847"/>
+    <pair orbital1="-3.1" orbital2="3.1" energy="-0.00930847"/>
+    <pair orbital1="1.2" orbital2="-1.2" energy="-0.00917704"/>
+    <pair orbital1="-1.2" orbital2="1.2" energy="-0.00917704"/>
+    <pair orbital1="1.3" orbital2="-1.3" energy="-0.01027192"/>
+    <pair orbital1="-1.3" orbital2="1.3" energy="-0.01027192"/>
+    <pair orbital1="1.2" orbital2="2.1" energy="-0.00228325"/>
+    <pair orbital1="-1.2" orbital2="-2.1" energy="-0.00228325"/>
+    <pair orbital1="1.2" orbital2="-2.1" energy="-0.00633752"/>
+    <pair orbital1="-1.2" orbital2="2.1" energy="-0.00633752"/>
+    <pair orbital1="1.2" orbital2="3.1" energy="-0.00704055"/>
+    <pair orbital1="-1.2" orbital2="-3.1" energy="-0.00704055"/>
+    <pair orbital1="1.2" orbital2="-3.1" energy="-0.00897677"/>
+    <pair orbital1="-1.2" orbital2="3.1" energy="-0.00897677"/>
+    <pair orbital1="1.3" orbital2="2.1" energy="-0.00221226"/>
+    <pair orbital1="-1.3" orbital2="-2.1" energy="-0.00221226"/>
+    <pair orbital1="1.3" orbital2="-2.1" energy="-0.00782755"/>
+    <pair orbital1="-1.3" orbital2="2.1" energy="-0.00782755"/>
+    <pair orbital1="1.3" orbital2="3.1" energy="-0.00662898"/>
+    <pair orbital1="-1.3" orbital2="-3.1" energy="-0.00662898"/>
+    <pair orbital1="1.3" orbital2="-3.1" energy="-0.01023406"/>
+    <pair orbital1="-1.3" orbital2="3.1" energy="-0.01023406"/>
+    <pair orbital1="1.3" orbital2="1.2" energy="-0.00699491"/>
+    <pair orbital1="-1.3" orbital2="-1.2" energy="-0.00699491"/>
+    <pair orbital1="1.3" orbital2="-1.2" energy="-0.00836024"/>
+    <pair orbital1="-1.3" orbital2="1.2" energy="-0.00836024"/>
+    <property name="singlet pair energy" method="MP2" stateSymmetry="1" stateNumber="1"
+      value="-0.135802915458528"/>
+    <property name="triplet pair energy" method="MP2" stateSymmetry="1" stateNumber="1"
+      value="-0.81915957394133E-01"/>
+    <property name="correlation energy" method="MP2" stateSymmetry="1" stateNumber="1"
+      value="-0.217718872852661"/>
+    <property name="total energy" method="MP2" principal="true" stateSymmetry="1"
+      stateNumber="1" value="-76.2639718924879"/>
+    <property name="Dipole moment" method="MP2" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 0.826469502522266"/>
+    <time start="21:30:19" end="21:30:19" cpu="0.04" system="0.0" real="0.04"/>
+    <storage units="megabyte" memory="1525.87" sf="0.13" df="174.62" eaf="24.33" ga="0.0"/>
+    <summary overall_method="MP2/6-311G(D,P)"/>
+   </jobstep>
+   <time start="21:30:18" end="21:30:19" cpu="2.0" system="0.27" real="1.74"/>
+   <storage units="megabyte" memory="0.18" sf="0.13" df="174.62" eaf="24.33" ga="0.0"/>
+   <summary overall_method="MP2/6-311G(D,P)//MP2/6-311G(D,P)"/>
+  </jobstep>
+  <jobstep command="FREQ" commandset="FREQ">
+   <gradient name="MP2 GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="0.274182365948541E-04">
+      0.000000101346   0.000012163055   0.000009531436
+     -0.000000123924  -0.000012280069  -0.000009191672
+      0.000000022578   0.000000117014  -0.000000339764
+   </gradient>
+   <gradient name="MP2 GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="-0.137727500303357E-03">
+      0.000000000000  -0.003502109947  -0.002831817940
+      0.000000000000   0.006932338096   0.000093171786
+      0.000000000000  -0.003430228149   0.002738646154
+   </gradient>
+   <cml:molecule>
+    <cml:symmetry pointGroup="Cs">
+    </cml:symmetry>
+    <cml:atomArray>
+     <cml:atom id="a1" elementType="H" x3="0.0" y3="0.746666320584072" z3="0.532773072697577"/>
+     <cml:atom id="a2" elementType="O" x3="0.0" y3="0.0" z3="-0.671391113787369E-01"/>
+     <cml:atom id="a3" elementType="H" x3="0.0" y3="-0.746666320584072" z3="0.532773072697577"/>
+    </cml:atomArray>
+    <cml:bondArray>
+     <cml:bond atomRefs2="a1 a3"/>
+     <cml:bond atomRefs2="a2 a3"/>
+    </cml:bondArray>
+   </cml:molecule>
+   <vibrations>
+    <normalCoordinate wavenumber="4012.53" units="inverseCentimetre" IRintensity="33.46"
+      IRintensityunits="km/mol" symmetry="B2" real_zero_imag="R">
+      0.00000000  0.52919398  0.42518312
+      0.00000000 -0.06668808  0.00000000
+      0.00000000  0.52919398 -0.42518312
+    </normalCoordinate>
+    <normalCoordinate wavenumber="3904.75" units="inverseCentimetre" IRintensity="6.19"
+      IRintensityunits="km/mol" symmetry="A1" real_zero_imag="R">
+      0.00000000  0.56587234  0.39524654
+      0.00000000  0.00000000 -0.04980826
+      0.00000000 -0.56587234  0.39524654
+    </normalCoordinate>
+    <normalCoordinate wavenumber="1667.26" units="inverseCentimetre" IRintensity="51.21"
+      IRintensityunits="km/mol" symmetry="A1" real_zero_imag="R">
+      0.00000000 -0.41941193  0.53326829
+      0.00000000  0.00000000 -0.06720152
+      0.00000000  0.41941193  0.53326829
+    </normalCoordinate>
+    <normalCoordinate wavenumber="0.0" units="inverseCentimetre" IRintensity="0.0"
+      IRintensityunits="km/mol" symmetry="Err" real_zero_imag="Z">
+      0.00000000 -0.41083625  0.59197982
+      0.00635406 -0.00989423  0.09295695
+      0.00000000 -0.41083625 -0.40606592
+    </normalCoordinate>
+    <normalCoordinate wavenumber="0.0" units="inverseCentimetre" IRintensity="0.0"
+      IRintensityunits="km/mol" symmetry="Err" real_zero_imag="Z">
+      0.00000000  0.15696492 -0.01931856
+      0.05419131 -0.02651010  0.20903922
+      0.00000000  0.15696492  0.43739701
+    </normalCoordinate>
+    <normalCoordinate wavenumber="0.0" units="inverseCentimetre" IRintensity="0.0"
+      IRintensityunits="km/mol" symmetry="Err" real_zero_imag="Z">
+      0.00000000 -0.01309331 -0.00063988
+      0.24334376  0.02384730 -0.04661713
+      0.00000000 -0.01309331 -0.09259438
+    </normalCoordinate>
+    <normalCoordinate wavenumber="0.0" units="inverseCentimetre" IRintensity="0.0"
+      IRintensityunits="km/mol" symmetry="Err" real_zero_imag="Z">
+      0.97431389  0.00000000  0.00000000
+      0.00000000  0.00000000  0.00000000
+      0.20723945  0.00000000  0.00000000
+    </normalCoordinate>
+    <normalCoordinate wavenumber="0.0" units="inverseCentimetre" IRintensity="0.0"
+      IRintensityunits="km/mol" symmetry="Err" real_zero_imag="Z">
+     -0.20723945  0.00000000  0.00000000
+      0.00000000  0.00000000  0.00000000
+      0.97431389  0.00000000  0.00000000
+    </normalCoordinate>
+    <normalCoordinate wavenumber="0.0" units="inverseCentimetre" IRintensity="0.0"
+      IRintensityunits="km/mol" symmetry="Err" real_zero_imag="Z">
+      0.00000000  0.14991921  0.14158548
+     -0.01807294  0.23812437  0.03180305
+      0.00000000  0.14991921 -0.07797939
+    </normalCoordinate>
+   </vibrations>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-76.0462530196352"/>
+    <property name="One-electron energy" method="RHF" value="-123.14570530471"/>
+    <property name="Two-electron energy" method="RHF" value="37.9053316197893"/>
+    <property name="Kinetic energy" method="RHF" value="76.0596283924899"/>
+    <property name="Nuclear energy" method="RHF" value="9.19412066528584"/>
+    <property name="Virial quotient" method="RHF" value="-0.999824146223991"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 0.864275536158286"/>
+    <time start="21:30:20" end="21:30:20" cpu="0.58" system="0.03" real="0.45"/>
+    <storage units="megabyte" memory="1525.88" sf="0.13" df="207.1" eaf="24.33" ga="0.0"/>
+    <summary overall_method="MP2/6-311G(D,P)"/>
+   </jobstep>
+   <jobstep command="MP2" commandset="CCSD">
+    <property name="energy" method="Reference" stateSymmetry="1" stateNumber="1"
+      value="-76.0462530196352"/>
+    <single orbital="2.1" energy="0.0"/>
+    <single orbital="-2.1" energy="0.0"/>
+    <single orbital="3.1" energy="0.0"/>
+    <single orbital="-3.1" energy="0.0"/>
+    <single orbital="1.2" energy="0.0"/>
+    <single orbital="-1.2" energy="0.0"/>
+    <single orbital="1.3" energy="0.0"/>
+    <single orbital="-1.3" energy="0.0"/>
+    <pair orbital1="2.1" orbital2="-2.1" energy="-0.00478319"/>
+    <pair orbital1="-2.1" orbital2="2.1" energy="-0.00478319"/>
+    <pair orbital1="3.1" orbital2="2.1" energy="-0.00214536"/>
+    <pair orbital1="-3.1" orbital2="-2.1" energy="-0.00214536"/>
+    <pair orbital1="3.1" orbital2="-2.1" energy="-0.00627736"/>
+    <pair orbital1="-3.1" orbital2="2.1" energy="-0.00627736"/>
+    <pair orbital1="3.1" orbital2="-3.1" energy="-0.00930847"/>
+    <pair orbital1="-3.1" orbital2="3.1" energy="-0.00930847"/>
+    <pair orbital1="1.2" orbital2="-1.2" energy="-0.00917704"/>
+    <pair orbital1="-1.2" orbital2="1.2" energy="-0.00917704"/>
+    <pair orbital1="1.3" orbital2="-1.3" energy="-0.01027192"/>
+    <pair orbital1="-1.3" orbital2="1.3" energy="-0.01027192"/>
+    <pair orbital1="1.2" orbital2="2.1" energy="-0.00228325"/>
+    <pair orbital1="-1.2" orbital2="-2.1" energy="-0.00228325"/>
+    <pair orbital1="1.2" orbital2="-2.1" energy="-0.00633752"/>
+    <pair orbital1="-1.2" orbital2="2.1" energy="-0.00633752"/>
+    <pair orbital1="1.2" orbital2="3.1" energy="-0.00704055"/>
+    <pair orbital1="-1.2" orbital2="-3.1" energy="-0.00704055"/>
+    <pair orbital1="1.2" orbital2="-3.1" energy="-0.00897677"/>
+    <pair orbital1="-1.2" orbital2="3.1" energy="-0.00897677"/>
+    <pair orbital1="1.3" orbital2="2.1" energy="-0.00221226"/>
+    <pair orbital1="-1.3" orbital2="-2.1" energy="-0.00221226"/>
+    <pair orbital1="1.3" orbital2="-2.1" energy="-0.00782755"/>
+    <pair orbital1="-1.3" orbital2="2.1" energy="-0.00782755"/>
+    <pair orbital1="1.3" orbital2="3.1" energy="-0.00662898"/>
+    <pair orbital1="-1.3" orbital2="-3.1" energy="-0.00662898"/>
+    <pair orbital1="1.3" orbital2="-3.1" energy="-0.01023406"/>
+    <pair orbital1="-1.3" orbital2="3.1" energy="-0.01023406"/>
+    <pair orbital1="1.3" orbital2="1.2" energy="-0.00699491"/>
+    <pair orbital1="-1.3" orbital2="-1.2" energy="-0.00699491"/>
+    <pair orbital1="1.3" orbital2="-1.2" energy="-0.00836024"/>
+    <pair orbital1="-1.3" orbital2="1.2" energy="-0.00836024"/>
+    <property name="singlet pair energy" method="MP2" stateSymmetry="1" stateNumber="1"
+      value="-0.135802913950991"/>
+    <property name="triplet pair energy" method="MP2" stateSymmetry="1" stateNumber="1"
+      value="-0.819159561924036E-01"/>
+    <property name="correlation energy" method="MP2" stateSymmetry="1" stateNumber="1"
+      value="-0.217718870143395"/>
+    <property name="total energy" method="MP2" principal="true" stateSymmetry="1"
+      stateNumber="1" value="-76.2639718897786"/>
+    <property name="Dipole moment" method="MP2" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 0.826469483013491"/>
+    <time start="21:30:20" end="21:30:21" cpu="0.06" system="0.01" real="0.06"/>
+    <storage units="megabyte" memory="1525.87" sf="0.13" df="207.1" eaf="24.33" ga="0.0"/>
+    <summary overall_method="MP2/6-311G(D,P)"/>
+   </jobstep>
+   <time start="21:30:19" end="21:30:21" cpu="1.46" system="0.11" real="1.08"/>
+   <storage units="megabyte" memory="0.18" sf="0.13" df="207.1" eaf="24.33" ga="0.0"/>
+   <summary overall_method="MP2/6-311G(D,P)"/>
+  </jobstep>
+  <input>
+   <p>memory, 200, m ! Memory Requirements</p>
+   <p>gthresh, optgrad=1.d-7,twoint=1.d-14,prefac=1.d-16 ! Guntram Rezept um numerischen Schmutz zu entfernen</p>
+   <p>orient,mass</p>
+   <p>geometry = {</p>
+   <p> H,    0.7493682,    0.0000000,    0.4424329</p>
+   <p> O,    0.0000000,    0.0000000,   -0.1653507</p>
+   <p> H,   -0.7493682,    0.0000000,    0.4424329</p>
+   <p>}</p>
+   <p>mass, iso</p>
+   <p>basis=6-311g(d,p)</p>
+   <p>{hf</p>
+   <p>start,atden}</p>
+   <p>mp2</p>
+   <p>optg</p>
+   <p>{frequencies, symm=auto, print=0,analytical}</p>
+   <p>put,molden,h2o_mp2.molden</p>
+  </input>
+  <diagnostics warnings="0"/>
+ </job>
+</molpro>

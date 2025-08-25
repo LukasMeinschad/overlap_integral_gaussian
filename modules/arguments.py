@@ -45,4 +45,16 @@ def get_args():
             + gradient_test: Various test for the gradient of the gaussian overlap
             """
     )
+    parser.add_argument(
+        "-v",
+        "--vector",
+        type=bool,
+        default=False,
+        help=""" 
+            If set to True, additionaly the vector length of the normal modes and the position of the atoms in 3D space will be written to a log file
+
+            + Default is False
+            """
+    )
+
     return parser.parse_args()

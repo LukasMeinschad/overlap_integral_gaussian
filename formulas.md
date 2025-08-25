@@ -6,7 +6,7 @@
 
 Given by 
 
-$$f_i(r) = a_i \exp\left(-\frac{(r-b_i)^T(r-b_i)}{2c_i^2}\right)$$ 
+$f_i(r) = a_i \exp\left(-\frac{(r-b_i)^T(r-b_i)}{2c_i^2}\right)$
 
 where:
 
