@@ -449,7 +449,73 @@ def main():
         plt.legend()
         plt.savefig('normal_modes_norms_log_file.png', dpi=300)
 
-        # Stop further execution
+
+        def calculate_vector_difference_norm(data, file1,file2,atom,mode_number):
+            """ 
+            Helper function to calculate the norm of the difference between two vectors
+            """
+
+            # Im an idiot an lists in python are zero indexed 
+            vec1 = data[file1]["modes"][mode_number]['displacements'][atom]
+            vec2 = data[file2]["modes"][mode_number]['displacements'][atom]
+
+            def vector_from_dict(vec_dict):
+                """ 
+                Converts a vector from the dictionary to a numpy array
+                """
+                return np.array([vec_dict['x'], vec_dict['y'], vec_dict['z']])
+            
+            vec1_array = vector_from_dict(vec1)
+            vec2_array = vector_from_dict(vec2)
+
+            difference = vec1_array - vec2_array
+            norm = np.linalg.norm(difference)
+            return difference, norm
+
+        # Extract all the keys from the data
+        filenames = list(log_data.keys())
+        
+        # Make all possible combinations
+        vector_differences = {}
+        
+        # Determine how many modes we have
+        num_of_modes = len(log_data[filenames[0]]["modes"])            
+
+        # Determine the list of atoms
+        list_of_atoms = list(log_data[filenames[0]]["modes"][0]['displacements'].keys())
+        
+
+        norm_results = {}        
+
+        for filename1,filename2 in combinations(filenames,2):
+            for mode_number in range(1, num_of_modes + 1):
+                for atom in list_of_atoms:
+                    difference,norm = calculate_vector_difference_norm(log_data,filename1,filename2,atom,mode_number-1)
+                    norm_results[(filename1,filename2,mode_number,atom)] = norm
+
+        # Convert to DataFrame for easier plotting
+        df_differences = pd.DataFrame(
+            [(k[0], k[1], k[2], k[3], v) for k, v in norm_results.items()],
+            columns=['File1', 'File2', 'Mode', 'Atom', 'Norm']
+        )
+        
+        # Plot differences group by Atom make suplot for each atom
+        atoms = df_differences['Atom'].unique()
+        num_atoms = len(atoms)
+        fig, axs = plt.subplots(num_atoms, 1, figsize=(12, 6 * num_atoms), sharex=True)
+        if num_atoms == 1:
+            axs = [axs]  # Ensure axs is iterable
+        for ax, atom in zip(axs, atoms): 
+            atom_data = df_differences[df_differences['Atom'] == atom]
+            for (file1, file2), group in atom_data.groupby(['File1', 'File2']):
+                ax.plot(group['Mode'], group['Norm'], marker='o', label=f'{file1} vs {file2}')
+            ax.set_title(f'Norm of Vector Differences for Atom {atom}')
+            ax.set_ylabel('Norm of Difference')
+            ax.legend()
+        axs[-1].set_xlabel('Normal Mode Number')
+        plt.tight_layout()
+        plt.savefig('normal_modes_vector_differences_log_file.png', dpi=300)
+        
         return
 
     else:
