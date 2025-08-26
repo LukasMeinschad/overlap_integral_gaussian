@@ -330,7 +330,196 @@ def plot_molecule_vdw_spheres(molecule, vdw_radii):
 
 def main():
     args =  arguments.get_args()
-    molpro_out = args.input
+    # Check if the output file ends with .log
+    if args.input.suffix == ".log":
+        print("Log file as input detected.")
+        
+        def parse_log_file(log_file):
+            """ 
+            Parse log file with multiple normal modes sections
+            """
+            data = {}
+            current_section = None
+            current_mode_data = None
+            
+            with open(log_file, "r") as f:
+                for line in f:
+                    line = line.strip()
+                    
+                    # Skip empty lines and separators
+                    if not line or line.startswith("==="):
+                        continue
+                    
+                    # New section starts with "Normal Modes for"
+                    if line.startswith("Normal Modes for"):
+                        section_name = line.split('for ')[1].strip()
+                        current_section = section_name
+                        
+                        # Initialize data for this section
+                        if section_name not in data:
+                            data[section_name] = {
+                                'filename': section_name,
+                                'modes': []
+                            }
+                        continue
+                    
+                    # Skip header lines
+                    if line.startswith("Mode") and "Wavenumber" in line:
+                        continue
+                    
+                    # Parse mode data line
+                    parts = line.split()
+                    if len(parts) >= 3 and current_section:
+                        try:
+                            mode_num = int(parts[0])
+                            wavenumber = float(parts[1])
+                            symmetry = parts[2]
+
+                            # Rest is the displacement vector
+                            displacement_str = ' '.join(parts[3:]) 
+                            displacements = parse_displacement_vector(displacement_str)
+                            
+                            mode_data = {
+                                'mode_number': mode_num,
+                                'wavenumber': wavenumber,
+                                'symmetry': symmetry,
+                                'displacements': displacements
+                            }
+                            
+                            # Add to current section
+                            data[current_section]['modes'].append(mode_data)
+                            
+                        except ValueError:
+                            continue
+            
+            return data
+
+        def parse_displacement_vector(displacement_str):
+            """ 
+            Parses the displacement vector string into a dictionary
+            """
+            displacements = {}
+        
+            # Split by atom entries
+            entries = displacement_str.split(')')
+        
+            for entry in entries:
+                entry = entry.strip()
+                if not entry:
+                    continue
+        
+                # Find colon that separates atom label from coordinates
+                if ":" in entry:
+                    atom_part, coords_part = entry.split(':', 1)
+                    atom_label = atom_part.strip()
+                     
+                    if '(' in coords_part: 
+                        coords_str = coords_part.split('(', 1)[1].strip()
+                        coords = [float(coord.strip()) for coord in coords_str.split(',')]
+                        if len(coords) == 3:
+                            displacements[atom_label] = {
+                                'x': coords[0],
+                                'y': coords[1],
+                                'z': coords[2]
+                            }
+            return displacements
+        
+        log_data = parse_log_file(args.input)
+        # Loop through each file and plot the length of the normal modes
+        print("Calculating Norm of Normal Modes from Log File:")
+        print("="*50)
+        norms = []
+        for calculation_type, data in log_data.items():
+            print(f"Processing calculation: {calculation_type} from file {data['filename']}")
+            modes = data['modes']
+            for mode in modes:
+                mode_number = mode['mode_number'] 
+                norm = compute_mode_norm(mode['displacements'])
+                norms.append((calculation_type, mode_number, norm))
+                print(f"Mode {mode_number}: Norm = {norm:.6f}")
+        
+        # Plot the norms in a bar plot 
+        df_norms = pd.DataFrame(norms, columns=['Calculation', 'Mode', 'Norm'])
+        plt.figure(figsize=(12, 6))
+        for calculation, group in df_norms.groupby('Calculation'):
+            plt.bar(group['Mode'] + (0.1 * list(log_data.keys()).index(calculation)), group['Norm'], width=0.1, label=calculation)
+        plt.xlabel('Normal Mode Number')
+        plt.ylabel('Norm')
+        plt.title('Norm of Normal Modes from Log File')
+        plt.legend()
+        plt.savefig('normal_modes_norms_log_file.png', dpi=300)
+
+
+        def calculate_vector_difference_norm(data, file1,file2,atom,mode_number):
+            """ 
+            Helper function to calculate the norm of the difference between two vectors
+            """
+
+            # Im an idiot an lists in python are zero indexed 
+            vec1 = data[file1]["modes"][mode_number]['displacements'][atom]
+            vec2 = data[file2]["modes"][mode_number]['displacements'][atom]
+
+            def vector_from_dict(vec_dict):
+                """ 
+                Converts a vector from the dictionary to a numpy array
+                """
+                return np.array([vec_dict['x'], vec_dict['y'], vec_dict['z']])
+            
+            vec1_array = vector_from_dict(vec1)
+            vec2_array = vector_from_dict(vec2)
+
+            difference = vec1_array - vec2_array
+            norm = np.linalg.norm(difference)
+            return difference, norm
+
+        # Extract all the keys from the data
+        filenames = list(log_data.keys())
+        
+        # Make all possible combinations
+        vector_differences = {}
+        
+        # Determine how many modes we have
+        num_of_modes = len(log_data[filenames[0]]["modes"])            
+
+        # Determine the list of atoms
+        list_of_atoms = list(log_data[filenames[0]]["modes"][0]['displacements'].keys())
+        
+
+        norm_results = {}        
+
+        for filename1,filename2 in combinations(filenames,2):
+            for mode_number in range(1, num_of_modes + 1):
+                for atom in list_of_atoms:
+                    difference,norm = calculate_vector_difference_norm(log_data,filename1,filename2,atom,mode_number-1)
+                    norm_results[(filename1,filename2,mode_number,atom)] = norm
+
+        # Convert to DataFrame for easier plotting
+        df_differences = pd.DataFrame(
+            [(k[0], k[1], k[2], k[3], v) for k, v in norm_results.items()],
+            columns=['File1', 'File2', 'Mode', 'Atom', 'Norm']
+        )
+        
+        # Plot differences group by Atom make suplot for each atom
+        atoms = df_differences['Atom'].unique()
+        num_atoms = len(atoms)
+        fig, axs = plt.subplots(num_atoms, 1, figsize=(12, 6 * num_atoms), sharex=True)
+        if num_atoms == 1:
+            axs = [axs]  # Ensure axs is iterable
+        for ax, atom in zip(axs, atoms): 
+            atom_data = df_differences[df_differences['Atom'] == atom]
+            for (file1, file2), group in atom_data.groupby(['File1', 'File2']):
+                ax.plot(group['Mode'], group['Norm'], marker='o', label=f'{file1} vs {file2}')
+            ax.set_title(f'Norm of Vector Differences for Atom {atom}')
+            ax.set_ylabel('Norm of Difference')
+            ax.legend()
+        axs[-1].set_xlabel('Normal Mode Number')
+        plt.tight_layout()
+        plt.savefig('normal_modes_vector_differences_log_file.png', dpi=300)
+        
+        return
+
+    else:
+        molpro_out = args.input
 
     if not molpro_out.exists():
         raise FileNotFoundError(f"File {molpro_out} does not exist.")
@@ -344,13 +533,57 @@ def main():
 
     normal_modes = molpro_parser.parse_normal_modes(molpro_out)
 
-    # Make a symmetry detection and analysis
-    #pg_symbol = symmetry.detect_point_group(molecule)
-    #pg_symol = "C2v" # testing
-    #mirror_planes = symmetry.find_mirror_planes(pg_symbol)
+    #TODO rewrite this piece of junk
+    if args.vector:
+        # Check if the output file already exists
+        normal_mode_log = "normal_modes_vectors.log"
+        if Path(normal_mode_log).exists():
+            print(f"Log file {normal_mode_log} already exists, adding new data to the file.")
+            # Ask user if they want to clear this file
+            user_input = input("Do you want to clear the log file? (y/n): ")
+            if user_input.lower() == "y":
+                Path(normal_mode_log).unlink()
+                print(f"Log file {normal_mode_log} cleared.")
+                with open(normal_mode_log, "w") as f:
+                    f.write(f"Normal Modes for {molpro_out.name}\n")
+                    f.write(f"{'Mode':<6}{'Wavenumber (cm^-1)':<20}{'Symmetry':<10}{'Displacement Vector (x,y,z) in Angstrom':<50}\n")
+                    f.write("="*100 + "\n")
+                    for mode_number, mode in normal_modes.items():
+                        displacements = mode['displacements']
+                        f.write(f"{mode_number:<6}{mode['wavenumber']:<20}{mode['symmetry']:<10}")
+                        for atom, disp in displacements.items():
+                            f.write(f"{atom}: ({disp.get('x',0):.4f}, {disp.get('y',0):.4f}, {disp.get('z',0):.4f})  ")
+                        f.write("\n")
+            else:
+                print(f"Appending to existing log file {normal_mode_log}.")
+                with open(normal_mode_log, "a") as f:
+                    f.write(f"\nNormal Modes for {molpro_out.name}\n")
+                    f.write(f"{'Mode':<6}{'Wavenumber (cm^-1)':<20}{'Symmetry':<10}{'Displacement Vector (x,y,z) in Angstrom':<50}\n")
+                    f.write("="*100 + "\n")
+                    for mode_number, mode in normal_modes.items():
+                        displacements = mode['displacements']
+                        f.write(f"{mode_number:<6}{mode['wavenumber']:<20}{mode['symmetry']:<10}")
+                        for atom, disp in displacements.items():
+                            f.write(f"{atom}: ({disp.get('x',0):.4f}, {disp.get('y',0):.4f}, {disp.get('z',0):.4f})  ")
+                        f.write("\n")
+        else:
+            # If it does not exist, create a new file
+            with open(normal_mode_log, "w") as f:
+                f.write(f"Normal Modes for {molpro_out.name}\n")
+                f.write(f"{'Mode':<6}{'Wavenumber (cm^-1)':<20}{'Symmetry':<10}{'Displacement Vector (x,y,z) in Angstrom':<50}\n")
+                f.write("="*100 + "\n")
+                for mode_number, mode in normal_modes.items():
+                    displacements = mode['displacements']
+                    f.write(f"{mode_number:<6}{mode['wavenumber']:<20}{mode['symmetry']:<10}")
+                    for atom, disp in displacements.items():
+                        f.write(f"{atom}: ({disp.get('x',0):.4f}, {disp.get('y',0):.4f}, {disp.get('z',0):.4f})  ")
+                    f.write("\n")
 
-    print("============== Point Group Detection ==============")
-    #print(f"Point Group: {pg_symbol}") 
+        
+         
+
+
+    
 
 
 
@@ -382,10 +615,14 @@ def main():
     pairwise_gradient_change = gaussian.compute_pairwise_gradients(molecule,vdw_radii,normal_modes)
     gaussian.plot_mode_gradients(pairwise_gradient_change,molecule)
 
-       
-
+    
     # ======= Testing Section =======
-
+     
+    # Some further tests for the gradient field 
+    #gaussian.gaussian_density_test_2d()
+    #gaussian.gaussian_density_test_2d_three_atoms()
+    #gaussian.gradient_field_gaussian_density_test_2d()
+    #gaussian.gradient_field_gaussian_density_test_2d_three_atoms()
     if args.tests == "1d_gaussian_mult":
         gaussian.plot_1d_gaussian_multiplication()
 
@@ -407,7 +644,11 @@ def main():
     # Check Orthogonality
     check_orthogonality(normal_modes)
 
-    # Calculate the volume change for each normal mode
+    
+
+
+
+
 
 if __name__ == "__main__":
     main()

@@ -1,0 +1,99 @@
+
+ Working directory              : /tmp/lme/molpro.7F3mGWQZz5/
+ Global scratch directory       : /tmp/lme/molpro.7F3mGWQZz5/
+ Wavefunction directory         : /home/lme/wfu/
+ Main file repository           : /tmp/lme/molpro.7F3mGWQZz5/
+
+ id        : liedlgroup
+
+ Nodes     nprocs
+ sv1-c724     5
+ Distribution of processes:   nprocs(total)=    6   nprocs(compute)=    5   nprocs(helper)=    1
+ GA implementation: MPI file
+ GA implementation (serial work in mppx): MPI file
+
+ Using customized tuning parameters: mindgm=1; mindgv=20; mindgc=4; mindgr=1; noblas=0; minvec=7
+ default implementation of scratch files=sf  
+
+
+ Variables initialized (1059), CPU time= 0.00 sec
+ memory, 200, m                                                                  ! Memory Requirements
+ gthresh, optgrad=1.d-7,twoint=1.d-14,prefac=1.d-16                            ! Guntram Rezept um numerischen Schmutz zu entfernen
+ orient,mass
+ geometry = {
+ H,    0.7493682,    0.0000000,    0.4424329
+  O,    0.0000000,    0.0000000,   -0.1653507
+  H,   -0.7493682,    0.0000000,    0.4424329
+ }
+ 
+ mass, iso
+ basis=6-311g(d,p)
+ 
+ {hf
+ start,atden}
+ 
+ optg
+ {frequencies, symm=auto, print=0,analytical}
+ put,molden,h2o_hf.molden
+ Commands initialized (838), CPU time= 0.01 sec, 726 directives.
+ Default parameters read. Elapsed time= 0.09 sec
+
+ Checking input...
+ Passed
+1
+
+
+                                         ***  PROGRAM SYSTEM MOLPRO  ***
+                                       Copyright, TTI GmbH Stuttgart, 2015
+                                  Version 2025.2 linked Wed May 14 11:42:57 2025
+
+
+ **********************************************************************************************************************************
+ LABEL *                                                                                                                                                                 
+                                                                                         DATE: 25-Aug-25          TIME: 21:27:24  
+ **********************************************************************************************************************************
+
+ SHA1:             57ceb174f4fe6691bc75d8fe641d0297fc3c2b28
+ **********************************************************************************************************************************
+
+ Memory per process:       200 MW
+ Total memory per node:   1000 MW
+
+ GA preallocation disabled
+ GA check disabled
+
+ Variable memory set to 200.0 MW
+
+
+ THRESHOLDS:
+
+ ZERO    =  1.00D-12  ONEINT  =  1.00D-12  TWOINT  =  1.00D-14  PREFAC  =  1.00D-16  XXXXXX  =  1.00D-09  EORDER  =  1.00D-04
+ ENERGY  =  0.00D+00  ETEST   =  0.00D+00  EDENS   =  0.00D+00  THRDEDEF=  1.00D-06  GRADIENT=  1.00D-05  STEP    =  1.00D-03
+ ORBITAL =  1.00D-05  CIVEC   =  1.00D-05  COEFF   =  1.00D-04  PRINTCI =  5.00D-02  PUNCHCI =  9.90D+01  OPTGRAD =  1.00D-07
+ OPTENERG=  1.00D-06  OPTSTEP =  3.00D-04  THRGRAD =  1.00D-10  COMPRESS=  1.00D-11  VARMIN  =  1.00D-07  VARMAX  =  1.00D-03
+ THRDOUB =  0.00D+00  THRDIV  =  1.00D-05  THRRED  =  1.00D-07  THRPSP  =  1.00D+00  THRDC   =  1.00D-10  THRCS   =  1.00D-10
+ THRNRM  =  1.00D-08  THREQ   =  0.00D+00  THRDE   =  1.00D+00  THRREF  =  1.00D-05  SPARFAC =  1.00D+00  THRDLP  =  1.00D-07
+ THRDIA  =  1.00D-10  THRDLS  =  1.00D-07  THRGPS  =  0.00D+00  THRKEX  =  0.00D+00  THRDIS  =  2.00D-01  THRVAR  =  1.00D-10
+ THRLOC  =  1.00D-06  THRGAP  =  1.00D-06  THRLOCT = -1.00D+00  THRGAPT = -1.00D+00  THRORB  =  1.00D-06  THRMLTP =  0.00D+00
+ THRCPQCI=  1.00D-10  KEXTA   =  0.00D+00  THRCOARS=  0.00D+00  SYMTOL  =  1.00D-06  GRADTOL =  1.00D-06  THROVL  =  1.00D-08
+ THRORTH =  1.00D-08  THRDLOVL=  1.00D-08  GRID    =  1.00D-06  GRIDMAX =  1.00D-03  DTMAX   =  0.00D+00  THROCCDE=  1.00D-01
+ THROCCDE=  1.00D-01  THRPRINT=  2.50D-01  SCALEFAC=  1.20D+00
+
+ ZCENTRE=MASS
+
+
+ Geometry recognized as XYZ
+
+
+
+ Using masses of most abundant isotopes
+
+ **********************************************************************************************************************************
+ SETTING BASIS          =    6-311G(D,P)
+
+
+ INPUT ERROR: 1 UNMATCHED PARENTHESIS
+
+ BASIS,'6-311G(D',                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+
+ GLOBAL ERROR fehler on processor   0                                         

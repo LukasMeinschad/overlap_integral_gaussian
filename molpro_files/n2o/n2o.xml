@@ -1,0 +1,2600 @@
+<?xml version="1.0"?>
+<molpro xmlns="http://www.molpro.net/schema/molpro-output"
+  xmlns:xsd="http://www.w3.org/1999/XMLSchema"
+  xmlns:cml="http://www.xml-cml.org/schema"
+  xmlns:stm="http://www.xml-cml.org/schema"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+ <job>
+  <stm:metadataList>
+   <stm:metadata name="dc:date" content="2025-08-21T21:22:38+02:00"/>
+   <stm:metadata name="dc:creator" content="lme"/>
+   <stm:metadata name="cmlm:insilico" content="Molpro"/>
+  </stm:metadataList>
+  <platform pid="1650285">
+   <version major="2022" minor="3" SHA="e31ec9a5ea85254ab76f59d122cbdd51c71cf98b"
+     integer_bits="64" parallelism="mpp">
+    2022.3
+    <date year="2025" month="8" day="21" hour="21" minute="22" second="38">
+     2025-08-21T21:22:38
+    </date>
+   </version>
+   <licence id="liedlgroup"/>
+   <parallel processes="6" nodes="1" all_processes="6" openmp="6"/>
+   <dimensions natom="400" nvalence="500" nvalence_pno="1000" nbasis="12000" nstate="100"
+     nsymm="16" nrec="512" nprim="2" ncol="100"/>
+  </platform>
+  <jobstep command="HF-SCF" commandset="SCFPRO">
+   <cml:molecule>
+    <cml:symmetry pointGroup="C2v">
+     <cml:transform3 title="generator" id="X">
+      -1  0  0  0  0  1  0  0  0  0  1  0  0  0  0  1
+     </cml:transform3>
+     <cml:transform3 title="generator" id="Y">
+       1  0  0  0  0 -1  0  0  0  0  1  0  0  0  0  1
+     </cml:transform3>
+    </cml:symmetry>
+    <cml:atomArray>
+     <cml:atom id="a1" elementType="N" x3="0.0" y3="0.0" z3="-1.1872153692521"/>
+     <cml:atom id="a2" elementType="N" x3="0.0" y3="0.0" z3="-0.739553692520974E-01"/>
+     <cml:atom id="a3" elementType="O" x3="0.0" y3="0.0" z3="1.1041176307479"/>
+    </cml:atomArray>
+    <cml:bondArray>
+     <cml:bond atomRefs2="a1 a2"/>
+     <cml:bond atomRefs2="a2 a3"/>
+    </cml:bondArray>
+   </cml:molecule>
+   <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+     value="-183.725636683702"/>
+   <property name="One-electron energy" method="RHF" value="-371.634324265619"/>
+   <property name="Two-electron energy" method="RHF" value="126.529395410806"/>
+   <property name="Kinetic energy" method="RHF" value="183.568780887103"/>
+   <property name="Nuclear energy" method="RHF" value="61.3792921711106"/>
+   <property name="Virial quotient" method="RHF" value="-1.00085447969879"/>
+   <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+     stateNumber="1" value="0.0 0.0 -0.270485072463589"/>
+   <time start="21:22:38" end="21:22:38" cpu="0.58" system="0.15" real="0.59"/>
+   <storage units="megabyte" memory="1525.88" sf="0.0" df="174.93" eaf="26.22" ga="0.0"/>
+   <summary overall_method="HF/6-311G(D,P)"/>
+  </jobstep>
+  <jobstep command="OPTG" commandset="OPT">
+   <gradient name="SCF GRADIENT" stateSymmetry="1" stateNumber="1" virial="0.22428158260646">
+      0.000000000000   0.000000000000  -0.084412637533
+      0.000000000000   0.000000000000   0.063436442101
+      0.000000000000   0.000000000000   0.020976195432
+   </gradient>
+   <opt energy="-183.72563668" type="HF-SCF000" line="0.0"
+     convergence="0.593814388627833E-01" gradient="0.107655359069689"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <cml:molecule>
+     <cml:symmetry pointGroup="C2v">
+      <cml:transform3 title="generator" id="X">
+      -1  0  0  0  0  1  0  0  0  0  1  0  0  0  0  1
+      </cml:transform3>
+      <cml:transform3 title="generator" id="Y">
+       1  0  0  0  0 -1  0  0  0  0  1  0  0  0  0  1
+      </cml:transform3>
+     </cml:symmetry>
+     <cml:atomArray>
+      <cml:atom id="a1" elementType="N" x3="0.0" y3="0.0" z3="-1.16130504731471"/>
+      <cml:atom id="a2" elementType="N" x3="0.0" y3="0.0" z3="-0.813196233015153E-01"/>
+      <cml:atom id="a3" elementType="O" x3="0.0" y3="0.0" z3="1.08788109757204"/>
+     </cml:atomArray>
+     <cml:bondArray>
+      <cml:bond atomRefs2="a1 a2"/>
+      <cml:bond atomRefs2="a2 a3"/>
+     </cml:bondArray>
+    </cml:molecule>
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-183.728010201819"/>
+    <property name="One-electron energy" method="RHF" value="-373.879892165728"/>
+    <property name="Two-electron energy" method="RHF" value="127.621738736516"/>
+    <property name="Kinetic energy" method="RHF" value="183.827075341228"/>
+    <property name="Nuclear energy" method="RHF" value="62.530143227392"/>
+    <property name="Virial quotient" method="RHF" value="-0.999461096036999"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 -0.295384215466796"/>
+    <time start="21:22:39" end="21:22:39" cpu="1.81" system="0.06" real="1.0"/>
+    <storage units="megabyte" memory="1525.88" sf="0.01" df="174.93" eaf="26.23" ga="0.0"/>
+    <summary overall_method="HF/6-311G(D,P)"/>
+   </jobstep>
+   <gradient name="SCF GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="-0.39498222085973E-01">
+      0.000000000000   0.000000000000   0.018316435235
+      0.000000000000   0.000000000000  -0.017358450942
+      0.000000000000   0.000000000000  -0.000957984293
+   </gradient>
+   <opt energy="-183.7280102" type="HF-SCF000" line="0.0"
+     convergence="0.939693745593408E-02" gradient="0.252532246003638E-01"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <cml:molecule>
+     <cml:symmetry pointGroup="C2v">
+      <cml:transform3 title="generator" id="X">
+      -1  0  0  0  0  1  0  0  0  0  1  0  0  0  0  1
+      </cml:transform3>
+      <cml:transform3 title="generator" id="Y">
+       1  0  0  0  0 -1  0  0  0  0  1  0  0  0  0  1
+      </cml:transform3>
+     </cml:symmetry>
+     <cml:atomArray>
+      <cml:atom id="a1" elementType="N" x3="0.0" y3="0.0" z3="-1.16546012542657"/>
+      <cml:atom id="a2" elementType="N" x3="0.0" y3="0.0" z3="-0.795129853948768E-01"/>
+      <cml:atom id="a3" elementType="O" x3="0.0" y3="0.0" z3="1.08993708742034"/>
+     </cml:atomArray>
+     <cml:bondArray>
+      <cml:bond atomRefs2="a1 a2"/>
+      <cml:bond atomRefs2="a2 a3"/>
+     </cml:bondArray>
+    </cml:molecule>
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-183.728104010101"/>
+    <property name="One-electron energy" method="RHF" value="-373.540613722039"/>
+    <property name="Two-electron energy" method="RHF" value="127.455862044737"/>
+    <property name="Kinetic energy" method="RHF" value="183.783416109046"/>
+    <property name="Nuclear energy" method="RHF" value="62.3566476672007"/>
+    <property name="Virial quotient" method="RHF" value="-0.999699036506583"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 -0.286409148839563"/>
+    <time start="21:22:40" end="21:22:40" cpu="1.65" system="0.05" real="0.99"/>
+    <storage units="megabyte" memory="1525.88" sf="0.02" df="174.93" eaf="26.23" ga="0.0"/>
+    <summary overall_method="HF/6-311G(D,P)"/>
+   </jobstep>
+   <gradient name="SCF GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="0.546177256524547E-02">
+      0.000000000000   0.000000000000  -0.001520515187
+      0.000000000000   0.000000000000   0.000461003129
+      0.000000000000   0.000000000000   0.001059512058
+   </gradient>
+   <opt energy="-183.72810401" type="HF-SCF000" line="0.0"
+     convergence="0.114013497200421E-02" gradient="0.190972671371469E-02"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <cml:molecule>
+     <cml:symmetry pointGroup="C2v">
+      <cml:transform3 title="generator" id="X">
+      -1  0  0  0  0  1  0  0  0  0  1  0  0  0  0  1
+      </cml:transform3>
+      <cml:transform3 title="generator" id="Y">
+       1  0  0  0  0 -1  0  0  0  0  1  0  0  0  0  1
+      </cml:transform3>
+     </cml:symmetry>
+     <cml:atomArray>
+      <cml:atom id="a1" elementType="N" x3="0.0" y3="0.0" z3="-1.16501409392233"/>
+      <cml:atom id="a2" elementType="N" x3="0.0" y3="0.0" z3="-0.794938832191156E-01"/>
+      <cml:atom id="a3" elementType="O" x3="0.0" y3="0.0" z3="1.08952987665889"/>
+     </cml:atomArray>
+     <cml:bondArray>
+      <cml:bond atomRefs2="a1 a2"/>
+      <cml:bond atomRefs2="a2 a3"/>
+     </cml:bondArray>
+    </cml:molecule>
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-183.728105176328"/>
+    <property name="One-electron energy" method="RHF" value="-373.586207310265"/>
+    <property name="Two-electron energy" method="RHF" value="127.477850157473"/>
+    <property name="Kinetic energy" method="RHF" value="183.788039304709"/>
+    <property name="Nuclear energy" method="RHF" value="62.3802519764642"/>
+    <property name="Virial quotient" method="RHF" value="-0.999673895381836"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 -0.28570628306214"/>
+    <time start="21:22:41" end="21:22:41" cpu="1.67" system="0.09" real="1.02"/>
+    <storage units="megabyte" memory="1525.88" sf="0.02" df="174.93" eaf="26.23" ga="0.0"/>
+    <summary overall_method="HF/6-311G(D,P)"/>
+   </jobstep>
+   <gradient name="SCF GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="0.686442950809629E-03">
+      0.000000000000   0.000000000000  -0.000014920149
+      0.000000000000   0.000000000000  -0.000281954778
+      0.000000000000   0.000000000000   0.000296874927
+   </gradient>
+   <opt energy="-183.72810518" type="HF-SCF000" line="0.0"
+     convergence="0.256062878907174E-03" gradient="0.409702123351995E-03"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <cml:molecule>
+     <cml:symmetry pointGroup="C2v">
+      <cml:transform3 title="generator" id="X">
+      -1  0  0  0  0  1  0  0  0  0  1  0  0  0  0  1
+      </cml:transform3>
+      <cml:transform3 title="generator" id="Y">
+       1  0  0  0  0 -1  0  0  0  0  1  0  0  0  0  1
+      </cml:transform3>
+     </cml:symmetry>
+     <cml:atomArray>
+      <cml:atom id="a1" elementType="N" x3="0.0" y3="0.0" z3="-1.16495093700527"/>
+      <cml:atom id="a2" elementType="N" x3="0.0" y3="0.0" z3="-0.794364396571514E-01"/>
+      <cml:atom id="a3" elementType="O" x3="0.0" y3="0.0" z3="1.08942429451121"/>
+     </cml:atomArray>
+     <cml:bondArray>
+      <cml:bond atomRefs2="a1 a2"/>
+      <cml:bond atomRefs2="a2 a3"/>
+     </cml:bondArray>
+    </cml:molecule>
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-183.728105229268"/>
+    <property name="One-electron energy" method="RHF" value="-373.595059146926"/>
+    <property name="Two-electron energy" method="RHF" value="127.482056820901"/>
+    <property name="Kinetic energy" method="RHF" value="183.788692000669"/>
+    <property name="Nuclear energy" method="RHF" value="62.3848970967572"/>
+    <property name="Virial quotient" method="RHF" value="-0.999670345488938"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 -0.285178473776842"/>
+    <time start="21:22:42" end="21:22:42" cpu="1.77" system="0.06" real="1.01"/>
+    <storage units="megabyte" memory="1525.88" sf="0.02" df="174.93" eaf="26.23" ga="0.0"/>
+    <summary overall_method="HF/6-311G(D,P)"/>
+   </jobstep>
+   <gradient name="SCF GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="0.641145183045652E-05">
+      0.000000000000   0.000000000000   0.000048499690
+      0.000000000000   0.000000000000  -0.000096443735
+      0.000000000000   0.000000000000   0.000047944045
+   </gradient>
+   <opt energy="-183.72810523" type="HF-SCF000" line="0.0"
+     convergence="0.458740199297857E-04" gradient="0.11811962309588E-03"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <cml:molecule>
+     <cml:symmetry pointGroup="C2v">
+      <cml:transform3 title="generator" id="X">
+      -1  0  0  0  0  1  0  0  0  0  1  0  0  0  0  1
+      </cml:transform3>
+      <cml:transform3 title="generator" id="Y">
+       1  0  0  0  0 -1  0  0  0  0  1  0  0  0  0  1
+      </cml:transform3>
+     </cml:symmetry>
+     <cml:atomArray>
+      <cml:atom id="a1" elementType="N" x3="0.0" y3="0.0" z3="-1.16494919119738"/>
+      <cml:atom id="a2" elementType="N" x3="0.0" y3="0.0" z3="-0.794189704327683E-01"/>
+      <cml:atom id="a3" elementType="O" x3="0.0" y3="0.0" z3="1.08940747231953"/>
+     </cml:atomArray>
+     <cml:bondArray>
+      <cml:bond atomRefs2="a1 a2"/>
+      <cml:bond atomRefs2="a2 a3"/>
+     </cml:bondArray>
+    </cml:molecule>
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-183.728105231648"/>
+    <property name="One-electron energy" method="RHF" value="-373.595998471877"/>
+    <property name="Two-electron energy" method="RHF" value="127.482490056958"/>
+    <property name="Kinetic energy" method="RHF" value="183.788708994512"/>
+    <property name="Nuclear energy" method="RHF" value="62.3854031832703"/>
+    <property name="Virial quotient" method="RHF" value="-0.999670253068345"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 -0.285039339534523"/>
+    <time start="21:22:43" end="21:22:43" cpu="1.59" system="0.06" real="0.98"/>
+    <storage units="megabyte" memory="1525.88" sf="0.02" df="174.93" eaf="26.23" ga="0.0"/>
+    <summary overall_method="HF/6-311G(D,P)"/>
+   </jobstep>
+   <gradient name="SCF GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="-0.137798638513587E-04">
+      0.000000000000   0.000000000000   0.000006875409
+      0.000000000000   0.000000000000  -0.000007022116
+      0.000000000000   0.000000000000   0.000000146707
+   </gradient>
+   <opt energy="-183.72810523" type="HF-SCF000" line="0.0"
+     convergence="0.284738862750084E-05" gradient="0.982867717121288E-05"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <cml:molecule>
+     <cml:symmetry pointGroup="C2v">
+      <cml:transform3 title="generator" id="X">
+      -1  0  0  0  0  1  0  0  0  0  1  0  0  0  0  1
+      </cml:transform3>
+      <cml:transform3 title="generator" id="Y">
+       1  0  0  0  0 -1  0  0  0  0  1  0  0  0  0  1
+      </cml:transform3>
+     </cml:symmetry>
+     <cml:atomArray>
+      <cml:atom id="a1" elementType="N" x3="0.0" y3="0.0" z3="-1.16495039052831"/>
+      <cml:atom id="a2" elementType="N" x3="0.0" y3="0.0" z3="-0.794181065385108E-01"/>
+      <cml:atom id="a3" elementType="O" x3="0.0" y3="0.0" z3="1.0894077659844"/>
+     </cml:atomArray>
+     <cml:bondArray>
+      <cml:bond atomRefs2="a1 a2"/>
+      <cml:bond atomRefs2="a2 a3"/>
+     </cml:bondArray>
+    </cml:molecule>
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-183.728105231659"/>
+    <property name="One-electron energy" method="RHF" value="-373.595916717962"/>
+    <property name="Two-electron energy" method="RHF" value="127.482450039927"/>
+    <property name="Kinetic energy" method="RHF" value="183.788697400328"/>
+    <property name="Nuclear energy" method="RHF" value="62.3853614463754"/>
+    <property name="Virial quotient" method="RHF" value="-0.999670316131918"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 -0.285035668906608"/>
+    <time start="21:22:44" end="21:22:44" cpu="1.67" system="0.06" real="0.98"/>
+    <storage units="megabyte" memory="1525.88" sf="0.02" df="174.93" eaf="26.23" ga="0.0"/>
+    <summary overall_method="HF/6-311G(D,P)"/>
+   </jobstep>
+   <gradient name="SCF GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="-0.958497999795703E-06">
+      0.000000000000   0.000000000000   0.000000006524
+      0.000000000000   0.000000000000   0.000000421369
+      0.000000000000   0.000000000000  -0.000000427894
+   </gradient>
+   <opt energy="-183.72810523" type="HF-SCF000" line="0.0"
+     convergence="0.411280235910868E-06" gradient="0.600572735350415E-06"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <cml:molecule>
+     <cml:symmetry pointGroup="C2v">
+      <cml:transform3 title="generator" id="X">
+      -1  0  0  0  0  1  0  0  0  0  1  0  0  0  0  1
+      </cml:transform3>
+      <cml:transform3 title="generator" id="Y">
+       1  0  0  0  0 -1  0  0  0  0  1  0  0  0  0  1
+      </cml:transform3>
+     </cml:symmetry>
+     <cml:atomArray>
+      <cml:atom id="a1" elementType="N" x3="0.0" y3="0.0" z3="-1.16495048195104"/>
+      <cml:atom id="a2" elementType="N" x3="0.0" y3="0.0" z3="-0.794182087867726E-01"/>
+      <cml:atom id="a3" elementType="O" x3="0.0" y3="0.0" z3="1.08940793553761"/>
+     </cml:atomArray>
+     <cml:bondArray>
+      <cml:bond atomRefs2="a1 a2"/>
+      <cml:bond atomRefs2="a2 a3"/>
+     </cml:bondArray>
+    </cml:molecule>
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-183.728105231658"/>
+    <property name="One-electron energy" method="RHF" value="-373.59590064371"/>
+    <property name="Two-electron energy" method="RHF" value="127.482441144997"/>
+    <property name="Kinetic energy" method="RHF" value="183.788694024263"/>
+    <property name="Nuclear energy" method="RHF" value="62.3853542670549"/>
+    <property name="Virial quotient" method="RHF" value="-0.999670334495131"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 -0.285033211287224"/>
+    <time start="21:22:45" end="21:22:45" cpu="1.65" system="0.07" real="1.04"/>
+    <storage units="megabyte" memory="1525.88" sf="0.03" df="174.93" eaf="26.23" ga="0.0"/>
+    <summary overall_method="HF/6-311G(D,P)"/>
+   </jobstep>
+   <gradient name="SCF GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="0.338821548528824E-06">
+      0.000000000000   0.000000000000   0.000000481194
+      0.000000000000   0.000000000000  -0.000001081495
+      0.000000000000   0.000000000000   0.000000600301
+   </gradient>
+   <opt energy="-183.72810523" type="HF-SCF000" line="0.0"
+     convergence="0.178904479851196E-06" gradient="0.13272304441418E-05"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <cml:molecule>
+     <cml:symmetry pointGroup="C2v">
+      <cml:transform3 title="generator" id="X">
+      -1  0  0  0  0  1  0  0  0  0  1  0  0  0  0  1
+      </cml:transform3>
+      <cml:transform3 title="generator" id="Y">
+       1  0  0  0  0 -1  0  0  0  0  1  0  0  0  0  1
+      </cml:transform3>
+     </cml:symmetry>
+     <cml:atomArray>
+      <cml:atom id="a1" elementType="N" x3="0.0" y3="0.0" z3="-1.1649504774338"/>
+      <cml:atom id="a2" elementType="N" x3="0.0" y3="0.0" z3="-0.794181395197442E-01"/>
+      <cml:atom id="a3" elementType="O" x3="0.0" y3="0.0" z3="1.08940787094167"/>
+     </cml:atomArray>
+     <cml:bondArray>
+      <cml:bond atomRefs2="a1 a2"/>
+      <cml:bond atomRefs2="a2 a3"/>
+     </cml:bondArray>
+    </cml:molecule>
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-183.728105231658"/>
+    <property name="One-electron energy" method="RHF" value="-373.595907077768"/>
+    <property name="Two-electron energy" method="RHF" value="127.482445697156"/>
+    <property name="Kinetic energy" method="RHF" value="183.788696838605"/>
+    <property name="Nuclear energy" method="RHF" value="62.3853561489538"/>
+    <property name="Virial quotient" method="RHF" value="-0.999670319187254"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 -0.285036353623573"/>
+    <time start="21:22:46" end="21:22:46" cpu="1.78" system="0.05" real="1.03"/>
+    <storage units="megabyte" memory="1525.88" sf="0.03" df="174.93" eaf="26.23" ga="0.0"/>
+    <summary overall_method="HF/6-311G(D,P)"/>
+   </jobstep>
+   <gradient name="SCF GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="-0.225449120377566E-06">
+      0.000000000000   0.000000000000  -0.000000155624
+      0.000000000000   0.000000000000   0.000000402228
+      0.000000000000   0.000000000000  -0.000000246604
+   </gradient>
+   <opt energy="-183.72810523" type="HF-SCF000" line="0.0"
+     convergence="0.60115709232662E-07" gradient="0.49680921530251E-06"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <cml:molecule>
+     <cml:symmetry pointGroup="C2v">
+      <cml:transform3 title="generator" id="X">
+      -1  0  0  0  0  1  0  0  0  0  1  0  0  0  0  1
+      </cml:transform3>
+      <cml:transform3 title="generator" id="Y">
+       1  0  0  0  0 -1  0  0  0  0  1  0  0  0  0  1
+      </cml:transform3>
+     </cml:symmetry>
+     <cml:atomArray>
+      <cml:atom id="a1" elementType="N" x3="0.0" y3="0.0" z3="-1.1649504860403"/>
+      <cml:atom id="a2" elementType="N" x3="0.0" y3="0.0" z3="-0.794181584789389E-01"/>
+      <cml:atom id="a3" elementType="O" x3="0.0" y3="0.0" z3="1.08940789507463"/>
+     </cml:atomArray>
+     <cml:bondArray>
+      <cml:bond atomRefs2="a1 a2"/>
+      <cml:bond atomRefs2="a2 a3"/>
+     </cml:bondArray>
+    </cml:molecule>
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-183.728105231664"/>
+    <property name="One-electron energy" method="RHF" value="-373.595902379692"/>
+    <property name="Two-electron energy" method="RHF" value="127.482441896905"/>
+    <property name="Kinetic energy" method="RHF" value="183.788694180114"/>
+    <property name="Nuclear energy" method="RHF" value="62.3853552511227"/>
+    <property name="Virial quotient" method="RHF" value="-0.999670333647451"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 -0.285032584850494"/>
+    <time start="21:22:47" end="21:22:47" cpu="1.69" system="0.05" real="0.99"/>
+    <storage units="megabyte" memory="1525.88" sf="0.03" df="174.93" eaf="26.23" ga="0.0"/>
+    <summary overall_method="HF/6-311G(D,P)"/>
+   </jobstep>
+   <gradient name="SCF GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="0.382223393597345E-06">
+      0.000000000000   0.000000000000   0.000000321841
+      0.000000000000   0.000000000000  -0.000000793795
+      0.000000000000   0.000000000000   0.000000471954
+   </gradient>
+   <opt energy="-183.72810523" type="HF-SCF000" line="0.0"
+     convergence="0.365922465285808E-07" gradient="0.977974186434035E-06"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <cml:molecule>
+     <cml:symmetry pointGroup="C2v">
+      <cml:transform3 title="generator" id="X">
+      -1  0  0  0  0  1  0  0  0  0  1  0  0  0  0  1
+      </cml:transform3>
+      <cml:transform3 title="generator" id="Y">
+       1  0  0  0  0 -1  0  0  0  0  1  0  0  0  0  1
+      </cml:transform3>
+     </cml:symmetry>
+     <cml:atomArray>
+      <cml:atom id="a1" elementType="N" x3="0.0" y3="0.0" z3="-1.16495048244186"/>
+      <cml:atom id="a2" elementType="N" x3="0.0" y3="0.0" z3="-0.794181458090106E-01"/>
+      <cml:atom id="a3" elementType="O" x3="0.0" y3="0.0" z3="1.08940788083214"/>
+     </cml:atomArray>
+     <cml:bondArray>
+      <cml:bond atomRefs2="a1 a2"/>
+      <cml:bond atomRefs2="a2 a3"/>
+     </cml:bondArray>
+    </cml:molecule>
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-183.728105231655"/>
+    <property name="One-electron energy" method="RHF" value="-373.595906408438"/>
+    <property name="Two-electron energy" method="RHF" value="127.482445437473"/>
+    <property name="Kinetic energy" method="RHF" value="183.788696779919"/>
+    <property name="Nuclear energy" method="RHF" value="62.38535573931"/>
+    <property name="Virial quotient" method="RHF" value="-0.999670319506449"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 -0.285036571763217"/>
+    <time start="21:22:48" end="21:22:48" cpu="1.67" system="0.04" real="1.01"/>
+    <storage units="megabyte" memory="1525.88" sf="0.03" df="174.93" eaf="26.23" ga="0.0"/>
+    <summary overall_method="HF/6-311G(D,P)"/>
+   </jobstep>
+   <gradient name="SCF GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="-0.257055927444567E-06">
+      0.000000000000   0.000000000000  -0.000000129928
+      0.000000000000   0.000000000000   0.000000366978
+      0.000000000000   0.000000000000  -0.000000237050
+   </gradient>
+   <opt energy="-183.72810523" type="HF-SCF000" line="0.0"
+     convergence="0.157735627033446E-07" gradient="0.455792389622266E-06"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <cml:molecule>
+     <cml:symmetry pointGroup="C2v">
+      <cml:transform3 title="generator" id="X">
+      -1  0  0  0  0  1  0  0  0  0  1  0  0  0  0  1
+      </cml:transform3>
+      <cml:transform3 title="generator" id="Y">
+       1  0  0  0  0 -1  0  0  0  0  1  0  0  0  0  1
+      </cml:transform3>
+     </cml:symmetry>
+     <cml:atomArray>
+      <cml:atom id="a1" elementType="N" x3="0.0" y3="0.0" z3="-1.16495048656148"/>
+      <cml:atom id="a2" elementType="N" x3="0.0" y3="0.0" z3="-0.794181491035469E-01"/>
+      <cml:atom id="a3" elementType="O" x3="0.0" y3="0.0" z3="1.08940788732302"/>
+     </cml:atomArray>
+     <cml:bondArray>
+      <cml:bond atomRefs2="a1 a2"/>
+      <cml:bond atomRefs2="a2 a3"/>
+     </cml:bondArray>
+    </cml:molecule>
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-183.728105231656"/>
+    <property name="One-electron energy" method="RHF" value="-373.595902602148"/>
+    <property name="Two-electron energy" method="RHF" value="127.482441923468"/>
+    <property name="Kinetic energy" method="RHF" value="183.788694158656"/>
+    <property name="Nuclear energy" method="RHF" value="62.3853554470244"/>
+    <property name="Virial quotient" method="RHF" value="-0.999670333764125"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 -0.285032321157564"/>
+    <time start="21:22:49" end="21:22:49" cpu="1.67" system="0.07" real="1.0"/>
+    <storage units="megabyte" memory="1525.88" sf="0.03" df="174.93" eaf="26.23" ga="0.0"/>
+    <summary overall_method="HF/6-311G(D,P)"/>
+   </jobstep>
+   <gradient name="SCF GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="0.471761448921351E-06">
+      0.000000000000   0.000000000000   0.000000296547
+      0.000000000000   0.000000000000  -0.000000785548
+      0.000000000000   0.000000000000   0.000000489001
+   </gradient>
+   <opt energy="-183.72810523" type="HF-SCF000" line="0.0"
+     convergence="0.365922463256449E-07" gradient="0.977974186434035E-06"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <cml:molecule>
+     <cml:symmetry pointGroup="C2v">
+      <cml:transform3 title="generator" id="X">
+      -1  0  0  0  0  1  0  0  0  0  1  0  0  0  0  1
+      </cml:transform3>
+      <cml:transform3 title="generator" id="Y">
+       1  0  0  0  0 -1  0  0  0  0  1  0  0  0  0  1
+      </cml:transform3>
+     </cml:symmetry>
+     <cml:atomArray>
+      <cml:atom id="a1" elementType="N" x3="0.0" y3="0.0" z3="-1.16495048244186"/>
+      <cml:atom id="a2" elementType="N" x3="0.0" y3="0.0" z3="-0.794181458090108E-01"/>
+      <cml:atom id="a3" elementType="O" x3="0.0" y3="0.0" z3="1.08940788083214"/>
+     </cml:atomArray>
+     <cml:bondArray>
+      <cml:bond atomRefs2="a1 a2"/>
+      <cml:bond atomRefs2="a2 a3"/>
+     </cml:bondArray>
+    </cml:molecule>
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-183.728105231655"/>
+    <property name="One-electron energy" method="RHF" value="-373.595906552108"/>
+    <property name="Two-electron energy" method="RHF" value="127.482445581142"/>
+    <property name="Kinetic energy" method="RHF" value="183.788696832157"/>
+    <property name="Nuclear energy" method="RHF" value="62.38535573931"/>
+    <property name="Virial quotient" method="RHF" value="-0.999670319222313"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 -0.285036744270064"/>
+    <time start="21:22:50" end="21:22:50" cpu="1.71" system="0.05" real="1.03"/>
+    <storage units="megabyte" memory="1525.88" sf="0.04" df="174.93" eaf="26.23" ga="0.0"/>
+    <summary overall_method="HF/6-311G(D,P)"/>
+   </jobstep>
+   <gradient name="SCF GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="-0.335227624009128E-06">
+      0.000000000000   0.000000000000  -0.000000127758
+      0.000000000000   0.000000000000   0.000000398183
+      0.000000000000   0.000000000000  -0.000000270425
+   </gradient>
+   <opt energy="-183.72810523" type="HF-SCF000" line="0.0"
+     convergence="0.365922466181763E-07" gradient="0.977974186434035E-06"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-183.728105231655"/>
+    <property name="One-electron energy" method="RHF" value="-373.595903013794"/>
+    <property name="Two-electron energy" method="RHF" value="127.482442042829"/>
+    <property name="Kinetic energy" method="RHF" value="183.788694139755"/>
+    <property name="Nuclear energy" method="RHF" value="62.38535573931"/>
+    <property name="Virial quotient" method="RHF" value="-0.999670333866927"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 -0.285032100717038"/>
+    <time start="21:22:51" end="21:22:51" cpu="1.33" system="0.01" real="0.74"/>
+    <storage units="megabyte" memory="1525.88" sf="0.04" df="174.93" eaf="26.23" ga="0.0"/>
+    <summary overall_method="HF/6-311G(D,P)"/>
+   </jobstep>
+   <gradient name="SCF GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="0.497590459807885E-06">
+      0.000000000000   0.000000000000   0.000000310208
+      0.000000000000   0.000000000000  -0.000000823589
+      0.000000000000   0.000000000000   0.000000513382
+   </gradient>
+   <opt energy="-183.72810523" type="HF-SCF000" line="0.0"
+     convergence="0.365922464621595E-07" gradient="0.977974186434035E-06"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-183.728105231655"/>
+    <property name="One-electron energy" method="RHF" value="-373.595906694393"/>
+    <property name="Two-electron energy" method="RHF" value="127.482445723428"/>
+    <property name="Kinetic energy" method="RHF" value="183.788696900259"/>
+    <property name="Nuclear energy" method="RHF" value="62.38535573931"/>
+    <property name="Virial quotient" method="RHF" value="-0.99967031885189"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 -0.285036932832205"/>
+    <time start="21:22:52" end="21:22:52" cpu="1.23" system="0.01" real="0.72"/>
+    <storage units="megabyte" memory="1525.88" sf="0.04" df="174.93" eaf="26.23" ga="0.0"/>
+    <summary overall_method="HF/6-311G(D,P)"/>
+   </jobstep>
+   <gradient name="SCF GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="-0.394058594895172E-06">
+      0.000000000000   0.000000000000  -0.000000136467
+      0.000000000000   0.000000000000   0.000000441616
+      0.000000000000   0.000000000000  -0.000000305149
+   </gradient>
+   <opt energy="-183.72810523" type="HF-SCF000" line="0.0"
+     convergence="0.365922466181763E-07" gradient="0.977974186434035E-06"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-183.728105231655"/>
+    <property name="One-electron energy" method="RHF" value="-373.595902851296"/>
+    <property name="Two-electron energy" method="RHF" value="127.48244188033"/>
+    <property name="Kinetic energy" method="RHF" value="183.788694041417"/>
+    <property name="Nuclear energy" method="RHF" value="62.38535573931"/>
+    <property name="Virial quotient" method="RHF" value="-0.999670334401809"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 -0.285031895435171"/>
+    <time start="21:22:53" end="21:22:53" cpu="1.34" system="0.02" real="0.7"/>
+    <storage units="megabyte" memory="1525.88" sf="0.04" df="174.93" eaf="26.23" ga="0.0"/>
+    <summary overall_method="HF/6-311G(D,P)"/>
+   </jobstep>
+   <gradient name="SCF GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="0.561572880122395E-06">
+      0.000000000000   0.000000000000   0.000000323678
+      0.000000000000   0.000000000000  -0.000000878538
+      0.000000000000   0.000000000000   0.000000554860
+   </gradient>
+   <opt energy="-183.72810523" type="HF-SCF000" line="0.0"
+     convergence="0.365922464621595E-07" gradient="0.977974186434035E-06"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-183.728105231655"/>
+    <property name="One-electron energy" method="RHF" value="-373.595906862838"/>
+    <property name="Two-electron energy" method="RHF" value="127.482445891872"/>
+    <property name="Kinetic energy" method="RHF" value="183.788697006138"/>
+    <property name="Nuclear energy" method="RHF" value="62.38535573931"/>
+    <property name="Virial quotient" method="RHF" value="-0.999670318275988"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 -0.285037145290006"/>
+    <time start="21:22:53" end="21:22:53" cpu="1.4" system="0.02" real="0.74"/>
+    <storage units="megabyte" memory="1525.88" sf="0.04" df="174.93" eaf="26.23" ga="0.0"/>
+    <summary overall_method="HF/6-311G(D,P)"/>
+   </jobstep>
+   <gradient name="SCF GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="-0.452180072112387E-06">
+      0.000000000000   0.000000000000  -0.000000150888
+      0.000000000000   0.000000000000   0.000000495744
+      0.000000000000   0.000000000000  -0.000000344856
+   </gradient>
+   <opt energy="-183.72810523" type="HF-SCF000" line="0.0"
+     convergence="0.365922466181763E-07" gradient="0.977974186434035E-06"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-183.728105231655"/>
+    <property name="One-electron energy" method="RHF" value="-373.595902674575"/>
+    <property name="Two-electron energy" method="RHF" value="127.482441703609"/>
+    <property name="Kinetic energy" method="RHF" value="183.788693924301"/>
+    <property name="Nuclear energy" method="RHF" value="62.38535573931"/>
+    <property name="Virial quotient" method="RHF" value="-0.999670335038831"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 -0.285031671311289"/>
+    <time start="21:22:54" end="21:22:54" cpu="1.24" system="0.02" real="0.71"/>
+    <storage units="megabyte" memory="1525.88" sf="0.04" df="174.93" eaf="26.23" ga="0.0"/>
+    <summary overall_method="HF/6-311G(D,P)"/>
+   </jobstep>
+   <gradient name="SCF GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="0.619609553122901E-06">
+      0.000000000000   0.000000000000   0.000000340472
+      0.000000000000   0.000000000000  -0.000000937205
+      0.000000000000   0.000000000000   0.000000596733
+   </gradient>
+   <opt energy="-183.72810523" type="HF-SCF000" line="0.0"
+     convergence="0.365922464621595E-07" gradient="0.977974186434035E-06"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-183.728105231655"/>
+    <property name="One-electron energy" method="RHF" value="-373.595907046138"/>
+    <property name="Two-electron energy" method="RHF" value="127.482446075173"/>
+    <property name="Kinetic energy" method="RHF" value="183.788697130377"/>
+    <property name="Nuclear energy" method="RHF" value="62.38535573931"/>
+    <property name="Virial quotient" method="RHF" value="-0.999670317600224"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 -0.285037379327488"/>
+    <time start="21:22:55" end="21:22:55" cpu="1.31" system="0.02" real="0.71"/>
+    <storage units="megabyte" memory="1525.88" sf="0.04" df="174.93" eaf="26.23" ga="0.0"/>
+    <summary overall_method="HF/6-311G(D,P)"/>
+   </jobstep>
+   <gradient name="SCF GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="-0.508664928095478E-06">
+      0.000000000000   0.000000000000  -0.000000169101
+      0.000000000000   0.000000000000   0.000000556446
+      0.000000000000   0.000000000000  -0.000000387345
+   </gradient>
+   <opt energy="-183.72810523" type="HF-SCF000" line="0.0"
+     convergence="0.365922466181763E-07" gradient="0.977974186434035E-06"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-183.728105231655"/>
+    <property name="One-electron energy" method="RHF" value="-373.595902483566"/>
+    <property name="Two-electron energy" method="RHF" value="127.482441512601"/>
+    <property name="Kinetic energy" method="RHF" value="183.788693792006"/>
+    <property name="Nuclear energy" method="RHF" value="62.38535573931"/>
+    <property name="Virial quotient" method="RHF" value="-0.999670335758416"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 -0.285031426179858"/>
+    <time start="21:22:55" end="21:22:55" cpu="1.39" system="0.02" real="0.74"/>
+    <storage units="megabyte" memory="1525.88" sf="0.04" df="174.93" eaf="26.23" ga="0.0"/>
+    <summary overall_method="HF/6-311G(D,P)"/>
+   </jobstep>
+   <gradient name="SCF GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="0.676405515630673E-06">
+      0.000000000000   0.000000000000   0.000000360319
+      0.000000000000   0.000000000000  -0.000001001198
+      0.000000000000   0.000000000000   0.000000640879
+   </gradient>
+   <opt energy="-183.72810523" type="HF-SCF000" line="0.0"
+     convergence="0.365922464621595E-07" gradient="0.977974186434035E-06"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-183.728105231655"/>
+    <property name="One-electron energy" method="RHF" value="-373.595907244881"/>
+    <property name="Two-electron energy" method="RHF" value="127.482446273916"/>
+    <property name="Kinetic energy" method="RHF" value="183.788697269793"/>
+    <property name="Nuclear energy" method="RHF" value="62.38535573931"/>
+    <property name="Virial quotient" method="RHF" value="-0.999670316841903"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 -0.285037635414063"/>
+    <time start="21:22:56" end="21:22:56" cpu="1.29" system="0.02" real="0.72"/>
+    <storage units="megabyte" memory="1525.88" sf="0.04" df="174.93" eaf="26.23" ga="0.0"/>
+    <summary overall_method="HF/6-311G(D,P)"/>
+   </jobstep>
+   <gradient name="SCF GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="-0.565826305349081E-06">
+      0.000000000000   0.000000000000  -0.000000190294
+      0.000000000000   0.000000000000   0.000000623201
+      0.000000000000   0.000000000000  -0.000000432907
+   </gradient>
+   <opt energy="-183.72810523" type="HF-SCF000" line="0.0"
+     convergence="0.365922466181763E-07" gradient="0.977974186434035E-06"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-183.728105231655"/>
+    <property name="One-electron energy" method="RHF" value="-373.595902276469"/>
+    <property name="Two-electron energy" method="RHF" value="127.482441305504"/>
+    <property name="Kinetic energy" method="RHF" value="183.788693645215"/>
+    <property name="Nuclear energy" method="RHF" value="62.38535573931"/>
+    <property name="Virial quotient" method="RHF" value="-0.999670336556843"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 -0.285031158558567"/>
+    <time start="21:22:57" end="21:22:57" cpu="1.29" system="0.01" real="0.69"/>
+    <storage units="megabyte" memory="1525.88" sf="0.04" df="174.93" eaf="26.23" ga="0.0"/>
+    <summary overall_method="HF/6-311G(D,P)"/>
+   </jobstep>
+   <gradient name="SCF GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="0.734688442378823E-06">
+      0.000000000000   0.000000000000   0.000000382874
+      0.000000000000   0.000000000000  -0.000001071087
+      0.000000000000   0.000000000000   0.000000688214
+   </gradient>
+   <opt energy="-183.72810523" type="HF-SCF000" line="0.0"
+     convergence="0.365922464621595E-07" gradient="0.977974186434035E-06"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-183.728105231655"/>
+    <property name="One-electron energy" method="RHF" value="-373.595907460671"/>
+    <property name="Two-electron energy" method="RHF" value="127.482446489706"/>
+    <property name="Kinetic energy" method="RHF" value="183.788697423803"/>
+    <property name="Nuclear energy" method="RHF" value="62.38535573931"/>
+    <property name="Virial quotient" method="RHF" value="-0.999670316004207"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 -0.285037914866553"/>
+    <time start="21:22:58" end="21:22:58" cpu="1.39" system="0.01" real="0.72"/>
+    <storage units="megabyte" memory="1525.88" sf="0.04" df="174.93" eaf="26.23" ga="0.0"/>
+    <summary overall_method="HF/6-311G(D,P)"/>
+   </jobstep>
+   <gradient name="SCF GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="-0.625493692516214E-06">
+      0.000000000000   0.000000000000  -0.000000214124
+      0.000000000000   0.000000000000   0.000000696177
+      0.000000000000   0.000000000000  -0.000000482053
+   </gradient>
+   <opt energy="-183.72810523" type="HF-SCF000" line="0.0"
+     convergence="0.365922466181763E-07" gradient="0.977974186434035E-06"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-183.728105231655"/>
+    <property name="One-electron energy" method="RHF" value="-373.595902051505"/>
+    <property name="Two-electron energy" method="RHF" value="127.48244108054"/>
+    <property name="Kinetic energy" method="RHF" value="183.788693483814"/>
+    <property name="Nuclear energy" method="RHF" value="62.38535573931"/>
+    <property name="Virial quotient" method="RHF" value="-0.999670337434743"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 -0.285030866777056"/>
+    <time start="21:22:58" end="21:22:58" cpu="1.41" system="0.03" real="0.73"/>
+    <storage units="megabyte" memory="1525.88" sf="0.04" df="174.93" eaf="26.23" ga="0.0"/>
+    <summary overall_method="HF/6-311G(D,P)"/>
+   </jobstep>
+   <gradient name="SCF GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="0.796134453481599E-06">
+      0.000000000000   0.000000000000   0.000000407980
+      0.000000000000   0.000000000000  -0.000001147331
+      0.000000000000   0.000000000000   0.000000739350
+   </gradient>
+   <opt energy="-183.72810523" type="HF-SCF000" line="0.0"
+     convergence="0.365922464621595E-07" gradient="0.977974186434035E-06"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-183.728105231655"/>
+    <property name="One-electron energy" method="RHF" value="-373.595907695227"/>
+    <property name="Two-electron energy" method="RHF" value="127.482446724262"/>
+    <property name="Kinetic energy" method="RHF" value="183.788697592704"/>
+    <property name="Nuclear energy" method="RHF" value="62.38535573931"/>
+    <property name="Virial quotient" method="RHF" value="-0.999670315085515"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 -0.28503821943114"/>
+    <time start="21:22:59" end="21:22:59" cpu="1.52" system="0.02" real="0.72"/>
+    <storage units="megabyte" memory="1525.88" sf="0.04" df="174.93" eaf="26.23" ga="0.0"/>
+    <summary overall_method="HF/6-311G(D,P)"/>
+   </jobstep>
+   <gradient name="SCF GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="-0.688963003461123E-06">
+      0.000000000000   0.000000000000  -0.000000240494
+      0.000000000000   0.000000000000   0.000000775772
+      0.000000000000   0.000000000000  -0.000000535278
+   </gradient>
+   <opt energy="-183.72810523" type="HF-SCF000" line="0.0"
+     convergence="0.365922466181763E-07" gradient="0.977974186434035E-06"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-183.728105231655"/>
+    <property name="One-electron energy" method="RHF" value="-373.595901806897"/>
+    <property name="Two-electron energy" method="RHF" value="127.482440835932"/>
+    <property name="Kinetic energy" method="RHF" value="183.788693307197"/>
+    <property name="Nuclear energy" method="RHF" value="62.38535573931"/>
+    <property name="Virial quotient" method="RHF" value="-0.999670338395402"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 -0.285030548902063"/>
+    <time start="21:23:00" end="21:23:00" cpu="1.7" system="0.01" real="0.76"/>
+    <storage units="megabyte" memory="1525.88" sf="0.04" df="174.93" eaf="26.23" ga="0.0"/>
+    <summary overall_method="HF/6-311G(D,P)"/>
+   </jobstep>
+   <gradient name="SCF GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="0.861883884559286E-06">
+      0.000000000000   0.000000000000   0.000000435629
+      0.000000000000   0.000000000000  -0.000001230424
+      0.000000000000   0.000000000000   0.000000794796
+   </gradient>
+   <opt energy="-183.72810523" type="HF-SCF000" line="0.0"
+     convergence="0.365922464621595E-07" gradient="0.977974186434035E-06"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-183.728105231655"/>
+    <property name="One-electron energy" method="RHF" value="-373.595907950343"/>
+    <property name="Two-electron energy" method="RHF" value="127.482446979378"/>
+    <property name="Kinetic energy" method="RHF" value="183.788697777264"/>
+    <property name="Nuclear energy" method="RHF" value="62.38535573931"/>
+    <property name="Virial quotient" method="RHF" value="-0.99967031408165"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 -0.285038551155822"/>
+    <time start="21:23:01" end="21:23:01" cpu="1.39" system="0.03" real="0.74"/>
+    <storage units="megabyte" memory="1525.88" sf="0.04" df="174.93" eaf="26.23" ga="0.0"/>
+    <summary overall_method="HF/6-311G(D,P)"/>
+   </jobstep>
+   <gradient name="SCF GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="-0.757198312084717E-06">
+      0.000000000000   0.000000000000  -0.000000269440
+      0.000000000000   0.000000000000   0.000000862496
+      0.000000000000   0.000000000000  -0.000000593055
+   </gradient>
+   <opt energy="-183.72810523" type="HF-SCF000" line="0.0"
+     convergence="0.365922466181763E-07" gradient="0.977974186434035E-06"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-183.728105231655"/>
+    <property name="One-electron energy" method="RHF" value="-373.595901540797"/>
+    <property name="Two-electron energy" method="RHF" value="127.482440569832"/>
+    <property name="Kinetic energy" method="RHF" value="183.78869311442"/>
+    <property name="Nuclear energy" method="RHF" value="62.38535573931"/>
+    <property name="Virial quotient" method="RHF" value="-0.999670339443964"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 -0.285030202747382"/>
+    <time start="21:23:01" end="21:23:01" cpu="1.44" system="0.02" real="0.77"/>
+    <storage units="megabyte" memory="1525.88" sf="0.04" df="174.93" eaf="26.23" ga="0.0"/>
+    <summary overall_method="HF/6-311G(D,P)"/>
+   </jobstep>
+   <gradient name="SCF GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="0.932803705029917E-06">
+      0.000000000000   0.000000000000   0.000000465906
+      0.000000000000   0.000000000000  -0.000001320931
+      0.000000000000   0.000000000000   0.000000855024
+   </gradient>
+   <opt energy="-183.72810523" type="HF-SCF000" line="0.0"
+     convergence="0.365922464621595E-07" gradient="0.977974186434035E-06"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-183.728105231654"/>
+    <property name="One-electron energy" method="RHF" value="-373.595908227915"/>
+    <property name="Two-electron energy" method="RHF" value="127.482447256951"/>
+    <property name="Kinetic energy" method="RHF" value="183.788697978557"/>
+    <property name="Nuclear energy" method="RHF" value="62.38535573931"/>
+    <property name="Virial quotient" method="RHF" value="-0.999670312986765"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 -0.285038912346039"/>
+    <time start="21:23:02" end="21:23:02" cpu="1.67" system="0.02" real="0.85"/>
+    <storage units="megabyte" memory="1525.88" sf="0.04" df="174.93" eaf="26.23" ga="0.0"/>
+    <summary overall_method="HF/6-311G(D,P)"/>
+   </jobstep>
+   <gradient name="SCF GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="-0.83098282373275E-06">
+      0.000000000000   0.000000000000  -0.000000301087
+      0.000000000000   0.000000000000   0.000000956939
+      0.000000000000   0.000000000000  -0.000000655852
+   </gradient>
+   <opt energy="-183.72810523" type="HF-SCF000" line="0.0"
+     convergence="0.365922466181763E-07" gradient="0.977974186434035E-06"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-183.728105231654"/>
+    <property name="One-electron energy" method="RHF" value="-373.595901251243"/>
+    <property name="Two-electron energy" method="RHF" value="127.482440280279"/>
+    <property name="Kinetic energy" method="RHF" value="183.788692904283"/>
+    <property name="Nuclear energy" method="RHF" value="62.38535573931"/>
+    <property name="Virial quotient" method="RHF" value="-0.999670340586946"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 -0.285029825882625"/>
+    <time start="21:23:03" end="21:23:03" cpu="1.6" system="0.02" real="0.84"/>
+    <storage units="megabyte" memory="1525.88" sf="0.04" df="174.93" eaf="26.23" ga="0.0"/>
+    <summary overall_method="HF/6-311G(D,P)"/>
+   </jobstep>
+   <gradient name="SCF GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="0.100962752204973E-05">
+      0.000000000000   0.000000000000   0.000000498967
+      0.000000000000   0.000000000000  -0.000001419479
+      0.000000000000   0.000000000000   0.000000920511
+   </gradient>
+   <opt energy="-183.72810523" type="HF-SCF000" line="0.0"
+     convergence="0.365922464621595E-07" gradient="0.977974186434035E-06"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-183.728105231655"/>
+    <property name="One-electron energy" method="RHF" value="-373.595904813497"/>
+    <property name="Two-electron energy" method="RHF" value="127.482443842531"/>
+    <property name="Kinetic energy" method="RHF" value="183.78869549508"/>
+    <property name="Nuclear energy" method="RHF" value="62.38535573931"/>
+    <property name="Virial quotient" method="RHF" value="-0.999670326494995"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 -0.285034465331127"/>
+    <time start="21:23:04" end="21:23:04" cpu="1.47" system="0.01" real="0.83"/>
+    <storage units="megabyte" memory="1525.88" sf="0.04" df="174.93" eaf="26.23" ga="0.0"/>
+    <summary overall_method="HF/6-311G(D,P)"/>
+   </jobstep>
+   <gradient name="SCF GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="0.697259659867427E-07">
+      0.000000000000   0.000000000000   0.000000090495
+      0.000000000000   0.000000000000  -0.000000206109
+      0.000000000000   0.000000000000   0.000000115614
+   </gradient>
+   <opt energy="-183.72810523" type="HF-SCF000" line="0.0"
+     convergence="0.365922466181763E-07" gradient="0.977974186434035E-06"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-183.728105231656"/>
+    <property name="One-electron energy" method="RHF" value="-373.595904813497"/>
+    <property name="Two-electron energy" method="RHF" value="127.482443842531"/>
+    <property name="Kinetic energy" method="RHF" value="183.78869549508"/>
+    <property name="Nuclear energy" method="RHF" value="62.38535573931"/>
+    <property name="Virial quotient" method="RHF" value="-0.999670326494995"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 -0.285034465331166"/>
+    <time start="21:23:05" end="21:23:05" cpu="1.45" system="0.01" real="0.84"/>
+    <storage units="megabyte" memory="1525.88" sf="0.04" df="174.93" eaf="26.23" ga="0.0"/>
+    <summary overall_method="HF/6-311G(D,P)"/>
+   </jobstep>
+   <gradient name="SCF GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="0.697260135620885E-07">
+      0.000000000000   0.000000000000   0.000000090495
+      0.000000000000   0.000000000000  -0.000000206109
+      0.000000000000   0.000000000000   0.000000115614
+   </gradient>
+   <opt energy="-183.72810523" type="HF-SCF000" line="0.0"
+     convergence="0.365922464621595E-07" gradient="0.977974186434035E-06"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-183.728105231656"/>
+    <property name="One-electron energy" method="RHF" value="-373.595904813497"/>
+    <property name="Two-electron energy" method="RHF" value="127.482443842531"/>
+    <property name="Kinetic energy" method="RHF" value="183.78869549508"/>
+    <property name="Nuclear energy" method="RHF" value="62.38535573931"/>
+    <property name="Virial quotient" method="RHF" value="-0.999670326494995"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 -0.285034465331087"/>
+    <time start="21:23:05" end="21:23:05" cpu="1.46" system="0.02" real="0.83"/>
+    <storage units="megabyte" memory="1525.88" sf="0.04" df="174.93" eaf="26.23" ga="0.0"/>
+    <summary overall_method="HF/6-311G(D,P)"/>
+   </jobstep>
+   <gradient name="SCF GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="0.697258737038456E-07">
+      0.000000000000   0.000000000000   0.000000090495
+      0.000000000000   0.000000000000  -0.000000206109
+      0.000000000000   0.000000000000   0.000000115614
+   </gradient>
+   <opt energy="-183.72810523" type="HF-SCF000" line="0.0"
+     convergence="0.365922466181763E-07" gradient="0.977974186434035E-06"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-183.728105231656"/>
+    <property name="One-electron energy" method="RHF" value="-373.595904813497"/>
+    <property name="Two-electron energy" method="RHF" value="127.482443842531"/>
+    <property name="Kinetic energy" method="RHF" value="183.78869549508"/>
+    <property name="Nuclear energy" method="RHF" value="62.38535573931"/>
+    <property name="Virial quotient" method="RHF" value="-0.999670326494996"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 -0.285034465331193"/>
+    <time start="21:23:06" end="21:23:06" cpu="1.57" system="0.02" real="0.83"/>
+    <storage units="megabyte" memory="1525.88" sf="0.04" df="174.93" eaf="26.23" ga="0.0"/>
+    <summary overall_method="HF/6-311G(D,P)"/>
+   </jobstep>
+   <gradient name="SCF GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="0.697259220879136E-07">
+      0.000000000000   0.000000000000   0.000000090495
+      0.000000000000   0.000000000000  -0.000000206109
+      0.000000000000   0.000000000000   0.000000115614
+   </gradient>
+   <opt energy="-183.72810523" type="HF-SCF000" line="0.0"
+     convergence="0.365922464621595E-07" gradient="0.977974186434035E-06"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-183.728105231656"/>
+    <property name="One-electron energy" method="RHF" value="-373.595904813497"/>
+    <property name="Two-electron energy" method="RHF" value="127.482443842531"/>
+    <property name="Kinetic energy" method="RHF" value="183.78869549508"/>
+    <property name="Nuclear energy" method="RHF" value="62.38535573931"/>
+    <property name="Virial quotient" method="RHF" value="-0.999670326494996"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 -0.285034465331052"/>
+    <time start="21:23:07" end="21:23:07" cpu="1.53" system="0.01" real="0.81"/>
+    <storage units="megabyte" memory="1525.88" sf="0.04" df="174.93" eaf="26.23" ga="0.0"/>
+    <summary overall_method="HF/6-311G(D,P)"/>
+   </jobstep>
+   <gradient name="SCF GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="0.697259279449862E-07">
+      0.000000000000   0.000000000000   0.000000090495
+      0.000000000000   0.000000000000  -0.000000206109
+      0.000000000000   0.000000000000   0.000000115614
+   </gradient>
+   <opt energy="-183.72810523" type="HF-SCF000" line="0.0"
+     convergence="0.365922466181763E-07" gradient="0.977974186434035E-06"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-183.728105231656"/>
+    <property name="One-electron energy" method="RHF" value="-373.595904813497"/>
+    <property name="Two-electron energy" method="RHF" value="127.482443842531"/>
+    <property name="Kinetic energy" method="RHF" value="183.78869549508"/>
+    <property name="Nuclear energy" method="RHF" value="62.38535573931"/>
+    <property name="Virial quotient" method="RHF" value="-0.999670326494996"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 -0.285034465331191"/>
+    <time start="21:23:08" end="21:23:08" cpu="1.42" system="0.01" real="0.82"/>
+    <storage units="megabyte" memory="1525.88" sf="0.04" df="174.93" eaf="26.23" ga="0.0"/>
+    <summary overall_method="HF/6-311G(D,P)"/>
+   </jobstep>
+   <gradient name="SCF GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="0.697260055614344E-07">
+      0.000000000000   0.000000000000   0.000000090495
+      0.000000000000   0.000000000000  -0.000000206109
+      0.000000000000   0.000000000000   0.000000115614
+   </gradient>
+   <opt energy="-183.72810523" type="HF-SCF000" line="0.0"
+     convergence="0.365922464621595E-07" gradient="0.977974186434035E-06"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-183.728105231656"/>
+    <property name="One-electron energy" method="RHF" value="-373.595904813497"/>
+    <property name="Two-electron energy" method="RHF" value="127.482443842531"/>
+    <property name="Kinetic energy" method="RHF" value="183.78869549508"/>
+    <property name="Nuclear energy" method="RHF" value="62.38535573931"/>
+    <property name="Virial quotient" method="RHF" value="-0.999670326494996"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 -0.285034465330988"/>
+    <time start="21:23:09" end="21:23:09" cpu="1.42" system="0.02" real="0.87"/>
+    <storage units="megabyte" memory="1525.88" sf="0.04" df="174.93" eaf="26.23" ga="0.0"/>
+    <summary overall_method="HF/6-311G(D,P)"/>
+   </jobstep>
+   <gradient name="SCF GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="0.697259585129815E-07">
+      0.000000000000   0.000000000000   0.000000090495
+      0.000000000000   0.000000000000  -0.000000206109
+      0.000000000000   0.000000000000   0.000000115614
+   </gradient>
+   <opt energy="-183.72810523" type="HF-SCF000" line="0.0"
+     convergence="0.365922466181763E-07" gradient="0.977974186434035E-06"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-183.728105231656"/>
+    <property name="One-electron energy" method="RHF" value="-373.595904813497"/>
+    <property name="Two-electron energy" method="RHF" value="127.482443842531"/>
+    <property name="Kinetic energy" method="RHF" value="183.78869549508"/>
+    <property name="Nuclear energy" method="RHF" value="62.38535573931"/>
+    <property name="Virial quotient" method="RHF" value="-0.999670326494997"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 -0.285034465331124"/>
+    <time start="21:23:10" end="21:23:10" cpu="1.39" system="0.02" real="0.74"/>
+    <storage units="megabyte" memory="1525.88" sf="0.04" df="174.93" eaf="26.23" ga="0.0"/>
+    <summary overall_method="HF/6-311G(D,P)"/>
+   </jobstep>
+   <gradient name="SCF GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="0.697259545326161E-07">
+      0.000000000000   0.000000000000   0.000000090495
+      0.000000000000   0.000000000000  -0.000000206109
+      0.000000000000   0.000000000000   0.000000115614
+   </gradient>
+   <opt energy="-183.72810523" type="HF-SCF000" line="0.0"
+     convergence="0.365922464621595E-07" gradient="0.977974186434035E-06"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-183.728105231656"/>
+    <property name="One-electron energy" method="RHF" value="-373.595904813497"/>
+    <property name="Two-electron energy" method="RHF" value="127.482443842531"/>
+    <property name="Kinetic energy" method="RHF" value="183.788695495079"/>
+    <property name="Nuclear energy" method="RHF" value="62.38535573931"/>
+    <property name="Virial quotient" method="RHF" value="-0.999670326494997"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 -0.285034465331072"/>
+    <time start="21:23:10" end="21:23:10" cpu="1.33" system="0.02" real="0.74"/>
+    <storage units="megabyte" memory="1525.88" sf="0.04" df="174.93" eaf="26.23" ga="0.0"/>
+    <summary overall_method="HF/6-311G(D,P)"/>
+   </jobstep>
+   <gradient name="SCF GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="0.697259882237488E-07">
+      0.000000000000   0.000000000000   0.000000090495
+      0.000000000000   0.000000000000  -0.000000206109
+      0.000000000000   0.000000000000   0.000000115614
+   </gradient>
+   <opt energy="-183.72810523" type="HF-SCF000" line="0.0"
+     convergence="0.365922466181763E-07" gradient="0.977974186434035E-06"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-183.728105231656"/>
+    <property name="One-electron energy" method="RHF" value="-373.595904813497"/>
+    <property name="Two-electron energy" method="RHF" value="127.482443842532"/>
+    <property name="Kinetic energy" method="RHF" value="183.78869549508"/>
+    <property name="Nuclear energy" method="RHF" value="62.38535573931"/>
+    <property name="Virial quotient" method="RHF" value="-0.999670326494995"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 -0.28503446533119"/>
+    <time start="21:23:11" end="21:23:11" cpu="1.62" system="0.0" real="0.75"/>
+    <storage units="megabyte" memory="1525.88" sf="0.04" df="174.93" eaf="26.23" ga="0.0"/>
+    <summary overall_method="HF/6-311G(D,P)"/>
+   </jobstep>
+   <gradient name="SCF GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="0.697259387731479E-07">
+      0.000000000000   0.000000000000   0.000000090495
+      0.000000000000   0.000000000000  -0.000000206109
+      0.000000000000   0.000000000000   0.000000115614
+   </gradient>
+   <opt energy="-183.72810523" type="HF-SCF000" line="0.0"
+     convergence="0.365922464621595E-07" gradient="0.977974186434035E-06"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-183.728105231656"/>
+    <property name="One-electron energy" method="RHF" value="-373.595904813497"/>
+    <property name="Two-electron energy" method="RHF" value="127.482443842531"/>
+    <property name="Kinetic energy" method="RHF" value="183.78869549508"/>
+    <property name="Nuclear energy" method="RHF" value="62.38535573931"/>
+    <property name="Virial quotient" method="RHF" value="-0.999670326494995"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 -0.285034465331062"/>
+    <time start="21:23:12" end="21:23:12" cpu="1.26" system="0.02" real="0.72"/>
+    <storage units="megabyte" memory="1525.88" sf="0.04" df="174.93" eaf="26.23" ga="0.0"/>
+    <summary overall_method="HF/6-311G(D,P)"/>
+   </jobstep>
+   <gradient name="SCF GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="0.697258928736462E-07">
+      0.000000000000   0.000000000000   0.000000090495
+      0.000000000000   0.000000000000  -0.000000206109
+      0.000000000000   0.000000000000   0.000000115614
+   </gradient>
+   <opt energy="-183.72810523" type="HF-SCF000" line="0.0"
+     convergence="0.365922466181763E-07" gradient="0.977974186434035E-06"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-183.728105231655"/>
+    <property name="One-electron energy" method="RHF" value="-373.595904813497"/>
+    <property name="Two-electron energy" method="RHF" value="127.482443842531"/>
+    <property name="Kinetic energy" method="RHF" value="183.78869549508"/>
+    <property name="Nuclear energy" method="RHF" value="62.38535573931"/>
+    <property name="Virial quotient" method="RHF" value="-0.999670326494995"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 -0.285034465331134"/>
+    <time start="21:23:12" end="21:23:13" cpu="1.38" system="0.02" real="0.73"/>
+    <storage units="megabyte" memory="1525.88" sf="0.04" df="174.93" eaf="26.23" ga="0.0"/>
+    <summary overall_method="HF/6-311G(D,P)"/>
+   </jobstep>
+   <gradient name="SCF GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="0.697259844444693E-07">
+      0.000000000000   0.000000000000   0.000000090495
+      0.000000000000   0.000000000000  -0.000000206109
+      0.000000000000   0.000000000000   0.000000115614
+   </gradient>
+   <opt energy="-183.72810523" type="HF-SCF000" line="0.0"
+     convergence="0.365922464621595E-07" gradient="0.977974186434035E-06"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-183.728105231656"/>
+    <property name="One-electron energy" method="RHF" value="-373.595904813497"/>
+    <property name="Two-electron energy" method="RHF" value="127.482443842531"/>
+    <property name="Kinetic energy" method="RHF" value="183.78869549508"/>
+    <property name="Nuclear energy" method="RHF" value="62.38535573931"/>
+    <property name="Virial quotient" method="RHF" value="-0.999670326494995"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 -0.285034465331092"/>
+    <time start="21:23:13" end="21:23:13" cpu="1.31" system="0.0" real="0.73"/>
+    <storage units="megabyte" memory="1525.88" sf="0.04" df="174.93" eaf="26.23" ga="0.0"/>
+    <summary overall_method="HF/6-311G(D,P)"/>
+   </jobstep>
+   <gradient name="SCF GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="0.697259323935629E-07">
+      0.000000000000   0.000000000000   0.000000090495
+      0.000000000000   0.000000000000  -0.000000206109
+      0.000000000000   0.000000000000   0.000000115614
+   </gradient>
+   <opt energy="-183.72810523" type="HF-SCF000" line="0.0"
+     convergence="0.365922466181763E-07" gradient="0.977974186434035E-06"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-183.728105231656"/>
+    <property name="One-electron energy" method="RHF" value="-373.595904813497"/>
+    <property name="Two-electron energy" method="RHF" value="127.482443842531"/>
+    <property name="Kinetic energy" method="RHF" value="183.78869549508"/>
+    <property name="Nuclear energy" method="RHF" value="62.38535573931"/>
+    <property name="Virial quotient" method="RHF" value="-0.999670326494996"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 -0.285034465331145"/>
+    <time start="21:23:14" end="21:23:14" cpu="1.35" system="0.01" real="0.74"/>
+    <storage units="megabyte" memory="1525.88" sf="0.04" df="174.93" eaf="26.23" ga="0.0"/>
+    <summary overall_method="HF/6-311G(D,P)"/>
+   </jobstep>
+   <gradient name="SCF GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="0.697259842537443E-07">
+      0.000000000000   0.000000000000   0.000000090495
+      0.000000000000   0.000000000000  -0.000000206109
+      0.000000000000   0.000000000000   0.000000115614
+   </gradient>
+   <opt energy="-183.72810523" type="HF-SCF000" line="0.0"
+     convergence="0.365922464621595E-07" gradient="0.977974186434035E-06"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-183.728105231656"/>
+    <property name="One-electron energy" method="RHF" value="-373.595904813497"/>
+    <property name="Two-electron energy" method="RHF" value="127.482443842531"/>
+    <property name="Kinetic energy" method="RHF" value="183.78869549508"/>
+    <property name="Nuclear energy" method="RHF" value="62.38535573931"/>
+    <property name="Virial quotient" method="RHF" value="-0.999670326494996"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 -0.285034465331084"/>
+    <time start="21:23:15" end="21:23:15" cpu="1.29" system="0.02" real="0.74"/>
+    <storage units="megabyte" memory="1525.88" sf="0.04" df="174.93" eaf="26.23" ga="0.0"/>
+    <summary overall_method="HF/6-311G(D,P)"/>
+   </jobstep>
+   <gradient name="SCF GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="0.697259242807566E-07">
+      0.000000000000   0.000000000000   0.000000090495
+      0.000000000000   0.000000000000  -0.000000206109
+      0.000000000000   0.000000000000   0.000000115614
+   </gradient>
+   <opt energy="-183.72810523" type="HF-SCF000" line="0.0"
+     convergence="0.365922466181763E-07" gradient="0.977974186434035E-06"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-183.728105231656"/>
+    <property name="One-electron energy" method="RHF" value="-373.595904813497"/>
+    <property name="Two-electron energy" method="RHF" value="127.482443842531"/>
+    <property name="Kinetic energy" method="RHF" value="183.78869549508"/>
+    <property name="Nuclear energy" method="RHF" value="62.38535573931"/>
+    <property name="Virial quotient" method="RHF" value="-0.999670326494997"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 -0.285034465331105"/>
+    <time start="21:23:15" end="21:23:15" cpu="1.3" system="0.02" real="0.74"/>
+    <storage units="megabyte" memory="1525.88" sf="0.04" df="174.93" eaf="26.23" ga="0.0"/>
+    <summary overall_method="HF/6-311G(D,P)"/>
+   </jobstep>
+   <gradient name="SCF GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="0.697260284937434E-07">
+      0.000000000000   0.000000000000   0.000000090495
+      0.000000000000   0.000000000000  -0.000000206109
+      0.000000000000   0.000000000000   0.000000115614
+   </gradient>
+   <opt energy="-183.72810523" type="HF-SCF000" line="0.0"
+     convergence="0.365922464621595E-07" gradient="0.977974186434035E-06"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-183.728105231656"/>
+    <property name="One-electron energy" method="RHF" value="-373.595904813497"/>
+    <property name="Two-electron energy" method="RHF" value="127.482443842531"/>
+    <property name="Kinetic energy" method="RHF" value="183.78869549508"/>
+    <property name="Nuclear energy" method="RHF" value="62.38535573931"/>
+    <property name="Virial quotient" method="RHF" value="-0.999670326494995"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 -0.285034465331054"/>
+    <time start="21:23:16" end="21:23:16" cpu="1.29" system="0.03" real="0.75"/>
+    <storage units="megabyte" memory="1525.88" sf="0.04" df="174.93" eaf="26.23" ga="0.0"/>
+    <summary overall_method="HF/6-311G(D,P)"/>
+   </jobstep>
+   <gradient name="SCF GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="0.697260400128207E-07">
+      0.000000000000   0.000000000000   0.000000090495
+      0.000000000000   0.000000000000  -0.000000206109
+      0.000000000000   0.000000000000   0.000000115614
+   </gradient>
+   <opt energy="-183.72810523" type="HF-SCF000" line="0.0"
+     convergence="0.365922466181763E-07" gradient="0.977974186434035E-06"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-183.728105231656"/>
+    <property name="One-electron energy" method="RHF" value="-373.595904813497"/>
+    <property name="Two-electron energy" method="RHF" value="127.482443842531"/>
+    <property name="Kinetic energy" method="RHF" value="183.78869549508"/>
+    <property name="Nuclear energy" method="RHF" value="62.38535573931"/>
+    <property name="Virial quotient" method="RHF" value="-0.999670326494996"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 -0.285034465331156"/>
+    <time start="21:23:17" end="21:23:17" cpu="1.31" system="0.01" real="0.74"/>
+    <storage units="megabyte" memory="1525.88" sf="0.04" df="174.93" eaf="26.23" ga="0.0"/>
+    <summary overall_method="HF/6-311G(D,P)"/>
+   </jobstep>
+   <gradient name="SCF GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="0.697260291667313E-07">
+      0.000000000000   0.000000000000   0.000000090495
+      0.000000000000   0.000000000000  -0.000000206109
+      0.000000000000   0.000000000000   0.000000115614
+   </gradient>
+   <opt energy="-183.72810523" type="HF-SCF000" line="0.0"
+     convergence="0.365922464621595E-07" gradient="0.977974186434035E-06"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-183.728105231656"/>
+    <property name="One-electron energy" method="RHF" value="-373.595904813497"/>
+    <property name="Two-electron energy" method="RHF" value="127.482443842531"/>
+    <property name="Kinetic energy" method="RHF" value="183.78869549508"/>
+    <property name="Nuclear energy" method="RHF" value="62.38535573931"/>
+    <property name="Virial quotient" method="RHF" value="-0.999670326494996"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 -0.285034465331103"/>
+    <time start="21:23:18" end="21:23:18" cpu="1.35" system="0.01" real="0.74"/>
+    <storage units="megabyte" memory="1525.88" sf="0.04" df="174.93" eaf="26.23" ga="0.0"/>
+    <summary overall_method="HF/6-311G(D,P)"/>
+   </jobstep>
+   <gradient name="SCF GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="0.697260099448751E-07">
+      0.000000000000   0.000000000000   0.000000090495
+      0.000000000000   0.000000000000  -0.000000206109
+      0.000000000000   0.000000000000   0.000000115614
+   </gradient>
+   <opt energy="-183.72810523" type="HF-SCF000" line="0.0"
+     convergence="0.365922466181763E-07" gradient="0.977974186434035E-06"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-183.728105231656"/>
+    <property name="One-electron energy" method="RHF" value="-373.595904813497"/>
+    <property name="Two-electron energy" method="RHF" value="127.482443842531"/>
+    <property name="Kinetic energy" method="RHF" value="183.78869549508"/>
+    <property name="Nuclear energy" method="RHF" value="62.38535573931"/>
+    <property name="Virial quotient" method="RHF" value="-0.999670326494995"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 -0.285034465331204"/>
+    <time start="21:23:18" end="21:23:18" cpu="1.33" system="0.03" real="0.73"/>
+    <storage units="megabyte" memory="1525.88" sf="0.04" df="174.93" eaf="26.23" ga="0.0"/>
+    <summary overall_method="HF/6-311G(D,P)"/>
+   </jobstep>
+   <gradient name="SCF GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="0.69725894378612E-07">
+      0.000000000000   0.000000000000   0.000000090495
+      0.000000000000   0.000000000000  -0.000000206109
+      0.000000000000   0.000000000000   0.000000115614
+   </gradient>
+   <opt energy="-183.72810523" type="HF-SCF000" line="0.0"
+     convergence="0.365922464621595E-07" gradient="0.977974186434035E-06"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-183.728105231656"/>
+    <property name="One-electron energy" method="RHF" value="-373.595904813497"/>
+    <property name="Two-electron energy" method="RHF" value="127.482443842531"/>
+    <property name="Kinetic energy" method="RHF" value="183.78869549508"/>
+    <property name="Nuclear energy" method="RHF" value="62.38535573931"/>
+    <property name="Virial quotient" method="RHF" value="-0.999670326494996"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 -0.285034465331109"/>
+    <time start="21:23:19" end="21:23:19" cpu="1.34" system="0.02" real="0.73"/>
+    <storage units="megabyte" memory="1525.88" sf="0.04" df="174.93" eaf="26.23" ga="0.0"/>
+    <summary overall_method="HF/6-311G(D,P)"/>
+   </jobstep>
+   <gradient name="SCF GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="0.697259321918621E-07">
+      0.000000000000   0.000000000000   0.000000090495
+      0.000000000000   0.000000000000  -0.000000206109
+      0.000000000000   0.000000000000   0.000000115614
+   </gradient>
+   <opt energy="-183.72810523" type="HF-SCF000" line="0.0"
+     convergence="0.365922466181763E-07" gradient="0.977974186434035E-06"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-183.728105231656"/>
+    <property name="One-electron energy" method="RHF" value="-373.595904813497"/>
+    <property name="Two-electron energy" method="RHF" value="127.482443842531"/>
+    <property name="Kinetic energy" method="RHF" value="183.78869549508"/>
+    <property name="Nuclear energy" method="RHF" value="62.38535573931"/>
+    <property name="Virial quotient" method="RHF" value="-0.999670326494996"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 -0.285034465331135"/>
+    <time start="21:23:20" end="21:23:20" cpu="1.48" system="0.01" real="0.72"/>
+    <storage units="megabyte" memory="1525.88" sf="0.04" df="174.93" eaf="26.23" ga="0.0"/>
+    <summary overall_method="HF/6-311G(D,P)"/>
+   </jobstep>
+   <gradient name="SCF GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="0.69726073864433E-07">
+      0.000000000000   0.000000000000   0.000000090495
+      0.000000000000   0.000000000000  -0.000000206109
+      0.000000000000   0.000000000000   0.000000115614
+   </gradient>
+   <opt energy="-183.72810523" type="HF-SCF000" line="0.0"
+     convergence="0.365922464621595E-07" gradient="0.977974186434035E-06"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-183.728105231656"/>
+    <property name="One-electron energy" method="RHF" value="-373.595904813497"/>
+    <property name="Two-electron energy" method="RHF" value="127.482443842531"/>
+    <property name="Kinetic energy" method="RHF" value="183.78869549508"/>
+    <property name="Nuclear energy" method="RHF" value="62.38535573931"/>
+    <property name="Virial quotient" method="RHF" value="-0.999670326494995"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 -0.285034465331172"/>
+    <time start="21:23:21" end="21:23:21" cpu="1.37" system="0.02" real="0.75"/>
+    <storage units="megabyte" memory="1525.88" sf="0.04" df="174.93" eaf="26.23" ga="0.0"/>
+    <summary overall_method="HF/6-311G(D,P)"/>
+   </jobstep>
+   <gradient name="SCF GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="0.697260248092965E-07">
+      0.000000000000   0.000000000000   0.000000090495
+      0.000000000000   0.000000000000  -0.000000206109
+      0.000000000000   0.000000000000   0.000000115614
+   </gradient>
+   <opt energy="-183.72810523" type="HF-SCF000" line="0.0"
+     convergence="0.365922466181763E-07" gradient="0.977974186434035E-06"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-183.728105231656"/>
+    <property name="One-electron energy" method="RHF" value="-373.595904813497"/>
+    <property name="Two-electron energy" method="RHF" value="127.482443842531"/>
+    <property name="Kinetic energy" method="RHF" value="183.78869549508"/>
+    <property name="Nuclear energy" method="RHF" value="62.38535573931"/>
+    <property name="Virial quotient" method="RHF" value="-0.999670326494995"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 -0.285034465331148"/>
+    <time start="21:23:21" end="21:23:21" cpu="1.38" system="0.01" real="0.71"/>
+    <storage units="megabyte" memory="1525.88" sf="0.04" df="174.93" eaf="26.23" ga="0.0"/>
+    <summary overall_method="HF/6-311G(D,P)"/>
+   </jobstep>
+   <gradient name="SCF GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="0.697259759728541E-07">
+      0.000000000000   0.000000000000   0.000000090495
+      0.000000000000   0.000000000000  -0.000000206109
+      0.000000000000   0.000000000000   0.000000115614
+   </gradient>
+   <opt energy="-183.72810523" type="HF-SCF000" line="0.0"
+     convergence="0.365922464621595E-07" gradient="0.977974186434035E-06"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-183.728105231656"/>
+    <property name="One-electron energy" method="RHF" value="-373.595904813497"/>
+    <property name="Two-electron energy" method="RHF" value="127.482443842531"/>
+    <property name="Kinetic energy" method="RHF" value="183.78869549508"/>
+    <property name="Nuclear energy" method="RHF" value="62.38535573931"/>
+    <property name="Virial quotient" method="RHF" value="-0.999670326494996"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 -0.285034465331155"/>
+    <time start="21:23:22" end="21:23:22" cpu="1.34" system="0.01" real="0.73"/>
+    <storage units="megabyte" memory="1525.88" sf="0.04" df="174.93" eaf="26.23" ga="0.0"/>
+    <summary overall_method="HF/6-311G(D,P)"/>
+   </jobstep>
+   <gradient name="SCF GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="0.697259920342587E-07">
+      0.000000000000   0.000000000000   0.000000090495
+      0.000000000000   0.000000000000  -0.000000206109
+      0.000000000000   0.000000000000   0.000000115614
+   </gradient>
+   <opt energy="-183.72810523" type="HF-SCF000" line="0.0"
+     convergence="0.365922466181763E-07" gradient="0.977974186434035E-06"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-183.728105231656"/>
+    <property name="One-electron energy" method="RHF" value="-373.595904813497"/>
+    <property name="Two-electron energy" method="RHF" value="127.482443842531"/>
+    <property name="Kinetic energy" method="RHF" value="183.78869549508"/>
+    <property name="Nuclear energy" method="RHF" value="62.38535573931"/>
+    <property name="Virial quotient" method="RHF" value="-0.999670326494996"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 -0.285034465331119"/>
+    <time start="21:23:23" end="21:23:23" cpu="1.43" system="0.01" real="0.69"/>
+    <storage units="megabyte" memory="1525.88" sf="0.04" df="174.93" eaf="26.23" ga="0.0"/>
+    <summary overall_method="HF/6-311G(D,P)"/>
+   </jobstep>
+   <gradient name="SCF GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="0.697259933433565E-07">
+      0.000000000000   0.000000000000   0.000000090495
+      0.000000000000   0.000000000000  -0.000000206109
+      0.000000000000   0.000000000000   0.000000115614
+   </gradient>
+   <opt energy="-183.72810523" type="HF-SCF000" line="0.0"
+     convergence="0.365922464621595E-07" gradient="0.977974186434035E-06"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-183.728105231656"/>
+    <property name="One-electron energy" method="RHF" value="-373.595904813497"/>
+    <property name="Two-electron energy" method="RHF" value="127.482443842531"/>
+    <property name="Kinetic energy" method="RHF" value="183.78869549508"/>
+    <property name="Nuclear energy" method="RHF" value="62.38535573931"/>
+    <property name="Virial quotient" method="RHF" value="-0.999670326494996"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 -0.285034465331135"/>
+    <time start="21:23:23" end="21:23:23" cpu="1.4" system="0.02" real="0.73"/>
+    <storage units="megabyte" memory="1525.88" sf="0.04" df="174.93" eaf="26.23" ga="0.0"/>
+    <summary overall_method="HF/6-311G(D,P)"/>
+   </jobstep>
+   <gradient name="SCF GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="0.697260236566545E-07">
+      0.000000000000   0.000000000000   0.000000090495
+      0.000000000000   0.000000000000  -0.000000206109
+      0.000000000000   0.000000000000   0.000000115614
+   </gradient>
+   <opt energy="-183.72810523" type="HF-SCF000" line="0.0"
+     convergence="0.365922466181763E-07" gradient="0.977974186434035E-06"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-183.728105231656"/>
+    <property name="One-electron energy" method="RHF" value="-373.595904813497"/>
+    <property name="Two-electron energy" method="RHF" value="127.482443842531"/>
+    <property name="Kinetic energy" method="RHF" value="183.78869549508"/>
+    <property name="Nuclear energy" method="RHF" value="62.38535573931"/>
+    <property name="Virial quotient" method="RHF" value="-0.999670326494996"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 -0.285034465331066"/>
+    <time start="21:23:24" end="21:23:24" cpu="1.57" system="0.02" real="0.75"/>
+    <storage units="megabyte" memory="1525.88" sf="0.04" df="174.93" eaf="26.23" ga="0.0"/>
+    <summary overall_method="HF/6-311G(D,P)"/>
+   </jobstep>
+   <gradient name="SCF GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="0.697259610570292E-07">
+      0.000000000000   0.000000000000   0.000000090495
+      0.000000000000   0.000000000000  -0.000000206109
+      0.000000000000   0.000000000000   0.000000115614
+   </gradient>
+   <opt energy="-183.72810523" type="HF-SCF000" line="0.0"
+     convergence="0.365922464621595E-07" gradient="0.977974186434035E-06"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-183.728105231656"/>
+    <property name="One-electron energy" method="RHF" value="-373.595904813497"/>
+    <property name="Two-electron energy" method="RHF" value="127.482443842531"/>
+    <property name="Kinetic energy" method="RHF" value="183.78869549508"/>
+    <property name="Nuclear energy" method="RHF" value="62.38535573931"/>
+    <property name="Virial quotient" method="RHF" value="-0.999670326494997"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 -0.285034465331165"/>
+    <time start="21:23:25" end="21:23:25" cpu="1.34" system="0.01" real="0.71"/>
+    <storage units="megabyte" memory="1525.88" sf="0.04" df="174.93" eaf="26.23" ga="0.0"/>
+    <summary overall_method="HF/6-311G(D,P)"/>
+   </jobstep>
+   <gradient name="SCF GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="0.697258899748507E-07">
+      0.000000000000   0.000000000000   0.000000090495
+      0.000000000000   0.000000000000  -0.000000206109
+      0.000000000000   0.000000000000   0.000000115614
+   </gradient>
+   <opt energy="-183.72810523" type="HF-SCF000" line="0.0"
+     convergence="0.365922466181763E-07" gradient="0.977974186434035E-06"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-183.728105231656"/>
+    <property name="One-electron energy" method="RHF" value="-373.595904813497"/>
+    <property name="Two-electron energy" method="RHF" value="127.482443842531"/>
+    <property name="Kinetic energy" method="RHF" value="183.78869549508"/>
+    <property name="Nuclear energy" method="RHF" value="62.38535573931"/>
+    <property name="Virial quotient" method="RHF" value="-0.999670326494996"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 -0.285034465331065"/>
+    <time start="21:23:26" end="21:23:26" cpu="1.28" system="0.02" real="0.72"/>
+    <storage units="megabyte" memory="1525.88" sf="0.04" df="174.93" eaf="26.23" ga="0.0"/>
+    <summary overall_method="HF/6-311G(D,P)"/>
+   </jobstep>
+   <gradient name="SCF GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="0.697259502120591E-07">
+      0.000000000000   0.000000000000   0.000000090495
+      0.000000000000   0.000000000000  -0.000000206109
+      0.000000000000   0.000000000000   0.000000115614
+   </gradient>
+   <opt energy="-183.72810523" type="HF-SCF000" line="0.0"
+     convergence="0.365922464621595E-07" gradient="0.977974186434035E-06"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-183.728105231656"/>
+    <property name="One-electron energy" method="RHF" value="-373.595904813497"/>
+    <property name="Two-electron energy" method="RHF" value="127.482443842531"/>
+    <property name="Kinetic energy" method="RHF" value="183.78869549508"/>
+    <property name="Nuclear energy" method="RHF" value="62.38535573931"/>
+    <property name="Virial quotient" method="RHF" value="-0.999670326494996"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 -0.285034465331139"/>
+    <time start="21:23:26" end="21:23:26" cpu="1.36" system="0.01" real="0.74"/>
+    <storage units="megabyte" memory="1525.88" sf="0.04" df="174.93" eaf="26.23" ga="0.0"/>
+    <summary overall_method="HF/6-311G(D,P)"/>
+   </jobstep>
+   <gradient name="SCF GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="0.69725921401341E-07">
+      0.000000000000   0.000000000000   0.000000090495
+      0.000000000000   0.000000000000  -0.000000206109
+      0.000000000000   0.000000000000   0.000000115614
+   </gradient>
+   <opt energy="-183.72810523" type="HF-SCF000" line="0.0"
+     convergence="0.365922466181763E-07" gradient="0.977974186434035E-06"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-183.728105231656"/>
+    <property name="One-electron energy" method="RHF" value="-373.595904813497"/>
+    <property name="Two-electron energy" method="RHF" value="127.482443842531"/>
+    <property name="Kinetic energy" method="RHF" value="183.78869549508"/>
+    <property name="Nuclear energy" method="RHF" value="62.38535573931"/>
+    <property name="Virial quotient" method="RHF" value="-0.999670326494996"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 -0.285034465331111"/>
+    <time start="21:23:27" end="21:23:27" cpu="1.36" system="0.01" real="0.72"/>
+    <storage units="megabyte" memory="1525.88" sf="0.04" df="174.93" eaf="26.23" ga="0.0"/>
+    <summary overall_method="HF/6-311G(D,P)"/>
+   </jobstep>
+   <gradient name="SCF GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="0.697259132470181E-07">
+      0.000000000000   0.000000000000   0.000000090495
+      0.000000000000   0.000000000000  -0.000000206109
+      0.000000000000   0.000000000000   0.000000115614
+   </gradient>
+   <opt energy="-183.72810523" type="HF-SCF000" line="0.0"
+     convergence="0.365922464621595E-07" gradient="0.977974186434035E-06"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-183.728105231656"/>
+    <property name="One-electron energy" method="RHF" value="-373.595904813497"/>
+    <property name="Two-electron energy" method="RHF" value="127.482443842531"/>
+    <property name="Kinetic energy" method="RHF" value="183.78869549508"/>
+    <property name="Nuclear energy" method="RHF" value="62.38535573931"/>
+    <property name="Virial quotient" method="RHF" value="-0.999670326494995"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 -0.285034465331113"/>
+    <time start="21:23:28" end="21:23:28" cpu="1.43" system="0.01" real="0.75"/>
+    <storage units="megabyte" memory="1525.88" sf="0.04" df="174.93" eaf="26.23" ga="0.0"/>
+    <summary overall_method="HF/6-311G(D,P)"/>
+   </jobstep>
+   <gradient name="SCF GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="0.69725974307371E-07">
+      0.000000000000   0.000000000000   0.000000090495
+      0.000000000000   0.000000000000  -0.000000206109
+      0.000000000000   0.000000000000   0.000000115614
+   </gradient>
+   <opt energy="-183.72810523" type="HF-SCF000" line="0.0"
+     convergence="0.365922466181763E-07" gradient="0.977974186434035E-06"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-183.728105231656"/>
+    <property name="One-electron energy" method="RHF" value="-373.595904813497"/>
+    <property name="Two-electron energy" method="RHF" value="127.482443842531"/>
+    <property name="Kinetic energy" method="RHF" value="183.78869549508"/>
+    <property name="Nuclear energy" method="RHF" value="62.38535573931"/>
+    <property name="Virial quotient" method="RHF" value="-0.999670326494995"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 -0.285034465331176"/>
+    <time start="21:23:29" end="21:23:29" cpu="1.38" system="0.01" real="0.73"/>
+    <storage units="megabyte" memory="1525.88" sf="0.04" df="174.93" eaf="26.23" ga="0.0"/>
+    <summary overall_method="HF/6-311G(D,P)"/>
+   </jobstep>
+   <gradient name="SCF GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="0.697259380510392E-07">
+      0.000000000000   0.000000000000   0.000000090495
+      0.000000000000   0.000000000000  -0.000000206109
+      0.000000000000   0.000000000000   0.000000115614
+   </gradient>
+   <opt energy="-183.72810523" type="HF-SCF000" line="0.0"
+     convergence="0.365922464621595E-07" gradient="0.977974186434035E-06"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-183.728105231656"/>
+    <property name="One-electron energy" method="RHF" value="-373.595904813497"/>
+    <property name="Two-electron energy" method="RHF" value="127.482443842531"/>
+    <property name="Kinetic energy" method="RHF" value="183.78869549508"/>
+    <property name="Nuclear energy" method="RHF" value="62.38535573931"/>
+    <property name="Virial quotient" method="RHF" value="-0.999670326494995"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 -0.285034465331096"/>
+    <time start="21:23:29" end="21:23:29" cpu="1.34" system="0.01" real="0.7"/>
+    <storage units="megabyte" memory="1525.88" sf="0.04" df="174.93" eaf="26.23" ga="0.0"/>
+    <summary overall_method="HF/6-311G(D,P)"/>
+   </jobstep>
+   <gradient name="SCF GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="0.69725994580078E-07">
+      0.000000000000   0.000000000000   0.000000090495
+      0.000000000000   0.000000000000  -0.000000206109
+      0.000000000000   0.000000000000   0.000000115614
+   </gradient>
+   <opt energy="-183.72810523" type="HF-SCF000" line="0.0"
+     convergence="0.365922466181763E-07" gradient="0.977974186434035E-06"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-183.728105231656"/>
+    <property name="One-electron energy" method="RHF" value="-373.595904813497"/>
+    <property name="Two-electron energy" method="RHF" value="127.482443842531"/>
+    <property name="Kinetic energy" method="RHF" value="183.78869549508"/>
+    <property name="Nuclear energy" method="RHF" value="62.38535573931"/>
+    <property name="Virial quotient" method="RHF" value="-0.999670326494995"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 -0.28503446533115"/>
+    <time start="21:23:30" end="21:23:30" cpu="1.36" system="0.01" real="0.72"/>
+    <storage units="megabyte" memory="1525.88" sf="0.04" df="174.93" eaf="26.23" ga="0.0"/>
+    <summary overall_method="HF/6-311G(D,P)"/>
+   </jobstep>
+   <gradient name="SCF GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="0.697260008788447E-07">
+      0.000000000000   0.000000000000   0.000000090495
+      0.000000000000   0.000000000000  -0.000000206109
+      0.000000000000   0.000000000000   0.000000115614
+   </gradient>
+   <opt energy="-183.72810523" type="HF-SCF000" line="0.0"
+     convergence="0.365922464621595E-07" gradient="0.977974186434035E-06"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-183.728105231656"/>
+    <property name="One-electron energy" method="RHF" value="-373.595904813497"/>
+    <property name="Two-electron energy" method="RHF" value="127.482443842531"/>
+    <property name="Kinetic energy" method="RHF" value="183.78869549508"/>
+    <property name="Nuclear energy" method="RHF" value="62.38535573931"/>
+    <property name="Virial quotient" method="RHF" value="-0.999670326494995"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 -0.285034465331126"/>
+    <time start="21:23:31" end="21:23:31" cpu="1.29" system="0.03" real="0.73"/>
+    <storage units="megabyte" memory="1525.88" sf="0.04" df="174.93" eaf="26.23" ga="0.0"/>
+    <summary overall_method="HF/6-311G(D,P)"/>
+   </jobstep>
+   <gradient name="SCF GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="0.697259869851081E-07">
+      0.000000000000   0.000000000000   0.000000090495
+      0.000000000000   0.000000000000  -0.000000206109
+      0.000000000000   0.000000000000   0.000000115614
+   </gradient>
+   <opt energy="-183.72810523" type="HF-SCF000" line="0.0"
+     convergence="0.365922466181763E-07" gradient="0.977974186434035E-06"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-183.728105231656"/>
+    <property name="One-electron energy" method="RHF" value="-373.595904813497"/>
+    <property name="Two-electron energy" method="RHF" value="127.482443842531"/>
+    <property name="Kinetic energy" method="RHF" value="183.78869549508"/>
+    <property name="Nuclear energy" method="RHF" value="62.38535573931"/>
+    <property name="Virial quotient" method="RHF" value="-0.999670326494995"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 -0.285034465331108"/>
+    <time start="21:23:31" end="21:23:31" cpu="1.39" system="0.02" real="0.73"/>
+    <storage units="megabyte" memory="1525.88" sf="0.04" df="174.93" eaf="26.23" ga="0.0"/>
+    <summary overall_method="HF/6-311G(D,P)"/>
+   </jobstep>
+   <gradient name="SCF GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="0.697259951877515E-07">
+      0.000000000000   0.000000000000   0.000000090495
+      0.000000000000   0.000000000000  -0.000000206109
+      0.000000000000   0.000000000000   0.000000115614
+   </gradient>
+   <opt energy="-183.72810523" type="HF-SCF000" line="0.0"
+     convergence="0.365922464621595E-07" gradient="0.977974186434035E-06"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-183.728105231656"/>
+    <property name="One-electron energy" method="RHF" value="-373.595904813497"/>
+    <property name="Two-electron energy" method="RHF" value="127.482443842531"/>
+    <property name="Kinetic energy" method="RHF" value="183.78869549508"/>
+    <property name="Nuclear energy" method="RHF" value="62.38535573931"/>
+    <property name="Virial quotient" method="RHF" value="-0.999670326494996"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 -0.285034465331081"/>
+    <time start="21:23:32" end="21:23:32" cpu="1.37" system="0.01" real="0.74"/>
+    <storage units="megabyte" memory="1525.88" sf="0.04" df="174.93" eaf="26.23" ga="0.0"/>
+    <summary overall_method="HF/6-311G(D,P)"/>
+   </jobstep>
+   <gradient name="SCF GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="0.69725979859795E-07">
+      0.000000000000   0.000000000000   0.000000090495
+      0.000000000000   0.000000000000  -0.000000206109
+      0.000000000000   0.000000000000   0.000000115614
+   </gradient>
+   <opt energy="-183.72810523" type="HF-SCF000" line="0.0"
+     convergence="0.365922466181763E-07" gradient="0.977974186434035E-06"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-183.728105231656"/>
+    <property name="One-electron energy" method="RHF" value="-373.595904813497"/>
+    <property name="Two-electron energy" method="RHF" value="127.482443842531"/>
+    <property name="Kinetic energy" method="RHF" value="183.78869549508"/>
+    <property name="Nuclear energy" method="RHF" value="62.38535573931"/>
+    <property name="Virial quotient" method="RHF" value="-0.999670326494996"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 -0.28503446533111"/>
+    <time start="21:23:33" end="21:23:33" cpu="1.29" system="0.02" real="0.74"/>
+    <storage units="megabyte" memory="1525.88" sf="0.04" df="174.93" eaf="26.23" ga="0.0"/>
+    <summary overall_method="HF/6-311G(D,P)"/>
+   </jobstep>
+   <gradient name="SCF GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="0.697260251784662E-07">
+      0.000000000000   0.000000000000   0.000000090495
+      0.000000000000   0.000000000000  -0.000000206109
+      0.000000000000   0.000000000000   0.000000115614
+   </gradient>
+   <opt energy="-183.72810523" type="HF-SCF000" line="0.0"
+     convergence="0.365922464621595E-07" gradient="0.977974186434035E-06"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-183.728105231655"/>
+    <property name="One-electron energy" method="RHF" value="-373.595904813497"/>
+    <property name="Two-electron energy" method="RHF" value="127.482443842531"/>
+    <property name="Kinetic energy" method="RHF" value="183.788695495079"/>
+    <property name="Nuclear energy" method="RHF" value="62.38535573931"/>
+    <property name="Virial quotient" method="RHF" value="-0.999670326494996"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 -0.285034465331196"/>
+    <time start="21:23:34" end="21:23:34" cpu="1.33" system="0.02" real="0.73"/>
+    <storage units="megabyte" memory="1525.88" sf="0.04" df="174.93" eaf="26.23" ga="0.0"/>
+    <summary overall_method="HF/6-311G(D,P)"/>
+   </jobstep>
+   <gradient name="SCF GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="0.697259245710275E-07">
+      0.000000000000   0.000000000000   0.000000090495
+      0.000000000000   0.000000000000  -0.000000206109
+      0.000000000000   0.000000000000   0.000000115614
+   </gradient>
+   <opt energy="-183.72810523" type="HF-SCF000" line="0.0"
+     convergence="0.365922466181763E-07" gradient="0.977974186434035E-06"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-183.728105231656"/>
+    <property name="One-electron energy" method="RHF" value="-373.595904813497"/>
+    <property name="Two-electron energy" method="RHF" value="127.482443842531"/>
+    <property name="Kinetic energy" method="RHF" value="183.788695495079"/>
+    <property name="Nuclear energy" method="RHF" value="62.38535573931"/>
+    <property name="Virial quotient" method="RHF" value="-0.999670326494996"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 -0.285034465331029"/>
+    <time start="21:23:34" end="21:23:34" cpu="1.3" system="0.02" real="0.75"/>
+    <storage units="megabyte" memory="1525.88" sf="0.04" df="174.93" eaf="26.23" ga="0.0"/>
+    <summary overall_method="HF/6-311G(D,P)"/>
+   </jobstep>
+   <gradient name="SCF GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="0.697259508081048E-07">
+      0.000000000000   0.000000000000   0.000000090495
+      0.000000000000   0.000000000000  -0.000000206109
+      0.000000000000   0.000000000000   0.000000115614
+   </gradient>
+   <opt energy="-183.72810523" type="HF-SCF000" line="0.0"
+     convergence="0.365922464621595E-07" gradient="0.977974186434035E-06"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-183.728105231656"/>
+    <property name="One-electron energy" method="RHF" value="-373.595904813497"/>
+    <property name="Two-electron energy" method="RHF" value="127.482443842531"/>
+    <property name="Kinetic energy" method="RHF" value="183.78869549508"/>
+    <property name="Nuclear energy" method="RHF" value="62.38535573931"/>
+    <property name="Virial quotient" method="RHF" value="-0.999670326494996"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 -0.285034465331132"/>
+    <time start="21:23:35" end="21:23:35" cpu="1.38" system="0.02" real="0.76"/>
+    <storage units="megabyte" memory="1525.88" sf="0.04" df="174.93" eaf="26.23" ga="0.0"/>
+    <summary overall_method="HF/6-311G(D,P)"/>
+   </jobstep>
+   <gradient name="SCF GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="0.697259820854617E-07">
+      0.000000000000   0.000000000000   0.000000090495
+      0.000000000000   0.000000000000  -0.000000206109
+      0.000000000000   0.000000000000   0.000000115614
+   </gradient>
+   <opt energy="-183.72810523" type="HF-SCF000" line="0.0"
+     convergence="0.365922466181763E-07" gradient="0.977974186434035E-06"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-183.728105231656"/>
+    <property name="One-electron energy" method="RHF" value="-373.595904813497"/>
+    <property name="Two-electron energy" method="RHF" value="127.482443842531"/>
+    <property name="Kinetic energy" method="RHF" value="183.78869549508"/>
+    <property name="Nuclear energy" method="RHF" value="62.38535573931"/>
+    <property name="Virial quotient" method="RHF" value="-0.999670326494996"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 -0.285034465331077"/>
+    <time start="21:23:36" end="21:23:36" cpu="1.46" system="0.03" real="0.71"/>
+    <storage units="megabyte" memory="1525.88" sf="0.04" df="174.93" eaf="26.23" ga="0.0"/>
+    <summary overall_method="HF/6-311G(D,P)"/>
+   </jobstep>
+   <gradient name="SCF GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="0.69725953952764E-07">
+      0.000000000000   0.000000000000   0.000000090495
+      0.000000000000   0.000000000000  -0.000000206109
+      0.000000000000   0.000000000000   0.000000115614
+   </gradient>
+   <opt energy="-183.72810523" type="HF-SCF000" line="0.0"
+     convergence="0.365922464621595E-07" gradient="0.977974186434035E-06"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-183.728105231655"/>
+    <property name="One-electron energy" method="RHF" value="-373.595904813497"/>
+    <property name="Two-electron energy" method="RHF" value="127.482443842531"/>
+    <property name="Kinetic energy" method="RHF" value="183.78869549508"/>
+    <property name="Nuclear energy" method="RHF" value="62.38535573931"/>
+    <property name="Virial quotient" method="RHF" value="-0.999670326494995"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 -0.28503446533117"/>
+    <time start="21:23:37" end="21:23:37" cpu="1.43" system="0.02" real="0.75"/>
+    <storage units="megabyte" memory="1525.88" sf="0.04" df="174.93" eaf="26.23" ga="0.0"/>
+    <summary overall_method="HF/6-311G(D,P)"/>
+   </jobstep>
+   <gradient name="SCF GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="0.697259454423517E-07">
+      0.000000000000   0.000000000000   0.000000090495
+      0.000000000000   0.000000000000  -0.000000206109
+      0.000000000000   0.000000000000   0.000000115614
+   </gradient>
+   <opt energy="-183.72810523" type="HF-SCF000" line="0.0"
+     convergence="0.365922466181763E-07" gradient="0.977974186434035E-06"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-183.728105231655"/>
+    <property name="One-electron energy" method="RHF" value="-373.595904813497"/>
+    <property name="Two-electron energy" method="RHF" value="127.482443842531"/>
+    <property name="Kinetic energy" method="RHF" value="183.78869549508"/>
+    <property name="Nuclear energy" method="RHF" value="62.38535573931"/>
+    <property name="Virial quotient" method="RHF" value="-0.999670326494995"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 -0.285034465331041"/>
+    <time start="21:23:37" end="21:23:37" cpu="1.33" system="0.02" real="0.72"/>
+    <storage units="megabyte" memory="1525.88" sf="0.04" df="174.93" eaf="26.23" ga="0.0"/>
+    <summary overall_method="HF/6-311G(D,P)"/>
+   </jobstep>
+   <gradient name="SCF GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="0.697260729404758E-07">
+      0.000000000000   0.000000000000   0.000000090495
+      0.000000000000   0.000000000000  -0.000000206109
+      0.000000000000   0.000000000000   0.000000115614
+   </gradient>
+   <opt energy="-183.72810523" type="HF-SCF000" line="0.0"
+     convergence="0.365922464621595E-07" gradient="0.977974186434035E-06"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-183.728105231656"/>
+    <property name="One-electron energy" method="RHF" value="-373.595904813497"/>
+    <property name="Two-electron energy" method="RHF" value="127.482443842531"/>
+    <property name="Kinetic energy" method="RHF" value="183.78869549508"/>
+    <property name="Nuclear energy" method="RHF" value="62.38535573931"/>
+    <property name="Virial quotient" method="RHF" value="-0.999670326494996"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 -0.285034465331259"/>
+    <time start="21:23:38" end="21:23:38" cpu="1.37" system="0.01" real="0.74"/>
+    <storage units="megabyte" memory="1525.88" sf="0.04" df="174.93" eaf="26.23" ga="0.0"/>
+    <summary overall_method="HF/6-311G(D,P)"/>
+   </jobstep>
+   <gradient name="SCF GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="0.697259376508616E-07">
+      0.000000000000   0.000000000000   0.000000090495
+      0.000000000000   0.000000000000  -0.000000206109
+      0.000000000000   0.000000000000   0.000000115614
+   </gradient>
+   <opt energy="-183.72810523" type="HF-SCF000" line="0.0"
+     convergence="0.365922466181763E-07" gradient="0.977974186434035E-06"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-183.728105231656"/>
+    <property name="One-electron energy" method="RHF" value="-373.595904813497"/>
+    <property name="Two-electron energy" method="RHF" value="127.482443842531"/>
+    <property name="Kinetic energy" method="RHF" value="183.78869549508"/>
+    <property name="Nuclear energy" method="RHF" value="62.38535573931"/>
+    <property name="Virial quotient" method="RHF" value="-0.999670326494996"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 -0.285034465330977"/>
+    <time start="21:23:39" end="21:23:39" cpu="1.37" system="0.02" real="0.76"/>
+    <storage units="megabyte" memory="1525.88" sf="0.04" df="174.93" eaf="26.23" ga="0.0"/>
+    <summary overall_method="HF/6-311G(D,P)"/>
+   </jobstep>
+   <gradient name="SCF GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="0.697260115888738E-07">
+      0.000000000000   0.000000000000   0.000000090495
+      0.000000000000   0.000000000000  -0.000000206109
+      0.000000000000   0.000000000000   0.000000115614
+   </gradient>
+   <opt energy="-183.72810523" type="HF-SCF000" line="0.0"
+     convergence="0.365922464621595E-07" gradient="0.977974186434035E-06"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-183.728105231655"/>
+    <property name="One-electron energy" method="RHF" value="-373.595904813497"/>
+    <property name="Two-electron energy" method="RHF" value="127.482443842531"/>
+    <property name="Kinetic energy" method="RHF" value="183.78869549508"/>
+    <property name="Nuclear energy" method="RHF" value="62.38535573931"/>
+    <property name="Virial quotient" method="RHF" value="-0.999670326494995"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 -0.285034465331249"/>
+    <time start="21:23:40" end="21:23:40" cpu="1.33" system="0.02" real="0.72"/>
+    <storage units="megabyte" memory="1525.88" sf="0.04" df="174.93" eaf="26.23" ga="0.0"/>
+    <summary overall_method="HF/6-311G(D,P)"/>
+   </jobstep>
+   <gradient name="SCF GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="0.69725945366714E-07">
+      0.000000000000   0.000000000000   0.000000090495
+      0.000000000000   0.000000000000  -0.000000206109
+      0.000000000000   0.000000000000   0.000000115614
+   </gradient>
+   <opt energy="-183.72810523" type="HF-SCF000" line="0.0"
+     convergence="0.365922466181763E-07" gradient="0.977974186434035E-06"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-183.728105231656"/>
+    <property name="One-electron energy" method="RHF" value="-373.595904813497"/>
+    <property name="Two-electron energy" method="RHF" value="127.482443842531"/>
+    <property name="Kinetic energy" method="RHF" value="183.788695495079"/>
+    <property name="Nuclear energy" method="RHF" value="62.38535573931"/>
+    <property name="Virial quotient" method="RHF" value="-0.999670326494998"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 -0.285034465331047"/>
+    <time start="21:23:40" end="21:23:40" cpu="1.39" system="0.02" real="0.74"/>
+    <storage units="megabyte" memory="1525.88" sf="0.04" df="174.93" eaf="26.23" ga="0.0"/>
+    <summary overall_method="HF/6-311G(D,P)"/>
+   </jobstep>
+   <gradient name="SCF GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="0.697260331044234E-07">
+      0.000000000000   0.000000000000   0.000000090495
+      0.000000000000   0.000000000000  -0.000000206109
+      0.000000000000   0.000000000000   0.000000115614
+   </gradient>
+   <opt energy="-183.72810523" type="HF-SCF000" line="0.0"
+     convergence="0.365922464621595E-07" gradient="0.977974186434035E-06"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-183.728105231656"/>
+    <property name="One-electron energy" method="RHF" value="-373.595904813497"/>
+    <property name="Two-electron energy" method="RHF" value="127.482443842531"/>
+    <property name="Kinetic energy" method="RHF" value="183.78869549508"/>
+    <property name="Nuclear energy" method="RHF" value="62.38535573931"/>
+    <property name="Virial quotient" method="RHF" value="-0.999670326494996"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 -0.285034465331221"/>
+    <time start="21:23:41" end="21:23:41" cpu="1.38" system="0.01" real="0.73"/>
+    <storage units="megabyte" memory="1525.88" sf="0.04" df="174.93" eaf="26.23" ga="0.0"/>
+    <summary overall_method="HF/6-311G(D,P)"/>
+   </jobstep>
+   <gradient name="SCF GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="0.697259084171769E-07">
+      0.000000000000   0.000000000000   0.000000090495
+      0.000000000000   0.000000000000  -0.000000206109
+      0.000000000000   0.000000000000   0.000000115614
+   </gradient>
+   <opt energy="-183.72810523" type="HF-SCF000" line="0.0"
+     convergence="0.365922466181763E-07" gradient="0.977974186434035E-06"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-183.728105231656"/>
+    <property name="One-electron energy" method="RHF" value="-373.595904813497"/>
+    <property name="Two-electron energy" method="RHF" value="127.482443842531"/>
+    <property name="Kinetic energy" method="RHF" value="183.78869549508"/>
+    <property name="Nuclear energy" method="RHF" value="62.38535573931"/>
+    <property name="Virial quotient" method="RHF" value="-0.999670326494996"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 -0.285034465331002"/>
+    <time start="21:23:42" end="21:23:42" cpu="1.4" system="0.02" real="0.73"/>
+    <storage units="megabyte" memory="1525.88" sf="0.04" df="174.93" eaf="26.23" ga="0.0"/>
+    <summary overall_method="HF/6-311G(D,P)"/>
+   </jobstep>
+   <gradient name="SCF GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="0.697259381241055E-07">
+      0.000000000000   0.000000000000   0.000000090495
+      0.000000000000   0.000000000000  -0.000000206109
+      0.000000000000   0.000000000000   0.000000115614
+   </gradient>
+   <opt energy="-183.72810523" type="HF-SCF000" line="0.0"
+     convergence="0.365922464621595E-07" gradient="0.977974186434035E-06"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-183.728105231656"/>
+    <property name="One-electron energy" method="RHF" value="-373.595904813497"/>
+    <property name="Two-electron energy" method="RHF" value="127.482443842532"/>
+    <property name="Kinetic energy" method="RHF" value="183.78869549508"/>
+    <property name="Nuclear energy" method="RHF" value="62.38535573931"/>
+    <property name="Virial quotient" method="RHF" value="-0.999670326494994"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 -0.285034465331246"/>
+    <time start="21:23:43" end="21:23:43" cpu="1.28" system="0.01" real="0.73"/>
+    <storage units="megabyte" memory="1525.88" sf="0.04" df="174.93" eaf="26.23" ga="0.0"/>
+    <summary overall_method="HF/6-311G(D,P)"/>
+   </jobstep>
+   <gradient name="SCF GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="0.697259784158664E-07">
+      0.000000000000   0.000000000000   0.000000090495
+      0.000000000000   0.000000000000  -0.000000206109
+      0.000000000000   0.000000000000   0.000000115614
+   </gradient>
+   <opt energy="-183.72810523" type="HF-SCF000" line="0.0"
+     convergence="0.365922466181763E-07" gradient="0.977974186434035E-06"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-183.728105231655"/>
+    <property name="One-electron energy" method="RHF" value="-373.595904813497"/>
+    <property name="Two-electron energy" method="RHF" value="127.482443842531"/>
+    <property name="Kinetic energy" method="RHF" value="183.788695495079"/>
+    <property name="Nuclear energy" method="RHF" value="62.38535573931"/>
+    <property name="Virial quotient" method="RHF" value="-0.999670326494996"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 -0.285034465331056"/>
+    <time start="21:23:43" end="21:23:43" cpu="1.33" system="0.02" real="0.72"/>
+    <storage units="megabyte" memory="1525.88" sf="0.04" df="174.93" eaf="26.23" ga="0.0"/>
+    <summary overall_method="HF/6-311G(D,P)"/>
+   </jobstep>
+   <gradient name="SCF GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="0.697260633284989E-07">
+      0.000000000000   0.000000000000   0.000000090495
+      0.000000000000   0.000000000000  -0.000000206109
+      0.000000000000   0.000000000000   0.000000115614
+   </gradient>
+   <opt energy="-183.72810523" type="HF-SCF000" line="0.0"
+     convergence="0.365922464621595E-07" gradient="0.977974186434035E-06"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-183.728105231656"/>
+    <property name="One-electron energy" method="RHF" value="-373.595904813497"/>
+    <property name="Two-electron energy" method="RHF" value="127.482443842531"/>
+    <property name="Kinetic energy" method="RHF" value="183.78869549508"/>
+    <property name="Nuclear energy" method="RHF" value="62.38535573931"/>
+    <property name="Virial quotient" method="RHF" value="-0.999670326494996"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 -0.285034465331235"/>
+    <time start="21:23:44" end="21:23:44" cpu="1.38" system="0.01" real="0.73"/>
+    <storage units="megabyte" memory="1525.88" sf="0.04" df="174.93" eaf="26.23" ga="0.0"/>
+    <summary overall_method="HF/6-311G(D,P)"/>
+   </jobstep>
+   <gradient name="SCF GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="0.697259817644717E-07">
+      0.000000000000   0.000000000000   0.000000090495
+      0.000000000000   0.000000000000  -0.000000206109
+      0.000000000000   0.000000000000   0.000000115614
+   </gradient>
+   <opt energy="-183.72810523" type="HF-SCF000" line="0.0"
+     convergence="0.365922466181763E-07" gradient="0.977974186434035E-06"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-183.728105231656"/>
+    <property name="One-electron energy" method="RHF" value="-373.595904813497"/>
+    <property name="Two-electron energy" method="RHF" value="127.482443842531"/>
+    <property name="Kinetic energy" method="RHF" value="183.78869549508"/>
+    <property name="Nuclear energy" method="RHF" value="62.38535573931"/>
+    <property name="Virial quotient" method="RHF" value="-0.999670326494996"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 -0.285034465331014"/>
+    <time start="21:23:45" end="21:23:45" cpu="1.46" system="0.02" real="0.76"/>
+    <storage units="megabyte" memory="1525.88" sf="0.04" df="174.93" eaf="26.23" ga="0.0"/>
+    <summary overall_method="HF/6-311G(D,P)"/>
+   </jobstep>
+   <gradient name="SCF GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="0.697260341982734E-07">
+      0.000000000000   0.000000000000   0.000000090495
+      0.000000000000   0.000000000000  -0.000000206109
+      0.000000000000   0.000000000000   0.000000115614
+   </gradient>
+   <opt energy="-183.72810523" type="HF-SCF000" line="0.0"
+     convergence="0.365922464621595E-07" gradient="0.977974186434035E-06"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-183.728105231655"/>
+    <property name="One-electron energy" method="RHF" value="-373.595904813497"/>
+    <property name="Two-electron energy" method="RHF" value="127.482443842531"/>
+    <property name="Kinetic energy" method="RHF" value="183.78869549508"/>
+    <property name="Nuclear energy" method="RHF" value="62.38535573931"/>
+    <property name="Virial quotient" method="RHF" value="-0.999670326494995"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 -0.2850344653312"/>
+    <time start="21:23:45" end="21:23:45" cpu="1.42" system="0.01" real="0.75"/>
+    <storage units="megabyte" memory="1525.88" sf="0.04" df="174.93" eaf="26.23" ga="0.0"/>
+    <summary overall_method="HF/6-311G(D,P)"/>
+   </jobstep>
+   <gradient name="SCF GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="0.697259599334385E-07">
+      0.000000000000   0.000000000000   0.000000090495
+      0.000000000000   0.000000000000  -0.000000206109
+      0.000000000000   0.000000000000   0.000000115614
+   </gradient>
+   <opt energy="-183.72810523" type="HF-SCF000" line="0.0"
+     convergence="0.365922466181763E-07" gradient="0.977974186434035E-06"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-183.728105231656"/>
+    <property name="One-electron energy" method="RHF" value="-373.595904813497"/>
+    <property name="Two-electron energy" method="RHF" value="127.482443842531"/>
+    <property name="Kinetic energy" method="RHF" value="183.78869549508"/>
+    <property name="Nuclear energy" method="RHF" value="62.38535573931"/>
+    <property name="Virial quotient" method="RHF" value="-0.999670326494995"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 -0.285034465331021"/>
+    <time start="21:23:46" end="21:23:46" cpu="1.42" system="0.02" real="0.73"/>
+    <storage units="megabyte" memory="1525.88" sf="0.04" df="174.93" eaf="26.23" ga="0.0"/>
+    <summary overall_method="HF/6-311G(D,P)"/>
+   </jobstep>
+   <gradient name="SCF GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="0.697259779511014E-07">
+      0.000000000000   0.000000000000   0.000000090495
+      0.000000000000   0.000000000000  -0.000000206109
+      0.000000000000   0.000000000000   0.000000115614
+   </gradient>
+   <opt energy="-183.72810523" type="HF-SCF000" line="0.0"
+     convergence="0.365922464621595E-07" gradient="0.977974186434035E-06"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-183.728105231656"/>
+    <property name="One-electron energy" method="RHF" value="-373.595904813497"/>
+    <property name="Two-electron energy" method="RHF" value="127.482443842531"/>
+    <property name="Kinetic energy" method="RHF" value="183.78869549508"/>
+    <property name="Nuclear energy" method="RHF" value="62.38535573931"/>
+    <property name="Virial quotient" method="RHF" value="-0.999670326494994"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 -0.285034465331237"/>
+    <time start="21:23:47" end="21:23:47" cpu="1.38" system="0.01" real="0.73"/>
+    <storage units="megabyte" memory="1525.88" sf="0.04" df="174.93" eaf="26.23" ga="0.0"/>
+    <summary overall_method="HF/6-311G(D,P)"/>
+   </jobstep>
+   <gradient name="SCF GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="0.697259056334686E-07">
+      0.000000000000   0.000000000000   0.000000090495
+      0.000000000000   0.000000000000  -0.000000206109
+      0.000000000000   0.000000000000   0.000000115614
+   </gradient>
+   <opt energy="-183.72810523" type="HF-SCF000" line="0.0"
+     convergence="0.365922466181763E-07" gradient="0.977974186434035E-06"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-183.728105231656"/>
+    <property name="One-electron energy" method="RHF" value="-373.595904813497"/>
+    <property name="Two-electron energy" method="RHF" value="127.482443842531"/>
+    <property name="Kinetic energy" method="RHF" value="183.78869549508"/>
+    <property name="Nuclear energy" method="RHF" value="62.38535573931"/>
+    <property name="Virial quotient" method="RHF" value="-0.999670326494996"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 -0.28503446533103"/>
+    <time start="21:23:48" end="21:23:48" cpu="1.44" system="0.01" real="0.75"/>
+    <storage units="megabyte" memory="1525.88" sf="0.04" df="174.93" eaf="26.23" ga="0.0"/>
+    <summary overall_method="HF/6-311G(D,P)"/>
+   </jobstep>
+   <gradient name="SCF GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="0.69726003255313E-07">
+      0.000000000000   0.000000000000   0.000000090495
+      0.000000000000   0.000000000000  -0.000000206109
+      0.000000000000   0.000000000000   0.000000115614
+   </gradient>
+   <opt energy="-183.72810523" type="HF-SCF000" line="0.0"
+     convergence="0.365922464621595E-07" gradient="0.977974186434035E-06"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-183.728105231655"/>
+    <property name="One-electron energy" method="RHF" value="-373.595904813497"/>
+    <property name="Two-electron energy" method="RHF" value="127.482443842531"/>
+    <property name="Kinetic energy" method="RHF" value="183.788695495079"/>
+    <property name="Nuclear energy" method="RHF" value="62.38535573931"/>
+    <property name="Virial quotient" method="RHF" value="-0.999670326494996"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 -0.285034465331236"/>
+    <time start="21:23:48" end="21:23:48" cpu="1.35" system="0.03" real="0.72"/>
+    <storage units="megabyte" memory="1525.88" sf="0.04" df="174.93" eaf="26.23" ga="0.0"/>
+    <summary overall_method="HF/6-311G(D,P)"/>
+   </jobstep>
+   <gradient name="SCF GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="0.697260060967316E-07">
+      0.000000000000   0.000000000000   0.000000090495
+      0.000000000000   0.000000000000  -0.000000206109
+      0.000000000000   0.000000000000   0.000000115614
+   </gradient>
+   <opt energy="-183.72810523" type="HF-SCF000" line="0.0"
+     convergence="0.365922466181763E-07" gradient="0.977974186434035E-06"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-183.728105231656"/>
+    <property name="One-electron energy" method="RHF" value="-373.595904813497"/>
+    <property name="Two-electron energy" method="RHF" value="127.482443842531"/>
+    <property name="Kinetic energy" method="RHF" value="183.78869549508"/>
+    <property name="Nuclear energy" method="RHF" value="62.38535573931"/>
+    <property name="Virial quotient" method="RHF" value="-0.999670326494995"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 -0.285034465331015"/>
+    <time start="21:23:49" end="21:23:49" cpu="1.39" system="0.01" real="0.74"/>
+    <storage units="megabyte" memory="1525.88" sf="0.04" df="174.93" eaf="26.23" ga="0.0"/>
+    <summary overall_method="HF/6-311G(D,P)"/>
+   </jobstep>
+   <gradient name="SCF GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="0.697260149250136E-07">
+      0.000000000000   0.000000000000   0.000000090495
+      0.000000000000   0.000000000000  -0.000000206109
+      0.000000000000   0.000000000000   0.000000115614
+   </gradient>
+   <opt energy="-183.72810523" type="HF-SCF000" line="0.0"
+     convergence="0.365922464621595E-07" gradient="0.977974186434035E-06"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-183.728105231656"/>
+    <property name="One-electron energy" method="RHF" value="-373.595904813497"/>
+    <property name="Two-electron energy" method="RHF" value="127.482443842531"/>
+    <property name="Kinetic energy" method="RHF" value="183.78869549508"/>
+    <property name="Nuclear energy" method="RHF" value="62.38535573931"/>
+    <property name="Virial quotient" method="RHF" value="-0.999670326494995"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 -0.285034465331284"/>
+    <time start="21:23:50" end="21:23:50" cpu="1.34" system="0.02" real="0.76"/>
+    <storage units="megabyte" memory="1525.88" sf="0.04" df="174.93" eaf="26.23" ga="0.0"/>
+    <summary overall_method="HF/6-311G(D,P)"/>
+   </jobstep>
+   <gradient name="SCF GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="0.697258476710031E-07">
+      0.000000000000   0.000000000000   0.000000090495
+      0.000000000000   0.000000000000  -0.000000206109
+      0.000000000000   0.000000000000   0.000000115614
+   </gradient>
+   <opt energy="-183.72810523" type="HF-SCF000" line="0.0"
+     convergence="0.365922466181763E-07" gradient="0.977974186434035E-06"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-183.728105231656"/>
+    <property name="One-electron energy" method="RHF" value="-373.595904813497"/>
+    <property name="Two-electron energy" method="RHF" value="127.482443842531"/>
+    <property name="Kinetic energy" method="RHF" value="183.78869549508"/>
+    <property name="Nuclear energy" method="RHF" value="62.38535573931"/>
+    <property name="Virial quotient" method="RHF" value="-0.999670326494996"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 -0.285034465330978"/>
+    <time start="21:23:51" end="21:23:51" cpu="1.28" system="0.01" real="0.72"/>
+    <storage units="megabyte" memory="1525.88" sf="0.04" df="174.93" eaf="26.23" ga="0.0"/>
+    <summary overall_method="HF/6-311G(D,P)"/>
+   </jobstep>
+   <gradient name="SCF GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="0.697259597510072E-07">
+      0.000000000000   0.000000000000   0.000000090495
+      0.000000000000   0.000000000000  -0.000000206109
+      0.000000000000   0.000000000000   0.000000115614
+   </gradient>
+   <opt energy="-183.72810523" type="HF-SCF000" line="0.0"
+     convergence="0.365922464621595E-07" gradient="0.977974186434035E-06"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-183.728105231656"/>
+    <property name="One-electron energy" method="RHF" value="-373.595904813497"/>
+    <property name="Two-electron energy" method="RHF" value="127.482443842531"/>
+    <property name="Kinetic energy" method="RHF" value="183.78869549508"/>
+    <property name="Nuclear energy" method="RHF" value="62.38535573931"/>
+    <property name="Virial quotient" method="RHF" value="-0.999670326494995"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 -0.285034465331234"/>
+    <time start="21:23:51" end="21:23:51" cpu="1.38" system="0.02" real="0.71"/>
+    <storage units="megabyte" memory="1525.88" sf="0.04" df="174.93" eaf="26.23" ga="0.0"/>
+    <summary overall_method="HF/6-311G(D,P)"/>
+   </jobstep>
+   <gradient name="SCF GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="0.697259749249012E-07">
+      0.000000000000   0.000000000000   0.000000090495
+      0.000000000000   0.000000000000  -0.000000206109
+      0.000000000000   0.000000000000   0.000000115614
+   </gradient>
+   <opt energy="-183.72810523" type="HF-SCF000" line="0.0"
+     convergence="0.365922466181763E-07" gradient="0.977974186434035E-06"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-183.728105231656"/>
+    <property name="One-electron energy" method="RHF" value="-373.595904813497"/>
+    <property name="Two-electron energy" method="RHF" value="127.482443842531"/>
+    <property name="Kinetic energy" method="RHF" value="183.78869549508"/>
+    <property name="Nuclear energy" method="RHF" value="62.38535573931"/>
+    <property name="Virial quotient" method="RHF" value="-0.999670326494996"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 -0.285034465331021"/>
+    <time start="21:23:52" end="21:23:52" cpu="1.35" system="0.01" real="0.7"/>
+    <storage units="megabyte" memory="1525.88" sf="0.04" df="174.93" eaf="26.23" ga="0.0"/>
+    <summary overall_method="HF/6-311G(D,P)"/>
+   </jobstep>
+   <gradient name="SCF GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="0.697260002259264E-07">
+      0.000000000000   0.000000000000   0.000000090495
+      0.000000000000   0.000000000000  -0.000000206109
+      0.000000000000   0.000000000000   0.000000115614
+   </gradient>
+   <opt energy="-183.72810523" type="HF-SCF000" line="0.0"
+     convergence="0.365922464621595E-07" gradient="0.977974186434035E-06"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-183.728105231656"/>
+    <property name="One-electron energy" method="RHF" value="-373.595904813497"/>
+    <property name="Two-electron energy" method="RHF" value="127.482443842531"/>
+    <property name="Kinetic energy" method="RHF" value="183.78869549508"/>
+    <property name="Nuclear energy" method="RHF" value="62.38535573931"/>
+    <property name="Virial quotient" method="RHF" value="-0.999670326494996"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 -0.285034465331192"/>
+    <time start="21:23:53" end="21:23:53" cpu="1.3" system="0.02" real="0.73"/>
+    <storage units="megabyte" memory="1525.88" sf="0.04" df="174.93" eaf="26.23" ga="0.0"/>
+    <summary overall_method="HF/6-311G(D,P)"/>
+   </jobstep>
+   <gradient name="SCF GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="0.69725927994907E-07">
+      0.000000000000   0.000000000000   0.000000090495
+      0.000000000000   0.000000000000  -0.000000206109
+      0.000000000000   0.000000000000   0.000000115614
+   </gradient>
+   <opt energy="-183.72810523" type="HF-SCF000" line="0.0"
+     convergence="0.365922466181763E-07" gradient="0.977974186434035E-06"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-183.728105231656"/>
+    <property name="One-electron energy" method="RHF" value="-373.595904813497"/>
+    <property name="Two-electron energy" method="RHF" value="127.482443842531"/>
+    <property name="Kinetic energy" method="RHF" value="183.78869549508"/>
+    <property name="Nuclear energy" method="RHF" value="62.38535573931"/>
+    <property name="Virial quotient" method="RHF" value="-0.999670326494996"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 -0.285034465331008"/>
+    <time start="21:23:54" end="21:23:54" cpu="1.45" system="0.01" real="0.74"/>
+    <storage units="megabyte" memory="1525.88" sf="0.04" df="174.93" eaf="26.23" ga="0.0"/>
+    <summary overall_method="HF/6-311G(D,P)"/>
+   </jobstep>
+   <gradient name="SCF GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="0.69725950264441E-07">
+      0.000000000000   0.000000000000   0.000000090495
+      0.000000000000   0.000000000000  -0.000000206109
+      0.000000000000   0.000000000000   0.000000115614
+   </gradient>
+   <opt energy="-183.72810523" type="HF-SCF000" line="0.0"
+     convergence="0.365922464621595E-07" gradient="0.977974186434035E-06"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-183.728105231656"/>
+    <property name="One-electron energy" method="RHF" value="-373.595904813497"/>
+    <property name="Two-electron energy" method="RHF" value="127.482443842531"/>
+    <property name="Kinetic energy" method="RHF" value="183.78869549508"/>
+    <property name="Nuclear energy" method="RHF" value="62.38535573931"/>
+    <property name="Virial quotient" method="RHF" value="-0.999670326494995"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 -0.285034465331209"/>
+    <time start="21:23:54" end="21:23:54" cpu="1.3" system="0.01" real="0.74"/>
+    <storage units="megabyte" memory="1525.88" sf="0.04" df="174.93" eaf="26.23" ga="0.0"/>
+    <summary overall_method="HF/6-311G(D,P)"/>
+   </jobstep>
+   <gradient name="SCF GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="0.697259376165926E-07">
+      0.000000000000   0.000000000000   0.000000090495
+      0.000000000000   0.000000000000  -0.000000206109
+      0.000000000000   0.000000000000   0.000000115614
+   </gradient>
+   <opt energy="-183.72810523" type="HF-SCF000" line="0.0"
+     convergence="0.365922466181763E-07" gradient="0.977974186434035E-06"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-183.728105231656"/>
+    <property name="One-electron energy" method="RHF" value="-373.595904813497"/>
+    <property name="Two-electron energy" method="RHF" value="127.482443842531"/>
+    <property name="Kinetic energy" method="RHF" value="183.78869549508"/>
+    <property name="Nuclear energy" method="RHF" value="62.38535573931"/>
+    <property name="Virial quotient" method="RHF" value="-0.999670326494996"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 -0.285034465331024"/>
+    <time start="21:23:55" end="21:23:55" cpu="1.38" system="0.02" real="0.74"/>
+    <storage units="megabyte" memory="1525.88" sf="0.04" df="174.93" eaf="26.23" ga="0.0"/>
+    <summary overall_method="HF/6-311G(D,P)"/>
+   </jobstep>
+   <gradient name="SCF GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="0.697258929544643E-07">
+      0.000000000000   0.000000000000   0.000000090495
+      0.000000000000   0.000000000000  -0.000000206109
+      0.000000000000   0.000000000000   0.000000115614
+   </gradient>
+   <opt energy="-183.72810523" type="HF-SCF000" line="0.0"
+     convergence="0.365922464621595E-07" gradient="0.977974186434035E-06"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-183.728105231656"/>
+    <property name="One-electron energy" method="RHF" value="-373.595904813497"/>
+    <property name="Two-electron energy" method="RHF" value="127.482443842531"/>
+    <property name="Kinetic energy" method="RHF" value="183.78869549508"/>
+    <property name="Nuclear energy" method="RHF" value="62.38535573931"/>
+    <property name="Virial quotient" method="RHF" value="-0.999670326494996"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 -0.285034465331242"/>
+    <time start="21:23:56" end="21:23:56" cpu="1.27" system="0.03" real="0.7"/>
+    <storage units="megabyte" memory="1525.88" sf="0.04" df="174.93" eaf="26.23" ga="0.0"/>
+    <summary overall_method="HF/6-311G(D,P)"/>
+   </jobstep>
+   <error type="Warning" location=""
+     message="No convergence in max. number of iterations"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-183.728105231673"/>
+    <property name="One-electron energy" method="RHF" value="-373.595904813511"/>
+    <property name="Two-electron energy" method="RHF" value="127.482443842528"/>
+    <property name="Kinetic energy" method="RHF" value="183.788695495101"/>
+    <property name="Nuclear energy" method="RHF" value="62.38535573931"/>
+    <property name="Virial quotient" method="RHF" value="-0.999670326494975"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1" value="0.0 0.0 -0.285034465310444"/>
+    <time start="21:23:56" end="21:23:56" cpu="0.4" system="0.06" real="0.32"/>
+    <storage units="megabyte" memory="1525.88" sf="0.04" df="174.93" eaf="26.23" ga="0.0"/>
+    <summary overall_method="HF/6-311G(D,P)"/>
+   </jobstep>
+   <time start="21:22:38" end="21:23:56" cpu="142.37" system="2.21" real="77.7"/>
+   <storage units="megabyte" memory="0.18" sf="0.04" df="174.93" eaf="26.23" ga="0.0"/>
+   <summary overall_method="HF/6-311G(D,P)//HF/6-311G(D,P)"/>
+  </jobstep>
+  <jobstep command="FREQ" commandset="FREQ">
+   <cml:molecule>
+    <cml:symmetry pointGroup="C2v">
+    </cml:symmetry>
+    <cml:atomArray>
+     <cml:atom id="a1" elementType="N" x3="0.0" y3="0.0" z3="-1.16495048244186"/>
+     <cml:atom id="a2" elementType="N" x3="0.0" y3="0.0" z3="-0.794181458090107E-01"/>
+     <cml:atom id="a3" elementType="O" x3="0.0" y3="0.0" z3="1.08940788083214"/>
+    </cml:atomArray>
+    <cml:bondArray>
+     <cml:bond atomRefs2="a1 a2"/>
+     <cml:bond atomRefs2="a2 a3"/>
+    </cml:bondArray>
+   </cml:molecule>
+   <vibrations>
+    <normalCoordinate wavenumber="2616.54" units="inverseCentimetre" IRintensity="0.0"
+      IRintensityunits="km/mol" symmetry="A1" real_zero_imag="R">
+      0.00000000  0.00000000 -0.16741371
+      0.00000000  0.00000000  0.20525983
+      0.00000000  0.00000000 -0.03313316
+    </normalCoordinate>
+    <normalCoordinate wavenumber="1397.04" units="inverseCentimetre" IRintensity="0.0"
+      IRintensityunits="km/mol" symmetry="A1" real_zero_imag="R">
+      0.00000000  0.00000000 -0.14373180
+      0.00000000  0.00000000 -0.08096037
+      0.00000000  0.00000000  0.19671134
+    </normalCoordinate>
+    <normalCoordinate wavenumber="694.18" units="inverseCentimetre" IRintensity="0.0"
+      IRintensityunits="km/mol" symmetry="B1" real_zero_imag="R">
+     -0.11420620  0.00000000  0.00000000
+      0.22027376  0.00000000  0.00000000
+     -0.09285901  0.00000000  0.00000000
+    </normalCoordinate>
+    <normalCoordinate wavenumber="694.18" units="inverseCentimetre" IRintensity="0.0"
+      IRintensityunits="km/mol" symmetry="B2" real_zero_imag="R">
+      0.00000000 -0.11420620  0.00000000
+      0.00000000  0.22027376  0.00000000
+      0.00000000 -0.09285901  0.00000000
+    </normalCoordinate>
+    <normalCoordinate wavenumber="0.0" units="inverseCentimetre" IRintensity="0.0"
+      IRintensityunits="km/mol" symmetry="Err" real_zero_imag="Z">
+      0.23719343 -0.02029565 -0.00141478
+      0.08353707 -0.00870395 -0.00141478
+     -0.08190945  0.00377718 -0.00141478
+    </normalCoordinate>
+    <normalCoordinate wavenumber="0.0" units="inverseCentimetre" IRintensity="0.0"
+      IRintensityunits="km/mol" symmetry="Err" real_zero_imag="Z">
+      0.02126650  0.11254121  0.12765574
+      0.03454764  0.05607738  0.12765574
+      0.04884785 -0.00471897  0.12765574
+    </normalCoordinate>
+    <normalCoordinate wavenumber="0.0" units="inverseCentimetre" IRintensity="0.0"
+      IRintensityunits="km/mol" symmetry="Err" real_zero_imag="Z">
+      0.03990124  0.01925917 -0.04772704
+      0.11933966  0.01030875 -0.04772704
+      0.20487346  0.00067157 -0.04772704
+    </normalCoordinate>
+    <normalCoordinate wavenumber="0.0" units="inverseCentimetre" IRintensity="0.0"
+      IRintensityunits="km/mol" symmetry="Err" real_zero_imag="Z">
+     -0.00683500 -0.14658459  0.03646219
+      0.01073395  0.01875444  0.03646219
+      0.02965099  0.19678005  0.03646219
+    </normalCoordinate>
+    <normalCoordinate wavenumber="0.0" units="inverseCentimetre" IRintensity="0.0"
+      IRintensityunits="km/mol" symmetry="Err" real_zero_imag="Z">
+      0.00424779  0.15308318 -0.05311666
+     -0.01905856  0.13861441 -0.05311666
+     -0.04415323  0.12303543 -0.05311666
+    </normalCoordinate>
+   </vibrations>
+   <time start="21:23:56" end="21:24:04" cpu="15.41" system="0.09" real="7.99"/>
+   <storage units="megabyte" memory="1525.88" sf="0.09" df="174.93" eaf="26.23" ga="0.0"/>
+   <summary overall_method="HF/6-311G(D,P)//HF/6-311G(D,P)"/>
+  </jobstep>
+  <input>
+   <p>memory, 200, m ! Memory Requirements</p>
+   <p>gthresh, optgrad=1.d-7,twoint=1.d-14,prefac=1.d-16 ! Guntram Rezept um numerischen Schmutz zu entfernen</p>
+   <p>orient,mass</p>
+   <p>geometry = {</p>
+   <p>N, 0.000000, 0.000000, -1.187431</p>
+   <p>N, 0.000000, 0.000000, -0.074171</p>
+   <p>O, 0.000000, 0.000000, 1.103902</p>
+   <p>}</p>
+   <p>mass, iso</p>
+   <p>basis=6-311g(d,p)</p>
+   <p>{hf</p>
+   <p>start,atden}</p>
+   <p>optg</p>
+   <p>{frequencies, symm=auto, print=0,analytical}</p>
+   <p>put,molden,formic_acid_dimer.molden</p>
+  </input>
+  <diagnostics warnings="1"/>
+ </job>
+</molpro>
