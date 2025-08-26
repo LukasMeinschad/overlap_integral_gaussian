@@ -1,0 +1,1760 @@
+<?xml version="1.0"?>
+<molpro xmlns="http://www.molpro.net/schema/molpro-output"
+  xmlns:xsd="http://www.w3.org/1999/XMLSchema"
+  xmlns:cml="http://www.xml-cml.org/schema"
+  xmlns:stm="http://www.xml-cml.org/schema"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+ <job>
+  <stm:metadataList>
+   <stm:metadata name="dc:date" content="2025-08-06T15:50:24+02:00"/>
+   <stm:metadata name="dc:creator" content="zwa"/>
+   <stm:metadata name="cmlm:insilico" content="Molpro"/>
+  </stm:metadataList>
+  <platform pid="4006806">
+   <version major="2022" minor="3" SHA="e31ec9a5ea85254ab76f59d122cbdd51c71cf98b"
+     integer_bits="64" parallelism="mpp">
+    2022.3
+    <date year="2025" month="8" day="6" hour="15" minute="50" second="24">
+     2025-08-06T15:50:24
+    </date>
+   </version>
+   <licence id="liedlgroup"/>
+   <parallel processes="4" nodes="1" all_processes="4" openmp="8"/>
+   <dimensions natom="400" nvalence="500" nvalence_pno="1000" nbasis="12000" nstate="100"
+     nsymm="16" nrec="512" nprim="2" ncol="100"/>
+  </platform>
+  <jobstep command="HF-SCF" commandset="SCFPRO">
+   <cml:molecule>
+    <cml:symmetry pointGroup="C1">
+    </cml:symmetry>
+    <cml:atomArray>
+     <cml:atom id="a1" elementType="C" x3="-0.828407678619434" y3="-0.228100186142352"
+       z3="-1.18375771870214"/>
+     <cml:atom id="a2" elementType="C" x3="-1.43821709431346" y3="0.228828405823593"
+       z3="0.125782249993329"/>
+     <cml:atom id="a3" elementType="C" x3="-0.610730637491198" y3="-0.229229231434191"
+       z3="1.30951292695095"/>
+     <cml:atom id="a4" elementType="C" x3="0.828244063362301" y3="0.229107260638423"
+       z3="1.18372491004492"/>
+     <cml:atom id="a5" elementType="C" x3="1.43829189842293" y3="-0.228532563277636"
+       z3="-0.125477852009499"/>
+     <cml:atom id="a6" elementType="C" x3="0.610803642205565" y3="0.227966274340024"
+       z3="-1.30967087780093"/>
+     <cml:atom id="a7" elementType="H" x3="-1.05277367063746" y3="0.176125387089737"
+       z3="2.25642250381992"/>
+     <cml:atom id="a8" elementType="H" x3="-1.51032373977709" y3="1.34825570174538"
+       z3="0.132640823184745"/>
+     <cml:atom id="a9" elementType="H" x3="-2.47950792674298" y3="-0.176294828525632"
+       z3="0.21645044566113"/>
+     <cml:atom id="a10" elementType="H" x3="-0.871392246065" y3="-1.34740888500769"
+       z3="-1.24441266092372"/>
+     <cml:atom id="a11" elementType="H" x3="-1.42753472360602" y3="0.178826827709981"
+       z3="-2.03929416338224"/>
+     <cml:atom id="a12" elementType="H" x3="0.869526399659609" y3="1.34851989622542"
+       z3="1.24337389636498"/>
+     <cml:atom id="a13" elementType="H" x3="1.42794199140259" y3="-0.176381889244355"
+       z3="2.03951836395453"/>
+     <cml:atom id="a14" elementType="H" x3="2.47938144308891" y3="0.176945857724964"
+       z3="-0.216393794882151"/>
+     <cml:atom id="a15" elementType="H" x3="1.51096604379184" y3="-1.34797669821637"
+       z3="-0.131263342582938"/>
+     <cml:atom id="a16" elementType="H" x3="0.642616982135787" y3="1.34721411001606"
+       z3="-1.37762757181991"/>
+     <cml:atom id="a17" elementType="H" x3="1.0524354210089" y3="-0.179724680626258"
+       z3="-2.25589775496026"/>
+     <cml:atom id="a18" elementType="H" x3="-0.641147769759721" y3="-1.34857659515975"
+       z3="1.37513018164976"/>
+    </cml:atomArray>
+    <cml:bondArray>
+     <cml:bond atomRefs2="a1 a2"/>
+     <cml:bond atomRefs2="a2 a3"/>
+     <cml:bond atomRefs2="a3 a4"/>
+     <cml:bond atomRefs2="a4 a5"/>
+     <cml:bond atomRefs2="a1 a6"/>
+     <cml:bond atomRefs2="a5 a6"/>
+     <cml:bond atomRefs2="a3 a7"/>
+     <cml:bond atomRefs2="a2 a8"/>
+     <cml:bond atomRefs2="a2 a9"/>
+     <cml:bond atomRefs2="a1 a10"/>
+     <cml:bond atomRefs2="a1 a11"/>
+     <cml:bond atomRefs2="a4 a12"/>
+     <cml:bond atomRefs2="a4 a13"/>
+     <cml:bond atomRefs2="a5 a14"/>
+     <cml:bond atomRefs2="a5 a15"/>
+     <cml:bond atomRefs2="a6 a16"/>
+     <cml:bond atomRefs2="a6 a17"/>
+     <cml:bond atomRefs2="a3 a18"/>
+    </cml:bondArray>
+   </cml:molecule>
+   <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+     value="-234.254382465915"/>
+   <property name="One-electron energy" method="RHF" value="-823.703579172356"/>
+   <property name="Two-electron energy" method="RHF" value="332.807658357871"/>
+   <property name="Kinetic energy" method="RHF" value="233.838291263902"/>
+   <property name="Nuclear energy" method="RHF" value="256.64153834857"/>
+   <property name="Virial quotient" method="RHF" value="-1.0017793972055"/>
+   <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+     stateNumber="1"
+     value="0.373679832807265E-05 -0.16647387623643E-04 0.329606022461582E-04"/>
+   <time start="15:50:24" end="15:52:21" cpu="428.82" system="3.77" real="116.75"/>
+   <storage units="megabyte" memory="15258.79" sf="0.0" df="132.88" eaf="1704.31" ga="0.0"/>
+   <summary overall_method="HF/6-311G(D,P)"/>
+  </jobstep>
+  <jobstep command="OPTG" commandset="OPT">
+   <gradient name="SCF GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="0.352685306469113">
+      0.016328357565   0.009718739414   0.023245751559
+      0.028560346295  -0.009694567678  -0.002547333538
+      0.011757561137   0.009498180540  -0.025567163081
+     -0.016065053382  -0.009554611705  -0.023240571832
+     -0.028568866135   0.009743489325   0.002449512801
+     -0.012018806208  -0.009666189007   0.025740596374
+     -0.007736782029   0.010624662153   0.016640063505
+      0.000167290602   0.020021409848  -0.000012758802
+     -0.018309922326  -0.010655909527   0.001605845158
+      0.000060755094  -0.020024921743   0.000099202841
+     -0.010506218434   0.010668411018  -0.015047520561
+     -0.000088830064   0.020033172860  -0.000127631606
+      0.010523194493  -0.010640710961   0.015045944040
+      0.018289245917   0.010652955252  -0.001583097790
+     -0.000153471018  -0.020044452523   0.000017578524
+     -0.000049716830   0.020021453304   0.000082965346
+      0.007742594971  -0.010708089031  -0.016652244880
+      0.000068320352  -0.019993021539  -0.000149138058
+   </gradient>
+   <opt energy="-234.25438247" type="HF-SCF000" line="0.0"
+     convergence="0.223170647212719" gradient="0.102551753992179"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <cml:molecule>
+     <cml:symmetry pointGroup="C1">
+     </cml:symmetry>
+     <cml:atomArray>
+      <cml:atom id="a1" elementType="C" x3="-1.22898949387231" y3="-0.227086711801402"
+        z3="-0.792724611054657"/>
+      <cml:atom id="a2" elementType="C" x3="-1.30092059366868" y3="0.227119033145909"
+        z3="0.667915692000869"/>
+      <cml:atom id="a3" elementType="C" x3="-0.720900013202835E-01" y3="-0.227126429632519"
+        z3="1.46065243751333"/>
+      <cml:atom id="a4" elementType="C" x3="1.22890877929091" y3="0.227112074188011"
+        z3="0.792739544803117"/>
+      <cml:atom id="a5" elementType="C" x3="1.3009708245461" y3="-0.227083958735517"
+        z3="-0.667855864134822"/>
+      <cml:atom id="a6" elementType="C" x3="0.721143530907821E-01" y3="0.227077525918781"
+        z3="-1.46074907944658"/>
+      <cml:atom id="a7" elementType="H" x3="-0.122624109801506" y3="0.150071480056418"
+        z3="2.48195214317206"/>
+      <cml:atom id="a8" elementType="H" x3="-1.36445527125824" y3="1.31702720669787"
+        z3="0.700692269564157"/>
+      <cml:atom id="a9" elementType="H" x3="-2.21079409090022" y3="-0.14981754507245"
+        z3="1.1349104880419"/>
+      <cml:atom id="a10" elementType="H" x3="-1.28920378734154" y3="-1.31698738310367"
+        z3="-0.831476413337951"/>
+      <cml:atom id="a11" elementType="H" x3="-2.08844423531553" y3="0.14993170288383"
+        z3="-1.34692467760377"/>
+      <cml:atom id="a12" elementType="H" x3="1.28906936005606" y3="1.31697959049047"
+        z3="0.831774618389879"/>
+      <cml:atom id="a13" elementType="H" x3="2.08834609276107" y3="-0.150061700640936"
+        z3="1.34684174107782"/>
+      <cml:atom id="a14" elementType="H" x3="2.21081174340706" y3="0.149802528456948"
+        z3="-1.1349370467632"/>
+      <cml:atom id="a15" elementType="H" x3="1.36458419469814" y3="-1.31700775329715"
+        z3="-0.700393060107177"/>
+      <cml:atom id="a16" elementType="H" x3="0.756350796175907E-01" y3="1.31696148857024"
+        z3="-1.53236890388545"/>
+      <cml:atom id="a17" elementType="H" x3="0.122656853525985" y3="-0.150063192873199"
+        z3="-2.48210653152689"/>
+      <cml:atom id="a18" elementType="H" x3="-0.755088175650978E-01" y3="-1.31697374461935"
+        z3="1.5322958981937"/>
+     </cml:atomArray>
+     <cml:bondArray>
+      <cml:bond atomRefs2="a1 a2"/>
+      <cml:bond atomRefs2="a2 a3"/>
+      <cml:bond atomRefs2="a3 a4"/>
+      <cml:bond atomRefs2="a4 a5"/>
+      <cml:bond atomRefs2="a1 a6"/>
+      <cml:bond atomRefs2="a5 a6"/>
+      <cml:bond atomRefs2="a3 a7"/>
+      <cml:bond atomRefs2="a2 a8"/>
+      <cml:bond atomRefs2="a2 a9"/>
+      <cml:bond atomRefs2="a1 a10"/>
+      <cml:bond atomRefs2="a1 a11"/>
+      <cml:bond atomRefs2="a4 a12"/>
+      <cml:bond atomRefs2="a4 a13"/>
+      <cml:bond atomRefs2="a5 a14"/>
+      <cml:bond atomRefs2="a5 a15"/>
+      <cml:bond atomRefs2="a6 a16"/>
+      <cml:bond atomRefs2="a6 a17"/>
+      <cml:bond atomRefs2="a3 a18"/>
+     </cml:bondArray>
+    </cml:molecule>
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-234.263516310152"/>
+    <property name="One-electron energy" method="RHF" value="-822.519778820258"/>
+    <property name="Two-electron energy" method="RHF" value="332.216255607654"/>
+    <property name="Kinetic energy" method="RHF" value="234.145776752854"/>
+    <property name="Nuclear energy" method="RHF" value="256.040006902452"/>
+    <property name="Virial quotient" method="RHF" value="-1.00050284723872"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1"
+      value="-0.728728753391608E-05 -0.211753768636358E-05 0.552654870411649E-04"/>
+    <time start="15:52:32" end="15:54:04" cpu="363.46" system="2.74" real="102.56"/>
+    <storage units="megabyte" memory="15258.79" sf="0.04" df="132.88" eaf="1705.84" ga="0.0"/>
+    <summary overall_method="HF/6-311G(D,P)"/>
+   </jobstep>
+   <gradient name="SCF GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="0.46489001418786E-01">
+      0.000897109107   0.001829554129   0.001375298906
+      0.001705017369  -0.001837060223  -0.000119441965
+      0.000679587125   0.001820347922  -0.001530996803
+     -0.000949765120  -0.001829439666  -0.001386579879
+     -0.001681585272   0.001846636006   0.000180604925
+     -0.000650874098  -0.001816333046   0.001501336602
+     -0.000823280412   0.000476101808   0.001725914929
+     -0.000068006683   0.001495085975   0.000017834217
+     -0.001952973134  -0.000480486300   0.000158189624
+     -0.000047926105  -0.001496080249  -0.000056981059
+     -0.001125456595   0.000465769405  -0.001578121460
+      0.000027561330   0.001479640508   0.000071237983
+      0.001125917158  -0.000477445165   0.001560081328
+      0.001949999755   0.000474484833  -0.000172086378
+      0.000067621095  -0.001502971987   0.000002854060
+      0.000031370214   0.001490517021  -0.000067684822
+      0.000835016767  -0.000470673101  -0.001754188614
+     -0.000019332503  -0.001467647873   0.000072728408
+   </gradient>
+   <opt energy="-234.26351631" type="HF-SCF000" line="0.0"
+     convergence="0.237323014844229E-01" gradient="0.860914182399129E-02"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <cml:molecule>
+     <cml:symmetry pointGroup="C1">
+     </cml:symmetry>
+     <cml:atomArray>
+      <cml:atom id="a1" elementType="C" x3="-0.86179468883928" y3="-0.228045770506463"
+        z3="-1.18039113580241"/>
+      <cml:atom id="a2" elementType="C" x3="-1.45306889385219" y3="0.228120240682049"
+        z3="0.156161359718936"/>
+      <cml:atom id="a3" elementType="C" x3="-0.591328825143742" y3="-0.228177161590566"
+        z3="1.33652528644741"/>
+      <cml:atom id="a4" elementType="C" x3="0.86175736740187" y3="0.22815794076337"
+        z3="1.18038809090807"/>
+      <cml:atom id="a5" elementType="C" x3="1.45308328291863" y3="-0.228080326254716"
+        z3="-0.156118548877199"/>
+      <cml:atom id="a6" elementType="C" x3="0.591351500952164" y3="0.228027549984555"
+        z3="-1.33655828560411"/>
+      <cml:atom id="a7" elementType="H" x3="-1.00376298860198" y3="0.148641152150458"
+        z3="2.26858594299361"/>
+      <cml:atom id="a8" elementType="H" x3="-1.52390266585725" y3="1.31554206007185"
+        z3="0.16386575472141"/>
+      <cml:atom id="a9" elementType="H" x3="-2.46646664677536" y3="-0.148709570316502"
+        z3="0.264995771812764"/>
+      <cml:atom id="a10" elementType="H" x3="-0.903923949106192" y3="-1.31545576351096"
+        z3="-1.23803830164396"/>
+      <cml:atom id="a11" elementType="H" x3="-1.46278021789242" y3="0.148937432508966"
+        z3="-2.0035046122423"/>
+      <cml:atom id="a12" elementType="H" x3="0.903679213343723" y3="1.31557954117679"
+        z3="1.2379719084553"/>
+      <cml:atom id="a13" elementType="H" x3="1.46281958646669" y3="-0.148679318278319"
+        z3="2.00351985432287"/>
+      <cml:atom id="a14" elementType="H" x3="2.46645511998511" y3="0.14879354181484"
+        z3="-0.26502710520108"/>
+      <cml:atom id="a15" elementType="H" x3="1.52398361309387" y3="-1.31549950145804"
+        z3="-0.163657721448196"/>
+      <cml:atom id="a16" elementType="H" x3="0.620252032275173" y3="1.3154327854451"
+        z3="-1.4019068577577"/>
+      <cml:atom id="a17" elementType="H" x3="1.00373738365037" y3="-0.14901123009103"
+        z3="-2.26854130237326"/>
+      <cml:atom id="a18" elementType="H" x3="-0.620087425735255" y3="-1.31560057603287"
+        z3="1.40165609734051"/>
+     </cml:atomArray>
+     <cml:bondArray>
+      <cml:bond atomRefs2="a1 a2"/>
+      <cml:bond atomRefs2="a2 a3"/>
+      <cml:bond atomRefs2="a3 a4"/>
+      <cml:bond atomRefs2="a4 a5"/>
+      <cml:bond atomRefs2="a1 a6"/>
+      <cml:bond atomRefs2="a5 a6"/>
+      <cml:bond atomRefs2="a3 a7"/>
+      <cml:bond atomRefs2="a2 a8"/>
+      <cml:bond atomRefs2="a2 a9"/>
+      <cml:bond atomRefs2="a1 a10"/>
+      <cml:bond atomRefs2="a1 a11"/>
+      <cml:bond atomRefs2="a4 a12"/>
+      <cml:bond atomRefs2="a4 a13"/>
+      <cml:bond atomRefs2="a5 a14"/>
+      <cml:bond atomRefs2="a5 a15"/>
+      <cml:bond atomRefs2="a6 a16"/>
+      <cml:bond atomRefs2="a6 a17"/>
+      <cml:bond atomRefs2="a3 a18"/>
+     </cml:bondArray>
+    </cml:molecule>
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-234.263575134579"/>
+    <property name="One-electron energy" method="RHF" value="-822.999106020377"/>
+    <property name="Two-electron energy" method="RHF" value="332.454174474345"/>
+    <property name="Kinetic energy" method="RHF" value="234.199755041684"/>
+    <property name="Nuclear energy" method="RHF" value="256.281356411453"/>
+    <property name="Virial quotient" method="RHF" value="-1.00027250281659"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1"
+      value="-0.231394994594817E-06 -0.724708929983851E-06 -0.414159889377489E-05"/>
+    <time start="15:54:15" end="15:55:45" cpu="352.14" system="2.89" real="101.1"/>
+    <storage units="megabyte" memory="15258.79" sf="0.05" df="132.88" eaf="1706.34" ga="0.0"/>
+    <summary overall_method="HF/6-311G(D,P)"/>
+   </jobstep>
+   <gradient name="SCF GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="-0.865432048818804E-02">
+     -0.000008918006   0.000212250692  -0.000016053118
+     -0.000004320544  -0.000201341967   0.000001713869
+     -0.000013304624   0.000195347235   0.000015097884
+      0.000012838248  -0.000196765662   0.000013215476
+      0.000006300964   0.000205729460  -0.000001274943
+      0.000009015115  -0.000213959262  -0.000019699035
+      0.000113006159  -0.000163363971  -0.000244776819
+     -0.000069297269  -0.000107388892   0.000008329085
+      0.000272184144   0.000165898406  -0.000026951910
+     -0.000036865797   0.000109078751  -0.000057495262
+      0.000156525533  -0.000165916936   0.000224905534
+      0.000035139277  -0.000107558951   0.000059450288
+     -0.000152064598   0.000164022300  -0.000223855991
+     -0.000273207229  -0.000166438018   0.000023018825
+      0.000068671924   0.000107392314  -0.000005340683
+      0.000025226993  -0.000109852254  -0.000063466524
+     -0.000115658264   0.000165573153   0.000249465199
+     -0.000025272027   0.000107293603   0.000063718126
+   </gradient>
+   <opt energy="-234.26357513" type="HF-SCF000" line="0.0"
+     convergence="0.479477321075684E-02" gradient="0.980337899617159E-03"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <cml:molecule>
+     <cml:symmetry pointGroup="C1">
+     </cml:symmetry>
+     <cml:atomArray>
+      <cml:atom id="a1" elementType="C" x3="-0.935560588116507" y3="-0.228290564464963"
+        z3="-1.12305452698344"/>
+      <cml:atom id="a2" elementType="C" x3="-1.440353679594" y3="0.228306833284776"
+        z3="0.24869383968685"/>
+      <cml:atom id="a3" elementType="C" x3="-0.504812348949967" y3="-0.228317876814758"
+        z3="1.37173859863851"/>
+      <cml:atom id="a4" elementType="C" x3="0.935546287739348" y3="0.228312612473451"
+        z3="1.12305360986222"/>
+      <cml:atom id="a5" elementType="C" x3="1.44036037356332" y3="-0.228295590095967"
+        z3="-0.248679932172806"/>
+      <cml:atom id="a6" elementType="C" x3="0.504820168019386" y3="0.228285408795969"
+        z3="-1.37175323588315"/>
+      <cml:atom id="a7" elementType="H" x3="-0.856988701645559" y3="0.14850172179426"
+        z3="2.32865876217753"/>
+      <cml:atom id="a8" elementType="H" x3="-1.50985535580141" y3="1.31590684114505"
+        z3="0.260729036703354"/>
+      <cml:atom id="a9" elementType="H" x3="-2.44516688466126" y3="-0.148497538231568"
+        z3="0.422153807534751"/>
+      <cml:atom id="a10" elementType="H" x3="-0.980742348580579" y3="-1.31588887803137"
+        z3="-1.17726095735613"/>
+      <cml:atom id="a11" elementType="H" x3="-1.58820923714051" y3="0.148548124695966"
+        z3="-1.90648215685183"/>
+      <cml:atom id="a12" elementType="H" x3="0.980675733214538" y3="1.31591030571889"
+        z3="1.17728140100011"/>
+      <cml:atom id="a13" elementType="H" x3="1.58821653256247" y3="-0.148510322017356"
+        z3="1.90647149871967"/>
+      <cml:atom id="a14" elementType="H" x3="2.44516399120901" y3="0.148517465592274"
+        z3="-0.422174561997044"/>
+      <cml:atom id="a15" elementType="H" x3="1.50988074754048" y3="-1.31589566029571"
+        z3="-0.260651690432298"/>
+      <cml:atom id="a16" elementType="H" x3="0.529195958902579" y3="1.3158825899257"
+        z3="-1.43799235858604"/>
+      <cml:atom id="a17" elementType="H" x3="0.856987385750283" y3="-0.148568957208885"
+        z3="-2.32866218986694"/>
+      <cml:atom id="a18" elementType="H" x3="-0.529160353475135" y3="-1.31591549453303"
+        z3="1.43794901773781"/>
+     </cml:atomArray>
+     <cml:bondArray>
+      <cml:bond atomRefs2="a1 a2"/>
+      <cml:bond atomRefs2="a2 a3"/>
+      <cml:bond atomRefs2="a3 a4"/>
+      <cml:bond atomRefs2="a4 a5"/>
+      <cml:bond atomRefs2="a1 a6"/>
+      <cml:bond atomRefs2="a5 a6"/>
+      <cml:bond atomRefs2="a3 a7"/>
+      <cml:bond atomRefs2="a2 a8"/>
+      <cml:bond atomRefs2="a2 a9"/>
+      <cml:bond atomRefs2="a1 a10"/>
+      <cml:bond atomRefs2="a1 a11"/>
+      <cml:bond atomRefs2="a4 a12"/>
+      <cml:bond atomRefs2="a4 a13"/>
+      <cml:bond atomRefs2="a5 a14"/>
+      <cml:bond atomRefs2="a5 a15"/>
+      <cml:bond atomRefs2="a6 a16"/>
+      <cml:bond atomRefs2="a6 a17"/>
+      <cml:bond atomRefs2="a3 a18"/>
+     </cml:bondArray>
+    </cml:molecule>
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-234.263576746"/>
+    <property name="One-electron energy" method="RHF" value="-822.913243562778"/>
+    <property name="Two-electron energy" method="RHF" value="332.411820048897"/>
+    <property name="Kinetic energy" method="RHF" value="234.191940866618"/>
+    <property name="Nuclear energy" method="RHF" value="256.23784676788"/>
+    <property name="Virial quotient" method="RHF" value="-1.00030588533114"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1"
+      value="-0.677962648259209E-06 -0.20246823172719E-06 0.33073117502759E-05"/>
+    <time start="15:55:56" end="15:57:22" cpu="338.32" system="2.81" real="97.49"/>
+    <storage units="megabyte" memory="15258.79" sf="0.05" df="132.88" eaf="1706.34" ga="0.0"/>
+    <summary overall_method="HF/6-311G(D,P)"/>
+   </jobstep>
+   <gradient name="SCF GRADIENT" stateSymmetry="1" stateNumber="1"
+     virial="-0.689352328692233E-03">
+      0.000015828748   0.000088360543   0.000027580288
+      0.000037859709  -0.000087900787   0.000000389347
+      0.000013800056   0.000087018921  -0.000034319890
+     -0.000020925620  -0.000087088433  -0.000029584179
+     -0.000035248222   0.000088435733   0.000006042231
+     -0.000010641183  -0.000088494087   0.000028147520
+      0.000001787295  -0.000035990580  -0.000007750769
+     -0.000021151998   0.000000866742   0.000003913068
+      0.000006649161   0.000036678342  -0.000003078144
+     -0.000012579704  -0.000001196534  -0.000016835650
+      0.000003488856  -0.000036910135   0.000006562695
+      0.000010486124   0.000000186018   0.000019249303
+     -0.000001694800   0.000036123278  -0.000008153080
+     -0.000006956578  -0.000036889558  -0.000000525266
+      0.000020918473  -0.000001196131  -0.000000201325
+      0.000008442220   0.000001130197  -0.000019209327
+     -0.000002219607   0.000036870427   0.000007303406
+     -0.000007842931  -0.000000003956   0.000020469772
+   </gradient>
+   <opt energy="-234.26357675" type="HF-SCF000" line="0.0"
+     convergence="0.768335332738086E-03" gradient="0.254515931988135E-03"/>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <cml:molecule>
+     <cml:symmetry pointGroup="C1">
+     </cml:symmetry>
+     <cml:atomArray>
+      <cml:atom id="a1" elementType="C" x3="-0.923778875574873" y3="-0.228360258304164"
+        z3="-1.13279198710093"/>
+      <cml:atom id="a2" elementType="C" x3="-1.44291068218846" y3="0.228367067832366"
+        z3="0.233621097683264"/>
+      <cml:atom id="a3" elementType="C" x3="-0.519136032892004" y3="-0.228371832661345"
+        z3="1.36640904504032"/>
+      <cml:atom id="a4" elementType="C" x3="0.923773953588509" y3="0.228369824163522"
+        z3="1.13279160846597"/>
+      <cml:atom id="a5" elementType="C" x3="1.44291299303046" y3="-0.22836287027166"
+        z3="-0.233616461781068"/>
+      <cml:atom id="a6" elementType="C" x3="0.519138730140994" y3="0.228358155704183"
+        z3="-1.36641363571997"/>
+      <cml:atom id="a7" elementType="H" x3="-0.881279074099583" y3="0.148587789128666"
+        z3="2.31958644525237"/>
+      <cml:atom id="a8" elementType="H" x3="-1.51242060318797" y3="1.31596574000809"
+        z3="0.244887155125377"/>
+      <cml:atom id="a9" elementType="H" x3="-2.44945769196859" y3="-0.148595030853638"
+        z3="0.396580545799068"/>
+      <cml:atom id="a10" elementType="H" x3="-0.968294982077328" y3="-1.31595807355643"
+        z3="-1.18736702768846"/>
+      <cml:atom id="a11" elementType="H" x3="-1.56818363697624" y3="0.148614188857137"
+        z3="-1.92299778383685"/>
+      <cml:atom id="a12" elementType="H" x3="0.968268532190829" y3="1.31596829231709"
+        z3="1.18736952253489"/>
+      <cml:atom id="a13" elementType="H" x3="1.56818759326329" y3="-0.148592312750287"
+        z3="1.92299650533008"/>
+      <cml:atom id="a14" elementType="H" x3="2.44945601156503" y3="0.148604444071485"
+        z3="-0.396587468054392"/>
+      <cml:atom id="a15" elementType="H" x3="1.51243092168333" y3="-1.31596128040082"
+        z3="-0.244860543359391"/>
+      <cml:atom id="a16" elementType="H" x3="0.544154549029879" y3="1.31595571105796"
+        z3="-1.43225333733642"/>
+      <cml:atom id="a17" elementType="H" x3="0.881277774411676" y3="-0.148620102713964"
+        z3="-2.31958462442523"/>
+      <cml:atom id="a18" elementType="H" x3="-0.544140419067348" y3="-1.31597039466427"
+        z3="1.43223458054344"/>
+     </cml:atomArray>
+     <cml:bondArray>
+      <cml:bond atomRefs2="a1 a2"/>
+      <cml:bond atomRefs2="a2 a3"/>
+      <cml:bond atomRefs2="a3 a4"/>
+      <cml:bond atomRefs2="a4 a5"/>
+      <cml:bond atomRefs2="a1 a6"/>
+      <cml:bond atomRefs2="a5 a6"/>
+      <cml:bond atomRefs2="a3 a7"/>
+      <cml:bond atomRefs2="a2 a8"/>
+      <cml:bond atomRefs2="a2 a9"/>
+      <cml:bond atomRefs2="a1 a10"/>
+      <cml:bond atomRefs2="a1 a11"/>
+      <cml:bond atomRefs2="a4 a12"/>
+      <cml:bond atomRefs2="a4 a13"/>
+      <cml:bond atomRefs2="a5 a14"/>
+      <cml:bond atomRefs2="a5 a15"/>
+      <cml:bond atomRefs2="a6 a16"/>
+      <cml:bond atomRefs2="a6 a17"/>
+      <cml:bond atomRefs2="a3 a18"/>
+     </cml:bondArray>
+    </cml:molecule>
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-234.263576820078"/>
+    <property name="One-electron energy" method="RHF" value="-822.903030402388"/>
+    <property name="Two-electron energy" method="RHF" value="332.406841299418"/>
+    <property name="Kinetic energy" method="RHF" value="234.191147872949"/>
+    <property name="Nuclear energy" method="RHF" value="256.232612282893"/>
+    <property name="Virial quotient" method="RHF" value="-1.00030927277904"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1"
+      value="-0.170262485186005E-06 -0.241572450316099E-07 0.600400766494549E-06"/>
+    <time start="15:57:35" end="15:58:52" cpu="300.16" system="2.75" real="89.99"/>
+    <storage units="megabyte" memory="15258.79" sf="0.06" df="132.88" eaf="1708.82" ga="0.0"/>
+    <summary overall_method="HF/6-311G(D,P)"/>
+   </jobstep>
+   <jobstep command="HF-SCF" commandset="SCFPRO">
+    <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+      value="-234.263576820551"/>
+    <property name="One-electron energy" method="RHF" value="-822.903031824738"/>
+    <property name="Two-electron energy" method="RHF" value="332.406842721295"/>
+    <property name="Kinetic energy" method="RHF" value="234.191148172447"/>
+    <property name="Nuclear energy" method="RHF" value="256.232612282893"/>
+    <property name="Virial quotient" method="RHF" value="-1.0003092715018"/>
+    <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+      stateNumber="1"
+      value="-0.132344667483862E-06 -0.251206194942246E-07 0.621438379867366E-06"/>
+    <time start="15:58:52" end="16:00:49" cpu="431.86" system="3.26" real="116.9"/>
+    <storage units="megabyte" memory="15258.79" sf="0.06" df="133.38" eaf="1708.82" ga="0.0"/>
+    <summary overall_method="HF/6-311G(D,P)"/>
+   </jobstep>
+   <time start="15:52:21" end="16:00:49" cpu="1785.95" system="14.45" real="508.04"/>
+   <storage units="megabyte" memory="0.18" sf="0.06" df="133.38" eaf="1708.82" ga="0.0"/>
+   <summary overall_method="HF/6-311G(D,P)//HF/6-311G(D,P)"/>
+  </jobstep>
+  <jobstep command="FREQ" commandset="FREQ">
+   <cml:molecule>
+    <cml:symmetry pointGroup="C1">
+    </cml:symmetry>
+    <cml:atomArray>
+     <cml:atom id="a1" elementType="C" x3="-0.923778875574873" y3="-0.228360258304164"
+       z3="-1.13279198710093"/>
+     <cml:atom id="a2" elementType="C" x3="-1.44291068218846" y3="0.228367067832366"
+       z3="0.233621097683264"/>
+     <cml:atom id="a3" elementType="C" x3="-0.519136032892004" y3="-0.228371832661345"
+       z3="1.36640904504032"/>
+     <cml:atom id="a4" elementType="C" x3="0.923773953588509" y3="0.228369824163522"
+       z3="1.13279160846597"/>
+     <cml:atom id="a5" elementType="C" x3="1.44291299303046" y3="-0.22836287027166"
+       z3="-0.233616461781068"/>
+     <cml:atom id="a6" elementType="C" x3="0.519138730140994" y3="0.228358155704183"
+       z3="-1.36641363571997"/>
+     <cml:atom id="a7" elementType="H" x3="-0.881279074099583" y3="0.148587789128666"
+       z3="2.31958644525237"/>
+     <cml:atom id="a8" elementType="H" x3="-1.51242060318797" y3="1.31596574000809"
+       z3="0.244887155125377"/>
+     <cml:atom id="a9" elementType="H" x3="-2.44945769196859" y3="-0.148595030853638"
+       z3="0.396580545799068"/>
+     <cml:atom id="a10" elementType="H" x3="-0.968294982077328" y3="-1.31595807355643"
+       z3="-1.18736702768846"/>
+     <cml:atom id="a11" elementType="H" x3="-1.56818363697624" y3="0.148614188857137"
+       z3="-1.92299778383685"/>
+     <cml:atom id="a12" elementType="H" x3="0.968268532190828" y3="1.31596829231709"
+       z3="1.18736952253489"/>
+     <cml:atom id="a13" elementType="H" x3="1.56818759326329" y3="-0.148592312750286"
+       z3="1.92299650533008"/>
+     <cml:atom id="a14" elementType="H" x3="2.44945601156503" y3="0.148604444071485"
+       z3="-0.396587468054392"/>
+     <cml:atom id="a15" elementType="H" x3="1.51243092168333" y3="-1.31596128040082"
+       z3="-0.244860543359391"/>
+     <cml:atom id="a16" elementType="H" x3="0.544154549029879" y3="1.31595571105796"
+       z3="-1.43225333733642"/>
+     <cml:atom id="a17" elementType="H" x3="0.881277774411676" y3="-0.148620102713964"
+       z3="-2.31958462442523"/>
+     <cml:atom id="a18" elementType="H" x3="-0.544140419067348" y3="-1.31597039466427"
+       z3="1.43223458054344"/>
+    </cml:atomArray>
+    <cml:bondArray>
+     <cml:bond atomRefs2="a1 a2"/>
+     <cml:bond atomRefs2="a2 a3"/>
+     <cml:bond atomRefs2="a3 a4"/>
+     <cml:bond atomRefs2="a4 a5"/>
+     <cml:bond atomRefs2="a1 a6"/>
+     <cml:bond atomRefs2="a5 a6"/>
+     <cml:bond atomRefs2="a3 a7"/>
+     <cml:bond atomRefs2="a2 a8"/>
+     <cml:bond atomRefs2="a2 a9"/>
+     <cml:bond atomRefs2="a1 a10"/>
+     <cml:bond atomRefs2="a1 a11"/>
+     <cml:bond atomRefs2="a4 a12"/>
+     <cml:bond atomRefs2="a4 a13"/>
+     <cml:bond atomRefs2="a5 a14"/>
+     <cml:bond atomRefs2="a5 a15"/>
+     <cml:bond atomRefs2="a6 a16"/>
+     <cml:bond atomRefs2="a6 a17"/>
+     <cml:bond atomRefs2="a3 a18"/>
+    </cml:bondArray>
+   </cml:molecule>
+   <vibrations>
+    <normalCoordinate wavenumber="3198.26" units="inverseCentimetre" IRintensity="0.0"
+      IRintensityunits="km/mol" symmetry="A" real_zero_imag="R">
+      0.01172797 -0.03159698  0.01438182
+     -0.01831444 -0.03159243  0.00296485
+      0.00658928 -0.03159249 -0.01734305
+      0.01172569 -0.03159318  0.01437817
+     -0.01831652 -0.03159448  0.00296590
+      0.00659130 -0.03159819 -0.01734880
+     -0.08623728  0.09018295  0.22698095
+     -0.02177143  0.28598037  0.00352810
+      0.23969355  0.09018517 -0.03880654
+      0.01394405  0.28600883  0.01709540
+     -0.15349411  0.09021128 -0.18822337
+      0.01393689  0.28598756  0.01709439
+     -0.15346006  0.09018688 -0.18817918
+      0.23972152  0.09019741 -0.03881358
+     -0.02177480  0.28599265  0.00352244
+      0.00783621  0.28601626 -0.02062422
+     -0.08626545  0.09021826  0.22705599
+      0.00783199  0.28598323 -0.02061725
+    </normalCoordinate>
+    <normalCoordinate wavenumber="3191.36" units="inverseCentimetre" IRintensity="0.0"
+      IRintensityunits="km/mol" symmetry="A" real_zero_imag="R">
+     -0.01971248  0.01051559 -0.02417234
+     -0.03077901 -0.01050817  0.00498331
+     -0.01107247  0.01050725  0.02914342
+      0.01970442 -0.01050857  0.02416260
+      0.03078477  0.01051139 -0.00498421
+      0.01107914 -0.01051789 -0.02916085
+      0.12974565 -0.13751076 -0.34149766
+     -0.00401895 -0.00369797  0.00065036
+      0.36066367  0.13752909 -0.05839244
+     -0.00257484  0.00366530 -0.00315816
+      0.23098971 -0.13758558  0.28325196
+      0.00257334 -0.00368793  0.00315539
+     -0.23089441  0.13752317 -0.28313330
+     -0.36073256 -0.13755764  0.05840584
+      0.00402023  0.00368756 -0.00065131
+      0.00144739 -0.00365523 -0.00381025
+     -0.12982544  0.13760318  0.34170803
+     -0.00144585  0.00369162  0.00380572
+    </normalCoordinate>
+    <normalCoordinate wavenumber="3185.86" units="inverseCentimetre" IRintensity="0.0"
+      IRintensityunits="km/mol" symmetry="A" real_zero_imag="R">
+      0.01807221 -0.03160880  0.02177068
+      0.00263693  0.00289437  0.00001658
+     -0.01113438  0.03448109  0.02876973
+     -0.01807022  0.03161095 -0.02176600
+     -0.00259079 -0.00286371 -0.00002366
+      0.01114664 -0.03449642 -0.02880391
+      0.13862706 -0.14508011 -0.36442826
+      0.00234438 -0.02206620  0.00356260
+     -0.03249000 -0.01222605  0.00489360
+      0.01375776  0.24138967  0.01338502
+     -0.22615137  0.13306516 -0.27699959
+     -0.01375347 -0.24144151 -0.01338833
+      0.22611977 -0.13303804  0.27695158
+      0.03192945  0.01201316 -0.00480458
+     -0.00232829  0.02190799 -0.00356626
+      0.00897305  0.26341173 -0.01885205
+     -0.13878007  0.14525385  0.36483874
+     -0.00896721 -0.26339787  0.01884305
+    </normalCoordinate>
+    <normalCoordinate wavenumber="3185.86" units="inverseCentimetre" IRintensity="0.0"
+      IRintensityunits="km/mol" symmetry="A" real_zero_imag="R">
+     -0.01193662  0.02158825 -0.01521102
+      0.03370284  0.03815710 -0.00548922
+     -0.00489726  0.01658030  0.01400408
+      0.01190594 -0.02155990  0.01517289
+     -0.03372124 -0.03816634  0.00549400
+      0.00490788 -0.01659473 -0.01403040
+      0.06626851 -0.06974815 -0.17534525
+      0.02267295 -0.29143706 -0.00397209
+     -0.42603142 -0.16059069  0.06900068
+     -0.00573234 -0.16483232 -0.01212861
+      0.15417848 -0.09091723  0.18953542
+      0.00572023  0.16471486  0.01211761
+     -0.15380425  0.09069056 -0.18907486
+      0.42625576  0.16067939 -0.06904479
+     -0.02267950  0.29146109  0.00396579
+      0.00026682  0.12671042 -0.01060737
+     -0.06639301  0.06988147  0.17566511
+     -0.00026434 -0.12666806  0.01059887
+    </normalCoordinate>
+    <normalCoordinate wavenumber="3183.93" units="inverseCentimetre" IRintensity="0.0"
+      IRintensityunits="km/mol" symmetry="A" real_zero_imag="R">
+     -0.02207963  0.01893007 -0.02638299
+      0.00386114  0.00207274  0.00014057
+      0.01387621 -0.02104516 -0.03562600
+     -0.02209127  0.01893967 -0.02639755
+      0.00388250  0.00210943  0.00013724
+      0.01386043 -0.02100540 -0.03558388
+     -0.16520789  0.17373614  0.43110617
+      0.00078879 -0.00794780 -0.00157866
+     -0.04565612 -0.01721474  0.00420817
+     -0.00532516 -0.07340598 -0.00783582
+      0.26394003 -0.15633177  0.32078120
+     -0.00532350 -0.07344634 -0.00784275
+      0.26408203 -0.15640934  0.32095216
+     -0.04593969 -0.01732085  0.00425432
+      0.00081198 -0.00827212 -0.00158044
+      0.00315633  0.08138994 -0.01000233
+     -0.16501046  0.17353881  0.43058712
+      0.00316129  0.08166795 -0.01002419
+    </normalCoordinate>
+    <normalCoordinate wavenumber="3183.93" units="inverseCentimetre" IRintensity="0.0"
+      IRintensityunits="km/mol" symmetry="A" real_zero_imag="R">
+     -0.01483565  0.01332318 -0.01917406
+     -0.04138676 -0.02308136  0.00677009
+     -0.00563729  0.00973743  0.01677686
+     -0.01485862  0.01336732 -0.01920185
+     -0.04136758 -0.02306185  0.00676709
+     -0.00562759  0.00971000  0.01675246
+      0.07317299 -0.08036780 -0.20065875
+     -0.01138051  0.08954242  0.00171422
+      0.49986057  0.19057442 -0.08121657
+     -0.00510681 -0.05156572 -0.00440332
+      0.18294859 -0.11013372  0.22842341
+     -0.00512335 -0.05192140 -0.00442409
+      0.18324032 -0.11030000  0.22877817
+      0.49962046  0.19048713 -0.08118231
+     -0.01137027  0.08939757  0.00170652
+     -0.00293655 -0.03759606  0.00406154
+      0.07305546 -0.08024994 -0.20035145
+     -0.00294559 -0.03780407  0.00407517
+    </normalCoordinate>
+    <normalCoordinate wavenumber="3142.96" units="inverseCentimetre" IRintensity="0.0"
+      IRintensityunits="km/mol" symmetry="A" real_zero_imag="R">
+      0.01511967  0.01313618  0.01854060
+     -0.02361526  0.01312850  0.00382353
+      0.00849699  0.01313418 -0.02236500
+      0.01511998  0.01313400  0.01854117
+     -0.02361545  0.01312990  0.00382344
+      0.00849691  0.01313825 -0.02236460
+     -0.09652042  0.10934908  0.25404797
+      0.00917545 -0.26565973 -0.00148839
+      0.26825402  0.10934124 -0.04343044
+     -0.00588128 -0.26575936 -0.00720903
+     -0.17174324  0.10934882 -0.21060249
+     -0.00587498 -0.26573345 -0.00720822
+     -0.17175256  0.10934929 -0.21061083
+      0.26825324  0.10934308 -0.04343338
+      0.00917848 -0.26567840 -0.00148337
+     -0.00330540 -0.26578613  0.00869937
+     -0.09651558  0.10935087  0.25403621
+     -0.00330151 -0.26573536  0.00869282
+    </normalCoordinate>
+    <normalCoordinate wavenumber="3141.02" units="inverseCentimetre" IRintensity="0.0"
+      IRintensityunits="km/mol" symmetry="A" real_zero_imag="R">
+     -0.01307561 -0.02409527 -0.01662520
+     -0.00210127  0.00237140  0.00099822
+      0.00806369  0.02709909 -0.02200058
+      0.01307658  0.02409617  0.01662728
+      0.00210180 -0.00237610 -0.00099820
+     -0.00806265 -0.02709566  0.02199709
+     -0.08886367  0.10647384  0.23824793
+      0.00180624 -0.03817447  0.00129441
+      0.02350859  0.01018573 -0.00749762
+      0.01091076  0.38112853  0.01194770
+      0.14359251 -0.09616338  0.17940011
+     -0.01090357 -0.38114779 -0.01194862
+     -0.14361183  0.09617208 -0.17942272
+     -0.02351030 -0.01018740  0.00749790
+     -0.00180982  0.03823159 -0.00129467
+      0.00708565  0.42704397 -0.01677625
+      0.08884717 -0.10646008 -0.23820390
+     -0.00708178 -0.42709803  0.01677223
+    </normalCoordinate>
+    <normalCoordinate wavenumber="3141.02" units="inverseCentimetre" IRintensity="0.0"
+      IRintensityunits="km/mol" symmetry="A" real_zero_imag="R">
+     -0.00981996 -0.01798774 -0.01119694
+      0.02533351 -0.02856617 -0.00404439
+     -0.00445274 -0.01350962  0.01005670
+      0.00982087  0.01799253  0.01119843
+     -0.02533205  0.02856444  0.00404346
+      0.00445184  0.01350601 -0.01005456
+      0.04520998 -0.04977635 -0.10966354
+     -0.01882775  0.45438201  0.00319197
+     -0.27571805 -0.11676132  0.04431607
+      0.00667549  0.28058680  0.01022043
+      0.10402573 -0.06751053  0.12282378
+     -0.00667224 -0.28064953 -0.01022320
+     -0.10403888  0.06751677 -0.12283799
+      0.27569863  0.11675502 -0.04431507
+      0.01883009 -0.45435537 -0.00318321
+     -0.00191169 -0.20982794  0.00904334
+     -0.04519935  0.04976722  0.10963779
+      0.00191056  0.20987976 -0.00904253
+    </normalCoordinate>
+    <normalCoordinate wavenumber="3141.0" units="inverseCentimetre" IRintensity="0.0"
+      IRintensityunits="km/mol" symmetry="A" real_zero_imag="R">
+      0.00123611  0.03135841  0.00154562
+      0.00306385 -0.03265776 -0.00049871
+      0.00062684  0.03117198 -0.00169617
+     -0.00123750 -0.03136952 -0.00154758
+     -0.00306312  0.03265366  0.00049842
+     -0.00062565 -0.03115662  0.00169295
+      0.00100657  0.00348037 -0.00239139
+     -0.02382993  0.40526678  0.00385584
+     -0.01133115 -0.00937137  0.00184779
+     -0.01474503 -0.38477984 -0.01800493
+      0.00054708  0.00425615  0.00050172
+      0.01474289  0.38492486  0.01801121
+     -0.00053133 -0.00426762 -0.00048493
+      0.01132362  0.00936767 -0.00184892
+      0.02383005 -0.40521379 -0.00384839
+      0.00825506  0.38160011 -0.02161536
+     -0.00101900 -0.00346379  0.00242252
+     -0.00825503 -0.38180137  0.02162003
+    </normalCoordinate>
+    <normalCoordinate wavenumber="3136.86" units="inverseCentimetre" IRintensity="0.0"
+      IRintensityunits="km/mol" symmetry="A" real_zero_imag="R">
+      0.00617438  0.03462606  0.00650504
+     -0.00092560  0.00286590 -0.00106929
+     -0.00393359 -0.03748139  0.00886188
+      0.00617287  0.03461329  0.00650419
+     -0.00092345  0.00287421 -0.00106971
+     -0.00393499 -0.03749600  0.00886489
+      0.03169279 -0.04082217 -0.07621097
+      0.00222132 -0.03745047  0.00109300
+      0.00718503  0.00313325  0.00472531
+     -0.01603988 -0.45235244 -0.01839392
+     -0.05068255  0.03770969 -0.05700150
+     -0.01602540 -0.45219270 -0.01838691
+     -0.05067982  0.03770475 -0.05699796
+      0.00715381  0.00312199  0.00473043
+      0.00222803 -0.03754164  0.00109256
+      0.00997252  0.48984381 -0.02446870
+      0.03169999 -0.04083418 -0.07622932
+      0.00996375  0.48965542 -0.02445164
+    </normalCoordinate>
+    <normalCoordinate wavenumber="3136.86" units="inverseCentimetre" IRintensity="0.0"
+      IRintensityunits="km/mol" symmetry="A" real_zero_imag="R">
+      0.00302778  0.02330029  0.00529611
+      0.01060308 -0.04163181 -0.00180118
+      0.00066722  0.01832660 -0.00480769
+      0.00302549  0.02329872  0.00529387
+      0.01060454 -0.04163537 -0.00180054
+      0.00066811  0.01833149 -0.00480994
+     -0.00942337  0.01994892  0.03954051
+     -0.02892720  0.54388323  0.00478899
+     -0.09040804 -0.04534880  0.01504315
+     -0.00945035 -0.30439132 -0.01347236
+     -0.02865993  0.02537444 -0.04279317
+     -0.00944391 -0.30435978 -0.01347209
+     -0.02863974  0.02536046 -0.04276759
+     -0.09041846 -0.04535416  0.01504552
+     -0.02893379  0.54393127  0.00477960
+     -0.00337958 -0.23947572  0.01253077
+     -0.00943026  0.01995885  0.03956001
+     -0.00337562 -0.23940737  0.01252422
+    </normalCoordinate>
+    <normalCoordinate wavenumber="1634.23" units="inverseCentimetre" IRintensity="0.0"
+      IRintensityunits="km/mol" symmetry="A" real_zero_imag="R">
+     -0.02047032 -0.01685266 -0.02510131
+     -0.03197466  0.01685376  0.00517659
+     -0.01150428 -0.01685434  0.03028014
+      0.02047110  0.01685398  0.02510243
+      0.03197387 -0.01685309 -0.00517674
+      0.01150373  0.01685235 -0.03027812
+      0.02652488  0.26158932 -0.06981829
+      0.26942809  0.03170169 -0.04361991
+      0.07372529 -0.26158200 -0.01193862
+      0.17248624 -0.03170337  0.21151076
+      0.04720160  0.26157083  0.05787889
+     -0.17249592  0.03170189 -0.21152060
+     -0.04719972 -0.26158513 -0.05788161
+     -0.07372510  0.26157444  0.01193445
+     -0.26942034 -0.03170205  0.04362191
+     -0.09693217  0.03170406  0.25512961
+     -0.02652552 -0.26156797  0.06981671
+      0.09693935 -0.03170180 -0.25514896
+    </normalCoordinate>
+    <normalCoordinate wavenumber="1613.9" units="inverseCentimetre" IRintensity="0.0"
+      IRintensityunits="km/mol" symmetry="A" real_zero_imag="R">
+      0.01594086  0.01915237  0.01954455
+     -0.02491588  0.01916435  0.00403312
+      0.00896094  0.01915645 -0.02357910
+      0.01594374  0.01915589  0.01954633
+     -0.02491410  0.01916267  0.00403436
+      0.00895900  0.01915123 -0.02357468
+     -0.03200525 -0.26085118  0.08421299
+      0.27256418  0.03277997 -0.04412236
+      0.08896485 -0.26096985 -0.01440710
+     -0.17439311  0.03276366 -0.21385074
+     -0.05693985 -0.26080857 -0.06980009
+     -0.17442422  0.03276524 -0.21387242
+     -0.05694123 -0.26084626 -0.06981132
+      0.08896120 -0.26095161 -0.01439921
+      0.27254453  0.03277895 -0.04413329
+     -0.09800220  0.03276300  0.25793975
+     -0.03200200 -0.26079476  0.08419899
+     -0.09802410  0.03276528  0.25799012
+    </normalCoordinate>
+    <normalCoordinate wavenumber="1613.61" units="inverseCentimetre" IRintensity="0.0"
+      IRintensityunits="km/mol" symmetry="A" real_zero_imag="R">
+      0.02614241  0.01805615  0.02007217
+     -0.01392029  0.00701000 -0.00806025
+     -0.01825484 -0.02507148  0.04070610
+      0.02614054  0.01805595  0.02007079
+     -0.01392297  0.00701116 -0.00805988
+     -0.01825558 -0.02507020  0.04070675
+      0.04844909  0.35270377 -0.09165191
+      0.10552152  0.01179805  0.00009342
+      0.03634511 -0.09861422  0.04451060
+     -0.17933114  0.03039420 -0.19994482
+     -0.07551215 -0.25402482 -0.03403725
+     -0.17932038  0.03038935 -0.19993053
+     -0.07550364 -0.25401029 -0.03403452
+      0.03635421 -0.09863937  0.04451113
+      0.10554905  0.01180150  0.00008795
+      0.13635979 -0.04220252 -0.34667643
+      0.04845317  0.35270095 -0.09165589
+      0.13635935 -0.04219636 -0.34667647
+    </normalCoordinate>
+    <normalCoordinate wavenumber="1613.61" units="inverseCentimetre" IRintensity="0.0"
+      IRintensityunits="km/mol" symmetry="A" real_zero_imag="R">
+     -0.01507600 -0.01852591 -0.03016943
+     -0.04319950  0.02489534  0.00989883
+      0.00555718 -0.00638197  0.01423659
+     -0.01507658 -0.01852760 -0.03017118
+     -0.04319886  0.02489443  0.00989832
+      0.00555729 -0.00638130  0.01423597
+     -0.03752004  0.08978040 -0.04227390
+      0.36437910  0.04190126 -0.06383016
+      0.09860684 -0.35023349 -0.03016145
+      0.16443147 -0.03118459  0.22109146
+      0.02009330  0.26062676  0.08172134
+      0.16444527 -0.03118389  0.22110738
+      0.02009115  0.26064731  0.08172777
+      0.09860638 -0.35022327 -0.03015307
+      0.36436859  0.04190174 -0.06383187
+      0.01771394 -0.01074214 -0.09469588
+     -0.03751889  0.08977306 -0.04227274
+      0.01771688 -0.01074140 -0.09470280
+    </normalCoordinate>
+    <normalCoordinate wavenumber="1603.16" units="inverseCentimetre" IRintensity="0.0"
+      IRintensityunits="km/mol" symmetry="A" real_zero_imag="R">
+      0.02087268  0.02098009  0.01692274
+      0.00994992 -0.00705009  0.00614536
+     -0.01451488 -0.02802869  0.03207802
+     -0.02086984 -0.02097761 -0.01691970
+     -0.00995216  0.00705225 -0.00614510
+      0.01451727  0.02803131 -0.03208359
+      0.04036230  0.35652831 -0.11329975
+     -0.09852808 -0.01070880 -0.02947246
+     -0.02844872  0.08968242  0.01354287
+     -0.19893309  0.03187340 -0.19315734
+     -0.05199761 -0.26687921 -0.07374923
+      0.19890967 -0.03186493  0.19312310
+      0.05198301  0.26684138  0.07373994
+      0.02845810 -0.08970615 -0.01354227
+      0.09855150  0.01071362  0.02946695
+     -0.14260611  0.04258708  0.33946936
+     -0.04037299 -0.35657879  0.11332103
+      0.14258648 -0.04257470 -0.33941529
+    </normalCoordinate>
+    <normalCoordinate wavenumber="1603.16" units="inverseCentimetre" IRintensity="0.0"
+      IRintensityunits="km/mol" symmetry="A" real_zero_imag="R">
+      0.01165101  0.02025412  0.02326905
+     -0.03471581  0.02829495  0.00755333
+     -0.00350904  0.00804111 -0.01211806
+     -0.01165006 -0.02025415 -0.02326746
+      0.03471748 -0.02829542 -0.00755386
+      0.00350898 -0.00804124  0.01211924
+     -0.02042043 -0.10228307  0.02914515
+      0.36487322  0.04298096 -0.07038998
+      0.12018351 -0.35992175 -0.01723609
+     -0.14227457  0.03076998 -0.22706887
+     -0.05999115 -0.25764704 -0.06321171
+      0.14226840 -0.03076655  0.22705414
+      0.05998311  0.25763559  0.06320990
+     -0.12019078  0.35993489  0.01722850
+     -0.36488740 -0.04298379  0.07040075
+     -0.00402976 -0.01221673 -0.11445637
+      0.02042303  0.10229080 -0.02914884
+      0.00403226  0.01221435  0.11444680
+    </normalCoordinate>
+    <normalCoordinate wavenumber="1510.88" units="inverseCentimetre" IRintensity="0.0"
+      IRintensityunits="km/mol" symmetry="A" real_zero_imag="R">
+     -0.00839982 -0.01461722  0.05654994
+     -0.01862195 -0.00120107 -0.09521166
+      0.03859204  0.01341550  0.05247757
+      0.00839707  0.01461724 -0.05654761
+      0.01862358  0.00120204  0.09521183
+     -0.03859417 -0.01341583 -0.05247885
+     -0.10274063 -0.02185989  0.01367882
+      0.06885133 -0.00061790  0.38825545
+      0.02147148  0.00195920  0.16023826
+      0.08765396 -0.00746126 -0.16433424
+      0.08850446  0.02381921 -0.00289249
+     -0.08764639  0.00745911  0.16433110
+     -0.08849015 -0.02381779  0.00288352
+     -0.02147266 -0.00195897 -0.16024009
+     -0.06885373  0.00060888 -0.38825856
+      0.18452425 -0.00684669  0.14075572
+      0.10275213  0.02186148 -0.01367700
+     -0.18451524  0.00684676 -0.14075493
+    </normalCoordinate>
+    <normalCoordinate wavenumber="1510.88" units="inverseCentimetre" IRintensity="0.0"
+      IRintensityunits="km/mol" symmetry="A" real_zero_imag="R">
+      0.07961304 -0.00705224 -0.04094541
+     -0.04094871 -0.01618472  0.01391900
+      0.08367704 -0.00913283  0.00604874
+     -0.07960679  0.00705152  0.04094346
+      0.04094780  0.01618479 -0.01392485
+     -0.08368436  0.00913322 -0.00604942
+     -0.11330202  0.01488001 -0.07893126
+      0.07397399 -0.00826063 -0.04162802
+     -0.06059943  0.02637473 -0.00232017
+     -0.29790278 -0.00359592  0.19814692
+     -0.09674592  0.01149626  0.11232354
+      0.29788465  0.00360327 -0.19812683
+      0.09673830 -0.01149043 -0.11231203
+      0.06060705 -0.02637551  0.00236150
+     -0.07397253  0.00826091  0.04162901
+      0.32148429  0.00466024  0.07404840
+      0.11331686 -0.01488653  0.07894266
+     -0.32145889 -0.00466336 -0.07403277
+    </normalCoordinate>
+    <normalCoordinate wavenumber="1503.31" units="inverseCentimetre" IRintensity="0.0"
+      IRintensityunits="km/mol" symmetry="A" real_zero_imag="R">
+      0.05738011  0.00209920 -0.01849853
+     -0.01872625  0.00044649 -0.08657413
+     -0.03829158 -0.00254424  0.01388599
+      0.05738782  0.00209941 -0.01850277
+     -0.01872929  0.00044393 -0.08657142
+     -0.03828436 -0.00254492  0.01388534
+      0.11712087 -0.07296384  0.10798131
+      0.02324491  0.00160283  0.19175126
+      0.05599006  0.01276129  0.41077524
+     -0.07025396  0.00756710  0.10413896
+     -0.17602556  0.06019721  0.20672272
+     -0.07028192  0.00756515  0.10415512
+     -0.17603963  0.06019518  0.20673663
+      0.05598577  0.01277149  0.41076978
+      0.02324663  0.00160630  0.19174441
+      0.04555458 -0.00917086  0.06438095
+      0.11710950 -0.07295956  0.10797296
+      0.04558010 -0.00917079  0.06438481
+    </normalCoordinate>
+    <normalCoordinate wavenumber="1503.31" units="inverseCentimetre" IRintensity="0.0"
+      IRintensityunits="km/mol" symmetry="A" real_zero_imag="R">
+     -0.04205159  0.00172682  0.05755727
+      0.02530036 -0.00268105 -0.01897025
+     -0.07443991  0.00095488 -0.03895388
+     -0.04204985  0.00172558  0.05755821
+      0.02529852 -0.00268153 -0.01897436
+     -0.07443690  0.00095532 -0.03895179
+      0.37576472  0.02738701  0.11893754
+      0.05088669 -0.00966403  0.02420583
+      0.07272432 -0.07688191  0.05793300
+      0.13481464  0.00622023 -0.07142450
+      0.27700910  0.04949071 -0.17395586
+      0.13481198  0.00622292 -0.07142196
+      0.27700793  0.04949914 -0.17395176
+      0.07272542 -0.07687887  0.05794747
+      0.05088992 -0.00966325  0.02421842
+      0.17457929  0.00344191  0.04866081
+      0.37575667  0.02738270  0.11893617
+      0.17458924  0.00344304  0.04866410
+    </normalCoordinate>
+    <normalCoordinate wavenumber="1503.26" units="inverseCentimetre" IRintensity="0.0"
+      IRintensityunits="km/mol" symmetry="A" real_zero_imag="R">
+     -0.05161856 -0.00001717  0.04186436
+     -0.01046576 -0.00000006 -0.06464279
+      0.06219100  0.00001726  0.02343518
+     -0.05162277 -0.00001743  0.04186683
+     -0.01046407 -0.00000008 -0.06464297
+      0.06218594  0.00001753  0.02343441
+      0.01868381  0.00049516  0.00666755
+      0.05346124 -0.00000424  0.33019200
+     -0.00390414  0.00000119 -0.02411089
+      0.26067224 -0.00006444 -0.21296025
+     -0.01560747 -0.00049013  0.01221367
+      0.26068401 -0.00005851 -0.21296988
+     -0.01560217 -0.00049426  0.01220574
+     -0.00389900 -0.00000596 -0.02411221
+      0.05346178  0.00000331  0.33019386
+     -0.31453966  0.00006274 -0.11982369
+      0.01869260  0.00049387  0.00667279
+     -0.31455332  0.00006075 -0.11982654
+    </normalCoordinate>
+    <normalCoordinate wavenumber="1460.16" units="inverseCentimetre" IRintensity="0.0"
+      IRintensityunits="km/mol" symmetry="A" real_zero_imag="R">
+      0.04542743  0.00000052 -0.03704620
+     -0.00936845 -0.00000018 -0.05786323
+     -0.05479708 -0.00000017 -0.02081931
+     -0.04542781 -0.00000016  0.03704635
+      0.00936834 -0.00000034  0.05786323
+      0.05479682  0.00000026  0.02081919
+      0.30064448  0.00000113  0.11422368
+      0.02317795 -0.00000204  0.14314131
+      0.05139990 -0.00000248  0.31747400
+     -0.11238308  0.00000174  0.09165192
+     -0.24923645  0.00000189  0.20324984
+      0.11238230  0.00000152 -0.09164539
+      0.24924105  0.00000230 -0.20325473
+     -0.05140152 -0.00000261 -0.31747155
+     -0.02317299 -0.00000211 -0.14314449
+     -0.13556693  0.00000044 -0.05150728
+     -0.30063610  0.00000039 -0.11422065
+      0.13556033  0.00000055  0.05150309
+    </normalCoordinate>
+    <normalCoordinate wavenumber="1396.62" units="inverseCentimetre" IRintensity="0.0"
+      IRintensityunits="km/mol" symmetry="A" real_zero_imag="R">
+      0.00820068  0.02879257  0.04087829
+     -0.00639911  0.00010425 -0.03865362
+      0.00537357 -0.02868003  0.04132609
+     -0.00819947 -0.02879081 -0.04087831
+      0.00639819 -0.00011245  0.03865420
+     -0.00537368  0.02868733 -0.04132685
+     -0.20688357 -0.04537931 -0.03237456
+     -0.05123084  0.00012572 -0.31537893
+      0.06496482  0.00016844  0.40228931
+     -0.09333733  0.03361891  0.13694099
+      0.18443747  0.04554330 -0.09444007
+      0.09330114 -0.03361537 -0.13690836
+     -0.18441284 -0.04554970  0.09441910
+     -0.06497282 -0.00017284 -0.40229827
+      0.05125453 -0.00012730  0.31539260
+     -0.13351937  0.03349431 -0.10097143
+      0.20690084  0.04537114  0.03238569
+      0.13349565 -0.03348756  0.10094640
+    </normalCoordinate>
+    <normalCoordinate wavenumber="1396.62" units="inverseCentimetre" IRintensity="0.0"
+      IRintensityunits="km/mol" symmetry="A" real_zero_imag="R">
+     -0.03969446 -0.01650302  0.00511522
+      0.04191781 -0.03318239 -0.00691761
+     -0.03924515 -0.01668207  0.00794182
+      0.03969351  0.01649390 -0.00511381
+     -0.04191838  0.03318445  0.00691517
+      0.03924665  0.01668942 -0.00794135
+      0.32034420 -0.02639584  0.14859961
+      0.05346390 -0.03874420 -0.00968427
+      0.04955726 -0.05249422 -0.00669408
+     -0.23193442 -0.01926570  0.15427329
+      0.25830966 -0.02609688 -0.24271591
+      0.23190771  0.01926172 -0.15427960
+     -0.25830036  0.02609731  0.24271599
+     -0.04956138  0.05249211  0.00666117
+     -0.05346014  0.03874591  0.00973569
+      0.26790715  0.01948501  0.07255523
+     -0.32036475  0.02639141 -0.14860280
+     -0.26786855 -0.01947995 -0.07255774
+    </normalCoordinate>
+    <normalCoordinate wavenumber="1385.52" units="inverseCentimetre" IRintensity="0.0"
+      IRintensityunits="km/mol" symmetry="A" real_zero_imag="R">
+      0.00363501 -0.06541786 -0.00351765
+     -0.00128643 -0.00923961 -0.00831094
+     -0.00297793  0.07466209 -0.00165712
+      0.00363147 -0.06542003 -0.00351528
+     -0.00128226 -0.00924154 -0.00831316
+     -0.00298142  0.07465689 -0.00165433
+     -0.09372594 -0.05784227  0.01491320
+      0.08330004 -0.00798641  0.40525441
+     -0.03857548  0.00716782 -0.20165731
+     -0.26998080 -0.05651687  0.06064595
+      0.12139095  0.05068438 -0.04558968
+     -0.27001610 -0.05652413  0.06066981
+      0.12143496  0.05068742 -0.04562679
+     -0.03856448  0.00715191 -0.20163731
+      0.08330324 -0.00798109  0.40523623
+      0.20506419  0.06449958 -0.07301451
+     -0.09369966 -0.05784785  0.01493081
+      0.20509038  0.06450831 -0.07301568
+    </normalCoordinate>
+    <normalCoordinate wavenumber="1385.52" units="inverseCentimetre" IRintensity="0.0"
+      IRintensityunits="km/mol" symmetry="A" real_zero_imag="R">
+     -0.00547176 -0.04843813  0.00405526
+     -0.00067794  0.08087519 -0.00086565
+     -0.00733348 -0.03243597 -0.00255753
+     -0.00547449 -0.04844131  0.00405225
+     -0.00067590  0.08087356 -0.00086200
+     -0.00733435 -0.03243327 -0.00256063
+     -0.16982535  0.02512635 -0.08646966
+     -0.14332650  0.06987456  0.07103025
+      0.04676130 -0.06265880 -0.03129699
+      0.20126720 -0.04185052 -0.28224782
+     -0.10927879  0.03753568  0.12866383
+      0.20126580 -0.04185017 -0.28225646
+     -0.10928251  0.03752358  0.12865690
+      0.04675551 -0.06266246 -0.03135099
+     -0.14331693  0.06987301  0.07106552
+      0.33492831 -0.02802103  0.19281601
+     -0.16979695  0.02513215 -0.08646405
+      0.33495138 -0.02802328  0.19283074
+    </normalCoordinate>
+    <normalCoordinate wavenumber="1283.71" units="inverseCentimetre" IRintensity="0.0"
+      IRintensityunits="km/mol" symmetry="A" real_zero_imag="R">
+     -0.00519376  0.09009741 -0.00636921
+     -0.00811300 -0.09009660  0.00131361
+     -0.00291917  0.09009592  0.00768316
+      0.00519433 -0.09009620  0.00636932
+      0.00811284  0.09009717 -0.00131350
+      0.00291865 -0.09009769 -0.00768261
+     -0.02960416 -0.12131647  0.07792472
+      0.19961259 -0.07319890 -0.03232260
+     -0.08228769  0.12131782  0.01332576
+      0.12779932  0.07319726  0.15671014
+     -0.05268513 -0.12131891 -0.06460407
+     -0.12779258 -0.07319866 -0.15671341
+      0.05267890  0.12131681  0.06460427
+      0.08229007 -0.12131890 -0.01332174
+     -0.19961452  0.07319842  0.03231534
+     -0.07181942 -0.07319670  0.18903167
+      0.02960791  0.12131932 -0.07792924
+      0.07181600  0.07319886 -0.18903006
+    </normalCoordinate>
+    <normalCoordinate wavenumber="1228.06" units="inverseCentimetre" IRintensity="0.0"
+      IRintensityunits="km/mol" symmetry="A" real_zero_imag="R">
+     -0.03640080  0.00000006  0.02968448
+     -0.00750724  0.00000040 -0.04636543
+      0.04390720  0.00000046  0.01668146
+     -0.03640035 -0.00000081  0.02968384
+     -0.00750684 -0.00000014 -0.04636583
+      0.04390821  0.00000003  0.01668188
+     -0.33902058 -0.00000150 -0.12880425
+     -0.01391240  0.00000083 -0.08593438
+      0.05796180 -0.00000328  0.35800382
+     -0.06746296  0.00000033  0.05501415
+      0.28105798 -0.00000231 -0.22920105
+     -0.06746475 -0.00000110  0.05501669
+      0.28105730  0.00000354 -0.22920079
+      0.05796387  0.00000310  0.35800431
+     -0.01391444 -0.00000056 -0.08593284
+      0.08137419  0.00000000  0.03091638
+     -0.33902144  0.00000053 -0.12880499
+      0.08137912  0.00000056  0.03091820
+    </normalCoordinate>
+    <normalCoordinate wavenumber="1170.75" units="inverseCentimetre" IRintensity="0.0"
+      IRintensityunits="km/mol" symmetry="A" real_zero_imag="R">
+      0.06625401 -0.00000052 -0.05402943
+      0.01366350 -0.00000072  0.08439188
+     -0.07991605 -0.00000029 -0.03036279
+      0.06625264  0.00000079 -0.05402877
+      0.01366382  0.00000062  0.08439218
+     -0.07991790  0.00000011 -0.03036319
+     -0.17081065  0.00000098 -0.06489697
+      0.03389195 -0.00000170  0.20931041
+      0.02920373  0.00000088  0.18038043
+      0.16432336 -0.00000126 -0.13400625
+      0.14161458  0.00000039 -0.11548481
+      0.16432496  0.00000156 -0.13400146
+      0.14160706 -0.00000142 -0.11548110
+      0.02920595 -0.00000065  0.18038190
+      0.03388670  0.00000161  0.20931229
+     -0.19821136  0.00000026 -0.07530652
+     -0.17082254  0.00000006 -0.06490059
+     -0.19821393 -0.00000056 -0.07530588
+    </normalCoordinate>
+    <normalCoordinate wavenumber="1149.1" units="inverseCentimetre" IRintensity="0.0"
+      IRintensityunits="km/mol" symmetry="A" real_zero_imag="R">
+      0.00512366 -0.00000035 -0.00417855
+     -0.00105576  0.00000039 -0.00652538
+     -0.00618137 -0.00000005 -0.00234886
+     -0.00512356 -0.00000021  0.00417907
+      0.00105705  0.00000040  0.00652529
+      0.00618004 -0.00000013  0.00234843
+     -0.16708435 -0.00000035 -0.06348088
+      0.05826487 -0.00000349  0.35988107
+     -0.02856349  0.00000120 -0.17642834
+     -0.28252781  0.00000229  0.23039824
+      0.13851274 -0.00000099 -0.11295621
+      0.28253042  0.00000313 -0.23040339
+     -0.13851425 -0.00000125  0.11295861
+      0.02856579  0.00000093  0.17642695
+     -0.05826847 -0.00000332 -0.35987745
+     -0.34079429  0.00000029 -0.12947818
+      0.16707950 -0.00000046  0.06347914
+      0.34079874  0.00000132  0.12948037
+    </normalCoordinate>
+    <normalCoordinate wavenumber="1126.26" units="inverseCentimetre" IRintensity="0.0"
+      IRintensityunits="km/mol" symmetry="A" real_zero_imag="R">
+     -0.06019141  0.01261864 -0.07380792
+      0.09401675  0.01261825 -0.01522429
+     -0.03382572  0.01261727  0.08903363
+     -0.06019028  0.01261766 -0.07381187
+      0.09401642  0.01261866 -0.01521980
+     -0.03382543  0.01261875  0.08903008
+     -0.05480873 -0.14876895  0.14426679
+     -0.09632998 -0.00147697  0.01559016
+      0.15234098 -0.14876730 -0.02467434
+      0.06166572 -0.00147818  0.07562482
+     -0.09753762 -0.14876179 -0.11959364
+      0.06167444 -0.00147756  0.07562298
+     -0.09752651 -0.14876785 -0.11960509
+      0.15234318 -0.14876470 -0.02465553
+     -0.09632613 -0.00147716  0.01560245
+      0.03465491 -0.00147863 -0.09121718
+     -0.05481259 -0.14876004  0.14426255
+      0.03465847 -0.00147765 -0.09122199
+    </normalCoordinate>
+    <normalCoordinate wavenumber="1100.38" units="inverseCentimetre" IRintensity="0.0"
+      IRintensityunits="km/mol" symmetry="A" real_zero_imag="R">
+      0.02152168 -0.01826396 -0.06424022
+      0.01214187  0.00192895  0.09889711
+     -0.02532393  0.02019634 -0.05241284
+     -0.02152568  0.01826517  0.06423647
+     -0.01213621 -0.00193135 -0.09889764
+      0.02532146 -0.02019283  0.05241765
+     -0.12667225  0.05491352 -0.10229653
+      0.03336956  0.00238127  0.19953281
+      0.05345681  0.00524573  0.36044038
+      0.09646116 -0.02255407 -0.06587849
+      0.13348443 -0.04967298 -0.16796313
+     -0.09645409  0.02255331  0.06587720
+     -0.13349227  0.04966477  0.16795854
+     -0.05345190 -0.00525165 -0.36043946
+     -0.03336374 -0.00238550 -0.19953534
+      0.08421872 -0.02493635  0.02027496
+      0.12666554 -0.05492336  0.10230560
+     -0.08421254  0.02493777 -0.02028287
+    </normalCoordinate>
+    <normalCoordinate wavenumber="1100.38" units="inverseCentimetre" IRintensity="0.0"
+      IRintensityunits="km/mol" symmetry="A" real_zero_imag="R">
+      0.07946112  0.01277210 -0.03214928
+     -0.04480262  0.02220518 -0.00151414
+      0.09128627  0.00943164  0.01469844
+     -0.07946311 -0.01277518  0.03214930
+      0.04480355 -0.02220372  0.00151306
+     -0.09128469 -0.00942951 -0.01469642
+      0.31816817  0.02564479  0.09558427
+      0.00907478  0.02741915 -0.01928786
+     -0.06002772  0.06038199 -0.02236649
+      0.12458018  0.01577170 -0.11053864
+      0.25250462  0.03473796 -0.16457973
+     -0.12458864 -0.01577515  0.11053504
+     -0.25250637 -0.03473739  0.16458314
+      0.06003033 -0.06038451  0.02236407
+     -0.00908024 -0.02741812  0.01927840
+     -0.17018248 -0.01164452 -0.07013181
+     -0.31816374 -0.02564813 -0.09557839
+      0.17018494  0.01164616  0.07012662
+    </normalCoordinate>
+    <normalCoordinate wavenumber="986.77" units="inverseCentimetre" IRintensity="0.0"
+      IRintensityunits="km/mol" symmetry="A" real_zero_imag="R">
+     -0.00593689  0.06226616 -0.01537127
+      0.00055689  0.00783430 -0.00888641
+      0.00292659 -0.07010046 -0.01775496
+     -0.00593895  0.06226633 -0.01537028
+      0.00055850  0.00783395 -0.00888753
+      0.00292471 -0.07010047 -0.01775329
+     -0.00201619  0.20951952 -0.12862305
+      0.01609995  0.00532989  0.28698976
+     -0.00530372 -0.02341130 -0.11632171
+      0.02013299  0.04238227  0.29101056
+     -0.01431040 -0.18610127 -0.12532187
+      0.02012750  0.04238241  0.29101730
+     -0.01431459 -0.18610172 -0.12531538
+     -0.00530127 -0.02341773 -0.11632586
+      0.01609817  0.00533501  0.28698671
+      0.01462855 -0.04771264  0.29249066
+     -0.00202028  0.20951436 -0.12862657
+      0.01463159 -0.04771651  0.29249583
+    </normalCoordinate>
+    <normalCoordinate wavenumber="986.77" units="inverseCentimetre" IRintensity="0.0"
+      IRintensityunits="km/mol" symmetry="A" real_zero_imag="R">
+     -0.01263651  0.04499576 -0.00430017
+     -0.01912130 -0.07642196  0.00219287
+     -0.01025342  0.03142647  0.00456259
+     -0.01263800  0.04499552 -0.00430194
+     -0.01911995 -0.07642197  0.00219511
+     -0.01025423  0.03142658  0.00456062
+     -0.11821794 -0.09393002  0.01240482
+      0.29333998 -0.05201968 -0.01781120
+     -0.13051902  0.22841158  0.00911692
+      0.28931525  0.03062452 -0.01377651
+     -0.12152818 -0.13448081  0.00011231
+      0.28931762  0.03062979 -0.01377471
+     -0.12152664 -0.13448740  0.00010909
+     -0.13051821  0.22840905  0.00912227
+      0.29333965 -0.05201788 -0.01780289
+      0.28783471  0.02138962 -0.01927673
+     -0.11822605 -0.09392614  0.01240163
+      0.28784137  0.02139275 -0.01927651
+    </normalCoordinate>
+    <normalCoordinate wavenumber="917.73" units="inverseCentimetre" IRintensity="0.0"
+      IRintensityunits="km/mol" symmetry="A" real_zero_imag="R">
+      0.08689996  0.02935261  0.01609465
+     -0.03940390  0.01204813 -0.07029022
+     -0.05106498 -0.04140184  0.08228510
+      0.08690134  0.02935398  0.01609812
+     -0.03940034  0.01204695 -0.07029149
+     -0.05106451 -0.04139989  0.08228269
+     -0.10643459 -0.11269037  0.08981083
+     -0.01722728  0.01364177 -0.07471583
+     -0.07914857  0.03279540 -0.26715575
+      0.05258983  0.03323564 -0.02696681
+      0.21635151  0.07988951 -0.06504681
+      0.05258717  0.03323676 -0.02696600
+      0.21635421  0.07989834 -0.06504278
+     -0.07914498  0.03278909 -0.26715694
+     -0.01722443  0.01364069 -0.07471789
+     -0.02367351 -0.04687698  0.00962081
+     -0.10643330 -0.11268105  0.08980740
+     -0.02367153 -0.04687819  0.00961768
+    </normalCoordinate>
+    <normalCoordinate wavenumber="917.72" units="inverseCentimetre" IRintensity="0.0"
+      IRintensityunits="km/mol" symmetry="A" real_zero_imag="R">
+      0.00263044  0.03085826  0.08927833
+      0.08901716 -0.04085003 -0.03702537
+     -0.06355740  0.00999157 -0.04868677
+      0.00262919  0.03085881  0.08927748
+      0.08901768 -0.04084968 -0.03702407
+     -0.06355797  0.00999115 -0.04868741
+     -0.25140212  0.02719481 -0.12694757
+      0.01333822 -0.04625357 -0.02502128
+      0.10556371 -0.11118761 -0.09966075
+     -0.03440950  0.03494062  0.04479576
+     -0.09654903  0.08399173  0.19583805
+     -0.03441351  0.03494071  0.04479583
+     -0.09654862  0.08399164  0.19583564
+      0.10556348 -0.11118665 -0.09966183
+      0.01334096 -0.04625338 -0.02501592
+     -0.07099676  0.01131302 -0.03146549
+     -0.25140460  0.02719466 -0.12694917
+     -0.07099715  0.01131319 -0.03146498
+    </normalCoordinate>
+    <normalCoordinate wavenumber="854.94" units="inverseCentimetre" IRintensity="0.0"
+      IRintensityunits="km/mol" symmetry="A" real_zero_imag="R">
+     -0.05226122  0.04759737 -0.01645790
+     -0.01383445 -0.00595670 -0.04958787
+      0.03798117 -0.05355525 -0.04066918
+      0.05226076 -0.04759689  0.01645678
+      0.01383576  0.00595649  0.04958775
+     -0.03798187  0.05355604  0.04067036
+      0.05446903  0.26361516 -0.15889230
+      0.04041742 -0.00328767  0.05037092
+     -0.01629698  0.02932720  0.01620625
+      0.18642525  0.02626068  0.17629689
+     -0.08819834 -0.23429792 -0.12061793
+     -0.18642154 -0.02626471 -0.17630072
+      0.08819235  0.23429756  0.12061620
+      0.01629761 -0.02932639 -0.01620496
+     -0.04041454  0.00328517 -0.05037292
+      0.12330143  0.02954838 -0.25941216
+     -0.05447475 -0.26361641  0.15889949
+     -0.12329880 -0.02955378  0.25941194
+    </normalCoordinate>
+    <normalCoordinate wavenumber="854.94" units="inverseCentimetre" IRintensity="0.0"
+      IRintensityunits="km/mol" symmetry="A" real_zero_imag="R">
+     -0.01143037 -0.03435997  0.05196301
+     -0.05461609 -0.05839999  0.01412872
+     -0.03564574 -0.02404151 -0.03827693
+      0.01142995  0.03435968 -0.05196238
+      0.05461611  0.05840029 -0.01413025
+      0.03564609  0.02404171  0.03827784
+      0.03824760  0.11833722 -0.06608521
+      0.30726332 -0.03222533 -0.05555738
+     -0.18094050  0.28747257  0.02791179
+     -0.08059474 -0.01895878 -0.17128517
+      0.07653085  0.16912898  0.07657549
+      0.08059197  0.01895967  0.17128403
+     -0.07652880 -0.16912733 -0.07657180
+      0.18094334 -0.28747325 -0.02791133
+     -0.30726521  0.03222413  0.05555082
+     -0.00252043  0.01326469 -0.13843865
+     -0.03824592 -0.11833839  0.06609047
+      0.00251900 -0.01326671  0.13843675
+    </normalCoordinate>
+    <normalCoordinate wavenumber="847.43" units="inverseCentimetre" IRintensity="0.0"
+      IRintensityunits="km/mol" symmetry="A" real_zero_imag="R">
+      0.06283560  0.03033113  0.07705280
+      0.09814481 -0.03033147 -0.01589335
+      0.03531099  0.03032875 -0.09294241
+     -0.06283196 -0.03033096 -0.07705247
+     -0.09814673  0.03033167  0.01589006
+     -0.03531283 -0.03032909  0.09294592
+      0.04910351  0.12727758 -0.12924604
+      0.00716497 -0.03675655 -0.00116161
+      0.13647584 -0.12726586 -0.02210060
+      0.00458929  0.03675735  0.00562336
+      0.08738004  0.12726719  0.10714469
+     -0.00458480 -0.03675623 -0.00562351
+     -0.08737218 -0.12726783 -0.10714641
+     -0.13647905  0.12726585  0.02209252
+     -0.00716698  0.03675713  0.00115707
+     -0.00257453 -0.03675655  0.00677546
+     -0.04910703 -0.12727703  0.12925078
+      0.00257245  0.03675472 -0.00677216
+    </normalCoordinate>
+    <normalCoordinate wavenumber="559.18" units="inverseCentimetre" IRintensity="0.0"
+      IRintensityunits="km/mol" symmetry="A" real_zero_imag="R">
+     -0.03611144 -0.01733456 -0.04428166
+      0.05640549 -0.01733487 -0.00913264
+     -0.02029399 -0.01733512  0.05341529
+     -0.03611185 -0.01733502 -0.04428260
+      0.05640510 -0.01733464 -0.00913220
+     -0.02029354 -0.01733452  0.05341390
+      0.00881140  0.20785562 -0.02319280
+      0.27762731 -0.00145555 -0.04495150
+     -0.02449294  0.20785769  0.00396618
+     -0.17774209 -0.00145279 -0.21795594
+      0.01568323  0.20785701  0.01923127
+     -0.17774014 -0.00145588 -0.21795743
+      0.01567990  0.20785609  0.01922850
+     -0.02449495  0.20785820  0.00396537
+      0.27762788 -0.00145427 -0.04494844
+     -0.09988569 -0.00145194  0.26290592
+      0.00881386  0.20785646 -0.02319853
+     -0.09988511 -0.00145649  0.26290640
+    </normalCoordinate>
+    <normalCoordinate wavenumber="456.94" units="inverseCentimetre" IRintensity="0.0"
+      IRintensityunits="km/mol" symmetry="A" real_zero_imag="R">
+      0.09073179  0.02533846  0.05347186
+      0.02494239 -0.00399221  0.05665714
+     -0.06247954 -0.02933219  0.09858385
+     -0.09073135 -0.02533846 -0.05347150
+     -0.02494282  0.00399381 -0.05665697
+      0.06247968  0.02933101 -0.09858451
+     -0.00136493  0.09289878  0.07429500
+      0.04708211 -0.00281599  0.09761668
+     -0.00088050  0.01264923 -0.06500819
+      0.17289634  0.01787006  0.11181739
+      0.00779887 -0.08025421  0.07159515
+     -0.17289554 -0.01787176 -0.11181489
+     -0.00780040  0.08025367 -0.07159593
+      0.00088067 -0.01264550  0.06500830
+     -0.04708233  0.00281653 -0.09761546
+      0.11846627  0.02068545 -0.19760855
+      0.00136374 -0.09290236 -0.07429243
+     -0.11846616 -0.02068888  0.19760436
+    </normalCoordinate>
+    <normalCoordinate wavenumber="456.93" units="inverseCentimetre" IRintensity="0.0"
+      IRintensityunits="km/mol" symmetry="A" real_zero_imag="R">
+     -0.01012795 -0.01923930 -0.08852515
+      0.12025593 -0.03156432 -0.02714905
+      0.03498499 -0.01232432  0.06468583
+      0.01012745  0.01924093  0.08852547
+     -0.12025616  0.03156368  0.02714855
+     -0.03498436  0.01232341 -0.06468584
+     -0.06630512  0.03903132  0.00624176
+      0.23882028 -0.02226262 -0.05198115
+      0.07559041  0.09997051 -0.00399585
+     -0.02939057 -0.01356880 -0.16799771
+     -0.06900208  0.06094025 -0.00292129
+      0.02938699  0.01357075  0.16799825
+      0.06900340 -0.06093591  0.00292203
+     -0.07558929 -0.09997241  0.00399705
+     -0.23882187  0.02226148  0.05197989
+     -0.05639965  0.00869097 -0.12336501
+      0.06630454 -0.03903386 -0.00624060
+      0.05640417 -0.00869258  0.12336484
+    </normalCoordinate>
+    <normalCoordinate wavenumber="402.11" units="inverseCentimetre" IRintensity="0.0"
+      IRintensityunits="km/mol" symmetry="A" real_zero_imag="R">
+      0.02761267 -0.05872939  0.03386182
+      0.04313272  0.05873169 -0.00698238
+      0.01551891 -0.05873287 -0.04084619
+     -0.02761502  0.05873234 -0.03386183
+     -0.04313170 -0.05873044  0.00698459
+     -0.01551766  0.05872863  0.04084446
+     -0.00496444 -0.21698734  0.01306743
+      0.21933312  0.07019209 -0.03550815
+     -0.01379877  0.21698293  0.00223537
+      0.14041471 -0.07019150  0.17218914
+     -0.00883621 -0.21697611 -0.01083388
+     -0.14042398  0.07019279 -0.17219198
+      0.00883384  0.21698539  0.01083402
+      0.01379973 -0.21697888 -0.00223301
+     -0.21932847 -0.07019147  0.03551454
+     -0.07890930  0.07019136  0.20769736
+      0.00496577  0.21697431 -0.01306928
+      0.07891477 -0.07019303 -0.20770716
+    </normalCoordinate>
+    <normalCoordinate wavenumber="246.64" units="inverseCentimetre" IRintensity="0.0"
+      IRintensityunits="km/mol" symmetry="A" real_zero_imag="R">
+      0.03496719 -0.08077115  0.00592609
+     -0.01061398 -0.01409685 -0.03641423
+     -0.02449187  0.09486586  0.02423164
+      0.03496672 -0.08076787  0.00592562
+     -0.01061646 -0.01409960 -0.03641376
+     -0.02449158  0.09486950  0.02423100
+      0.00543024  0.26765636 -0.03230671
+     -0.05452407 -0.01597968 -0.13013447
+      0.00201959 -0.03977125 -0.01739973
+      0.18555171 -0.09156880  0.09287130
+     -0.00918871 -0.22788896 -0.02780957
+      0.18554547 -0.09156206  0.09286481
+     -0.00918448 -0.22787889 -0.02780789
+      0.00202063 -0.03978227 -0.01739890
+     -0.05453638 -0.01598536 -0.13013270
+     -0.12761844  0.10755201  0.18928495
+      0.00543381  0.26766564 -0.03231222
+     -0.12761575  0.10754441  0.18927903
+    </normalCoordinate>
+    <normalCoordinate wavenumber="246.64" units="inverseCentimetre" IRintensity="0.0"
+      IRintensityunits="km/mol" symmetry="A" real_zero_imag="R">
+     -0.01009759 -0.06291142  0.03505956
+      0.03224312  0.10140378 -0.01052218
+     -0.02840262 -0.03849222 -0.02439896
+     -0.01009665 -0.06291142  0.03506129
+      0.03224253  0.10140454 -0.01052172
+     -0.02840262 -0.03849303 -0.02439800
+     -0.01936954 -0.10860339  0.00658671
+      0.23147778  0.11495692 -0.05679822
+     -0.03427727  0.28610219  0.00317699
+      0.00847495 -0.07132048  0.18327952
+     -0.02387013 -0.17749813 -0.00803134
+      0.00847783 -0.07132058  0.18328335
+     -0.02386892 -0.17750072 -0.00802914
+     -0.03427941  0.28610342  0.00317560
+      0.23147794  0.11495834 -0.05679745
+     -0.08793768 -0.04363878 -0.12988471
+     -0.01936837 -0.10860447  0.00658976
+     -0.08793719 -0.04363707 -0.12988490
+    </normalCoordinate>
+    <normalCoordinate wavenumber="0.0" units="inverseCentimetre" IRintensity="0.0"
+      IRintensityunits="km/mol" symmetry="Err" real_zero_imag="Z">
+      0.00000000  0.01644509  0.09907298
+      0.07073086  0.04211055  0.11736651
+      0.11213282  0.03544895  0.08091777
+      0.11107451  0.00312190  0.01117911
+      0.04034376 -0.02254366 -0.00711469
+     -0.00105898 -0.01588216  0.02933423
+      0.16267703  0.05335275  0.09304061
+      0.09367576  0.04366799  0.10858204
+      0.07026494  0.06466122  0.16665348
+     -0.02488805  0.01676626  0.11297351
+     -0.02767684  0.02109210  0.12386006
+      0.13596270  0.00280121 -0.00272046
+      0.13875156 -0.00152531 -0.01360850
+      0.04080927 -0.04509437 -0.05640154
+      0.01739985 -0.02410102  0.00166942
+      0.01842635 -0.01711887  0.01630863
+     -0.05160329 -0.03378582  0.01721177
+      0.09264684  0.03668527  0.09394287
+    </normalCoordinate>
+    <normalCoordinate wavenumber="0.0" units="inverseCentimetre" IRintensity="0.0"
+      IRintensityunits="km/mol" symmetry="Err" real_zero_imag="Z">
+      0.13634106 -0.01322551 -0.03739271
+      0.07449256 -0.02065779 -0.05840612
+      0.03517861 -0.00743234 -0.02101358
+      0.03809591  0.01322545  0.03739250
+      0.09994428  0.02065783  0.05840621
+      0.13925887  0.00743238  0.02101369
+     -0.00880093 -0.01261705 -0.03567240
+      0.05846565 -0.02165295 -0.06121974
+      0.07329316 -0.03506827 -0.09914911
+      0.15412101 -0.01386284 -0.03919463
+      0.16292995 -0.02245130 -0.06347692
+      0.02031583  0.01386247  0.03919355
+      0.01150688  0.02245136  0.06347707
+      0.10114407  0.03506826  0.09914904
+      0.11597030  0.02165310  0.06122015
+      0.12635306  0.00779053  0.02202627
+      0.18323841  0.01261703  0.03567235
+      0.04808500 -0.00779032 -0.02202571
+    </normalCoordinate>
+    <normalCoordinate wavenumber="0.0" units="inverseCentimetre" IRintensity="0.0"
+      IRintensityunits="km/mol" symmetry="Err" real_zero_imag="Z">
+      0.00000000  0.12671272  0.02649716
+     -0.02301894  0.07578579  0.03477420
+     -0.05091373  0.01928265  0.03474005
+     -0.04133678  0.01370608  0.08298830
+     -0.01831799  0.06463273  0.07471119
+      0.00957680  0.12113625  0.07474461
+     -0.06635565 -0.01624267  0.04292261
+     -0.01177646  0.07605395  0.07825199
+     -0.03031494  0.07967622 -0.00129136
+     -0.01036018  0.12943503 -0.01930353
+      0.02007436  0.16612798  0.02893011
+     -0.03097664  0.01098389  0.12878858
+     -0.06141099 -0.02570924  0.08055605
+     -0.01102170  0.06074282  0.11077688
+     -0.02956092  0.06436358  0.03123357
+      0.02239006  0.12359011  0.12014803
+      0.02501839  0.15666135  0.06656120
+     -0.06372672  0.01682925 -0.01066318
+    </normalCoordinate>
+    <normalCoordinate wavenumber="0.0" units="inverseCentimetre" IRintensity="0.0"
+      IRintensityunits="km/mol" symmetry="Err" real_zero_imag="Z">
+     -0.00000001  0.06722516 -0.04216785
+      0.01992847  0.14895591 -0.06191529
+     -0.02093805  0.12368703 -0.03877753
+      0.01239579  0.01668742 -0.04208830
+     -0.00753310 -0.06504366 -0.02234062
+      0.03333227 -0.03977512 -0.04547777
+     -0.00302745  0.18070109 -0.05452045
+      0.09454863  0.15411085 -0.09916556
+     -0.00733283  0.22359658 -0.05763859
+     -0.07425729  0.06844330 -0.00587287
+      0.03251694  0.08485224 -0.06027594
+      0.08665309  0.01547086 -0.07838348
+     -0.02012031 -0.00094030 -0.02398055
+      0.01972865 -0.13968445 -0.02661752
+     -0.08215343 -0.07019841  0.01490971
+      0.10859832 -0.04371339 -0.08193610
+      0.01542033 -0.09678869 -0.02973425
+     -0.09620405  0.12762404 -0.00231906
+    </normalCoordinate>
+    <normalCoordinate wavenumber="0.0" units="inverseCentimetre" IRintensity="0.0"
+      IRintensityunits="km/mol" symmetry="Err" real_zero_imag="Z">
+      0.00000000 -0.06368007  0.02287816
+     -0.02145814 -0.00402814 -0.00521311
+      0.00234084  0.11283937  0.02249997
+     -0.02061629  0.17005561 -0.00742945
+      0.00084212  0.11040435  0.02066214
+     -0.02295598 -0.00646372 -0.00704982
+     -0.01553311  0.15445069 -0.00074724
+     -0.07559247 -0.00678370 -0.07319895
+     -0.00253891 -0.04394160  0.01931591
+      0.05409374 -0.06931101  0.09097072
+     -0.01950720 -0.14520413 -0.00010567
+     -0.07471006  0.17568565 -0.07552204
+     -0.00110970  0.25158006  0.01555359
+     -0.01807738  0.15031689 -0.00386720
+      0.05497646  0.11316168  0.08864796
+     -0.07716246 -0.00933791 -0.07512411
+     -0.00508109 -0.04807484  0.01619856
+      0.05654736  0.11571325  0.09057431
+    </normalCoordinate>
+    <normalCoordinate wavenumber="0.0" units="inverseCentimetre" IRintensity="0.0"
+      IRintensityunits="km/mol" symmetry="Err" real_zero_imag="Z">
+      0.00000000  0.07126391 -0.04772215
+      0.02576205  0.00258271 -0.01497767
+      0.06772004 -0.02096187 -0.05868705
+      0.05012641  0.02417452 -0.07910658
+      0.02436463  0.09285568 -0.11185147
+     -0.01759317  0.11640065 -0.06814283
+      0.08425193 -0.06887246 -0.03345852
+     -0.00075322  0.00040785  0.03138297
+      0.03947370 -0.02890327 -0.00311951
+      0.02534173  0.07239796 -0.09099304
+     -0.03070818  0.08768800 -0.01484469
+      0.02478475  0.02303981 -0.03583508
+      0.08083426  0.00775068 -0.11198378
+      0.01065254  0.12434204 -0.12370931
+      0.05088049  0.09502984 -0.15821231
+     -0.04619772  0.11971005 -0.02434356
+     -0.03412442  0.16431088 -0.09337202
+      0.09632423 -0.02427041 -0.10248667
+    </normalCoordinate>
+   </vibrations>
+   <time start="16:00:49" end="16:25:28" cpu="5596.67" system="41.49" real="1478.61"/>
+   <storage units="megabyte" memory="15258.79" sf="27.02" df="133.38" eaf="1708.82"
+     ga="0.0"/>
+   <summary overall_method="HF/6-311G(D,P)//HF/6-311G(D,P)"/>
+  </jobstep>
+  <input>
+   <p>memory, 2000, m</p>
+   <p> orient,mass</p>
+   <p> geometry = {</p>
+   <p> C ,                -0.75058134 ,  -0.96804003,    0.00000000</p>
+   <p> C  ,                0.76452466 ,  -0.96804003  ,  0.00000000</p>
+   <p> C ,                 1.31645566  ,  0.44303797  ,  0.00000000</p>
+   <p> C ,                 0.76679266  ,  1.24757497 ,   1.16066100</p>
+   <p> C ,                -0.74833234  ,  1.24823597  ,  1.16017200</p>
+   <p> C ,                -1.30113234  , -0.16238503 ,   1.15887600</p>
+   <p> H ,                 2.43505466  ,  0.40904697 ,   0.06271400</p>
+   <p> H,                  1.13707366 ,  -1.51367403 ,   0.90656200</p>
+   <p> H ,                 1.13981866 ,  -1.51789903 ,  -0.90191000</p>
+   <p> H ,                -1.12326934  , -0.53501103 ,  -0.96538500</p>
+   <p> H ,                -1.12617834 ,  -2.02226003 ,   0.06350200</p>
+   <p> H ,                 1.13932766,    0.81272997 ,   2.12527200</p>
+   <p> H ,                 1.14281566 ,   2.30171197  ,  1.09866600</p>
+   <p> H ,                -1.12365234 ,   1.79766397  ,  2.06228600</p>
+   <p> H  ,               -1.12018734 ,   1.79483697  ,  0.25384900</p>
+   <p> H  ,               -1.03512834 ,  -0.66810703  ,  2.12419100</p>
+   <p> H  ,               -2.41968034 ,  -0.12732403 ,   1.09393800</p>
+   <p> H  ,                1.04783766 ,   0.94867097  , -0.96454600</p>
+   <p> }</p>
+   <p> mass, iso</p>
+   <p> basis=6-311g(d,p)</p>
+   <p> {hf</p>
+   <p> start,atden}</p>
+   <p> optg</p>
+   <p> {frequencies, symm=auto, print=0,analytical}</p>
+   <p> put,molden,cyclochair.molden</p>
+  </input>
+  <diagnostics warnings="0"/>
+ </job>
+</molpro>

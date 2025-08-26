@@ -14,7 +14,7 @@ from itertools import combinations
 
 import sys
 
-module_dir = Path(__file__).parent / "modules"
+module_dir = Path(__file__).parent / "modules" 
 sys.path.insert(0, str(module_dir))
 
 import arguments
@@ -344,14 +344,13 @@ def main():
 
     normal_modes = molpro_parser.parse_normal_modes(molpro_out)
 
-
     # Make a symmetry detection and analysis
-    pg_symbol = symmetry.detect_point_group(molecule)
-    pg_symol = "C2v" # testing
-    mirror_planes = symmetry.find_mirror_planes(pg_symbol)
+    #pg_symbol = symmetry.detect_point_group(molecule)
+    #pg_symol = "C2v" # testing
+    #mirror_planes = symmetry.find_mirror_planes(pg_symbol)
 
     print("============== Point Group Detection ==============")
-    print(f"Point Group: {pg_symbol}") 
+    #print(f"Point Group: {pg_symbol}") 
 
 
 
@@ -378,7 +377,6 @@ def main():
     gaussian.plot_pairwise_overlap_changes_barplot(pairwise_overlap_change, molecule)
     gaussian.plot_pairwise_overlap_changes_heatmap(pairwise_overlap_change, molecule)
     gaussian.plot_total_overlap_change(pairwise_overlap_change, molecule)
-   
     
     # Plot and calculate pairwise gradients
     pairwise_gradient_change = gaussian.compute_pairwise_gradients(molecule,vdw_radii,normal_modes)
@@ -410,34 +408,6 @@ def main():
     check_orthogonality(normal_modes)
 
     # Calculate the volume change for each normal mode
-
-    changes_results = {}
-    delta_S_list = []
-    for mode in normal_modes.keys():
-        total_delta_S, changes = calculate_volume_change_v2(molecule, vdw_radii, normal_modes[mode])
-        changes_results[mode] = {
-            "total_change": total_delta_S,
-            "changes": changes
-        }
-        delta_S_list.append(total_delta_S)
-
-    print(delta_S_list)
-
-    # Plot delta_S_list
-    plt.figure(figsize=(10, 6))
-    plt.bar(changes_results.keys(), delta_S_list, color='skyblue')
-    plt.xlabel('Normal Mode')
-    plt.ylabel('Volume Change Delta S')
-    plt.title('Volume Change per Normal Mode')
-    plt.xticks(rotation=45)
-    plt.tight_layout()
-    plt.savefig("volume_change_per_normal_mode_v2.png", dpi=300)
-    #plt.show()
-
-
-
-
-
 
 if __name__ == "__main__":
     main()

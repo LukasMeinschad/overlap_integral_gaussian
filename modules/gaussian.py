@@ -284,6 +284,7 @@ def plot_pairwise_overlap_changes_barplot(pairwise_changes, molecule):
 
         # Rotate 
         ax.tick_params(axis='x', rotation=45) 
+        
         # Highlight max change
         max_change = np.max(changes) if len(changes) > 0 else 1
         for i, change in enumerate(sorted_changes):
@@ -293,7 +294,7 @@ def plot_pairwise_overlap_changes_barplot(pairwise_changes, molecule):
     # Hide any unused subplots
     for ax in axes[n_modes:]:
         ax.axis('off')
-
+    # plt.xticks(sorted_indices, [str(i) for i in sorted_indices], rotation=90)
     plt.tight_layout()
     plt.savefig("pairwise_overlap_changes.png",bbox_inches='tight')
     plt.close()
@@ -377,10 +378,12 @@ def plot_total_overlap_change(pairwise_changes, molecule):
     ax.set_xlabel("Normal Mode ID")
     ax.set_ylabel("Total Change in Overlap |ΔS|")
     ax.grid(axis='y', linestyle='--', alpha=0.7)
-    ax.tick_params(axis='x', rotation=45)
+    ax.set_xticks(modes)
+    ax.set_xticklabels([str(i) for i in modes], rotation=45)
+    #ax.tick_params(axis='x', rotation=45)
     plt.tight_layout()
     plt.savefig("total_overlap_change.png", bbox_inches='tight')
-
+    print(total_changes)
 
 # ===== Visualization of Pairwiese Gradients =====
 

@@ -1,0 +1,21 @@
+memory,1000,m
+orient,mass
+geometry = {
+ C,                 -5.13924038 ,   0.99999999  ,  0.00000000
+ H,                 -4.78258595 ,  -0.00881002  ,  0.00000000
+ H,                 -4.78256754 ,   1.50439818  ,  0.87365150
+ H,                 -6.20924038 ,   1.00001317  ,  0.00000000
+ O,                 -4.66256546 ,   1.67410224  , -1.16759033
+ H,                 -4.03197131 ,   3.20418707  , -1.55668147
+}
+
+mass,iso
+basis=6-311g(d,p)
+{hf
+start,atden}
+
+{mp2}
+
+optg
+{frequencies, symm=auto,print=0,analytical}
+put,molden,methanolmp2.molden

@@ -1,0 +1,17 @@
+memory,1000,m
+orient,mass
+geometry = {
+ O,                 -2.37974678 ,   3.40506324 ,   0.00000000
+ H,                 -1.41974678 ,   3.40506324 ,   0.00000000
+ H,                 -2.70020136 ,   4.30999907 ,   0.00000000
+}
+mass,iso
+basis=6-311g(d,p)
+{hf
+start,atden}
+
+{mp2}
+
+optg
+{frequencies, symm=auto,print=0,analytical}
+put,molden,h2omp2.molden

@@ -6,7 +6,7 @@
 
 Given by 
 
-$$f_i(r) = a_i \exp\left(-\frac{(r-b_i)^T(r-b_i)}{2c_i^2}\right)$$ 
+$f_i(r) = a_i\exp\left(-\frac{(r-b_i)^T(r-b_i)}{2c_i^2}\right)$
 
 where:
 
@@ -17,7 +17,7 @@ where:
 **Gaussian Product Theorem**
 
 The Gaussian Product Theorem tells us that the product of two gaussian functions is again a Gaussian functions. For simplicity we assume that the two gaussians we want to multiply are 1-dimenional:
-
+ls
 + $f_1(x) = a_1 \exp\left(-\frac{(x-b_1)^2}{2c_1^2}\right)$
 + $f_2(x) = a_2 \exp\left(-\frac{(x-b_2)^2}{2c_2^2}\right)$
 

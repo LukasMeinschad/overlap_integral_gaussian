@@ -1,0 +1,17 @@
+memory,1000,m
+orient,mass
+geometry = {
+ C,                 -0.78481011 ,  -0.36708860  ,  0.00000000
+ H,                 -0.25164636 ,  -1.29479352  ,  0.00000000
+ H,                 -1.85481011 ,  -0.36708860  ,  0.00000000
+ O,                 -0.15776968 ,   0.72396174  ,  0.00000000
+}
+
+mass,iso
+basis=6-311g(d,p)
+{hf
+start,atden}
+
+optg
+{frequencies, symm=auto,print=0,analytical}
+put,molden,formaldehydehf.molden

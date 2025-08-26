@@ -1,0 +1,154 @@
+
+ Working directory              : /tmp/zwa/molpro.SSXRp1Jw5v/
+ Global scratch directory       : /tmp/zwa/molpro.SSXRp1Jw5v/
+ Wavefunction directory         : /home/zwa/wfu/
+ Main file repository           : /tmp/zwa/molpro.SSXRp1Jw5v/
+
+ id        : liedlgroup
+
+ Nodes     nprocs
+ rh2-c724     6
+ GA implementation: MPI file
+ GA implementation (serial work in mppx): MPI file
+
+ Using customized tuning parameters: mindgm=1; mindgv=20; mindgc=4; mindgr=1; noblas=0; minvec=7
+ default implementation of scratch files=sf  
+
+
+ Variables initialized (1015), CPU time= 0.01 sec
+ memory,1000,m
+ orient,mass
+ geometry = {
+  C,                 -6.78414507 ,  -0.97401882  , -0.10156568
+  H,                 -6.42749065 ,  -1.98282882  , -0.10156568
+  H,                 -6.42747223 ,  -0.46962063  , -0.97521718
+  H,                 -7.85414507 ,  -0.97400563  , -0.10156568
+  O,                 -6.30747016 ,  -0.29991656  ,  1.06602465
+  H,                -5.74545685  , -0.97175700   , 1.27419342
+  O,                 -3.32679232 ,  -2.81789314  ,  1.72252816
+  H,                 -2.66052005 ,  -2.67939335  ,  1.04540256
+  H,                 -3.04301020 ,  -3.52006152  ,  2.31246653
+ }
+ mass,iso
+ basis=6-311g(d,p)
+ {hf
+ start,atden}
+ 
+ optg
+ {frequencies, symm=auto,print=0,analytical}
+ put,molden,methanowateracceptor.molden
+ Commands initialized (834), CPU time= 0.01 sec, 672 directives.
+ Default parameters read. Elapsed time= 0.11 sec
+
+ Checking input...
+ Passed
+1
+
+
+                                         ***  PROGRAM SYSTEM MOLPRO  ***
+                                       Copyright, TTI GmbH Stuttgart, 2015
+                                    Version 2022.2 linked Thu Sep 29 12:37:28 2022
+
+
+ **********************************************************************************************************************************
+ LABEL *                                                                                 
+  (8 PROC) 64 bit mpp version                                                            DATE: 25-Aug-25          TIME: 15:07:35  
+ **********************************************************************************************************************************
+
+ SHA1:             51306cdc306ce2a111a2867affebcb289530e0a7
+ **********************************************************************************************************************************
+
+ Memory per process:      1000 MW
+ Total memory per node:   6000 MW
+
+ GA preallocation disabled
+ GA check disabled
+
+ Variable memory set to 1000.0 MW
+
+ ZCENTRE=MASS
+
+
+ Geometry recognized as XYZ
+
+
+
+ Using masses of most abundant isotopes
+
+ **********************************************************************************************************************************
+ SETTING BASIS          =    6-311G(D,P)
+
+
+ Recomputing integrals since basis changed
+
+
+ Using spherical harmonics
+
+ Library entry C      S 6-311G               selected for orbital group  1
+ Library entry C      P 6-311G               selected for orbital group  1
+ Library entry C      D 6-311G*              selected for orbital group  1
+ Library entry H      S 6-311G               selected for orbital group  2
+ Library entry H      P 6-311G**             selected for orbital group  2
+ Library entry O      S 6-311G               selected for orbital group  3
+ Library entry O      P 6-311G               selected for orbital group  3
+ Library entry O      D 6-311G*              selected for orbital group  3
+
+
+ PROGRAM * SEWARD (Integral evaluation for generally contracted gaussian basis sets)     Author: Roland Lindh, 1990
+
+ Geometry written to block  1 of record 700
+
+ Orientation using atomic masses  
+ Molecule type: Asymmetric top
+ Rotational constants:       2.3397140      2.5066974     25.7554702 GHz
+
+ Point group  C1  
+
+
+
+ ATOMIC COORDINATES
+
+ NR  ATOM    CHARGE       X              Y              Z
+
+   1  C       6.00   -0.030777789   -1.235220938   -3.226365223
+   2  H       1.00   -0.735016399   -2.359484303   -1.700392761
+   3  H       1.00    1.833952929   -1.848800545   -3.710938753
+   4  H       1.00   -1.245375806   -1.438879134   -4.830044467
+   5  O       8.00    0.041531488    1.359494940   -2.474905734
+   6  H       1.00   -0.274838768    0.976937386   -0.847597592
+   7  O       8.00   -0.023529601   -0.088726835    4.860333721
+   8  H       1.00    1.586723239   -0.788391873    5.317113757
+   9  H       1.00   -1.084682259   -0.001823794    6.329175531
+
+ Bond lengths in Bohr (Angstrom)
+
+ 1-2  2.022006946  1-3  2.022006947  1-4  2.022006954  1-5  2.702308362  5-6  1.701344237
+     ( 1.069999996)     ( 1.069999996)     ( 1.070000000)     ( 1.430000002)     ( 0.900312598)
+
+ 7-8  1.814137087  7-9  1.814137085
+     ( 0.960000004)     ( 0.960000003)
+
+ Bond angles
+
+  1-5-6   92.58493727   2-1-3  109.47120272   2-1-4  109.47123145   2-1-5  109.47120297
+
+  3-1-4  109.47121818   3-1-5  109.47125071   4-1-5  109.47121778   8-7-9  109.49999900
+
+ NUCLEAR CHARGE:                   28
+ NUMBER OF PRIMITIVE AOS:         144
+ NUMBER OF SYMMETRY AOS:          141
+ NUMBER OF CONTRACTIONS:           90   (   90A   )
+ NUMBER OF INNER CORE ORBITALS:     0   (    0A   )
+ NUMBER OF OUTER CORE ORBITALS:     3   (    3A   )
+ NUMBER OF VALENCE ORBITALS:       18   (   18A   )
+
+
+ NUCLEAR REPULSION ENERGY   72.94485790
+
+
+ Eigenvalues of metric
+
+         1 0.781E-02 0.181E-01 0.189E-01 0.207E-01 0.209E-01 0.367E-01 0.391E-01 0.415E-01
+
+
+ Contracted 2-electron integrals neglected if value below      1.0D-11
