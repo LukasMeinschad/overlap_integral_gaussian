@@ -1001,3 +1001,54 @@ def plot_isosurface(X,Y,Z, density, molecule, vdw_radii):
 
    plt.tight_layout()
    plt.show()
+
+
+def hermite_gauss(x,b_1,c_1):
+    """
+    Implement a first exited state aka Hermite Function H1 Multiplied with Gaussian
+    """
+    return (x-b_1) * np.exp(-(x-b_1)**2 / (2*c_1**2))
+
+def hermite_gauss_2d(x,b_1,c_i):
+    """ 
+    X is now 2d vector and b_1 = (b1_x, b1_y)
+    """
+    return (x[0]-b_1[0]) *(x[1]-b_1[1]) * np.exp(-((x[0]-b_1[0])**2 + (x[1]-b_1[1])**2) / (2*c_i**2))
+
+def test_hermite_gauss_2d():
+    b_1 = (0.0, 0.0)
+    c_1 = 1.0
+    x = np.linspace(-5, 5, 100)
+    y = np.linspace(-5, 5, 100)
+    X, Y = np.meshgrid(x, y)
+    pos = np.array([X, Y])
+    Z = hermite_gauss_2d(pos, b_1, c_1)
+
+    plt.figure(figsize=(8, 6))
+    plt.contourf(X, Y, Z, levels=20, cmap='viridis')
+    plt.colorbar(label='Amplitude')
+    plt.title('2D Hermite-Gauss Function')
+    plt.xlabel('x')
+    plt.ylabel('y')
+    plt.axhline(0, color='black', linestyle='--', linewidth=0.8)
+    plt.axvline(0, color='black', linestyle='--', linewidth=0.8)
+    plt.grid()
+    plt.show()
+
+def test_hermite_gauss():
+
+    b_1 = 0.0
+    c_1 = 1.0
+    x = np.linspace(-5, 5, 500)
+    y = hermite_gauss(x, b_1, c_1)
+
+    plt.figure(figsize=(10, 6))
+    plt.plot(x, y, label=f'Hermite-Gauss: b={b_1}, c={c_1}', color='blue')
+    plt.title('1D Hermite-Gauss Function')
+    plt.xlabel('x')
+    plt.ylabel('Amplitude')
+    plt.legend()
+    plt.xlim(-5, 5)
+    plt.grid()
+    plt.show()
+

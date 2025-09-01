@@ -304,29 +304,6 @@ def calculate_volume_change_v2(molecule, vdw_radii, normal_mode):
     return total_delta_S, volume_changes
 
 
-def plot_molecule_vdw_spheres(molecule, vdw_radii):
-    """ 
-    Plots the molecule in 3D with VDW spheres
-    """
-    fig = plt.figure(figsize=(10, 8))
-    ax = fig.add_subplot(111, projection='3d')
-
-    for atom, coords in molecule.atoms.items():
-        x, y, z = coords
-        radius = vdw_radii[atom] / 100  # Convert to Angstrom
-        u = np.linspace(0, 2 * np.pi, 100)
-        v = np.linspace(0, np.pi, 100)
-        x_sphere = radius * np.outer(np.cos(u), np.sin(v)) + x
-        y_sphere = radius * np.outer(np.sin(u), np.sin(v)) + y
-        z_sphere = radius * np.outer(np.ones(np.size(u)), np.cos(v)) + z
-
-        ax.plot_surface(x_sphere, y_sphere, z_sphere, color='b', alpha=0.3)
-
-    ax.set_xlabel('X (Å)')
-    ax.set_ylabel('Y (Å)')
-    ax.set_zlabel('Z (Å)')
-    plt.title('Molecule with VDW Spheres')
-    plt.show()
 
 def main():
     args =  arguments.get_args()
@@ -438,6 +415,7 @@ def main():
                 norms.append((calculation_type, mode_number, norm))
                 print(f"Mode {mode_number}: Norm = {norm:.6f}")
         
+        
         # Plot the norms in a bar plot 
         df_norms = pd.DataFrame(norms, columns=['Calculation', 'Mode', 'Norm'])
         plt.figure(figsize=(12, 6))
@@ -526,10 +504,6 @@ def main():
 
     molecule = Molecule(molpro_parser.parse_atoms(molpro_out))
     
-    if args.plot == "plot_molecule":
-        molecule.plot_molecule()
-
-    # Parse normal modes
 
     normal_modes = molpro_parser.parse_normal_modes(molpro_out)
 
@@ -597,6 +571,9 @@ def main():
     polarizabilities = retrieve_polarizability(molecule, elements_table)
 
 
+    if args.plot == "plot_molecule":
+        molecule.plot_molecule_simple_gaussian(vdw_radii)
+
     # Generate a grid of points for density computation
     if args.plot == "plot_density":
         X,Y,Z = gaussian.generate_grid(molecule, padding=5, resolution=100) 
@@ -617,6 +594,16 @@ def main():
     pairwise_gradient_change = gaussian.compute_pairwise_gradients(molecule,vdw_radii,normal_modes)
     gaussian.plot_mode_gradients(pairwise_gradient_change,molecule)
 
+    
+    gaussian.test_hermite_gauss()
+    gaussian.test_hermite_gauss_2d() 
+    
+    
+    
+    
+    
+    
+    
     
     # ======= Testing Section =======
      

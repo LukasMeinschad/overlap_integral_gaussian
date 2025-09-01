@@ -4,6 +4,7 @@ Implementation of a general molecule class
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 import numpy as np
+from matplotlib.colors import Normalize
 
 
 
@@ -41,38 +42,132 @@ class Molecule:
         "F": 70,
     }
 
-    def plot_molecule(self):
+    def plot_molecule_simple_gaussian(self, vdw_radii):
         """ 
-        Make a 3D plot of the molecule, this is mainly to check if the import is coorect from molpro
+        Make a 3D plot of the gaussian density and futher make xy,xz and yz projections of this density
         """
 
-        fig = plt.figure(figsize=(10,8))
-        ax = fig.add_subplot(111,projection="3d")
+        # First of all extract the parameters of the gaussian functions
+        normalization_constant = 1/(3*np.sqrt(2*np.pi))
 
-        for atom, coords in self.atoms.items():
-            x, y, z = coords
-            color = self.atom_colors.get(atom[0], "gray")
-            size = self.atom_sizes.get(atom[0], 50)
-            ax.scatter(x, y, z, color=color, s=size, label=atom)
-        all_coords = []
-        for coords in self.atoms.values():
-            all_coords.append(coords)
+        # Save the gaussian parameters in a dictionary for each atom
+        gaussian_params = {}
+
+        for atom, (x,y,z) in self.atoms.items():
+            # TODO add Exception error here
+            if atom in vdw_radii:
+                radius = vdw_radii[atom] / 100 # Convert Angstrom
+            else:
+                radius = 1.0 
+
+            # the VDW radius is c in the gaussian function we further need b which is the x,y,z coordinates
+            b = np.array([x,y,z])
+
+            gaussian_params[atom] = {
+                "a": normalization_constant,
+                "b": b,
+                "c": radius
+            }
+        def gaussian_function(x,a,b,c):
+            return a * np.exp(-np.sum((x-b)**2)  / (2*c**2))
         
-        # Draw lines between atoms if they are withing a threshold distance
-        threshold = 1.8 # Angstrom
-        for i in range(len(all_coords)):
-            for j in range(i + 1, len(all_coords)):
-                dist = np.linalg.norm(np.array(all_coords[i]) - np.array(all_coords[j]))
-                if dist < threshold:
-                    ax.plot([all_coords[i][0], all_coords[j][0]], 
-                            [all_coords[i][1], all_coords[j][1]], 
-                            [all_coords[i][2], all_coords[j][2]], color="gray", alpha=0.5)
-        ax.set_xlabel("X (Angstrom)")
-        ax.set_ylabel("Y (Angstrom)")
-        ax.set_zlabel("Z (Angstrom)")
-        ax.set_title("Molecule Structure")
-        ax.legend()
-        plt.show()
+        def total_gaussian_density(point):
+            # Total density is given by the multiplication of the individual gaussian functions
+            density = 1.0
+            for atom, params in gaussian_params.items():
+                a = params["a"]
+                b = params["b"]
+                c = params["c"]
+                density += gaussian_function(point, a, b, c)
+            return density
+        
+        # Create a grid of points in 3D space
+        grid_size = 80
+        x = np.linspace(-8, 8, grid_size)
+        y = np.linspace(-8, 8, grid_size)
+        z = np.linspace(-8, 8, grid_size)
+        X, Y, Z = np.meshgrid(x, y, z)
+        points = np.vstack([X.ravel(), Y.ravel(), Z.ravel()]).T
+        density_values = np.array([total_gaussian_density(point) for point in points])
+        density_values = density_values.reshape(X.shape)
+
+        
+        # Normalize Density for Colormap
+        norm = Normalize(vmin=np.min(density_values), vmax=np.max(density_values))
+        normalized_density = norm(density_values.ravel())
 
 
-    
+
+        base_cmap = plt.cm.inferno
+        cmap_colors = base_cmap(np.linspace(0, 1, 256))
+        alpha_mask = np.linspace(0, 1, 256)
+        alpha_mask[:90] = 0  # Make low values transparent
+        cmap_colors[:, -1] = alpha_mask
+        transparent_cmap = plt.matplotlib.colors.ListedColormap(cmap_colors)
+
+        rgba_colors = transparent_cmap(normalized_density)
+
+        # Prepare 3D grid Coordinattes
+        X_flat = X.ravel()
+        Y_flat = Y.ravel()
+        Z_flat = Z.ravel()
+
+        # Filter out fully transparent points
+        visible = rgba_colors[:, 3] > 0
+
+        X_visible = X_flat[visible]
+        Y_visible = Y_flat[visible]
+        Z_visible = Z_flat[visible]
+        colors_visible = rgba_colors[visible]
+
+
+        # Three suplots from different angles
+        fig = plt.figure(figsize=(18, 6))
+        ax1 = fig.add_subplot(131, projection='3d')
+        ax2 = fig.add_subplot(132, projection='3d')
+        ax3 = fig.add_subplot(133, projection='3d')
+        ax1.scatter(X_visible, Y_visible, Z_visible, c=colors_visible, marker='o', s=1)
+        ax1.set_title('3D Gaussian Density View 1')
+        ax1.set_xlabel('X axis')
+        ax1.set_ylabel('Y axis')
+        ax1.set_zlabel('Z axis')
+        ax1.view_init(elev=30, azim=30)
+        ax2.scatter(X_visible, Y_visible, Z_visible, c=colors_visible, marker='o', s=1)
+        ax2.set_title('3D Gaussian Density View 2')
+        ax2.set_xlabel('X axis')
+        ax2.set_ylabel('Y axis')
+        ax2.set_zlabel('Z axis')
+        ax2.view_init(elev=30, azim=120)
+        ax3.scatter(X_visible, Y_visible, Z_visible, c=colors_visible, marker='o', s=1)
+        ax3.set_title('3D Gaussian Density View 3')
+        ax3.set_xlabel('X axis')
+        ax3.set_ylabel('Y axis')
+        ax3.set_zlabel('Z axis')
+        ax3.view_init(elev=30, azim=210)
+        plt.tight_layout()
+        plt.savefig('molecule_gaussian_density_3D_views.png', dpi=300)
+        plt.close()
+
+        
+
+        # Make projections
+        fig, axs = plt.subplots(1, 3, figsize=(18, 6))
+        # XY projection
+        axs[0].imshow(np.sum(density_values, axis=2), extent=(-3, 3, -3, 3), origin='lower', cmap=transparent_cmap)
+        axs[0].set_title('XY Projection')
+        axs[0].set_xlabel('X axis')
+        axs[0].set_ylabel('Y axis')
+        
+        # XZ projection
+        axs[1].imshow(np.sum(density_values, axis=1), extent=(-3, 3, -3, 3), origin='lower', cmap=transparent_cmap)
+        axs[1].set_title('XZ Projection')
+        axs[1].set_xlabel('X axis')
+        axs[1].set_ylabel('Z axis')
+
+        # YZ projection
+        axs[2].imshow(np.sum(density_values, axis=0), extent=(-3, 3, -3, 3), origin='lower', cmap=transparent_cmap)
+        axs[2].set_title('YZ Projection')
+        axs[2].set_xlabel('Y axis')
+        axs[2].set_ylabel('Z axis') 
+        plt.savefig('molecule_gaussian_density_projections.png', dpi=300)
+        plt.close()
