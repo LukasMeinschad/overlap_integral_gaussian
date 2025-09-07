@@ -6,7 +6,6 @@ from molecule import Molecule
 import numpy as np
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
-import pyvista as pv
 from matplotlib.colors import Normalize
 from scipy.integrate import nquad
 from scipy.integrate import quad

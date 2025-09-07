@@ -22,7 +22,7 @@ import molpro_parser
 from molecule import Molecule
 import gaussian
 import symmetry
-
+import volume
 
  
 def fetch_elements():
@@ -505,6 +505,7 @@ def main():
     molecule = Molecule(molpro_parser.parse_atoms(molpro_out))
     
 
+    
     normal_modes = molpro_parser.parse_normal_modes(molpro_out)
 
 
@@ -569,6 +570,21 @@ def main():
     # Extract the vdw radii
     vdw_radii = retrieve_vdw_radii(molecule,elements_table) 
     polarizabilities = retrieve_polarizability(molecule, elements_table)
+
+    #######
+    # Evaluation of Ovality of the Molecule
+    ########
+    
+    volume.union_volume_mc_molecule(molecule,vdw_radii,n_samples=100_000)
+
+    # Check the convergence of the volume (not needed in normal code)
+    volume.check_volume_convergence(molecule,vdw_radii,max_samples=5_000_000)
+
+
+    # These two functions are just checks uncomment if you want
+    #volume.union_volume_mc(1,1,0.5,n_samples=100000)
+    #volume.comparison_mc_and_analytical()
+
 
 
     if args.plot == "plot_molecule":
