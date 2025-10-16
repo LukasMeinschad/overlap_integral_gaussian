@@ -1,4 +1,4 @@
-
+import re
 
 def parse_atoms(molpro_out):
     """ 
@@ -28,15 +28,24 @@ def parse_atoms(molpro_out):
         molecules = {} # Dictionary to hold molecule data
         for atom in atomic_coordinates:
             parts = atom.split()
+         
             # First part is numbering, second part is symbol, fourth fifth and sixth are coordinates
             number = int(parts[0])
+            
             symbol = parts[1]
+            if len(symbol) == 2:
+                symbol = symbol[0] + symbol[1].lower()
+            
             atomic_symbol = str(symbol) + str(number)
+        
+            if len(symbol) >=2: 
+                atomic_symbol = symbol
             x = float(parts[3])
             y = float(parts[4])
             z = float(parts[5])
             coordinates = (x, y, z)
             molecules[atomic_symbol] = coordinates
+
     return molecules
 
 def parse_normal_modes(molpro_out):
@@ -51,23 +60,23 @@ def parse_normal_modes(molpro_out):
         current_block = []
         in_block = False
         for line in lines:
-            if "Normal Modes" in line and "low/zero frequencies" not in line:
+            if "Normal Modes" in line and "low/zero frequencie" not in line and "imaginary" not in line:
                 in_block = True
                 current_block = [line]
                 continue
-            elif "Normal Modes of low/zero frequencies" in line and in_block:
+            elif ("Normal Modes of low/zero frequencies" in line or "Normal Modes of imaginary" in line)  and in_block:
                 in_block = False
                 if current_block:
                     mode_blocks.append(current_block)
                 continue
             elif in_block:
                 current_block.append(line)
-
         # Combine all blocks into a continious block
         full_block = []
         for block in mode_blocks:
             full_block.extend(block)
-        
+
+         
         normal_modes = {}
 
         # First find all mode headers (may be in multiple lines)
@@ -163,15 +172,32 @@ def parse_normal_modes(molpro_out):
 
             label = parts[0]
             values = list(map(float,parts[1:1 + len(current_block_modes)])) # only take values of current block
-            
 
-            # Parse the atom info
+
+            #element, atom_num, direction, atom_name, extra = parse_label(label)
+            #Parse the atom info
             element = "".join([c for c in label if c.isalpha() and c not in ["X","Y","Z"]])
+            
             atom_num = "".join([c for c in label if c.isdigit()])
             direction = label[len(element):-len(atom_num)].lower()
             atom_name = f"{element}{atom_num}" if atom_num else element
-
             
+            if len(label) == 4:
+                # THIS IS SHIT
+                if label[1].isdigit():
+                    atom_num = label[1]
+                    atom_name = f"{element}{atom_num}"
+                    direction = label[2].lower()
+                elif label[2].isdigit() and label[3].isdigit():
+                    # CASE HX10
+                    atom_num = label[2:]
+                    atom_name = f"{element}{atom_num}"
+                    direction = label[1].lower()
+                else:
+                    atom_name = label[:2]
+                    atom_name = atom_name[0] + atom_name[1].lower()
+                    direction = label[2].lower()
+                
             # Add displacment for modes in current block
             for i, mode_num in enumerate(current_block_modes):
                 if mode_num not in normal_modes:
@@ -179,4 +205,6 @@ def parse_normal_modes(molpro_out):
                 if atom_name not in normal_modes[mode_num]["displacements"]:
                     normal_modes[mode_num]["displacements"][atom_name] = {}
                 normal_modes[mode_num]["displacements"][atom_name][direction] = values[i]
+
+        print(normal_modes) 
         return normal_modes
