@@ -44,7 +44,8 @@ def retrieve_vdw_radii(molecule, elements_table):
     cols = [
         "atomic_number",
         "symbol",
-        "vdw_radius"
+        "vdw_radius",
+        "vdw_radius_uff",
     ]
     elements_table = elements_table[cols]
 
@@ -58,6 +59,31 @@ def retrieve_vdw_radii(molecule, elements_table):
         vdw_radii[key] = vdw_radius_key
 
     return vdw_radii
+
+
+def retrieve_covalent_radii(molecule,elements_table):
+    """ 
+    Function to retrieve the covalent radius of a molecule
+    """
+    cols = [
+        "atomic_number",
+        "symbol",
+        "covalent_radius_pyykko",
+        "covalent_radius_bragg",
+        "covalent_radius_cordero"
+    ]
+    elements_table = elements_table[cols]
+
+    covalent_radii = dict.fromkeys(molecule.atoms.keys())
+
+
+    for key in molecule.atoms.keys():
+        remove_digits = str.maketrans("","",digits)
+        key_without_digit = key.translate(remove_digits)
+        covalent_radius_key = elements_table[elements_table["symbol"]==key_without_digit]["covalent_radius_cordero"].values[0]
+        covalent_radii[key] = covalent_radius_key
+
+    return covalent_radii 
 
 def retrieve_polarizability(molecule, elements_table):
     """ 
@@ -569,16 +595,31 @@ def main():
 
     # Extract the vdw radii
     vdw_radii = retrieve_vdw_radii(molecule,elements_table) 
+
+    print("VDW Radius")
+    print(vdw_radii)
+
+
+    # Extract covalent radii
+    covalent_radii = retrieve_covalent_radii(molecule,elements_table)
+    
+
+    print("Covalent Radius")
+    print(covalent_radii)
+
+
+    
     polarizabilities = retrieve_polarizability(molecule, elements_table)
 
     #######
     # Evaluation of Ovality of the Molecule
     ########
     
-    volume.union_volume_mc_molecule(molecule,vdw_radii,n_samples=100_000)
+    
+    #volume.union_volume_mc_molecule(molecule,vdw_radii,n_samples=100_000)
 
     # Check the convergence of the volume (not needed in normal code)
-    volume.check_volume_convergence(molecule,vdw_radii,max_samples=5_000_000)
+    #volume.check_volume_convergence(molecule,vdw_radii,max_samples=5_000_000)
 
 
     # These two functions are just checks uncomment if you want
@@ -599,20 +640,30 @@ def main():
     if args.plot == "plot_molecules_vdw_spheres":
         plot_molecule_vdw_spheres(molecule, vdw_radii)
     
-    # Compute pairwise change in overlap
+    # Compute pairwise change in overlap with vdw
     pairwise_overlap_change = gaussian.compute_pairwise_change_in_overlap(molecule,vdw_radii,normal_modes)
     gaussian.plot_pairwise_overlap_changes_barplot(pairwise_overlap_change, molecule)
     gaussian.plot_pairwise_overlap_changes_heatmap(pairwise_overlap_change, molecule)
     gaussian.plot_total_overlap_change(pairwise_overlap_change, molecule)
-   
-    
+
+    # Compute the Ratio in respect to the volume of one Neon/Argon Atom
+    gaussian.plot_ratio_to_argon_neon_volume(pairwise_overlap_change, molecule)
+
+
+   # # Compute pairwise change in overlap with covalent
+   # pairwise_overlap_change = gaussian.compute_pairwise_change_in_overlap(molecule,covalent_radii,normal_modes)
+   # gaussian.plot_pairwise_overlap_changes_barplot(pairwise_overlap_change, molecule)
+   # gaussian.plot_pairwise_overlap_changes_heatmap(pairwise_overlap_change, molecule)
+   # gaussian.plot_total_overlap_change(pairwise_overlap_change, molecule)                                 
+
+
     # Plot and calculate pairwise gradients
     pairwise_gradient_change = gaussian.compute_pairwise_gradients(molecule,vdw_radii,normal_modes)
     gaussian.plot_mode_gradients(pairwise_gradient_change,molecule)
 
     
-    gaussian.test_hermite_gauss()
-    gaussian.test_hermite_gauss_2d() 
+    #gaussian.test_hermite_gauss()
+    #gaussian.test_hermite_gauss_2d() 
     
     
     

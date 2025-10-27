@@ -400,6 +400,47 @@ def plot_total_overlap_change(pairwise_changes, molecule):
         print(f"  Total Change in Overlap ΔS: {total_changes[modes.index(mode)]:.4f}")
 
 
+def plot_ratio_to_argon_neon_volume(pairwise_changes, molecule):
+    """ 
+    Helper function to compute the ratio of the total overlap change to the volume of Neon/Argon atom
+    """
+    vdw_neon = 154 / 100  # in Angstrom
+    vdw_argon = 188 / 100  # in Angstrom
+    volume_neon = (4/3) * np.pi * vdw_neon**3
+    volume_argon = (4/3) * np.pi * vdw_argon**3
+    modes = list(pairwise_changes.keys())
+    total_changes_abs = [np.sum(np.abs(list(pairwise_changes[mode]['changes'].values()))) for mode in modes]
+    ratio_neon = [change / volume_neon for change in total_changes_abs]
+    ratio_argon = [change / volume_argon for change in total_changes_abs]
+    # Plot the Ratio as Bar plots into two subplots
+    fig, axes = plt.subplots(1, 2, figsize=(15, 6))
+    axes[0].bar(modes, ratio_neon, color='skyblue')
+    axes[0].set_title("Ratio: Total Absolute Change in Overlap |ΔS| to Neon Volume")
+    axes[0].set_xlabel("Normal Mode ID")
+    axes[0].set_ylabel("Ratio |ΔS| / Volume of Neon")
+    axes[0].grid(axis='y', linestyle='--', alpha=0.7)
+    axes[0].tick_params(axis='x', rotation=45)
+    axes[0].set_xticks(modes)
+    axes[0].set_xticklabels(modes)
+    axes[1].bar(modes, ratio_argon, color='lightgreen')
+    axes[1].set_title("Ratio: Total Absolute Change in Overlap |ΔS| vs Argon Volume")
+    axes[1].set_xlabel("Normal Mode ID")
+    axes[1].set_ylabel("Ratio |ΔS| / Volume of Argon")
+    axes[1].grid(axis='y', linestyle='--', alpha=0.7)
+    axes[1].tick_params(axis='x', rotation=45)
+    axes[1].set_xticks(modes)
+    axes[1].set_xticklabels(modes)
+    plt.tight_layout()
+    plt.savefig("ratio_overlap_change_to_neon_argon_volume.png", bbox_inches='tight')
+    print("======= Ratio of Total Overlap Change to Neon/Argon Volume =======")
+    for mode in modes:
+        print(f"Mode {mode} (Wavenumber: {pairwise_changes[mode]['wavenumber']:.2f} cm⁻¹):")
+        print(f"  Ratio |ΔS| / Volume of Neon: {ratio_neon[modes.index(mode)]:.4f}")
+        print(f"  Ratio |ΔS| / Volume of Argon: {ratio_argon[modes.index(mode)]:.4f}")
+    
+
+
+
 # ===== Visualization of Pairwiese Gradients =====
 
 def plot_mode_gradients(pairwise_gradients, molecule):
